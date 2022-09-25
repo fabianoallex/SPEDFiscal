@@ -7,5 +7,4 @@ public interface Unit {
     int count();
     void validate();
     void writeToFile();
-    String toString();
 }

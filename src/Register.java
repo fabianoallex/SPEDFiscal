@@ -32,18 +32,18 @@ public class Register implements Unit {
 
     @Override
     public int count() {
-        int c = 0;
+        int c = 1; //itself
 
         for (Unit unit : items) {
             c += unit.count();
         }
 
-        return c + 1; // --> +1 itself
+        return c;
     }
 
     @Override
     public void validate() {
-
+        //todo: implementar rotinas de validação dos registros
     }
 
     @Override
