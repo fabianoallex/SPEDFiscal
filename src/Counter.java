@@ -1,27 +1,5 @@
 import java.util.ArrayList;
 
-class ItemCount {
-    int count;
-    String name;
-
-    ItemCount(String name){
-        this.name = name;
-        count = 0;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    void increment(){
-        count++;
-    }
-
-    public int getCount() {
-        return count;
-    }
-}
-
 public class Counter {
     ArrayList <ItemCount> list;
 
@@ -75,5 +53,27 @@ public class Counter {
         int c = 0;
         for (ItemCount i : this.list) c += i.getCount();
         return c;
+    }
+}
+
+class ItemCount {
+    int count;
+    String name;
+
+    ItemCount(String name){
+        this.name = name;
+        count = 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    void increment(){
+        count++;
+    }
+
+    public int getCount() {
+        return count;
     }
 }
