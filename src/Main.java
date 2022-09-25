@@ -15,12 +15,12 @@ public class Main {
             Register r = b0.addRegister("0005");
             b0.addRegister("0005");
 
-            r.getStringField("FANTASIA").setValue("  teste fantasia  ");
-            r.getStringField("CEP").setValue("teste cep");
-            r.getStringField("END").setValue("  teste END");
-            r.getStringField("NUM").setValue("  teste NUM");
-            r.getStringField("COMPL").setValue("teste COMPL");
-            r.getStringField("BAIRRO").setValue("  teste BAIRRO");
+            r.setFieldValue("FANTASIA", "   TESTE FANTASIA");
+            r.setFieldValue("CEP", "teste cep");
+            r.setFieldValue("END", "  teste END");
+            r.setFieldValue("NUM", "  teste NUM");
+            r.setFieldValue("COMPL", "teste COMPL");
+            r.setFieldValue("BAIRRO", "  teste BAIRRO");
 
 
             Block bc = spedFile.addBlock("C");
