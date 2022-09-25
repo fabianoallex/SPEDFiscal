@@ -90,7 +90,7 @@ class FieldsDefinition {
     public static void populate(){
         try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource("c:\\fabiano\\xml.xml");
+            InputSource input = new InputSource("c:\\fabiano\\xml.xml"); //todo: implementar entrada do xml
             parser.parse(input, new XMLDefinitionsFieldsHandler());
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
@@ -171,12 +171,15 @@ class FieldFormat {
     public int getMaxSize() {
         return maxSize;
     }
+
     public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
     }
+
     public String getFormat() {
         return format;
     }
+
     public void setFormat(String format) {
         this.format = format;
     }
@@ -259,7 +262,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
     private String getFormattedField(String value, FieldFormat fieldFormat){
         value = value
-                    .replace(FieldDefinitions.FIELD_SEPARATOR, FieldDefinitions.FIELD_EMPTY_STRING)
+                    .replace(FieldDefinitions.FIELD_SEPARATOR, " ")
                     .replace("\n", FieldDefinitions.FIELD_EMPTY_STRING)
                     .replace("\r", FieldDefinitions.FIELD_EMPTY_STRING)
                     .trim();
@@ -272,22 +275,28 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
     private String getFormattedDoubleField(DoubleField field, FieldFormat fieldFormat){
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
+
         if (field.getValue() == null)
             return "";
+
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
 
     private String getFormattedIntegerField(IntegerField field, FieldFormat fieldFormat){
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
+
         if (field.getValue() == null)
             return "";
+
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
 
     private String getFormattedDateField(DateField field, FieldFormat fieldFormat){
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
+
         if (field.getValue() == null)
             return "";
+
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
 
@@ -300,11 +309,11 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
         if (field.getValue() == null)
             return "";
+
         return getFormattedField(field.getValue().toString(), fieldFormat);
     }
 
     public Field<?> getFieldByName(String name){
-
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
 
@@ -340,11 +349,9 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         StringBuilder result = new StringBuilder();
 
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
-            String s = e.getKey();
             Field<?> field = e.getValue();
-
             FieldFormat fieldFormat = fieldsFormat.get(field.getName());
-            result.append(getFormattedField(field, fieldFormat)).append("|");
+            result.append(getFormattedField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
         }
 
         return result.toString();

@@ -51,11 +51,10 @@ public class SPEDFile implements Unit {
             }
         }
 
-        //counting 9900 generated and add recording theirs
         counter9900.increment(Register9900.REGISTER_NAME); //increment itself counting (|9900|9900|x|) --> added above
         block9.addRegister9900(Register9900.REGISTER_NAME, counter9900.getCount(Register9900.REGISTER_NAME)); //add |9900|9900|x|
 
-        //update 9999 register
+        //update closureRegister file register counting
         this.closureRegister.getFieldRegisterCount().setValue(counter.getCount() + counter9900.getCount());
 
         //totalize all blocks
@@ -86,10 +85,13 @@ public class SPEDFile implements Unit {
 
     @Override
     public int count() {
-        int c = openingRegister.count() + closureRegister.count();
+        int c = openingRegister.count() +
+                closureRegister.count();
+
         for (Block block : blocks) {
             c += block.count();
         }
+
         return c;
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="refatorações rápidas 02">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="refatorações rápidas 03">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Counter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fields.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664126772570</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refatorações rápidas 03">
+      <created>1664127043555</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664127043555</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,6 +102,7 @@
     <MESSAGE value=" removção de imports não utilizados" />
     <MESSAGE value="refatorações rápidas" />
     <MESSAGE value="refatorações rápidas 02" />
-    <option name="LAST_COMMIT_MESSAGE" value="refatorações rápidas 02" />
+    <MESSAGE value="refatorações rápidas 03" />
+    <option name="LAST_COMMIT_MESSAGE" value="refatorações rápidas 03" />
   </component>
 </project>
