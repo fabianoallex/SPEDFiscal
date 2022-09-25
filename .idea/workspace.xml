@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="refatorações rápidas 03">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="refatorações rápidas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664127043555</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refatorações rápidas">
+      <created>1664129425728</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664129425728</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -100,9 +106,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value=" [teste] alterações nas chamadas de setValue para alterações dos valores dos fields." />
     <MESSAGE value=" removção de imports não utilizados" />
-    <MESSAGE value="refatorações rápidas" />
     <MESSAGE value="refatorações rápidas 02" />
     <MESSAGE value="refatorações rápidas 03" />
-    <option name="LAST_COMMIT_MESSAGE" value="refatorações rápidas 03" />
+    <MESSAGE value="refatorações rápidas" />
+    <option name="LAST_COMMIT_MESSAGE" value="refatorações rápidas" />
   </component>
 </project>

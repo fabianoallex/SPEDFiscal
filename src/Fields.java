@@ -277,7 +277,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
 
         if (field.getValue() == null)
-            return "";
+            return FieldDefinitions.FIELD_EMPTY_STRING;
 
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
@@ -286,7 +286,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
 
         if (field.getValue() == null)
-            return "";
+            return FieldDefinitions.FIELD_EMPTY_STRING;
 
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
@@ -295,7 +295,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
 
         if (field.getValue() == null)
-            return "";
+            return FieldDefinitions.FIELD_EMPTY_STRING;
 
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
@@ -308,7 +308,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         }
 
         if (field.getValue() == null)
-            return "";
+            return FieldDefinitions.FIELD_EMPTY_STRING;
 
         return getFormattedField(field.getValue().toString(), fieldFormat);
     }
