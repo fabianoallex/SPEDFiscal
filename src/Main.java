@@ -20,8 +20,11 @@ public class Main {
 
 
             Block bc = spedFile.addBlock("C");
-            //r = bc.addRegister("C100");
-            //bc.addRegister("C100");
+            r = bc.addRegister("C100");
+            bc.addRegister("C100");
+
+            Block bd = spedFile.addBlock("D");
+            Block be = spedFile.addBlock("E");
 
 
             spedFile.totalize();

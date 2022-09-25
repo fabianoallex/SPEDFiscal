@@ -1,44 +1,9 @@
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-class OpeningRegister extends Register {
-    public static final String FIELD_REGISTER_THERE_IS_MOV = "IND_MOV";
-    public static final int FIELD_REGISTER_THERE_IS_MOV_YES = 0;
-    public static final int FIELD_REGISTER_THERE_IS_MOV_NO = 1;
-
-    private final IntegerField fieldRegisterThereIsMov;
-
-    OpeningRegister(String name, FileWriter file) {
-        super(name, file);
-        fieldRegisterThereIsMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
-    }
-
-    public void setThereIsMov(boolean thereIs) {
-        this.setFieldValue(
-                FIELD_REGISTER_THERE_IS_MOV,
-                (thereIs) ? FIELD_REGISTER_THERE_IS_MOV_YES : FIELD_REGISTER_THERE_IS_MOV_NO
-        );
-    }
-}
-
-class ClosureRegister extends Register {
-    public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
-    private final IntegerField fieldRegisterCount;
-
-    ClosureRegister(String name, FileWriter file) {
-        super(name, file);
-        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
-    }
-
-    public IntegerField getFieldRegisterCount() {
-        return fieldRegisterCount;
-    }
-}
 
 public class Block implements Unit {
-    private static final String OPENING_BLOCK_REGISTER_SUFFIX_NAME = "001";
-    private static final String CLOSURE_BLOCK_REGISTER_SUFFIX_NAME = "990";
+    private static final String OPENING_REGISTER_BLOCK_SUFFIX_NAME = "001";
+    private static final String CLOSURE_REGISTER_BLOCK_SUFFIX_NAME = "990";
     FileWriter fileWriter;
     private final String name;
     private final OpeningRegister openingRegister;
@@ -46,8 +11,8 @@ public class Block implements Unit {
     private final ArrayList<Register> registers;
 
     Block(String name, FileWriter fileWriter){
-        this.openingRegister = new OpeningRegister(name + OPENING_BLOCK_REGISTER_SUFFIX_NAME, fileWriter);
-        this.closureRegister = new ClosureRegister(name + CLOSURE_BLOCK_REGISTER_SUFFIX_NAME, fileWriter);
+        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, fileWriter);
+        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, fileWriter);
         this.name = name;
         this.registers = new ArrayList<>();
         this.fileWriter = fileWriter;
@@ -82,16 +47,9 @@ public class Block implements Unit {
         return null;
     }
 
-    void totalize() {
-        String[] names = {"0", "9"};  //block 0 count 0000 too // block 9 count 9999 too
-
-        closureRegister.getFieldRegisterCount().setValue(
-                this.count() + (Arrays.asList(names).contains(this.name) ? 1 : 0)
-        );
-
-        openingRegister.setThereIsMov(
-                (closureRegister.getFieldRegisterCount().getValue() > 2 )
-        );
+    void totalize(int initCount) {
+        closureRegister.getFieldRegisterCount().setValue(this.count() + initCount);
+        openingRegister.setThereIsMov((closureRegister.getFieldRegisterCount().getValue() > 2 ));
     }
 
     @Override
@@ -130,5 +88,39 @@ public class Block implements Unit {
         openingRegister.writeToFile();
         for (Register register : registers) register.writeToFile();
         closureRegister.writeToFile();
+    }
+}
+
+class OpeningRegister extends Register {
+    public static final String FIELD_REGISTER_THERE_IS_MOV = "IND_MOV";
+    public static final int FIELD_REGISTER_THERE_IS_MOV_YES = 0;
+    public static final int FIELD_REGISTER_THERE_IS_MOV_NO = 1;
+
+    private final IntegerField fieldRegisterThereIsMov;
+
+    OpeningRegister(String name, FileWriter file) {
+        super(name, file);
+        fieldRegisterThereIsMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
+    }
+
+    public void setThereIsMov(boolean thereIs) {
+        this.setFieldValue(
+                FIELD_REGISTER_THERE_IS_MOV,
+                (thereIs) ? FIELD_REGISTER_THERE_IS_MOV_YES : FIELD_REGISTER_THERE_IS_MOV_NO
+        );
+    }
+}
+
+class ClosureRegister extends Register {
+    public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
+    private final IntegerField fieldRegisterCount;
+
+    ClosureRegister(String name, FileWriter file) {
+        super(name, file);
+        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
+    }
+
+    public IntegerField getFieldRegisterCount() {
+        return fieldRegisterCount;
     }
 }

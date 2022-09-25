@@ -1,4 +1,5 @@
 import java.io.FileWriter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 class Register0000 extends Register{
@@ -11,12 +12,12 @@ class Register0000 extends Register{
 
 class Register9999 extends Register {
     public static final String REGISTER_NAME = "9999";
-    public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
+    public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
     private final IntegerField fieldRegisterCount;
 
     Register9999(FileWriter file) {
         super(REGISTER_NAME, file);
-        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
+        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT_NAME);
     }
 
     public IntegerField getFieldRegisterCount() {
@@ -118,7 +119,12 @@ public class SPEDFile implements Unit {
         this.closureRegister.getFieldRegisterCount().setValue(counter.getCount() + counter9900.getCount());
 
         //totalize all blocks
-        for (Block block : this.blocks) block.totalize();
+        ArrayList<String> al = new ArrayList<>();
+        al.add("0");
+        al.add("9");
+
+        for (Block block : this.blocks)
+            block.totalize(al.contains(block.getName()) ? 1 : 0);
     }
 
     @Override
