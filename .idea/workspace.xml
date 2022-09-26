@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="SPEDStringBuilder convertido para record">
-      <change afterPath="$PROJECT_DIR$/src/field-definitions-efd-icms-ipi-v17.xml" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="fields definitions xml file efd-icms-ipi-v17">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/field-definitions-efd-icms-ipi-v17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/field-definitions-efd-icms-ipi-v17.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664183729763</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fields definitions xml file efd-icms-ipi-v17">
+      <created>1664184676392</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1664184676392</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +165,7 @@
     <MESSAGE value="exemplos de implementacao de Writer" />
     <MESSAGE value="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder." />
     <MESSAGE value="SPEDStringBuilder convertido para record" />
-    <option name="LAST_COMMIT_MESSAGE" value="SPEDStringBuilder convertido para record" />
+    <MESSAGE value="fields definitions xml file efd-icms-ipi-v17" />
+    <option name="LAST_COMMIT_MESSAGE" value="fields definitions xml file efd-icms-ipi-v17" />
   </component>
 </project>

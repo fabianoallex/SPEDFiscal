@@ -4,13 +4,13 @@ import java.util.Date;
 public class Register implements Unit {
     private final String name;
     Writer writer;
-    private final ArrayList<Unit> items;
+    private final ArrayList<Register> registers;
     private final Fields fields;
 
     Register(String name, Writer writer){
         this.name = name;
         this.writer = writer;
-        items = new ArrayList<>();
+        registers = new ArrayList<>();
         this.fields = Fields.createFields(name);
     }
 
@@ -22,17 +22,23 @@ public class Register implements Unit {
         return writer;
     }
 
+    Register addRegister(String name){
+        Register register = new Register(name, writer);
+        this.registers.add(register);
+        return register;
+    }
+
     @Override
     public void count(Counter counter) {
         counter.increment(this.name);
-        items.forEach((unit -> unit.count(counter)));
+        registers.forEach((unit -> unit.count(counter)));
     }
 
     @Override
     public int count() {
         int c = 1; //itself
 
-        for (Unit unit : items) {
+        for (Unit unit : registers) {
             c += unit.count();
         }
 
@@ -47,6 +53,10 @@ public class Register implements Unit {
     @Override
     public void write() {
         writer.write(this.toString());
+
+        for (Register register : registers) {
+            register.write();
+        }
     }
 
     @Override

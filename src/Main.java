@@ -1,12 +1,14 @@
+import java.io.FileWriter;
+
 public class Main {
     public static void main(String[] args) {
         try {
             //exemplo com FileWriter:
-            //FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
-            //MyWriterFileWriter writer = new MyWriterFileWriter(fileWriter);
+            FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
+            SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
 
             //Exemplo com StringBuilder
-            SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+            //SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
 
             SPEDFile spedFile = new SPEDFile(writer);
 
@@ -26,13 +28,12 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            for (int i = 0; i < 5000; i++) {
-                Register c591 = bc.addRegister("C591");
-                c591.setFieldValue("VL_FCP_OP", 2555.9933);
-                c591.setFieldValue("VL_FCP_ST", 2333.09);
+            for (int i = 0; i < 50000; i++) {
+                Register c590 = bc.addRegister("C590");
+                Register c591 = c590. addRegister("C591");
+                c591.setFieldValue("VL_FCP_OP", 2555.9933 + i);
+                c591.setFieldValue("VL_FCP_ST", 2333.09 + 2*i);
             }
-
-
 
             Block bd = spedFile.addBlock("D");
             Block be = spedFile.addBlock("E");
@@ -42,9 +43,9 @@ public class Main {
 
             spedFile.write();
 
-            //fileWriter.close();
+            fileWriter.close();
 
-            System.out.println(writer.stringBuilder().toString());
+            //System.out.println(writer.stringBuilder().toString());
 
 
 

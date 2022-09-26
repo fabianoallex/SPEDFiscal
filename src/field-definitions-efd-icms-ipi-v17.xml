@@ -1,5 +1,5 @@
 <fieldsDefinition>
-    <register name="0000">
+    <register name="0000" parent="0" parent_type="block">
         <fields>
             <field name="COD_VER" pos="02" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_FIN" pos="03" type="number" size="3" dec="" format="000" description=""/>
