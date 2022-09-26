@@ -1,3 +1,5 @@
+package SPEDFiscal;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,7 +24,7 @@ public class Register implements Unit {
         return writer;
     }
 
-    Register addRegister(String name){
+    public Register addRegister(String name){
         Register register = new Register(name, writer);
         this.registers.add(register);
         return register;

@@ -1,3 +1,5 @@
+package SPEDFiscal;
+
 import java.util.ArrayList;
 
 public class SPEDFile implements Unit {
@@ -7,20 +9,20 @@ public class SPEDFile implements Unit {
     private Block9 block9 = null;
     private final ArrayList<Block> blocks;
 
-    SPEDFile(Writer writer){
+    public SPEDFile(Writer writer){
         openingRegister = new Register0000(writer);
         closureRegister = new Register9999(writer);
         blocks = new ArrayList<>();
         this.writer = writer;
     }
 
-    Block addBlock(String blockName){
+    public Block addBlock(String blockName){
         Block block = new Block(blockName, writer);
         this.blocks.add(block);
         return block;
     }
 
-    Block getBlock(String blockName){
+    public Block getBlock(String blockName){
         for (int i = 0; i< blocks.size()-1; i++){
             Block block = blocks.get(i);
             if (block.getName().equals(blockName)){
@@ -31,7 +33,7 @@ public class SPEDFile implements Unit {
         return null;
     }
 
-    void totalize(){
+    public void totalize(){
         if (this.block9 == null) {
             this.block9 = new Block9(writer);
             this.blocks.add(block9);

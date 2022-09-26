@@ -1,3 +1,7 @@
+import SPEDFiscal.Block;
+import SPEDFiscal.Register;
+import SPEDFiscal.SPEDFile;
+import SPEDFiscal.SPEDFileWriter;
 import java.io.FileWriter;
 
 public class Main {
@@ -28,9 +32,9 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            for (int i = 0; i < 50000; i++) {
+            for (int i = 0; i < 5; i++) {
                 Register c590 = bc.addRegister("C590");
-                Register c591 = c590. addRegister("C591");
+                Register c591 = c590.addRegister("C591");
                 c591.setFieldValue("VL_FCP_OP", 2555.9933 + i);
                 c591.setFieldValue("VL_FCP_ST", 2333.09 + 2*i);
             }

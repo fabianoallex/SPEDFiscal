@@ -1,3 +1,5 @@
+package SPEDFiscal;
+
 import java.util.ArrayList;
 
 public class Block implements Unit {
@@ -29,7 +31,7 @@ public class Block implements Unit {
         return name;
     }
 
-    Register addRegister(String name){
+    public Register addRegister(String name){
         Register register = new Register(name, writer);
         this.registers.add(register);
         return register;

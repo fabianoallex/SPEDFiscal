@@ -1,3 +1,5 @@
+package SPEDFiscal;
+
 public interface Unit {
     void setWriter(Writer writer);
     Writer getWriter();
