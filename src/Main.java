@@ -1,12 +1,10 @@
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-class MyWriter implements Writer {
-    //private final FileWriter fileWriter;
+class SPEDFileWriter implements Writer {
     private final PrintWriter printWriter;
 
-    public MyWriter(FileWriter fileWriter) {
-        //this.fileWriter = fileWriter;
+    public SPEDFileWriter(FileWriter fileWriter) {
         this.printWriter = new PrintWriter(fileWriter);
     }
 
@@ -16,12 +14,33 @@ class MyWriter implements Writer {
     }
 }
 
+class SPEDStringBuilder implements Writer {
+    private final StringBuilder stringBuilder;
+    public SPEDStringBuilder(StringBuilder stringBuilder) {
+        this.stringBuilder = stringBuilder;
+    }
+
+    @Override
+    public void write(String string) {
+        this.stringBuilder.append(string);
+        this.stringBuilder.append("\n\r");
+    }
+
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         try {
-            FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
+            //exemplo com FileWriter:
+            //FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
+            //MyWriterFileWriter writer = new MyWriterFileWriter(fileWriter);
 
-            MyWriter writer = new MyWriter(fileWriter);
+            //Exemplo com StringBuilder
+            SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+
             SPEDFile spedFile = new SPEDFile(writer);
 
             Block b0 = spedFile.addBlock("0");
@@ -40,9 +59,9 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            //Register c591 = bc.addRegister("C591");
-            //c591.setFieldValue("VL_FCP_OP", 2555.9933);
-            //c591.setFieldValue("VL_FCP_ST", 2333.09);
+            Register c591 = bc.addRegister("C591");
+            c591.setFieldValue("VL_FCP_OP", 2555.9933);
+            c591.setFieldValue("VL_FCP_ST", 2333.09);
 
 
             Block bd = spedFile.addBlock("D");
@@ -53,7 +72,9 @@ public class Main {
 
             spedFile.write();
 
-            fileWriter.close();
+            //fileWriter.close();
+
+            System.out.println(writer.getStringBuilder().toString());
 
 
 

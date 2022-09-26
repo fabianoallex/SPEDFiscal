@@ -1,4 +1,3 @@
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Block implements Unit {
