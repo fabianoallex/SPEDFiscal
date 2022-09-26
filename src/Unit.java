@@ -1,10 +1,8 @@
-import java.io.FileWriter;
-
 public interface Unit {
-    void setFileWriter(FileWriter fileWriter);
-    FileWriter getFileWriter();
+    void setWriter(Writer writer);
+    Writer getWriter();
     void count(Counter counter);
     int count();
     void validate();
-    void writeToFile();
+    void write();
 }

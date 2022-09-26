@@ -16,7 +16,7 @@ class FieldDefinitions {
     public static final String FIELD_DEF_NAME = "name";
     public static final String FIELD_DEF_TYPE = "type";
     public static final String FIELD_DEF_SIZE = "size";
-    public static final String FIELD_DEF_DEC = "size";
+    public static final String FIELD_DEF_DEC = "dec";
     public static final String FIELD_DEF_FORMAT = "format";
     public static final String FIELD_DEF_DESCRIPTION = "description";
 
@@ -27,8 +27,9 @@ class FieldDefinitions {
     String format;
     String description;
 }
-class FieldsDefinition {
-    private static class XMLDefinitionsFieldsHandler extends DefaultHandler {
+
+class FieldsDefinitionLoader {
+    private static class Handler extends DefaultHandler {
         public void startDocument() {}
         public void endDocument() {}
         private String registerName = "";
@@ -58,7 +59,7 @@ class FieldsDefinition {
             if (tag.equals("register")) {
                 FieldDefinitions[] fd = new FieldDefinitions[fieldsDefinitions.size()];
                 fieldsDefinitions.toArray(fd);
-                FieldsDefinition.addFieldDefinitions(registerName, fd);
+                FieldsDefinitionLoader.addFieldDefinitions(registerName, fd);
             }
         }
 
@@ -91,7 +92,7 @@ class FieldsDefinition {
         try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
             InputSource input = new InputSource("c:\\fabiano\\xml.xml"); //todo: implementar entrada do xml
-            parser.parse(input, new XMLDefinitionsFieldsHandler());
+            parser.parse(input, new Handler());
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
@@ -212,16 +213,16 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
         boolean thereIsFormats = !fieldsFormat.isEmpty();
 
-        for (FieldDefinitions fieldDefinitions : FieldsDefinition.getFieldsRegDefinitions(name)) {
+        for (FieldDefinitions fieldDefinitions : FieldsDefinitionLoader.getFieldsRegDefinitions(name)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
             String dec = fieldDefinitions.dec;
             String format = fieldDefinitions.format;
 
-            if (type.equals(FieldsDefinition.FIELDS_REG_TYPE_STRING)) fields.addField(new StringField(fieldName));
-            if (type.equals(FieldsDefinition.FIELDS_REG_TYPE_DATE)) fields.addField(new DateField(fieldName));
-            if (type.equals(FieldsDefinition.FIELDS_REG_TYPE_NUMBER)) fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
+            if (type.equals(FieldsDefinitionLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new StringField(fieldName));
+            if (type.equals(FieldsDefinitionLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new DateField(fieldName));
+            if (type.equals(FieldsDefinitionLoader.FIELDS_REG_TYPE_NUMBER)) fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
 
             if (!thereIsFormats) {
                 fieldsFormat.put(fieldName, new FieldFormat(format, Integer.parseInt("0" + size)));

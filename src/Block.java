@@ -4,18 +4,18 @@ import java.util.ArrayList;
 public class Block implements Unit {
     private static final String OPENING_REGISTER_BLOCK_SUFFIX_NAME = "001";
     private static final String CLOSURE_REGISTER_BLOCK_SUFFIX_NAME = "990";
-    FileWriter fileWriter;
+    Writer writer;
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
     private final ArrayList<Register> registers;
 
-    Block(String name, FileWriter fileWriter){
-        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, fileWriter);
-        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, fileWriter);
+    Block(String name, Writer writer){
+        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, writer);
+        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, writer);
         this.name = name;
         this.registers = new ArrayList<>();
-        this.fileWriter = fileWriter;
+        this.writer = writer;
     }
 
     public ClosureRegister getClosureRegister() {
@@ -31,7 +31,7 @@ public class Block implements Unit {
     }
 
     Register addRegister(String name){
-        Register register = new Register(name, fileWriter);
+        Register register = new Register(name, writer);
         this.registers.add(register);
         return register;
     }
@@ -53,13 +53,13 @@ public class Block implements Unit {
     }
 
     @Override
-    public void setFileWriter(FileWriter fileWriter) {
-        this.fileWriter = fileWriter;
+    public void setWriter(Writer writer) {
+        this.writer = writer;
     }
 
     @Override
-    public FileWriter getFileWriter() {
-        return this.fileWriter;
+    public Writer getWriter() {
+        return this.writer;
     }
 
     @Override
@@ -84,30 +84,26 @@ public class Block implements Unit {
     }
 
     @Override
-    public void writeToFile() {
-        openingRegister.writeToFile();
-        for (Register register : registers) register.writeToFile();
-        closureRegister.writeToFile();
+    public void write() {
+        openingRegister.write();
+        for (Register register : registers) register.write();
+        closureRegister.write();
     }
 }
 
 class OpeningRegister extends Register {
     public static final String FIELD_REGISTER_THERE_IS_MOV = "IND_MOV";
-    public static final int FIELD_REGISTER_THERE_IS_MOV_YES = 0;
-    public static final int FIELD_REGISTER_THERE_IS_MOV_NO = 1;
+    public static final int FIELD_REGISTER_IS_THERE_MOV_YES = 0;
+    public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
+    private final IntegerField fieldRegisterIsThereMov;
 
-    private final IntegerField fieldRegisterThereIsMov;
-
-    OpeningRegister(String name, FileWriter file) {
-        super(name, file);
-        fieldRegisterThereIsMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
+    OpeningRegister(String name, Writer writer) {
+        super(name, writer);
+        fieldRegisterIsThereMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
     }
 
     public void setThereIsMov(boolean thereIs) {
-        this.setFieldValue(
-                FIELD_REGISTER_THERE_IS_MOV,
-                (thereIs) ? FIELD_REGISTER_THERE_IS_MOV_YES : FIELD_REGISTER_THERE_IS_MOV_NO
-        );
+        fieldRegisterIsThereMov.setValue((thereIs) ? FIELD_REGISTER_IS_THERE_MOV_YES : FIELD_REGISTER_IS_THERE_MOV_NO);
     }
 }
 
@@ -115,8 +111,8 @@ class ClosureRegister extends Register {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final IntegerField fieldRegisterCount;
 
-    ClosureRegister(String name, FileWriter file) {
-        super(name, file);
+    ClosureRegister(String name, Writer writer) {
+        super(name, writer);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
     }
 

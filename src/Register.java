@@ -5,13 +5,13 @@ import java.util.Date;
 
 public class Register implements Unit {
     private final String name;
-    FileWriter file;
+    Writer writer;
     private final ArrayList<Unit> items;
     private final Fields fields;
 
-    Register(String name, FileWriter file){
+    Register(String name, Writer writer){
         this.name = name;
-        this.file = file;
+        this.writer = writer;
         items = new ArrayList<>();
         this.fields = Fields.createFields(name);
     }
@@ -20,8 +20,8 @@ public class Register implements Unit {
         return fields;
     }
 
-    public FileWriter getFileWriter() {
-        return file;
+    public Writer getWriter() {
+        return writer;
     }
 
     @Override
@@ -47,18 +47,22 @@ public class Register implements Unit {
     }
 
     @Override
-    public void writeToFile() {
-        PrintWriter printWriter = new PrintWriter(file);
-        printWriter.println(this);
+    public void write() {
+        writer.write(this.toString());
     }
 
     @Override
     public String toString() {
-        return "|%s|%s".formatted(this.getName(), fields.toString());
+        return "%s%s%s%s".formatted(
+                FieldDefinitions.FIELD_SEPARATOR,
+                this.getName(),
+                FieldDefinitions.FIELD_SEPARATOR,
+                fields.toString()
+        );
     }
 
-    public void setFileWriter(FileWriter fileWriter) {
-        this.file = fileWriter;
+    public void setWriter(Writer writer) {
+        this.writer = writer;
     }
 
     public String getName() {

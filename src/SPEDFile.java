@@ -1,23 +1,21 @@
-import java.io.FileWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SPEDFile implements Unit {
-    FileWriter fileWriter;
+    Writer writer;
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
     private final ArrayList<Block> blocks;
 
-    SPEDFile(FileWriter fileWriter){
-        openingRegister = new Register0000(fileWriter);
-        closureRegister = new Register9999(fileWriter);
+    SPEDFile(Writer writer){
+        openingRegister = new Register0000(writer);
+        closureRegister = new Register9999(writer);
         blocks = new ArrayList<>();
-        this.fileWriter = fileWriter;
+        this.writer = writer;
     }
 
     Block addBlock(String blockName){
-        Block block = new Block(blockName, fileWriter);
+        Block block = new Block(blockName, writer);
         this.blocks.add(block);
         return block;
     }
@@ -35,7 +33,7 @@ public class SPEDFile implements Unit {
 
     void totalize(){
         if (this.block9 == null) {
-            this.block9 = new Block9(fileWriter);
+            this.block9 = new Block9(writer);
             this.blocks.add(block9);
         }
 
@@ -67,13 +65,13 @@ public class SPEDFile implements Unit {
     }
 
     @Override
-    public void setFileWriter(FileWriter fileWriter) {
-        this.fileWriter = fileWriter;
+    public void setWriter(Writer writer) {
+        this.writer = writer;
     }
 
     @Override
-    public FileWriter getFileWriter() {
-        return this.fileWriter;
+    public Writer getWriter() {
+        return this.writer;
     }
 
     @Override
@@ -101,18 +99,18 @@ public class SPEDFile implements Unit {
     }
 
     @Override
-    public void writeToFile() {
-        openingRegister.writeToFile();
-        for (Block block : blocks) block.writeToFile();
-        closureRegister.writeToFile();
+    public void write() {
+        openingRegister.write();
+        for (Block block : blocks) block.write();
+        closureRegister.write();
     }
 }
 
 class Register0000 extends Register{
     public static final String REGISTER_NAME = "0000";
 
-    Register0000(FileWriter file) {
-        super(REGISTER_NAME, file);
+    Register0000(Writer writer) {
+        super(REGISTER_NAME, writer);
     }
 }
 
@@ -121,8 +119,8 @@ class Register9999 extends Register {
     public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
     private final IntegerField fieldRegisterCount;
 
-    Register9999(FileWriter file) {
-        super(REGISTER_NAME, file);
+    Register9999(Writer writer) {
+        super(REGISTER_NAME, writer);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT_NAME);
     }
 
@@ -138,8 +136,8 @@ class Register9900 extends Register {
     private final StringField fieldRegisterName;
     private final IntegerField fieldRegisterCount;
 
-    Register9900(FileWriter file) {
-        super(REGISTER_NAME, file);
+    Register9900(Writer writer) {
+        super(REGISTER_NAME, writer);
         fieldRegisterName = this.getStringField(FIELD_REGISTER_NAME);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
     }
@@ -156,12 +154,12 @@ class Register9900 extends Register {
 class Block9 extends Block {
     public static final String BLOCK_NAME = "9";
 
-    Block9(FileWriter fileWriter) {
-        super(BLOCK_NAME, fileWriter);
+    Block9(Writer writer) {
+        super(BLOCK_NAME, writer);
     }
 
     void addRegister9900(String regName, int regTotal) {
-        Register9900 register9900 = new Register9900(fileWriter);
+        Register9900 register9900 = new Register9900(writer);
         register9900.getFieldRegisterName().setValue(regName);
         register9900.getFieldRegisterCount().setValue(regTotal);
         this.getRegisters().add(register9900);
