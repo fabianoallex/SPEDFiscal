@@ -5,18 +5,20 @@ import java.util.ArrayList;
 public class Block implements Unit {
     private static final String OPENING_REGISTER_BLOCK_SUFFIX_NAME = "001";
     private static final String CLOSURE_REGISTER_BLOCK_SUFFIX_NAME = "990";
-    Writer writer;
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
     private final ArrayList<Register> registers;
+    Writer writer;
+    SPEDConfig config;
 
-    Block(String name, Writer writer){
-        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, writer);
-        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, writer);
-        this.name = name;
-        this.registers = new ArrayList<>();
+    Block(String name, Writer writer, SPEDConfig config){
         this.writer = writer;
+        this.config = config;
+        this.name = name;
+        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, writer, config);
+        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, writer, config);
+        this.registers = new ArrayList<>();
     }
 
     public ClosureRegister getClosureRegister() {
@@ -32,7 +34,7 @@ public class Block implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, writer);
+        Register register = new Register(name, this.writer, this.config);
         this.registers.add(register);
         return register;
     }
@@ -98,8 +100,8 @@ class OpeningRegister extends Register {
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
     private final IntegerField fieldRegisterIsThereMov;
 
-    OpeningRegister(String name, Writer writer) {
-        super(name, writer);
+    OpeningRegister(String name, Writer writer, SPEDConfig config) {
+        super(name, writer, config);
         fieldRegisterIsThereMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
     }
 
@@ -112,8 +114,8 @@ class ClosureRegister extends Register {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final IntegerField fieldRegisterCount;
 
-    ClosureRegister(String name, Writer writer) {
-        super(name, writer);
+    ClosureRegister(String name, Writer writer, SPEDConfig config) {
+        super(name, writer, config);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
     }
 

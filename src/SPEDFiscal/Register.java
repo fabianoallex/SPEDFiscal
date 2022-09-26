@@ -5,15 +5,17 @@ import java.util.Date;
 
 public class Register implements Unit {
     private final String name;
-    Writer writer;
     private final ArrayList<Register> registers;
     private final Fields fields;
+    Writer writer;
+    SPEDConfig config;
 
-    Register(String name, Writer writer){
+    Register(String name, Writer writer, SPEDConfig config){
         this.name = name;
         this.writer = writer;
+        this.config = config;
         registers = new ArrayList<>();
-        this.fields = Fields.createFields(name);
+        this.fields = Fields.createFields(name, this.config.getFieldsDefinitionsXmlPath());
     }
 
     public Fields getFields() {
@@ -25,7 +27,7 @@ public class Register implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, writer);
+        Register register = new Register(name, writer, this.config);
         this.registers.add(register);
         return register;
     }

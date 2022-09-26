@@ -3,21 +3,23 @@ package SPEDFiscal;
 import java.util.ArrayList;
 
 public class SPEDFile implements Unit {
-    Writer writer;
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
     private final ArrayList<Block> blocks;
+    Writer writer;
+    SPEDConfig config;
 
-    public SPEDFile(Writer writer){
-        openingRegister = new Register0000(writer);
-        closureRegister = new Register9999(writer);
-        blocks = new ArrayList<>();
+    public SPEDFile(Writer writer, SPEDConfig config){
         this.writer = writer;
+        this.config = config;
+        openingRegister = new Register0000(writer, config);
+        closureRegister = new Register9999(writer, config);
+        blocks = new ArrayList<>();
     }
 
     public Block addBlock(String blockName){
-        Block block = new Block(blockName, writer);
+        Block block = new Block(blockName, writer, config);
         this.blocks.add(block);
         return block;
     }
@@ -35,7 +37,7 @@ public class SPEDFile implements Unit {
 
     public void totalize(){
         if (this.block9 == null) {
-            this.block9 = new Block9(writer);
+            this.block9 = new Block9(writer, config);
             this.blocks.add(block9);
         }
 
@@ -111,8 +113,8 @@ public class SPEDFile implements Unit {
 class Register0000 extends Register{
     public static final String REGISTER_NAME = "0000";
 
-    Register0000(Writer writer) {
-        super(REGISTER_NAME, writer);
+    Register0000(Writer writer, SPEDConfig config) {
+        super(REGISTER_NAME, writer, config);
     }
 }
 
@@ -121,8 +123,8 @@ class Register9999 extends Register {
     public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
     private final IntegerField fieldRegisterCount;
 
-    Register9999(Writer writer) {
-        super(REGISTER_NAME, writer);
+    Register9999(Writer writer, SPEDConfig config) {
+        super(REGISTER_NAME, writer, config);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT_NAME);
     }
 
@@ -138,8 +140,8 @@ class Register9900 extends Register {
     private final StringField fieldRegisterName;
     private final IntegerField fieldRegisterCount;
 
-    Register9900(Writer writer) {
-        super(REGISTER_NAME, writer);
+    Register9900(Writer writer, SPEDConfig config) {
+        super(REGISTER_NAME, writer, config);
         fieldRegisterName = this.getStringField(FIELD_REGISTER_NAME);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
     }
@@ -156,12 +158,12 @@ class Register9900 extends Register {
 class Block9 extends Block {
     public static final String BLOCK_NAME = "9";
 
-    Block9(Writer writer) {
-        super(BLOCK_NAME, writer);
+    Block9(Writer writer, SPEDConfig config) {
+        super(BLOCK_NAME, writer, config);
     }
 
     void addRegister9900(String regName, int regTotal) {
-        Register9900 register9900 = new Register9900(writer);
+        Register9900 register9900 = new Register9900(writer, config);
         register9900.getFieldRegisterName().setValue(regName);
         register9900.getFieldRegisterCount().setValue(regTotal);
         this.getRegisters().add(register9900);

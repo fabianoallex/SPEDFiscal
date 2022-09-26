@@ -1,20 +1,22 @@
-import SPEDFiscal.Block;
-import SPEDFiscal.Register;
-import SPEDFiscal.SPEDFile;
-import SPEDFiscal.SPEDFileWriter;
+import SPEDFiscal.*;
+
 import java.io.FileWriter;
 
 public class Main {
     public static void main(String[] args) {
         try {
+            //Exemplo com StringBuilder
+            //SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+
+
             //exemplo com FileWriter:
             FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
             SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
 
-            //Exemplo com StringBuilder
-            //SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+            SPEDConfig config = new SPEDConfig();
+            config.setFieldsDefinitionsXmlPath("c:\\fabiano\\xml.xml");
 
-            SPEDFile spedFile = new SPEDFile(writer);
+            SPEDFile spedFile = new SPEDFile(writer, config);
 
             Block b0 = spedFile.addBlock("0");
             Register r = b0.addRegister("0005");
@@ -32,7 +34,7 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 2; i++) {
                 Register c590 = bc.addRegister("C590");
                 Register c591 = c590.addRegister("C591");
                 c591.setFieldValue("VL_FCP_OP", 2555.9933 + i);

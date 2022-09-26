@@ -40,7 +40,7 @@ class FieldsDefinitionLoader {
         public void startElement( String uri, String localName, String tag, Attributes attributes)  {
             if (tag.equals("register")){
                 registerName = attributes.getValue("name");
-                fieldsDefinitions = new ArrayList<FieldDefinitions>();
+                fieldsDefinitions = new ArrayList<>();
             }
 
             if (!registerName.isEmpty() && tag.equals("field")) {
@@ -81,19 +81,19 @@ class FieldsDefinitionLoader {
         fieldsRegMap.put(name, fieldDefinitions);
     }
 
-    public static FieldDefinitions[] getFieldsRegDefinitions(String name){
+    public static FieldDefinitions[] getFieldsRegDefinitions(String name, String fieldsDefinitionsXmlPath){
         if (fieldsRegMap == null){
             fieldsRegMap = new HashMap<>();
-            populate();  //todo: verificar se vai ficar aqui mesmo
+            populate(fieldsDefinitionsXmlPath);  //todo: verificar se vai ficar aqui mesmo
         }
 
         return fieldsRegMap.get(name);
     }
 
-    public static void populate(){
+    public static void populate(String fieldsDefinitionsXmlPath){
         try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource("c:\\fabiano\\xml.xml"); //todo: implementar entrada do xml
+            InputSource input = new InputSource(fieldsDefinitionsXmlPath);
             parser.parse(input, new Handler());
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
@@ -209,13 +209,13 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         }
     }
 
-    public static Fields createFields(String name) {
+    public static Fields createFields(String name, String fieldsDefinitionsXmlPath) {
         Fields fields = new Fields(name);
         FieldsFormat fieldsFormat = Fields.getFieldsFormat(fields);
 
         boolean thereIsFormats = !fieldsFormat.isEmpty();
 
-        for (FieldDefinitions fieldDefinitions : FieldsDefinitionLoader.getFieldsRegDefinitions(name)) {
+        for (FieldDefinitions fieldDefinitions : FieldsDefinitionLoader.getFieldsRegDefinitions(name, fieldsDefinitionsXmlPath)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
@@ -360,3 +360,4 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         return result.toString();
     }
 }
+
