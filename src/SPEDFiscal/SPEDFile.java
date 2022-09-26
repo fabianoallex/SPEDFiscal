@@ -86,12 +86,10 @@ public class SPEDFile implements Unit {
 
     @Override
     public int count() {
-        int c = openingRegister.count() +
-                closureRegister.count();
+        int c = openingRegister.count() + closureRegister.count();
 
-        for (Block block : blocks) {
+        for (Block block : blocks)
             c += block.count();
-        }
 
         return c;
     }

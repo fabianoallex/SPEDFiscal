@@ -32,7 +32,7 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 20; i++) {
                 Register c590 = bc.addRegister("C590");
                 Register c591 = c590.addRegister("C591");
                 c591.setFieldValue("VL_FCP_OP", 2555.9933 + i);
