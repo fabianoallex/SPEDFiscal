@@ -16,8 +16,8 @@ public class Main {
             SPEDConfig config = new SPEDConfig();
             config.setFieldsDefinitionsXmlPath("c:\\fabiano\\xml.xml");
 
-            SPEDFile spedFile = new SPEDFile(writer, config);
-            Block b0 = spedFile.addBlock("0");
+            SPEDGenerator spedGenerator = new SPEDGenerator(writer, config);
+            Block b0 = spedGenerator.addBlock("0");
             Register r = b0.addRegister("0005");
             b0.addRegister("0005");
 
@@ -28,7 +28,7 @@ public class Main {
             r.setFieldValue("COMPL", "teste COMPL");
             r.setFieldValue("BAIRRO", "  teste BAIRRO");
 
-            Block bc = spedFile.addBlock("C");
+            Block bc = spedGenerator.addBlock("C");
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
@@ -39,15 +39,15 @@ public class Main {
                 c591.setFieldValue("VL_FCP_ST", 2333.09 + 2*i);
             }
 
-            Block bd = spedFile.addBlock("D");
-            Block be = spedFile.addBlock("E");
+            Block bd = spedGenerator.addBlock("D");
+            Block be = spedGenerator.addBlock("E");
 
-            spedFile.totalize();
-            spedFile.totalize();
-            spedFile.totalize();
+            spedGenerator.totalize();
+            spedGenerator.totalize();
+            spedGenerator.totalize();
 
 
-            spedFile.write();
+            spedGenerator.write();
 
             fileWriter.close();
 

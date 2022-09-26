@@ -2,7 +2,7 @@ package SPEDFiscal;
 
 import java.util.ArrayList;
 
-public class SPEDFile implements Unit {
+public class SPEDGenerator implements Unit {
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
@@ -10,7 +10,7 @@ public class SPEDFile implements Unit {
     Writer writer;
     SPEDConfig config;
 
-    public SPEDFile(Writer writer, SPEDConfig config){
+    public SPEDGenerator(Writer writer, SPEDConfig config){
         this.writer = writer;
         this.config = config;
         openingRegister = new Register0000(writer, config);
