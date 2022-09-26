@@ -26,9 +26,12 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            Register c591 = bc.addRegister("C591");
-            c591.setFieldValue("VL_FCP_OP", 2555.9933);
-            c591.setFieldValue("VL_FCP_ST", 2333.09);
+            for (int i = 0; i < 5000; i++) {
+                Register c591 = bc.addRegister("C591");
+                c591.setFieldValue("VL_FCP_OP", 2555.9933);
+                c591.setFieldValue("VL_FCP_ST", 2333.09);
+            }
+
 
 
             Block bd = spedFile.addBlock("D");

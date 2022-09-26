@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder.">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="SPEDStringBuilder convertido para record">
+      <change afterPath="$PROJECT_DIR$/src/field-definitions-efd-icms-ipi-v17.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Writer.java" afterDir="false" />
@@ -126,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664183516157</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="SPEDStringBuilder convertido para record">
+      <created>1664183729763</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1664183729763</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,6 +157,7 @@
     <MESSAGE value="substituido FileWriter por nova Interface Writer" />
     <MESSAGE value="exemplos de implementacao de Writer" />
     <MESSAGE value="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder." />
-    <option name="LAST_COMMIT_MESSAGE" value="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder." />
+    <MESSAGE value="SPEDStringBuilder convertido para record" />
+    <option name="LAST_COMMIT_MESSAGE" value="SPEDStringBuilder convertido para record" />
   </component>
 </project>
