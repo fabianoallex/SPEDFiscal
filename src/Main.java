@@ -6,11 +6,11 @@ public class Main {
     public static void main(String[] args) {
         try {
             //Exemplo com StringBuilder
-            //SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+            SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
 
             //exemplo com FileWriter:
-            FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
-            SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
+            //FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
+            //SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
 
             //configurações utilizadas pela classe SPEDFile
             SPEDConfig config = new SPEDConfig();
@@ -45,9 +45,9 @@ public class Main {
             spedGenerator.totalize();
             spedGenerator.write();
 
-            fileWriter.close();
+            //fileWriter.close();
 
-            //System.out.println(writer.stringBuilder().toString());
+            System.out.println(writer.stringBuilder().toString());
 
 
             /*

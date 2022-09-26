@@ -54,6 +54,8 @@ public class Register implements Unit {
         //todo: implementar rotinas de validação dos registros
     }
 
+
+
     @Override
     public void write() {
         writer.write(this.toString());
