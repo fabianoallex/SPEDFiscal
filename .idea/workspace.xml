@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Correção no método totalize, para remover bloco 9 previamente criado.">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Alteração do nome da Classe SPEDFile para SPEDGenerator.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664219573743</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Alteração do nome da Classe SPEDFile para SPEDGenerator.">
+      <created>1664223914847</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1664223914847</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,6 +257,7 @@
     <MESSAGE value="criação da package SPEDFiscal e movimentação dos arquivos para essa pck" />
     <MESSAGE value="SPEDConfig implementations" />
     <MESSAGE value="Correção no método totalize, para remover bloco 9 previamente criado." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correção no método totalize, para remover bloco 9 previamente criado." />
+    <MESSAGE value="Alteração do nome da Classe SPEDFile para SPEDGenerator." />
+    <option name="LAST_COMMIT_MESSAGE" value="Alteração do nome da Classe SPEDFile para SPEDGenerator." />
   </component>
 </project>

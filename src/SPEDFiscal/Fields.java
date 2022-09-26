@@ -316,7 +316,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         return getFormattedField(field.getValue().toString(), fieldFormat);
     }
 
-    public Field<?> getFieldByName(String name){
+    public Field<?> getField(String name){
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
 
@@ -327,23 +327,23 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         return null;
     }
 
-    public IntegerField getIntegerFieldByName(String name){
-        Field<?> field = getFieldByName(name);
+    public IntegerField getIntegerField(String name){
+        Field<?> field = getField(name);
         return (field instanceof IntegerField) ? (IntegerField) field : null;
     }
 
-    public StringField getStringFieldByName(String name){
-        Field<?> field = getFieldByName(name);
+    public StringField getStringField(String name){
+        Field<?> field = getField(name);
         return (field instanceof StringField) ? (StringField) field : null;
     }
 
-    public DoubleField getDoubleFieldByName(String name) {
-        Field<?> field = getFieldByName(name);
+    public DoubleField getDoubleField(String name) {
+        Field<?> field = getField(name);
         return (field instanceof DoubleField) ? (DoubleField) field : null;
     }
 
-    public DateField getDateFieldByName(String name) {
-        Field<?> field = getFieldByName(name);
+    public DateField getDateField(String name) {
+        Field<?> field = getField(name);
         return (field instanceof DateField) ? (DateField) field : null;
     }
 

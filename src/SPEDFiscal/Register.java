@@ -82,23 +82,23 @@ public class Register implements Unit {
     }
 
     public Field<?> getFieldByName(String fieldName){
-        return getFields().getFieldByName(fieldName);
+        return getFields().getField(fieldName);
     }
 
     public StringField getStringField(String fieldName){
-        return getFields().getStringFieldByName(fieldName);
+        return getFields().getStringField(fieldName);
     }
 
     public IntegerField getIntegerField(String fieldName){
-        return getFields().getIntegerFieldByName(fieldName);
+        return getFields().getIntegerField(fieldName);
     }
 
     public DoubleField getDoubleField(String fieldName){
-        return getFields().getDoubleFieldByName(fieldName);
+        return getFields().getDoubleField(fieldName);
     }
 
     public DateField getDateField(String fieldName){
-        return getFields().getDateFieldByName(fieldName);
+        return getFields().getDateField(fieldName);
     }
 
     public void setFieldValue(String name, String value) {

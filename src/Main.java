@@ -43,10 +43,6 @@ public class Main {
             Block be = spedGenerator.addBlock("E");
 
             spedGenerator.totalize();
-            spedGenerator.totalize();
-            spedGenerator.totalize();
-
-
             spedGenerator.write();
 
             fileWriter.close();
