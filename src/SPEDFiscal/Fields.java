@@ -84,7 +84,7 @@ class FieldsDefinitionLoader {
     public static FieldDefinitions[] getFieldsRegDefinitions(String name, String fieldsDefinitionsXmlPath){
         if (fieldsRegMap == null){
             fieldsRegMap = new HashMap<>();
-            populate(fieldsDefinitionsXmlPath);  //todo: verificar se vai ficar aqui mesmo
+            populate(fieldsDefinitionsXmlPath);
         }
 
         return fieldsRegMap.get(name);

@@ -8,16 +8,15 @@ public class Main {
             //Exemplo com StringBuilder
             //SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
 
-
             //exemplo com FileWriter:
             FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
             SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
 
+            //configurações utilizadas pela classe SPEDFile
             SPEDConfig config = new SPEDConfig();
             config.setFieldsDefinitionsXmlPath("c:\\fabiano\\xml.xml");
 
             SPEDFile spedFile = new SPEDFile(writer, config);
-
             Block b0 = spedFile.addBlock("0");
             Register r = b0.addRegister("0005");
             b0.addRegister("0005");
@@ -28,7 +27,6 @@ public class Main {
             r.setFieldValue("NUM", "  teste NUM");
             r.setFieldValue("COMPL", "teste COMPL");
             r.setFieldValue("BAIRRO", "  teste BAIRRO");
-
 
             Block bc = spedFile.addBlock("C");
             r = bc.addRegister("C100");
@@ -44,8 +42,10 @@ public class Main {
             Block bd = spedFile.addBlock("D");
             Block be = spedFile.addBlock("E");
 
-
             spedFile.totalize();
+            spedFile.totalize();
+            spedFile.totalize();
+
 
             spedFile.write();
 
@@ -100,9 +100,6 @@ public class Main {
             |9999|43|
             *
             * */
-
-
-
         } catch (Exception e) {
             System.out.println(e);
         }

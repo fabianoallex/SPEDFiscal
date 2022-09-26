@@ -36,10 +36,9 @@ public class SPEDFile implements Unit {
     }
 
     public void totalize(){
-        if (this.block9 == null) {
-            this.block9 = new Block9(writer, config);
-            this.blocks.add(block9);
-        }
+        this.blocks.remove(this.block9);  //se ja exister algum bloco9. remove
+        this.block9 = new Block9(writer, config);
+        this.blocks.add(this.block9);
 
         Counter counter = new Counter();     //counting before generate 9900
         Counter counter9900 = new Counter(); //used to count 9900 registers will be created above
