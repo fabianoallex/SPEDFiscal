@@ -18,19 +18,11 @@ class SPEDFileWriter implements Writer {
     }
 }
 
-class SPEDStringBuilder implements Writer {
-    private final StringBuilder stringBuilder;
-    public SPEDStringBuilder(StringBuilder stringBuilder) {
-        this.stringBuilder = stringBuilder;
-    }
+record SPEDStringBuilder(StringBuilder stringBuilder) implements Writer {
 
     @Override
     public void write(String string) {
         this.stringBuilder.append(string);
         this.stringBuilder.append("\n\r");
-    }
-
-    public StringBuilder getStringBuilder() {
-        return stringBuilder;
     }
 }

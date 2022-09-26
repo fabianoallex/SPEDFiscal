@@ -1,6 +1,3 @@
-import java.io.FileWriter;
-import java.io.PrintWriter;
-
 public class Main {
     public static void main(String[] args) {
         try {
@@ -44,7 +41,7 @@ public class Main {
 
             //fileWriter.close();
 
-            System.out.println(writer.getStringBuilder().toString());
+            System.out.println(writer.stringBuilder().toString());
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="exemplos de implementacao de Writer">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Writer.java" afterDir="false" />
@@ -119,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664161128452</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder.">
+      <created>1664183516157</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1664183516157</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,6 +148,7 @@
     <MESSAGE value="refatorações rápidas" />
     <MESSAGE value="substituido FileWriter por nova Interface Writer" />
     <MESSAGE value="exemplos de implementacao de Writer" />
-    <option name="LAST_COMMIT_MESSAGE" value="exemplos de implementacao de Writer" />
+    <MESSAGE value="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder." />
+    <option name="LAST_COMMIT_MESSAGE" value="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder." />
   </component>
 </project>
