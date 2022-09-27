@@ -1,4 +1,4 @@
-
+Estrutura do arquivo xml
       fields
         field
           atributos:
