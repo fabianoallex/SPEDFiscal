@@ -3,7 +3,7 @@ import SPEDFiscal.*;
 public class Main {
     public static void main(String[] args) {
         try {
-            //configurações utilizadas pela classe SPEDFile
+            //configurações utilizadas pela classe SPEDFile aaa
             SPEDConfig config = new SPEDConfig();
             config.setFieldsDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
