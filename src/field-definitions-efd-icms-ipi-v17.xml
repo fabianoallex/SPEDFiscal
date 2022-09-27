@@ -63,9 +63,9 @@
             <field name="COD_MUN" pos="14" type="number" size="3" dec="" format="000" description=""/>
         </fields>
     </register>
-    <register name="0150">
+    <register name="0150" reffered="true" refferedId="COD_PART">
         <fields>
-            <field name="COD_PART" pos="02" type="number" size="3" dec="" format="000" description=""/>
+            <field name="COD_PART" pos="02" type="string" size="60" dec="" format="" description=""/>
             <field name="NOME" pos="03" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_PAIS" pos="04" type="number" size="3" dec="" format="000" description=""/>
             <field name="CNPJ" pos="05" type="number" size="3" dec="" format="000" description=""/>
@@ -86,15 +86,15 @@
             <field name="CONT_ANT" pos="04" type="number" size="3" dec="" format="000" description=""/>
         </fields>
     </register>
-    <register name="0190">
+    <register name="0190" reffered="true" refferedId="UNID">
         <fields>
-            <field name="UNID" pos="02" type="number" size="3" dec="" format="000" description=""/>
+            <field name="UNID" pos="02" type="String" size="6" dec="" format="" description=""/>
             <field name="DESCR" pos="03" type="number" size="3" dec="" format="000" description=""/>
         </fields>
     </register>
-    <register name="0200">
+    <register name="0200" reffered="true" refferedId="COD_ITEM">
         <fields>
-            <field name="COD_ITEM" pos="02" type="number" size="3" dec="" format="000" description=""/>
+            <field name="COD_ITEM" pos="02" type="string" size="60" dec="" format="" description=""/>
             <field name="DESCR_ITEM" pos="03" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_BARRA" pos="04" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_ANT_ITEM" pos="05" type="number" size="3" dec="" format="000" description=""/>
@@ -123,7 +123,7 @@
     </register>
     <register name="0210">
         <fields>
-            <field name="COD_ITEM_COMP" pos="02" type="number" size="3" dec="" format="000" description=""/>
+            <field name="COD_ITEM_COMP" registerRef="0200" pos="02" type="number" size="3" dec="" format="000" description=""/>
             <field name="QTD_COMP" pos="03" type="number" size="3" dec="" format="000" description=""/>
             <field name="PERDA" pos="04" type="number" size="3" dec="" format="000" description=""/>
         </fields>
