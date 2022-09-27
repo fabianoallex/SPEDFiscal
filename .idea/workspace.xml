@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Removido ByName (getFieldByName(String name) por exemplo) de alguns métodos.">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Removido atributo Writer da interface Unit e incluído parametro Writer no méotodo write. Alteração de todas as classes que implementam essa interface.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Writer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664225125272</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="SPEDStringBuilder definido como publico em arquivo separado">
+      <created>1664226101919</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1664226101919</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,6 +276,8 @@
     <MESSAGE value="Correção no método totalize, para remover bloco 9 previamente criado." />
     <MESSAGE value="Alteração do nome da Classe SPEDFile para SPEDGenerator." />
     <MESSAGE value="Removido ByName (getFieldByName(String name) por exemplo) de alguns métodos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removido ByName (getFieldByName(String name) por exemplo) de alguns métodos." />
+    <MESSAGE value="SPEDStringBuilder definido como publico em arquivo separado" />
+    <MESSAGE value="Removido atributo Writer da interface Unit e incluído parametro Writer no méotodo write. Alteração de todas as classes que implementam essa interface." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removido atributo Writer da interface Unit e incluído parametro Writer no méotodo write. Alteração de todas as classes que implementam essa interface." />
   </component>
 </project>

@@ -7,12 +7,10 @@ public class Register implements Unit {
     private final String name;
     private final ArrayList<Register> registers;
     private final Fields fields;
-    Writer writer;
     SPEDConfig config;
 
-    Register(String name, Writer writer, SPEDConfig config){
+    Register(String name, SPEDConfig config){
         this.name = name;
-        this.writer = writer;
         this.config = config;
         registers = new ArrayList<>();
         this.fields = Fields.createFields(name, this.config.getFieldsDefinitionsXmlPath());
@@ -22,12 +20,8 @@ public class Register implements Unit {
         return fields;
     }
 
-    public Writer getWriter() {
-        return writer;
-    }
-
     public Register addRegister(String name){
-        Register register = new Register(name, writer, this.config);
+        Register register = new Register(name, this.config);
         this.registers.add(register);
         return register;
     }
@@ -57,11 +51,11 @@ public class Register implements Unit {
 
 
     @Override
-    public void write() {
+    public void write(Writer writer) {
         writer.write(this.toString());
 
         for (Register register : registers) {
-            register.write();
+            register.write(writer);
         }
     }
 
@@ -75,15 +69,11 @@ public class Register implements Unit {
         );
     }
 
-    public void setWriter(Writer writer) {
-        this.writer = writer;
-    }
-
     public String getName() {
         return name;
     }
 
-    public Field<?> getFieldByName(String fieldName){
+    public Field<?> getField(String fieldName){
         return getFields().getField(fieldName);
     }
 

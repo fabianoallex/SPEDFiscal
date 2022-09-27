@@ -9,15 +9,13 @@ public class Block implements Unit {
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
     private final ArrayList<Register> registers;
-    Writer writer;
     SPEDConfig config;
 
-    Block(String name, Writer writer, SPEDConfig config){
-        this.writer = writer;
+    Block(String name, SPEDConfig config){
         this.config = config;
         this.name = name;
-        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, writer, config);
-        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, writer, config);
+        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, config);
+        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, config);
         this.registers = new ArrayList<>();
     }
 
@@ -34,7 +32,7 @@ public class Block implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, this.writer, this.config);
+        Register register = new Register(name, this.config);
         this.registers.add(register);
         return register;
     }
@@ -53,16 +51,6 @@ public class Block implements Unit {
     void totalize(int initCount) {
         closureRegister.getFieldRegisterCount().setValue(this.count() + initCount);
         openingRegister.setThereIsMov((closureRegister.getFieldRegisterCount().getValue() > 2 ));
-    }
-
-    @Override
-    public void setWriter(Writer writer) {
-        this.writer = writer;
-    }
-
-    @Override
-    public Writer getWriter() {
-        return this.writer;
     }
 
     @Override
@@ -87,10 +75,10 @@ public class Block implements Unit {
     }
 
     @Override
-    public void write() {
-        openingRegister.write();
-        for (Register register : registers) register.write();
-        closureRegister.write();
+    public void write(Writer writer) {
+        openingRegister.write(writer);
+        for (Register register : registers) register.write(writer);
+        closureRegister.write(writer);
     }
 }
 
@@ -100,8 +88,8 @@ class OpeningRegister extends Register {
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
     private final IntegerField fieldRegisterIsThereMov;
 
-    OpeningRegister(String name, Writer writer, SPEDConfig config) {
-        super(name, writer, config);
+    OpeningRegister(String name, SPEDConfig config) {
+        super(name, config);
         fieldRegisterIsThereMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
     }
 
@@ -114,8 +102,8 @@ class ClosureRegister extends Register {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final IntegerField fieldRegisterCount;
 
-    ClosureRegister(String name, Writer writer, SPEDConfig config) {
-        super(name, writer, config);
+    ClosureRegister(String name, SPEDConfig config) {
+        super(name, config);
         fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
     }
 

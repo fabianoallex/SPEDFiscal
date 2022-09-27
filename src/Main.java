@@ -1,22 +1,13 @@
 import SPEDFiscal.*;
 
-import java.io.FileWriter;
-
 public class Main {
     public static void main(String[] args) {
         try {
-            //Exemplo com StringBuilder
-            SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
-
-            //exemplo com FileWriter:
-            //FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
-            //SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
-
             //configurações utilizadas pela classe SPEDFile
             SPEDConfig config = new SPEDConfig();
             config.setFieldsDefinitionsXmlPath("c:\\fabiano\\xml.xml");
 
-            SPEDGenerator spedGenerator = new SPEDGenerator(writer, config);
+            SPEDGenerator spedGenerator = new SPEDGenerator(config);
             Block b0 = spedGenerator.addBlock("0");
             Register r = b0.addRegister("0005");
             b0.addRegister("0005");
@@ -43,7 +34,18 @@ public class Main {
             Block be = spedGenerator.addBlock("E");
 
             spedGenerator.totalize();
-            spedGenerator.write();
+
+
+
+            //Exemplo com StringBuilder
+            SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+
+            //exemplo com FileWriter:
+            //FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
+            //SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
+
+
+            spedGenerator.write(writer);
 
             //fileWriter.close();
 
