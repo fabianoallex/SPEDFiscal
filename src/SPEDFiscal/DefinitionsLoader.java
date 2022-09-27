@@ -4,7 +4,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -48,8 +47,13 @@ class RegisterDefinitions {
 }
 
 public class DefinitionsLoader {
+    public static String DEF_TAG_DEFINITIONS = "definitions";
+    public static String DEF_TAG_REGISTER = "register";
+    public static String DEF_TAG_FIELD = "field";
+    public static String DEF_TAG_FIELDS = "fields";
+
     private static HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
-    private static HashMap<String, RegisterDefinitions[]> registersDefinitions = null;
+    private static HashMap<String, RegisterDefinitions> registersDefinitions = null;
     public static final String FIELDS_REG_TYPE_STRING = "string";
     public static final String FIELDS_REG_TYPE_NUMBER = "number";
     public static final String FIELDS_REG_TYPE_DATE = "date";
@@ -62,7 +66,7 @@ public class DefinitionsLoader {
         fieldsDefinitions.put(name, fieldDefinitions);
     }
 
-    public static void addRegisterDefinitions(String name, RegisterDefinitions[] registerDefinitions) {
+    public static void addRegisterDefinitions(String name, RegisterDefinitions registerDefinitions) {
         if (registersDefinitions == null) {
             registersDefinitions = new HashMap<>();
         }
@@ -70,13 +74,22 @@ public class DefinitionsLoader {
         registersDefinitions.put(name, registerDefinitions);
     }
 
-    public static FieldDefinitions[] getFieldsRegDefinitions(String name, String definitionsXmlPath) {
+    public static FieldDefinitions[] getFieldsDefinitions(String name, String definitionsXmlPath) {
         if (fieldsDefinitions == null) {
             fieldsDefinitions = new HashMap<>();
             load(definitionsXmlPath);
         }
 
         return fieldsDefinitions.get(name);
+    }
+
+    public static RegisterDefinitions getRegisterDefinitions(String name, String definitionsXmlPath) {
+        if (registersDefinitions == null) {
+            registersDefinitions = new HashMap<>();
+            load(definitionsXmlPath);
+        }
+
+        return registersDefinitions.get(name);
     }
 
     public static void load(String fieldsDefinitionsXmlPath) {
@@ -93,33 +106,31 @@ public class DefinitionsLoader {
 class DefinitionsHandler extends DefaultHandler {
     private String registerName = "";
     private List<FieldDefinitions> fieldsDefinitions = null;
-    private List<RegisterDefinitions> registersDefinitions = null;
 
-    public void startDocument() {
-        registersDefinitions = new ArrayList<>();
-    }
+    public void startDocument() {}
 
-    public void endDocument() {
-        RegisterDefinitions[] rd = new RegisterDefinitions[registersDefinitions.size()];
-        registersDefinitions.toArray(rd);
-        DefinitionsLoader.addRegisterDefinitions(registerName, rd);
-    }
+    public void endDocument() {}
 
     public void startElement(String uri, String localName, String tag, Attributes attributes) {
-        if (tag.equals("register")) {
+        //start element register
+        if (tag.equals(DefinitionsLoader.DEF_TAG_REGISTER)) {
             registerName = attributes.getValue(RegisterDefinitions.REGISTER_DEF_NAME);
-            fieldsDefinitions = new ArrayList<>();
 
             RegisterDefinitions registerDefinitions = new RegisterDefinitions();
             registerDefinitions.name = attributes.getValue(RegisterDefinitions.REGISTER_DEF_NAME);
             registerDefinitions.parent = attributes.getValue(RegisterDefinitions.REGISTER_DEF_PARENT);
             registerDefinitions.parentType = attributes.getValue(RegisterDefinitions.REGISTER_DEF_PARENT_TYPE);
             registerDefinitions.key = attributes.getValue(RegisterDefinitions.REGISTER_DEF_KEY);
-
-            registersDefinitions.add(registerDefinitions);
+            DefinitionsLoader.addRegisterDefinitions(registerName, registerDefinitions);
         }
 
-        if (!registerName.isEmpty() && tag.equals("field")) {
+        //start element fields
+        if (tag.equals(DefinitionsLoader.DEF_TAG_FIELDS)) {
+            fieldsDefinitions = new ArrayList<>();
+        }
+
+        //start element field
+        if (!registerName.isEmpty() && tag.equals(DefinitionsLoader.DEF_TAG_FIELD)) {
             FieldDefinitions fieldDefinitions = new FieldDefinitions();
 
             fieldDefinitions.name = attributes.getValue(FieldDefinitions.FIELD_DEF_NAME);
@@ -136,7 +147,8 @@ class DefinitionsHandler extends DefaultHandler {
     }
 
     public void endElement(String uri, String localName, String tag) {
-        if (tag.equals("register")) {
+        //end element fields
+        if (tag.equals(DefinitionsLoader.DEF_TAG_FIELDS)) {
             FieldDefinitions[] fd = new FieldDefinitions[fieldsDefinitions.size()];
             fieldsDefinitions.toArray(fd);
             DefinitionsLoader.addFieldDefinitions(registerName, fd);

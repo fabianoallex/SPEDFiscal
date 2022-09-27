@@ -5,7 +5,7 @@ public class Main {
         try {
             //configurações utilizadas pela classe SPEDFile aaa
             SPEDConfig config = new SPEDConfig();
-            config.setFieldsDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
+            config.setDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
             SPEDGenerator spedGenerator = new SPEDGenerator(config);
             Block b0 = spedGenerator.addBlock("0");
@@ -18,6 +18,12 @@ public class Main {
             r.setFieldValue("NUM", "  teste NUM");
             r.setFieldValue("COMPL", "teste COMPL");
             r.setFieldValue("BAIRRO", "  teste BAIRRO");
+
+            r = b0.addRegister("0200");
+            r.setFieldValue("COD_ITEM", 1000);
+            r.setFieldValue("DESCR_ITEM", "ABACATE");
+
+            System.out.println("0200 ID: " + r.getID());
 
             Block bc = spedGenerator.addBlock("C");
             r = bc.addRegister("C100");

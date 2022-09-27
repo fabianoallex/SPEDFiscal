@@ -1,13 +1,13 @@
 package SPEDFiscal;
 
 public class SPEDConfig {
-    String fieldsDefinitionsXmlPath;
+    String definitionsXmlPath;
 
-    public void setFieldsDefinitionsXmlPath(String fieldsDefinitionsXmlPath) {
-        this.fieldsDefinitionsXmlPath = fieldsDefinitionsXmlPath;
+    public void setDefinitionsXmlPath(String definitionsXmlPath) {
+        this.definitionsXmlPath = definitionsXmlPath;
     }
 
-    public String getFieldsDefinitionsXmlPath() {
-        return fieldsDefinitionsXmlPath;
+    public String getDefinitionsXmlPath() {
+        return definitionsXmlPath;
     }
 }

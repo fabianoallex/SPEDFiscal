@@ -7,10 +7,18 @@ import java.util.*;
 class Field<T>  {
     private final String name;
     private T value;
+    private String referenceTo;
 
-    Field(String name){
+    protected Field(String name, String referenceTo){
         this.name = name;
         this.value = null;
+        this.referenceTo = referenceTo;
+    }
+
+    protected Field(String name){
+        this.name = name;
+        this.value = null;
+        this.referenceTo = null;
     }
 
     public void setValue(T value) {
@@ -27,26 +35,42 @@ class Field<T>  {
 }
 
 class IntegerField extends Field<Integer>{
-    IntegerField(String name) {
+    protected IntegerField(String name) {
         super(name);
+    }
+
+    protected IntegerField(String name, String referenceTo) {
+        super(name, referenceTo);
     }
 }
 
 class DoubleField extends Field<Double> {
-    DoubleField(String name) {
+    protected DoubleField(String name) {
         super(name);
+    }
+
+    protected DoubleField(String name, String referenceTo) {
+        super(name, referenceTo);
     }
 }
 
 class DateField extends Field<Date> {
-    DateField(String name) {
+    protected DateField(String name) {
         super(name);
+    }
+
+    protected DateField(String name, String referenceTo) {
+        super(name, referenceTo);
     }
 }
 
 class StringField extends Field<String>{
-    StringField(String name) {
+    protected StringField(String name) {
         super(name);
+    }
+
+    protected StringField(String name, String referenceTo) {
+        super(name, referenceTo);
     }
 }
 
@@ -118,12 +142,13 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
         boolean thereIsFormats = !fieldsFormat.isEmpty();
 
-        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsRegDefinitions(name, fieldsDefinitionsXmlPath)) {
+        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(name, fieldsDefinitionsXmlPath)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
             String dec = fieldDefinitions.dec;
             String format = fieldDefinitions.format;
+            String ref = fieldDefinitions.ref;
 
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new StringField(fieldName));
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new DateField(fieldName));

@@ -7,13 +7,28 @@ public class Register implements Unit {
     private final String name;
     private final ArrayList<Register> registers;
     private final Fields fields;
+    private final boolean isReference;
+    private final String referenceKey;
     SPEDConfig config;
 
     Register(String name, SPEDConfig config){
         this.name = name;
         this.config = config;
         registers = new ArrayList<>();
-        this.fields = Fields.createFields(name, this.config.getFieldsDefinitionsXmlPath());
+        this.fields = Fields.createFields(name, this.config.getDefinitionsXmlPath());
+
+        RegisterDefinitions registerDefinitions = DefinitionsLoader.getRegisterDefinitions(name, config.definitionsXmlPath);
+        this.isReference = !(registerDefinitions.key == null || registerDefinitions.key.isEmpty());
+        this.referenceKey = registerDefinitions.key;
+    }
+
+    public String getID(){
+        return (this.referenceKey == null) ? null :
+            this.getField(this.referenceKey).getValue().toString();
+    }
+
+    public boolean isReference() {
+        return isReference;
     }
 
     public Fields getFields() {
@@ -36,9 +51,8 @@ public class Register implements Unit {
     public int count() {
         int c = 1; //itself
 
-        for (Unit unit : registers) {
+        for (Unit unit : registers)
             c += unit.count();
-        }
 
         return c;
     }
@@ -47,8 +61,6 @@ public class Register implements Unit {
     public void validate() {
         //todo: implementar rotinas de validação dos registros
     }
-
-
 
     @Override
     public void write(Writer writer) {
