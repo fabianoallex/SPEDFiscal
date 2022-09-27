@@ -1,4 +1,4 @@
-<fieldsDefinition>
+<definitions>
     <register name="0000" parent="0" parent_type="block">
         <fields>
             <field name="COD_VER" pos="02" type="number" size="3" dec="" format="000" description=""/>
@@ -63,7 +63,7 @@
             <field name="COD_MUN" pos="14" type="number" size="3" dec="" format="000" description=""/>
         </fields>
     </register>
-    <register name="0150" reffered="true" refferedId="COD_PART">
+    <register name="0150" key="COD_PART">
         <fields>
             <field name="COD_PART" pos="02" type="string" size="60" dec="" format="" description=""/>
             <field name="NOME" pos="03" type="number" size="3" dec="" format="000" description=""/>
@@ -86,19 +86,19 @@
             <field name="CONT_ANT" pos="04" type="number" size="3" dec="" format="000" description=""/>
         </fields>
     </register>
-    <register name="0190" reffered="true" refferedId="UNID">
+    <register name="0190" key="UNID">
         <fields>
             <field name="UNID" pos="02" type="String" size="6" dec="" format="" description=""/>
             <field name="DESCR" pos="03" type="number" size="3" dec="" format="000" description=""/>
         </fields>
     </register>
-    <register name="0200" reffered="true" refferedId="COD_ITEM">
+    <register name="0200" key="COD_ITEM">
         <fields>
             <field name="COD_ITEM" pos="02" type="string" size="60" dec="" format="" description=""/>
             <field name="DESCR_ITEM" pos="03" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_BARRA" pos="04" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_ANT_ITEM" pos="05" type="number" size="3" dec="" format="000" description=""/>
-            <field name="UNID_INV" pos="06" type="number" size="3" dec="" format="000" description=""/>
+            <field name="UNID_INV" ref="0190" pos="06" type="number" size="3" dec="" format="000" description=""/>
             <field name="TIPO_ITEM" pos="07" type="number" size="3" dec="" format="000" description=""/>
             <field name="COD_NCM" pos="08" type="number" size="3" dec="" format="000" description=""/>
             <field name="EX_IPI" pos="09" type="number" size="3" dec="" format="000" description=""/>
@@ -3015,4 +3015,4 @@
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description=""/>
         </fields>
     </register>
-</fieldsDefinition>
+</definitions>

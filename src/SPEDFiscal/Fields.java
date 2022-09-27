@@ -1,105 +1,8 @@
 package SPEDFiscal;
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-class FieldDefinitions {
-    public static final String FIELD_EMPTY_STRING = "";
-    public static final String FIELD_SEPARATOR = "|";
-    public static final String FIELD_DEF_NAME = "name";
-    public static final String FIELD_DEF_TYPE = "type";
-    public static final String FIELD_DEF_SIZE = "size";
-    public static final String FIELD_DEF_DEC = "dec";
-    public static final String FIELD_DEF_FORMAT = "format";
-    public static final String FIELD_DEF_DESCRIPTION = "description";
-
-    String name;
-    String type;
-    String size;
-    String dec;
-    String format;
-    String description;
-}
-
-class FieldsDefinitionLoader {
-    private static class Handler extends DefaultHandler {
-        public void startDocument() {}
-        public void endDocument() {}
-        private String registerName = "";
-        private List<FieldDefinitions> fieldsDefinitions = null;
-
-        public void startElement( String uri, String localName, String tag, Attributes attributes)  {
-            if (tag.equals("register")){
-                registerName = attributes.getValue("name");
-                fieldsDefinitions = new ArrayList<>();
-            }
-
-            if (!registerName.isEmpty() && tag.equals("field")) {
-                FieldDefinitions fieldDefinitions = new FieldDefinitions();
-
-                fieldDefinitions.name = attributes.getValue(FieldDefinitions.FIELD_DEF_NAME);
-                fieldDefinitions.type = attributes.getValue(FieldDefinitions.FIELD_DEF_TYPE);
-                fieldDefinitions.size = attributes.getValue(FieldDefinitions.FIELD_DEF_SIZE);
-                fieldDefinitions.dec = attributes.getValue(FieldDefinitions.FIELD_DEF_DEC);
-                fieldDefinitions.format = attributes.getValue(FieldDefinitions.FIELD_DEF_FORMAT);
-                fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
-
-                fieldsDefinitions.add(fieldDefinitions);
-            }
-        }
-
-        public void endElement(String uri, String localName, String tag) {
-            if (tag.equals("register")) {
-                FieldDefinitions[] fd = new FieldDefinitions[fieldsDefinitions.size()];
-                fieldsDefinitions.toArray(fd);
-                FieldsDefinitionLoader.addFieldDefinitions(registerName, fd);
-            }
-        }
-
-        public void characters(char[] ch, int start, int length) {}
-    }
-
-    private static HashMap<String, FieldDefinitions[]> fieldsRegMap = null;
-    public static final String FIELDS_REG_TYPE_STRING = "string";
-    public static final String FIELDS_REG_TYPE_NUMBER = "number";
-    public static final String FIELDS_REG_TYPE_DATE = "date";
-
-    public static void addFieldDefinitions(String name, FieldDefinitions[] fieldDefinitions){
-        if (fieldsRegMap == null){
-            fieldsRegMap = new HashMap<>();
-        }
-
-        fieldsRegMap.put(name, fieldDefinitions);
-    }
-
-    public static FieldDefinitions[] getFieldsRegDefinitions(String name, String fieldsDefinitionsXmlPath){
-        if (fieldsRegMap == null){
-            fieldsRegMap = new HashMap<>();
-            populate(fieldsDefinitionsXmlPath);
-        }
-
-        return fieldsRegMap.get(name);
-    }
-
-    public static void populate(String fieldsDefinitionsXmlPath){
-        try {
-            SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource(fieldsDefinitionsXmlPath);
-            parser.parse(input, new Handler());
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
 
 class Field<T>  {
     private final String name;
@@ -215,16 +118,16 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
         boolean thereIsFormats = !fieldsFormat.isEmpty();
 
-        for (FieldDefinitions fieldDefinitions : FieldsDefinitionLoader.getFieldsRegDefinitions(name, fieldsDefinitionsXmlPath)) {
+        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsRegDefinitions(name, fieldsDefinitionsXmlPath)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
             String dec = fieldDefinitions.dec;
             String format = fieldDefinitions.format;
 
-            if (type.equals(FieldsDefinitionLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new StringField(fieldName));
-            if (type.equals(FieldsDefinitionLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new DateField(fieldName));
-            if (type.equals(FieldsDefinitionLoader.FIELDS_REG_TYPE_NUMBER)) fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new StringField(fieldName));
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new DateField(fieldName));
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER)) fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
 
             if (!thereIsFormats) {
                 fieldsFormat.put(fieldName, new FieldFormat(format, Integer.parseInt("0" + size)));

@@ -5,7 +5,7 @@ public class Main {
         try {
             //configurações utilizadas pela classe SPEDFile
             SPEDConfig config = new SPEDConfig();
-            config.setFieldsDefinitionsXmlPath("c:\\fabiano\\xml.xml");
+            config.setFieldsDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
             SPEDGenerator spedGenerator = new SPEDGenerator(config);
             Block b0 = spedGenerator.addBlock("0");
