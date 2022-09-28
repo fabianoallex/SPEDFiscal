@@ -23,11 +23,13 @@ public class Main {
             r.setFieldValue("COD_ITEM", "1000");
             r.setFieldValue("DESCR_ITEM", "ABACATE");
 
+            System.out.println("0200 ID: " + r.getID());
+
             r = b0.addRegister("0205");
             r.setFieldValue("COD_ITEM", "1000");
             r.setFieldValue("DESCR_ANT_ITEM", "ABACATE");
 
-            System.out.println("0200 ID: " + r.getID());
+
 
             Block bc = spedGenerator.addBlock("C");
             r = bc.addRegister("C100");
