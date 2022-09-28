@@ -46,17 +46,53 @@ class RegisterDefinitions {
     String key;
 }
 
+class FieldFormat {
+    String format;
+    int maxSize;
+
+    FieldFormat(String format, int maxSize){
+        this.format = format;
+        this.maxSize = maxSize;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+}
+
 public class DefinitionsLoader {
     public static String DEF_TAG_DEFINITIONS = "definitions";
     public static String DEF_TAG_REGISTER = "register";
     public static String DEF_TAG_FIELD = "field";
     public static String DEF_TAG_FIELDS = "fields";
 
+    private static final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
     private static HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
     private static HashMap<String, RegisterDefinitions> registersDefinitions = null;
+
     public static final String FIELDS_REG_TYPE_STRING = "string";
     public static final String FIELDS_REG_TYPE_NUMBER = "number";
     public static final String FIELDS_REG_TYPE_DATE = "date";
+
+    public static void addFieldFormat(String name, FieldFormat fieldFormat){
+        fieldsFormat.put(name, fieldFormat);
+    }
+
+    public static FieldFormat getFieldFormat(String name){
+        return fieldsFormat.get(name);
+    }
 
     public static void addFieldDefinitions(String name, FieldDefinitions[] fieldDefinitions) {
         if (fieldsDefinitions == null) {
@@ -107,6 +143,7 @@ class DefinitionsHandler extends DefaultHandler {
     private String registerName = "";
     private List<FieldDefinitions> fieldsDefinitions = null;
 
+
     public void startDocument() {}
 
     public void endDocument() {}
@@ -141,8 +178,10 @@ class DefinitionsHandler extends DefaultHandler {
             fieldDefinitions.format = attributes.getValue(FieldDefinitions.FIELD_DEF_FORMAT);
             fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
             fieldDefinitions.ref = attributes.getValue(FieldDefinitions.FIELD_DEF_REF);
-
             fieldsDefinitions.add(fieldDefinitions);
+
+            FieldFormat fieldFormat = new FieldFormat(fieldDefinitions.format, Integer.parseInt("0" + fieldDefinitions.size));
+            DefinitionsLoader.addFieldFormat(registerName + "." + fieldDefinitions.name, fieldFormat);
         }
     }
 

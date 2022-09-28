@@ -7,18 +7,10 @@ import java.util.*;
 class Field<T>  {
     private final String name;
     private T value;
-    private String referenceTo;
-
-    protected Field(String name, String referenceTo){
-        this.name = name;
-        this.value = null;
-        this.referenceTo = referenceTo;
-    }
 
     protected Field(String name){
         this.name = name;
         this.value = null;
-        this.referenceTo = null;
     }
 
     public void setValue(T value) {
@@ -38,19 +30,11 @@ class IntegerField extends Field<Integer>{
     protected IntegerField(String name) {
         super(name);
     }
-
-    protected IntegerField(String name, String referenceTo) {
-        super(name, referenceTo);
-    }
 }
 
 class DoubleField extends Field<Double> {
     protected DoubleField(String name) {
         super(name);
-    }
-
-    protected DoubleField(String name, String referenceTo) {
-        super(name, referenceTo);
     }
 }
 
@@ -58,113 +42,25 @@ class DateField extends Field<Date> {
     protected DateField(String name) {
         super(name);
     }
-
-    protected DateField(String name, String referenceTo) {
-        super(name, referenceTo);
-    }
 }
 
 class StringField extends Field<String>{
     protected StringField(String name) {
         super(name);
     }
-
-    protected StringField(String name, String referenceTo) {
-        super(name, referenceTo);
-    }
 }
 
-class FieldFormat {
-    String format;
-    int maxSize;
 
-    FieldFormat(String format){
-        this.format = format;
-        this.maxSize = 0;
-    }
-
-    FieldFormat(String format, int maxSize){
-        this.format = format;
-        this.maxSize = maxSize;
-    }
-
-    FieldFormat(int maxSize){
-        this.format = "";
-        this.maxSize = maxSize;
-    }
-
-    FieldFormat(){
-        this.format = "";
-        this.maxSize = 0;
-    }
-
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
-    }
-}
-
-class FieldsFormat extends HashMap<String, FieldFormat>{
-
-}
 
 public class Fields extends LinkedHashMap<String, Field<?>> {
-    private static final HashMap<String, FieldsFormat> fieldsFormat = new HashMap<>();
-    public static FieldsFormat getFieldsFormat(Fields fields){
-        return fieldsFormat.get(fields.getName());
-    }
-
     private final String name;
+
     public String getName() {
         return name;
     }
 
-    private static void addFieldsFormat(Fields fields){
-        if (Fields.getFieldsFormat(fields) == null) {
-            fieldsFormat.put(fields.getName(), new FieldsFormat());
-        }
-    }
-
-    public static Fields createFields(String name, String fieldsDefinitionsXmlPath) {
-        Fields fields = new Fields(name);
-        FieldsFormat fieldsFormat = Fields.getFieldsFormat(fields);
-
-        boolean thereIsFormats = !fieldsFormat.isEmpty();
-
-        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(name, fieldsDefinitionsXmlPath)) {
-            String fieldName = fieldDefinitions.name;
-            String type = fieldDefinitions.type;
-            String size = fieldDefinitions.size;
-            String dec = fieldDefinitions.dec;
-            String format = fieldDefinitions.format;
-            String ref = fieldDefinitions.ref;
-
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new StringField(fieldName));
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new DateField(fieldName));
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER)) fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
-
-            if (!thereIsFormats) {
-                fieldsFormat.put(fieldName, new FieldFormat(format, Integer.parseInt("0" + size)));
-            }
-        }
-
-        return fields;
-    }
-
-    private Fields(String name){
+    Fields(String name){
         this.name = name;
-        Fields.addFieldsFormat(this);
     }
 
     void addField(Field<?> field) {
@@ -276,12 +172,13 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
     }
 
     public String toString(){
-        FieldsFormat fieldsFormat = Fields.getFieldsFormat(this);
         StringBuilder result = new StringBuilder();
 
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
-            FieldFormat fieldFormat = fieldsFormat.get(field.getName());
+            System.out.println(this.name + "." + field.getName());
+
+            FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(this.name + "." + field.getName());
             result.append(getFormattedField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
         }
 

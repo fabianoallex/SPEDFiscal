@@ -1,7 +1,7 @@
 <definitions>
     <register name="0000" parent="0" parent_type="block">
         <fields>
-            <field name="COD_VER" pos="02" type="number" size="" dec="" format="" description=""/>
+            <field name="COD_VER" pos="02" type="number" size="" dec="" format="000" description=""/>
             <field name="COD_FIN" pos="03" type="number" size="" dec="" format="" description=""/>
             <field name="DT_INI" pos="04" type="number" size="" dec="" format="" description=""/>
             <field name="DT_FIN" pos="05" type="number" size="" dec="" format="" description=""/>

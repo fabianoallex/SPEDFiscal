@@ -15,7 +15,7 @@ public class Register implements Unit {
         this.name = name;
         this.config = config;
         registers = new ArrayList<>();
-        this.fields = Fields.createFields(name, this.config.getDefinitionsXmlPath());
+        this.fields = this.createFields();
 
         RegisterDefinitions registerDefinitions = DefinitionsLoader.getRegisterDefinitions(name, config.definitionsXmlPath);
         this.isReference = !(registerDefinitions.key == null || registerDefinitions.key.isEmpty());
@@ -23,8 +23,7 @@ public class Register implements Unit {
     }
 
     public String getID(){
-        return (this.referenceKey == null) ? null :
-            this.getField(this.referenceKey).getValue().toString();
+        return (this.referenceKey == null) ? null : this.getField(this.referenceKey).getValue().toString();
     }
 
     public boolean isReference() {
@@ -119,5 +118,29 @@ public class Register implements Unit {
 
     public void setFieldValue(String name, Date date) {
         this.getDateField(name).setValue(date);
+    }
+
+    public Fields createFields() {
+        Fields fields = new Fields(this.name);
+
+        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(this.name, this.config.getDefinitionsXmlPath())) {
+            String fieldName = fieldDefinitions.name;
+            String type = fieldDefinitions.type;
+            String size = fieldDefinitions.size;
+            String dec = fieldDefinitions.dec;
+            String format = fieldDefinitions.format;
+            String ref = fieldDefinitions.ref;
+
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING))
+                fields.addField(new StringField(fieldName));
+
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE))
+                fields.addField(new DateField(fieldName));
+
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER))
+                fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
+        }
+
+        return fields;
     }
 }
