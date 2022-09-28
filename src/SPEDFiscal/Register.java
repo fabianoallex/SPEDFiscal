@@ -1,5 +1,7 @@
 package SPEDFiscal;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -102,6 +104,10 @@ public class Register implements Unit {
 
     public DateField getDateField(String fieldName){
         return getFields().getDateField(fieldName);
+    }
+
+    private void setFieldValueConvert(Field field){
+
     }
 
     public void setFieldValue(String name, String value) {

@@ -128,7 +128,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
     }
 
     private String getFormattedField(Field<?> field, FieldFormat fieldFormat){
-        if (!fieldFormat.format.isEmpty()) {
+        if (!fieldFormat.getFormat().isEmpty()) {
             if (field instanceof IntegerField) return getFormattedIntegerField((IntegerField) field, fieldFormat);
             if (field instanceof DoubleField) return getFormattedDoubleField((DoubleField) field, fieldFormat);
             if (field instanceof DateField) return getFormattedDateField((DateField) field, fieldFormat);
@@ -176,8 +176,6 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
-            System.out.println(this.name + "." + field.getName());
-
             FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(this.name + "." + field.getName());
             result.append(getFormattedField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
         }

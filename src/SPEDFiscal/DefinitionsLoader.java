@@ -47,8 +47,8 @@ class RegisterDefinitions {
 }
 
 class FieldFormat {
-    String format;
-    int maxSize;
+    private String format;
+    private int maxSize;
 
     FieldFormat(String format, int maxSize){
         this.format = format;
@@ -142,7 +142,6 @@ public class DefinitionsLoader {
 class DefinitionsHandler extends DefaultHandler {
     private String registerName = "";
     private List<FieldDefinitions> fieldsDefinitions = null;
-
 
     public void startDocument() {}
 

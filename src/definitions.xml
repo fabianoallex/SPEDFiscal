@@ -94,7 +94,7 @@
     </register>
     <register name="0200" key="COD_ITEM">
         <fields>
-            <field name="COD_ITEM" pos="02" type="number" size="60" dec="" format="" description=""/>
+            <field name="COD_ITEM" pos="02" type="string" size="60" dec="" format="" description=""/>
             <field name="DESCR_ITEM" pos="03" type="string" size="" dec="" format="" description=""/>
             <field name="COD_BARRA" pos="04" type="number" size="" dec="" format="" description=""/>
             <field name="COD_ANT_ITEM" pos="05" type="number" size="" dec="" format="" description=""/>
@@ -110,10 +110,11 @@
     </register>
     <register name="0205">
         <fields>
-            <field name="DESCR_ANT_ITEM" pos="02" type="number" size="" dec="" format="" description=""/>
-            <field name="DT_INI" pos="03" type="number" size="" dec="" format="" description=""/>
-            <field name="DT_FIM" pos="04" type="number" size="" dec="" format="" description=""/>
+            <field name="DESCR_ANT_ITEM" pos="02" type="string" size="" dec="" format="" description=""/>
+            <field name="DT_INI" pos="03" type="date" size="" dec="" format="" description=""/>
+            <field name="DT_FIM" pos="04" type="date" size="" dec="" format="" description=""/>
             <field name="COD_ANT_ITEM" pos="05" type="number" size="" dec="" format="" description=""/>
+            <field name="COD_ITEM" ref="0200" pos="06" type="string" size="" dec="" format="" description=""/>
         </fields>
     </register>
     <register name="0206">

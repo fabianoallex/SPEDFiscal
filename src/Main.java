@@ -20,8 +20,12 @@ public class Main {
             r.setFieldValue("BAIRRO", "  teste BAIRRO");
 
             r = b0.addRegister("0200");
-            r.setFieldValue("COD_ITEM", 1000);
+            r.setFieldValue("COD_ITEM", "1000");
             r.setFieldValue("DESCR_ITEM", "ABACATE");
+
+            r = b0.addRegister("0205");
+            r.setFieldValue("COD_ITEM", "1000");
+            r.setFieldValue("DESCR_ANT_ITEM", "ABACATE");
 
             System.out.println("0200 ID: " + r.getID());
 
@@ -29,7 +33,7 @@ public class Main {
             r = bc.addRegister("C100");
             bc.addRegister("C100");
 
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 2; i++) {
                 Register c590 = bc.addRegister("C590");
                 Register c591 = c590.addRegister("C591");
                 c591.setFieldValue("VL_FCP_OP", 2555.9933 + i);
