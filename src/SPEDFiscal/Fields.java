@@ -17,11 +17,11 @@ class Field<T>  {
         this.value = value;
     }
 
-    String getName(){
+    public String getName(){
         return this.name;
     }
 
-    T getValue(){
+    public T getValue(){
         return value;
     }
 }
@@ -53,14 +53,14 @@ class StringField extends Field<String>{
 
 
 public class Fields extends LinkedHashMap<String, Field<?>> {
-    private final String name;
+    private final String registerName;
 
-    public String getName() {
-        return name;
+    public String getRegisterName() {
+        return registerName;
     }
 
-    Fields(String name){
-        this.name = name;
+    Fields(String registerName){
+        this.registerName = registerName;
     }
 
     void addField(Field<?> field) {
@@ -176,7 +176,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
-            FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(this.name + "." + field.getName());
+            FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(this.registerName + "." + field.getName());
             result.append(getFormattedField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
         }
 

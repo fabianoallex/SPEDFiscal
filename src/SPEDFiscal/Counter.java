@@ -3,7 +3,7 @@ package SPEDFiscal;
 import java.util.ArrayList;
 
 public class Counter {
-    ArrayList <ItemCount> list;
+    private ArrayList <ItemCount> list;
 
     Counter() {
         list = new ArrayList<>();
@@ -24,43 +24,35 @@ public class Counter {
     }
 
     public void increment(String name){
-        ItemCount itemCount = null;
-
-        for (ItemCount i : this.list)
-            if (i.name.equals(name)) {
-                itemCount = i;
-                break;
+        for (ItemCount itemCount : this.list)
+            if (itemCount.getName().equals(name)) {
+                itemCount.increment();
+                return;
             }
 
-        if (itemCount == null) itemCount = this.add(name);
-
-        itemCount.increment();
+        this.add(name).increment();
     }
 
-    int getCount(String name){
-        ItemCount itemCount = null;
+    public int getCount(String name){
+        for (ItemCount itemCount : this.list)
+            if (itemCount.getName().equals(name))
+                return itemCount.getCount();
 
-        for (ItemCount i : this.list)
-            if (i.name.equals(name)) {
-                itemCount = i;
-                break;
-            }
-
-        if (itemCount == null) return 0;
-
-        return itemCount.count;
+        return 0;
     }
 
-    int getCount() {
+    public int getCount() {
         int c = 0;
-        for (ItemCount i : this.list) c += i.getCount();
+        for (ItemCount itemCount : this.list)
+            c += itemCount.getCount();
+
         return c;
     }
 }
 
 class ItemCount {
-    int count;
-    String name;
+    private int count;
+    private String name;
 
     ItemCount(String name){
         this.name = name;
@@ -71,7 +63,7 @@ class ItemCount {
         return name;
     }
 
-    void increment(){
+    public void increment(){
         count++;
     }
 

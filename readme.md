@@ -28,6 +28,9 @@ definitions
             dec:         numero de casas decimais quando type = number. se em branco o tipo number será considerado inteiro
             format:      formato do campo
             description: descrição do campo conforme manual
+            required     [O|OC]
+                            O --> obrigatorio
+                            OC --> 
             ref          quando preenchido indica o tipo do registro referenciado. 
                          o registro referenciado deve ter informado o atributo key
 ```
