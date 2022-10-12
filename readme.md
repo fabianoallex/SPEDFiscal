@@ -4,8 +4,6 @@
 
 ```txt
 definitions
-  atributos:
-    version:         versão do arquivo a ser gerado
   tags:
     register
       atributos:
@@ -27,6 +25,8 @@ definitions
             size:        tamanho máximo do texto no registro
             dec:         numero de casas decimais quando type = number. se em branco o tipo number será considerado inteiro
             format:      formato do campo
+                         type string:
+                            onlynumber: ao formatar o valor no arquivo, mantem apenas numeros
             description: descrição do campo conforme manual
             required     [O|OC]
                             O --> obrigatorio
@@ -35,8 +35,3 @@ definitions
                          o registro referenciado deve ter informado o atributo key
 ```
 
-```xml
-<fields>
-    
-</fields>
-```

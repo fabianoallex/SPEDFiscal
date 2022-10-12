@@ -50,9 +50,8 @@ class StringField extends Field<String>{
     }
 }
 
-
-
 public class Fields extends LinkedHashMap<String, Field<?>> {
+    public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
     private final String registerName;
 
     public String getRegisterName() {
@@ -63,26 +62,26 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         this.registerName = registerName;
     }
 
-    void addField(Field<?> field) {
+    public void addField(Field<?> field) {
         this.put(field.getName(), field);
     }
 
-    void setIntegerValue(String name, Integer value) {
+    public void setIntegerValue(String name, Integer value) {
         IntegerField field = (IntegerField) this.get(name);
         field.setValue(value);
     }
 
-    void setStringValue(String name, String value){
+    public void setStringValue(String name, String value){
         StringField field = (StringField) this.get(name);
         field.setValue(value);
     }
 
-    void setDateValue(String name, Date value){
+    public void setDateValue(String name, Date value){
         DateField field = (DateField) this.get(name);
         field.setValue(value);
     }
 
-    void setDoubleValue(String name, Double value){
+    public void setDoubleValue(String name, Double value){
         DoubleField field = (DoubleField) this.get(name);
         field.setValue(value);
     }
@@ -118,6 +117,17 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         return getFormattedField(df.format(field.getValue()), fieldFormat);
     }
 
+    private String getFormattedStringField(StringField field, FieldFormat fieldFormat){
+        if (field.getValue() == null)
+            return FieldDefinitions.FIELD_EMPTY_STRING;
+
+        if (fieldFormat.getFormat().equals(FIELD_FORMAT_STRING_ONLY_NUMBERS)) {
+            return getFormattedField(field.getValue().replaceAll("\\D+",""), fieldFormat);
+        }
+
+        return getFormattedField(field.getValue(), fieldFormat);
+    }
+
     private String getFormattedDateField(DateField field, FieldFormat fieldFormat){
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
 
@@ -129,6 +139,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
 
     private String getFormattedField(Field<?> field, FieldFormat fieldFormat){
         if (!fieldFormat.getFormat().isEmpty()) {
+            if (field instanceof StringField) return getFormattedStringField((StringField) field, fieldFormat);
             if (field instanceof IntegerField) return getFormattedIntegerField((IntegerField) field, fieldFormat);
             if (field instanceof DoubleField) return getFormattedDoubleField((DoubleField) field, fieldFormat);
             if (field instanceof DateField) return getFormattedDateField((DateField) field, fieldFormat);

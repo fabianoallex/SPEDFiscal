@@ -1,5 +1,7 @@
 import SPEDFiscal.*;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
         try {
@@ -8,9 +10,24 @@ public class Main {
             config.setDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
             SPEDGenerator spedGenerator = new SPEDGenerator(config);
+            Register r = spedGenerator.getOpeningRegister();
+
+            r.setFieldValue("COD_VER", 1);
+            r.setFieldValue("COD_FIN", 0);
+            r.setFieldValue("DT_INI", new Date());
+            r.setFieldValue("DT_FIN", new Date());
+            r.setFieldValue("NOME", "FABIANO ALEX ARNDT");
+            r.setFieldValue("CPF", "034.328.989-08");
+            r.setFieldValue("UF", "PR");
+            r.setFieldValue("COD_MUN", 1234567);
+            r.setFieldValue("IND_PERFIL", "A");
+            r.setFieldValue("IND_ATIV", 0);
+
             Block b0 = spedGenerator.addBlock("0");
-            Register r = b0.addRegister("0005");
+            r = b0.addRegister("0005");
             b0.addRegister("0005");
+
+
 
             r.setFieldValue("FANTASIA", "   TESTE FANTASIA");
             r.setFieldValue("CEP", "teste cep");

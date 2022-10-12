@@ -3,17 +3,22 @@ package SPEDFiscal;
 import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
+    private SPEDConfig config;
+
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
     private final ArrayList<Block> blocks;
-    SPEDConfig config;
 
     public SPEDGenerator(SPEDConfig config){
         this.config = config;
         openingRegister = new Register0000(config);
         closureRegister = new Register9999(config);
         blocks = new ArrayList<>();
+    }
+
+    public Register0000 getOpeningRegister() {
+        return openingRegister;
     }
 
     public Block addBlock(String blockName){
@@ -23,7 +28,7 @@ public class SPEDGenerator implements Unit {
     }
 
     public Block getBlock(String blockName){
-        for (int i = 0; i< blocks.size()-1; i++){
+        for (int i=0; i<blocks.size()-1; i++){
             Block block = blocks.get(i);
             if (block.getName().equals(blockName)){
                 return block;

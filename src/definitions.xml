@@ -1,20 +1,20 @@
 <definitions>
     <register name="0000" parent="0" parent_type="block">
         <fields>
-            <field name="COD_VER" pos="02" type="number" size="" dec="" format="000" description="" required="OC"/>
-            <field name="COD_FIN" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="DT_INI" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="DT_FIN" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NOME" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CNPJ" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CPF" pos="08" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="UF" pos="09" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IE" pos="10" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_MUN" pos="11" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IM" pos="12" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="SUFRAMA" pos="13" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IND_PERFIL" pos="14" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IND_ATIV" pos="15" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_VER" pos="02" type="number" size="3" dec="" format="000" description="" required="OC"/>
+            <field name="COD_FIN" pos="03" type="number" size="1" dec="" format="" description="" required="OC"/>
+            <field name="DT_INI" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="DT_FIN" pos="05" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="NOME" pos="06" type="string" size="100" dec="" format="" description="" required="OC"/>
+            <field name="CNPJ" pos="07" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"/>
+            <field name="CPF" pos="08" type="string" size="11" dec="" format="onlynumbers" description="" required="OC"/>
+            <field name="UF" pos="09" type="string" size="2" dec="" format="" description="" required="OC"/>
+            <field name="IE" pos="10" type="string" size="14" dec="" format="" description="" required="OC"/>
+            <field name="COD_MUN" pos="11" type="number" size="7" dec="" format="0000000" description="" required="OC"/>
+            <field name="IM" pos="12" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="SUFRAMA" pos="13" type="string" size="9" dec="" format="" description="" required="OC"/>
+            <field name="IND_PERFIL" pos="14" type="string" size="1" dec="" format="" description="" required="OC"/>
+            <field name="IND_ATIV" pos="15" type="number" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0001">
