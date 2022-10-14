@@ -1,9 +1,13 @@
 package SPEDFiscal;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+class FieldNotFoundException extends Exception {
+    public FieldNotFoundException(String fieldClassName, String fieldName, String registerName) {
+        super(String.format("%s '%s' não encontrado no Registro '%s'.", fieldClassName, fieldName, registerName));
+    }
+}
 
 public class Register implements Unit {
     private final String name;
@@ -67,9 +71,8 @@ public class Register implements Unit {
     public void write(Writer writer) {
         writer.write(this.toString());
 
-        for (Register register : registers) {
+        for (Register register : registers)
             register.write(writer);
-        }
     }
 
     @Override
@@ -106,24 +109,40 @@ public class Register implements Unit {
         return getFields().getDateField(fieldName);
     }
 
-    private void setFieldValueConvert(Field field){
+    public void setFieldValue(String name, String value) throws FieldNotFoundException {
+        StringField stringField = this.getStringField(name);
 
+        if (stringField == null)
+            throw new FieldNotFoundException(StringField.class.getSimpleName(), name, this.getName());
+
+        stringField.setValue(value);
     }
 
-    public void setFieldValue(String name, String value) {
-        this.getStringField(name).setValue(value);
+    public void setFieldValue(String name, Double value) throws FieldNotFoundException {
+        DoubleField doubleField = this.getDoubleField(name);
+
+        if (doubleField == null)
+            throw new FieldNotFoundException(DoubleField.class.getSimpleName(), name, this.getName());
+
+        doubleField.setValue(value);
     }
 
-    public void setFieldValue(String name, Double value) {
-        this.getDoubleField(name).setValue(value);
+    public void setFieldValue(String name, int value) throws FieldNotFoundException {
+        IntegerField integerField = this.getIntegerField(name);
+
+        if (integerField == null)
+            throw new FieldNotFoundException(IntegerField.class.getSimpleName(), name, this.getName());
+
+        integerField.setValue(value);
     }
 
-    public void setFieldValue(String name, int value) {
-        this.getIntegerField(name).setValue(value);
-    }
+    public void setFieldValue(String name, Date date) throws FieldNotFoundException {
+        DateField dateField = this.getDateField(name);
 
-    public void setFieldValue(String name, Date date) {
-        this.getDateField(name).setValue(date);
+        if (dateField == null)
+            throw new FieldNotFoundException(DateField.class.getSimpleName(), name, this.getName());
+
+        dateField.setValue(date);
     }
 
     public Fields createFields() {

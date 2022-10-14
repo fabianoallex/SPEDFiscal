@@ -1,23 +1,24 @@
 import SPEDFiscal.*;
 
+import java.io.FileWriter;
 import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            //configurações utilizadas pela classe SPEDFile aaa
+            //configurações utilizadas pela classe SPEDGenerator
             SPEDConfig config = new SPEDConfig();
             config.setDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
             SPEDGenerator spedGenerator = new SPEDGenerator(config);
-            Register r = spedGenerator.getOpeningRegister();
+            Register r = spedGenerator.getOpeningRegister();  //0000
 
             r.setFieldValue("COD_VER", 1);
             r.setFieldValue("COD_FIN", 0);
             r.setFieldValue("DT_INI", new Date());
             r.setFieldValue("DT_FIN", new Date());
-            r.setFieldValue("NOME", "FABIANO ALEX ARNDT");
-            r.setFieldValue("CPF", "034.328.989-08");
+            r.setFieldValue("NOME", "  FABIANO ARNDT ");
+            r.setFieldValue("CPF", "123.456.789-10");
             r.setFieldValue("UF", "PR");
             r.setFieldValue("COD_MUN", 1234567);
             r.setFieldValue("IND_PERFIL", "A");
@@ -25,10 +26,6 @@ public class Main {
 
             Block b0 = spedGenerator.addBlock("0");
             r = b0.addRegister("0005");
-            b0.addRegister("0005");
-
-
-
             r.setFieldValue("FANTASIA", "   TESTE FANTASIA");
             r.setFieldValue("CEP", "teste cep");
             r.setFieldValue("END", "  teste END");
@@ -40,17 +37,17 @@ public class Main {
             r.setFieldValue("COD_ITEM", "1000");
             r.setFieldValue("DESCR_ITEM", "ABACATE");
 
-            System.out.println("0200 ID: " + r.getID());
+            System.out.println("0200 ID: " + r.getID()); //COD_ITEM
 
             r = b0.addRegister("0205");
-            r.setFieldValue("COD_ITEM", "1000");
+            //r.setFieldValue("teste", "ABACATE");            //throws FieldNotFoundException - nao existe campo teste NO REGISTRO 0200
             r.setFieldValue("DESCR_ANT_ITEM", "ABACATE");
+
 
 
 
             Block bc = spedGenerator.addBlock("C");
             r = bc.addRegister("C100");
-            bc.addRegister("C100");
 
             for (int i = 0; i < 2; i++) {
                 Register c590 = bc.addRegister("C590");

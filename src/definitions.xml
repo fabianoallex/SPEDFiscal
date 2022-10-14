@@ -24,174 +24,173 @@
     </register>
     <register name="0002">
         <fields>
-            <field name="CLAS_ESTAB_IND" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="CLAS_ESTAB_IND" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0005">
         <fields>
-            <field name="FANTASIA" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
-            <field name="CEP" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="END" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="NUM" pos="05" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="COMPL" pos="06" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="BAIRRO" pos="07" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="FONE" pos="08" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="FAX" pos="09" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="FANTASIA" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="CEP" pos="03" type="string" size="8" dec="" format="onlynumbers" description="" required="OC"/>
+            <field name="END" pos="04" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="NUM" pos="05" type="string" size="10" dec="" format="" description="" required="OC"/>
+            <field name="COMPL" pos="06" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="BAIRRO" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="FONE" pos="08" type="string" size="11" dec="" format="" description="" required="OC"/>
+            <field name="FAX" pos="09" type="string" size="11" dec="" format="" description="" required="OC"/>
             <field name="EMAIL" pos="10" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0015">
         <fields>
-            <field name="UF_ST" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IE_ST" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="UF_ST" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
+            <field name="IE_ST" pos="03" type="number" size="14" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0100">
         <fields>
-            <field name="NOME" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CPF" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CRC" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CNPJ" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CEP" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="END" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NUM" pos="08" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COMPL" pos="09" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="BAIRRO" pos="10" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="FONE" pos="11" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="FAX" pos="12" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="EMAIL" pos="13" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_MUN" pos="14" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="NOME" pos="02" type="string" size="100" dec="" format="" description="" required="OC"/>
+            <field name="CPF" pos="03" type="string" size="11" dec="" format="onlynumbers" description="" required="OC"/>
+            <field name="CRC" pos="04" type="string" size="15" dec="" format="" description="" required="OC"/>
+            <field name="CNPJ" pos="05" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"/>
+            <field name="CEP" pos="06" type="string" size="8" dec="" format="onlynumbers" description="" required="OC"/>
+            <field name="END" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="NUM" pos="08" type="string" size="10" dec="" format="" description="" required="OC"/>
+            <field name="COMPL" pos="09" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="BAIRRO" pos="10" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="FONE" pos="11" type="string" size="11" dec="" format="" description="" required="OC"/>
+            <field name="FAX" pos="12" type="string" size="11" dec="" format="" description="" required="OC"/>
+            <field name="EMAIL" pos="13" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_MUN" pos="14" type="number" size="7" dec="" format="0000000" description="" required="OC"/>
         </fields>
     </register>
     <register name="0150" key="COD_PART">
         <fields>
             <field name="COD_PART" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
-            <field name="NOME" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_PAIS" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CNPJ" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CPF" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IE" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_MUN" pos="08" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="SUFRAMA" pos="09" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="END" pos="10" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NUM" pos="11" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COMPL" pos="12" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="BAIRRO" pos="13" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="NOME" pos="03" type="string" size="100" dec="" format="" description="" required="OC"/>
+            <field name="COD_PAIS" pos="04" type="number" size="5" dec="" format="" description="" required="OC"/>
+            <field name="CNPJ" pos="05" type="string" size="14" dec="" format="" description="" required="OC"/>
+            <field name="CPF" pos="06" type="string" size="11" dec="" format="" description="" required="OC"/>
+            <field name="IE" pos="07" type="string" size="14" dec="" format="" description="" required="OC"/>
+            <field name="COD_MUN" pos="08" type="number" size="7" dec="" format="0000000" description="" required="OC"/>
+            <field name="SUFRAMA" pos="09" type="string" size="9" dec="" format="" description="" required="OC"/>
+            <field name="END" pos="10" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="NUM" pos="11" type="string" size="10" dec="" format="" description="" required="OC"/>
+            <field name="COMPL" pos="12" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="BAIRRO" pos="13" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0175">
         <fields>
-            <field name="DT_ALT" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NR_CAMPO" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CONT_ANT" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="DT_ALT" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="NR_CAMPO" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
+            <field name="CONT_ANT" pos="04" type="string" size="100" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0190" key="UNID">
         <fields>
-            <field name="UNID" pos="02" type="String" size="6" dec="" format="" description="" required="OC"/>
-            <field name="DESCR" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="UNID" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="DESCR" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0200" key="COD_ITEM">
         <fields>
             <field name="COD_ITEM" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="DESCR_ITEM" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_BARRA" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_ANT_ITEM" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="UNID_INV" ref="0190" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="TIPO_ITEM" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_NCM" pos="08" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="EX_IPI" pos="09" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_GEN" pos="10" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_LST" pos="11" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="ALIQ_ICMS" pos="12" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="CEST" pos="13" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_BARRA" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_ANT_ITEM" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="UNID_INV" ref="0190" pos="06" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="TIPO_ITEM" pos="07" type="number" size="2" dec="" format="" description="" required="OC"/>
+            <field name="COD_NCM" pos="08" type="string" size="8" dec="" format="" description="" required="OC"/>
+            <field name="EX_IPI" pos="09" type="string" size="3" dec="" format="" description="" required="OC"/>
+            <field name="COD_GEN" pos="10" type="number" size="2" dec="" format="" description="" required="OC"/>
+            <field name="COD_LST" pos="11" type="string" size="5" dec="" format="" description="" required="OC"/>
+            <field name="ALIQ_ICMS" pos="12" type="number" size="" dec="2" format="" description="" required="OC"/>
+            <field name="CEST" pos="13" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0205">
         <fields>
             <field name="DESCR_ANT_ITEM" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="DT_INI" pos="03" type="date" size="" dec="" format="" description="" required="OC"/>
-            <field name="DT_FIM" pos="04" type="date" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_ANT_ITEM" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_ITEM" ref="0200" pos="06" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="DT_INI" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="DT_FIM" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="COD_ANT_ITEM" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0206">
         <fields>
-            <field name="COD_COMB" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_COMB" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0210">
         <fields>
-            <field name="COD_ITEM_COMP" registerRef="0200" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="QTD_COMP" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="PERDA" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_ITEM_COMP" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="QTD_COMP" pos="03" type="number" size="" dec="6" format="" description="" required="OC"/>
+            <field name="PERDA" pos="04" type="number" size="" dec="4" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0220">
         <fields>
-            <field name="UNID_CONV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="FAT_CONV" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_BARRA" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="UNID_CONV" ref="0190" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="FAT_CONV" pos="03" type="number" size="" dec="6" format="" description="" required="OC"/>
+            <field name="COD_BARRA" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0221">
         <fields>
-            <field name="COD_ITEM_ATOMICO" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="QTD_CONTIDA" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_ITEM_ATOMICO" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="QTD_CONTIDA" pos="03" type="number" size="" dec="6" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0300">
         <fields>
-            <field name="COD_IND_BEM" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IDENT_MERC" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="DESCR_ITEM" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_PRNC" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_CTA" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NR_PARC" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_IND_BEM" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="IDENT_MERC" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
+            <field name="DESCR_ITEM" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_PRNC" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="COD_CTA" ref="0500" pos="06" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="NR_PARC" pos="07" type="number" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0305">
         <fields>
-            <field name="COD_CCUS" ref="0600" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="FUNC" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="VIDA_UTIL" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_CCUS" ref="0600" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="FUNC" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="VIDA_UTIL" pos="04" type="number" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0400" key="COD_NAT">
         <fields>
-            <field name="COD_NAT" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="DESCR_NAT" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_NAT" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
+            <field name="DESCR_NAT" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0450">
         <fields>
-            <field name="COD_INF" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="TXT" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_INF" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="TXT" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0460">
+    <register name="0460" key="COD_OBS">
         <fields>
-            <field name="COD_OBS" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="TXT" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="COD_OBS" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="TXT" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0500">
         <fields>
-            <field name="DT_ALT" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="IND_CTA" pos="04" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NÍVEL" pos="05" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_CTA" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
-            <field name="NOME_CTA" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
+            <field name="DT_ALT" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="COD_NAT_CC" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
+            <field name="IND_CTA" pos="04" type="string" size="1" dec="" format="" description="" required="OC"/>
+            <field name="NÍVEL" pos="05" type="number" size="5" dec="" format="" description="" required="OC"/>
+            <field name="COD_CTA" pos="06" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="NOME_CTA" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0600" key="COD_CCUS">
         <fields>
-            <field name="DT_ALT" pos="02" type="date" size="" dec="" format="" description="" required="OC"/>
-            <field name="COD_CCUS" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
-            <field name="CCUS" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="DT_ALT" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
+            <field name="COD_CCUS" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
+            <field name="CCUS" pos="04" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
     <register name="0990">
