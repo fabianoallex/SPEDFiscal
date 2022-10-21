@@ -1,5 +1,5 @@
 <definitions>
-    <register name="0000" parent="0" parent_type="block">
+    <register name="0000" parent="" parent_type="file">
         <fields>
             <field name="COD_VER" pos="02" type="number" size="3" dec="" format="000" description="" required="OC"/>
             <field name="COD_FIN" pos="03" type="number" size="1" dec="" format="" description="" required="OC"/>
@@ -17,17 +17,17 @@
             <field name="IND_ATIV" pos="15" type="number" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0001">
+    <register name="0001" parent="0" parent_type="block">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0002">
+    <register name="0002" parent="0001" parent_type="register">
         <fields>
             <field name="CLAS_ESTAB_IND" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0005">
+    <register name="0005" parent="0001" parent_type="register">
         <fields>
             <field name="FANTASIA" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="CEP" pos="03" type="string" size="8" dec="" format="onlynumbers" description="" required="OC"/>
@@ -40,13 +40,13 @@
             <field name="EMAIL" pos="10" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0015">
+    <register name="0015" parent="0001" parent_type="register">
         <fields>
             <field name="UF_ST" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="IE_ST" pos="03" type="number" size="14" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0100">
+    <register name="0100" parent="0001" parent_type="register">
         <fields>
             <field name="NOME" pos="02" type="string" size="100" dec="" format="" description="" required="OC"/>
             <field name="CPF" pos="03" type="string" size="11" dec="" format="onlynumbers" description="" required="OC"/>
@@ -63,7 +63,7 @@
             <field name="COD_MUN" pos="14" type="number" size="7" dec="" format="0000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0150" key="COD_PART">
+    <register name="0150" parent="0001" parent_type="register" key="COD_PART">
         <fields>
             <field name="COD_PART" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="NOME" pos="03" type="string" size="100" dec="" format="" description="" required="OC"/>
@@ -79,20 +79,20 @@
             <field name="BAIRRO" pos="13" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0175">
+    <register name="0175" parent="0150" parent_type="register">
         <fields>
             <field name="DT_ALT" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="NR_CAMPO" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="CONT_ANT" pos="04" type="string" size="100" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0190" key="UNID">
+    <register name="0190" parent="0001" parent_type="register" key="UNID">
         <fields>
             <field name="UNID" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="DESCR" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0200" key="COD_ITEM">
+    <register name="0200" parent="0001" parent_type="register" key="COD_ITEM">
         <fields>
             <field name="COD_ITEM" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="DESCR_ITEM" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -108,7 +108,7 @@
             <field name="CEST" pos="13" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0205">
+    <register name="0205" parent="0200" parent_type="register">
         <fields>
             <field name="DESCR_ANT_ITEM" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="DT_INI" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -116,32 +116,32 @@
             <field name="COD_ANT_ITEM" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0206">
+    <register name="0206" parent="0200" parent_type="register">
         <fields>
             <field name="COD_COMB" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0210">
+    <register name="0210" parent="0200" parent_type="register">
         <fields>
             <field name="COD_ITEM_COMP" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD_COMP" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
             <field name="PERDA" pos="04" type="number" size="" dec="4" format="0.0000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0220">
+    <register name="0220" parent="0200" parent_type="register">
         <fields>
             <field name="UNID_CONV" ref="0190" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="FAT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
             <field name="COD_BARRA" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0221">
+    <register name="0221" parent="0200" parent_type="register">
         <fields>
             <field name="COD_ITEM_ATOMICO" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD_CONTIDA" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0300">
+    <register name="0300" parent="0001" parent_type="register">
         <fields>
             <field name="COD_IND_BEM" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="IDENT_MERC" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -151,32 +151,32 @@
             <field name="NR_PARC" pos="07" type="number" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0305">
+    <register name="0305" parent="0300" parent_type="register">
         <fields>
             <field name="COD_CCUS" ref="0600" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="FUNC" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="VIDA_UTIL" pos="04" type="number" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0400" key="COD_NAT">
+    <register name="0400" parent="0001" parent_type="register" key="COD_NAT">
         <fields>
             <field name="COD_NAT" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_NAT" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0450">
+    <register name="0450" parent="0001" parent_type="register">
         <fields>
             <field name="COD_INF" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0460" key="COD_OBS">
+    <register name="0460" parent="0001" parent_type="register" key="COD_OBS">
         <fields>
             <field name="COD_OBS" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0500">
+    <register name="0500" parent="0001" parent_type="register">
         <fields>
             <field name="DT_ALT" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_NAT_CC" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -186,24 +186,24 @@
             <field name="NOME_CTA" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0600" key="COD_CCUS">
+    <register name="0600" parent="0001" parent_type="register" key="COD_CCUS">
         <fields>
             <field name="DT_ALT" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_CCUS" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="CCUS" pos="04" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="0990">
+    <register name="0990" parent="0" parent_type="block">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B001">
+    <register name="B001" parent="B" parent_type="block">
         <fields>
             <field name="IND_DAD" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B020">
+    <register name="B020" parent="B001" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -227,7 +227,7 @@
             <field name="COD_INF_OBS" ref="0460" pos="21" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B025">
+    <register name="B025" parent="B020" parent_type="register">
         <fields>
             <field name="VL_CONT_P" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_BC_ISS_P" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -237,7 +237,7 @@
             <field name="COD_SERV" pos="07" type="string" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B030">
+    <register name="B030" parent="B001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="3" dec="" format="" description="" required="OC"/>
@@ -252,7 +252,7 @@
             <field name="COD_INF_OBS" ref="0460" pos="12" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B035">
+    <register name="B035" parent="B001" parent_type="register">
         <fields>
             <field name="VL_CONT_P" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_BC_ISS_P" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -262,7 +262,7 @@
             <field name="COD_SERV" pos="07" type="string" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B350">
+    <register name="B350" parent="B001" parent_type="register">
         <fields>
             <field name="COD_CTD" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="CTA_ISS" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -276,7 +276,7 @@
             <field name="COD_INF_OBS" ref="0460" pos="11" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B420">
+    <register name="B420" parent="B001" parent_type="register">
         <fields>
             <field name="VL_CONT" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_BC_ISS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -286,7 +286,7 @@
             <field name="COD_SERV" pos="07" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B440">
+    <register name="B440" parent="B001" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="number" size="1" dec="" format="" description="" required="OC"/>
             <field name="COD_PART" ref="0150" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -295,7 +295,7 @@
             <field name="VL_ISS_RT" pos="06" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B460">
+    <register name="B460" parent="B001" parent_type="register">
         <fields>
             <field name="IND_DED" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="VL_DED" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -306,7 +306,7 @@
             <field name="IND_OBR" pos="08" type="string" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B470">
+    <register name="B470" parent="B001" parent_type="register">
         <fields>
             <field name="VL_CONT" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_MAT_TERC" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -324,14 +324,14 @@
             <field name="VL_ISS_REC_UNI" pos="15" type="number" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B500">
+    <register name="B500" parent="B001" parent_type="register">
         <fields>
             <field name="VL_REC" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="QTD_PROF" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="VL_OR" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B510">
+    <register name="B510" parent="B500" parent_type="register">
         <fields>
             <field name="IND_PROF" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_ESC" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -340,17 +340,17 @@
             <field name="NOME" pos="06" type="string" size="100" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="B990">
+    <register name="B990" parent="B" parent_type="block">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C001">
+    <register name="C001" parent="C" parent_type="block">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C100">
+    <register name="C100" parent="C001" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -382,32 +382,32 @@
             <field name="VL_COFINS_ST" pos="29" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C101">
+    <register name="C101" parent="C100" parent_type="register">
         <fields>
             <field name="VL_FCP_UF_DEST" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS_UF_DEST" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS_UF_REM" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C105">
+    <register name="C105" parent="C100" parent_type="register">
         <fields>
             <field name="OPER" pos="02" type="number" size="1" dec="" format="" description="" required="OC"/>
             <field name="UF" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C110">
+    <register name="C110" parent="C100" parent_type="register">
         <fields>
             <field name="COD_INF" ref="0450" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C111">
+    <register name="C111" parent="C110" parent_type="register">
         <fields>
             <field name="NUM_PROC" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="IND_PROC" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C112">
+    <register name="C112" parent="C110" parent_type="register">
         <fields>
             <field name="COD_DA" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="UF" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -418,7 +418,7 @@
             <field name="DT_PGTO" pos="08" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C113">
+    <register name="C113" parent="C110" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -431,7 +431,7 @@
             <field name="CHV_DOCe" pos="10" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C114">
+    <register name="C114" parent="C110" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="ECF_FAB" pos="03" type="string" size="21" dec="" format="" description="" required="OC"/>
@@ -440,7 +440,7 @@
             <field name="DT_DOC" pos="06" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C115">
+    <register name="C115" parent="C110" parent_type="register">
         <fields>
             <field name="IND_CARGA" pos="02" type="number" size="1" dec="" format="" description="" required="OC"/>
             <field name="CNPJ_COL" pos="03" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"/>
@@ -453,7 +453,7 @@
             <field name="COD_MUN_ENTG" pos="10" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C116">
+    <register name="C116" parent="C110" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="NR_SAT" pos="03" type="number" size="9" dec="" format="" description="" required="OC"/>
@@ -462,7 +462,7 @@
             <field name="DT_DOC" pos="06" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C120">
+    <register name="C120" parent="C100" parent_type="register">
         <fields>
             <field name="COD_DOC_IMP" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="NUM_DOC_IMP" pos="03" type="string" size="15" dec="" format="" description="" required="OC"/>
@@ -471,7 +471,7 @@
             <field name="NUM_ACDRAW" pos="06" type="string" size="20" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C130">
+    <register name="C130" parent="C100" parent_type="register">
         <fields>
             <field name="VL_SERV_NT" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_BC_ISSQN" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -482,7 +482,7 @@
             <field name="VL_PREV" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C140">
+    <register name="C140" parent="C100" parent_type="register">
         <fields>
             <field name="IND_EMIT" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_TIT" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -492,14 +492,14 @@
             <field name="VL_TIT" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C141">
+    <register name="C141" parent="C140" parent_type="register">
         <fields>
             <field name="NUM_PARC" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
             <field name="DT_VCTO" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="VL_PARC" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C160">
+    <register name="C160" parent="C100" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="VEIC_ID" pos="03" type="string" size="7" dec="" format="" description="" required="OC"/>
@@ -509,7 +509,7 @@
             <field name="UF_ID" pos="07" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C165">
+    <register name="C165" parent="C100" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="VEIC_ID" pos="03" type="string" size="7" dec="" format="" description="" required="OC"/>
@@ -525,7 +525,7 @@
             <field name="UF_ID" pos="13" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C170">
+    <register name="C170" parent="C100" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -566,20 +566,20 @@
             <field name="VL_ABAT_NT" pos="38" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C171">
+    <register name="C171" parent="C170" parent_type="register">
         <fields>
             <field name="NUM_TANQUE" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="QTDE" pos="03" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C172">
+    <register name="C172" parent="C170" parent_type="register">
         <fields>
             <field name="VL_BC_ISSQN" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="ALIQ_ISSQN" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ISSQN" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C173">
+    <register name="C173" parent="C170" parent_type="register">
         <fields>
             <field name="LOTE_MED" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="QTD_ITEM" pos="03" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
@@ -590,14 +590,14 @@
             <field name="VL_TAB_MAX" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C174">
+    <register name="C174" parent="C170" parent_type="register">
         <fields>
             <field name="IND_ARM" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="NUM_ARM" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C175">
+    <register name="C175" parent="C170" parent_type="register">
         <fields>
             <field name="IND_VEIC_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="CNPJ" pos="03" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"/>
@@ -605,7 +605,7 @@
             <field name="CHASSI_VEIC" pos="05" type="string" size="17" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C176">
+    <register name="C176" parent="C170" parent_type="register">
         <fields>
             <field name="COD_MOD_ULT_E" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="NUM_DOC_ULT_E" pos="03" type="number" size="9" dec="" format="" description="" required="OC"/>
@@ -635,25 +635,25 @@
             <field name="VL_UNIT_RES_FCP_ST" pos="26" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C177">
+    <register name="C177" parent="C170" parent_type="register">
         <fields>
             <field name="COD_SELO_IPI" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="QT_SELO_IPI" pos="03" type="string" size="12" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C177">
+    <register name="C177" parent="C170" parent_type="register">
         <fields>
             <field name="COD_INF_ITEM" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C178">
+    <register name="C178" parent="C170" parent_type="register">
         <fields>
             <field name="CL_ENQ" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="VL_UNID" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="QUANT_PAD" pos="04" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C179">
+    <register name="C179" parent="C170" parent_type="register">
         <fields>
             <field name="BC_ST_ORIG_DEST" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="ICMS_ST_REP" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
@@ -662,7 +662,7 @@
             <field name="ICMS_RET" pos="06" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C180">
+    <register name="C180" parent="C170" parent_type="register">
         <fields>
             <field name="COD_RESP_RET" pos="02" type="number" size="1" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -676,7 +676,7 @@
             <field name="NUM_DA" pos="11" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C181">
+    <register name="C181" parent="C170" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -700,7 +700,7 @@
             <field name="VL_UNIT_FCP_ST_CONV_COMPL" pos="21" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C185">
+    <register name="C185" parent="C100" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -721,7 +721,7 @@
             <field name="VL_UNIT_FCP_ST_CONV_COMPL" pos="18" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C186">
+    <register name="C186" parent="C100" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -743,7 +743,7 @@
             <field name="VL_UNIT_FCP_ST_CONV_ENTRADA" pos="19" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C190">
+    <register name="C190" parent="C100" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -758,20 +758,20 @@
             <field name="COD_OBS" ref="0460" pos="12" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C191">
+    <register name="C191" parent="C190" parent_type="register">
         <fields>
             <field name="VL_FCP_OP" pos="01" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_FCP_ST" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_FCP_RET" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C195">
+    <register name="C195" parent="C100" parent_type="register">
         <fields>
             <field name="COD_OBS" ref="0460" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C197">
+    <register name="C197" parent="C195" parent_type="register">
         <fields>
             <field name="COD_AJ" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -782,7 +782,7 @@
             <field name="VL_OUTROS" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C300">
+    <register name="C300" parent="C001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="4" dec="" format="" description="" required="OC"/>
@@ -796,12 +796,12 @@
             <field name="COD_CTA" pos="11" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C310">
+    <register name="C310" parent="C300" parent_type="register">
         <fields>
             <field name="NUM_DOC_CANC" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C320">
+    <register name="C320" parent="C300" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -813,7 +813,7 @@
             <field name="COD_OBS" ref="0460" pos="09" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C321">
+    <register name="C321" parent="C320" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
@@ -826,7 +826,7 @@
             <field name="VL_COFINS" pos="10" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C330">
+    <register name="C330" parent="C321" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -843,7 +843,7 @@
             <field name="VL_UNIT_FCP_ST_CONV_COMPL" pos="14" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C350">
+    <register name="C350" parent="C001" parent_type="register">
         <fields>
             <field name="SER" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="SUB_SER" pos="03" type="string" size="3" dec="" format="" description="" required="OC"/>
@@ -858,7 +858,7 @@
             <field name="COD_CTA" pos="12" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C370">
+    <register name="C370" parent="C350" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -868,7 +868,7 @@
             <field name="VL_DESC" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C380">
+    <register name="C380" parent="C370" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -887,7 +887,7 @@
             <field name="CFOP" pos="16" type="number" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C390">
+    <register name="C390" parent="C350" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -896,10 +896,10 @@
             <field name="VL_BC_ICMS" pos="06" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_RED_BC" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
-            <field name="COD_OBS" REF="0460" pos="09" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="COD_OBS" ref="0460" pos="09" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C400">
+    <register name="C400" parent="C001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="ECF_MOD" pos="03" type="string" size="20" dec="" format="" description="" required="OC"/>
@@ -907,7 +907,7 @@
             <field name="ECF_CX" pos="05" type="number" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C405">
+    <register name="C405" parent="C400" parent_type="register">
         <fields>
             <field name="DT_DOC" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="CRO" pos="03" type="number" size="3" dec="" format="" description="" required="OC"/>
@@ -917,13 +917,13 @@
             <field name="VL_BRT" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C410">
+    <register name="C410" parent="C405" parent_type="register">
         <fields>
             <field name="VL_PIS" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_COFINS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C420">
+    <register name="C420" parent="C405" parent_type="register">
         <fields>
             <field name="COD_TOT_PAR" pos="02" type="string" size="7" dec="" format="" description="" required="OC"/>
             <field name="VLR_ACUM_TOT" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -931,7 +931,7 @@
             <field name="DESCR_NR_TOT" pos="05" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C425">
+    <register name="C425" parent="C420" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
@@ -941,7 +941,7 @@
             <field name="VL_COFINS" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C430">
+    <register name="C430" parent="C425" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -960,7 +960,7 @@
             <field name="CFOP" pos="16" type="number" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C460">
+    <register name="C460" parent="C405" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="COD_SIT" pos="03" type="number" size="2" dec="" format="" description="" required="OC"/>
@@ -973,13 +973,13 @@
             <field name="NOM_ADQ" pos="10" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C465">
+    <register name="C465" parent="C460" parent_type="register">
         <fields>
             <field name="CHV_CFE" pos="02" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
             <field name="NUM_CCF" pos="03" type="number" size="9" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C470">
+    <register name="C470" parent="C460" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0460" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
@@ -993,7 +993,7 @@
             <field name="VL_COFINS" pos="11" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C480">
+    <register name="C480" parent="C470" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_C" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
@@ -1012,7 +1012,7 @@
             <field name="CFOP" pos="16" type="number" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C490">
+    <register name="C490" parent="C405" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1023,7 +1023,7 @@
             <field name="COD_OBS" ref="0460" pos="08" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C495">
+    <register name="C495" parent="C001" parent_type="register">
         <fields>
             <field name="ALIQ_ICMS" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1041,7 +1041,7 @@
             <field name="VL_ICMS_ST" pos="15" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C500">
+    <register name="C500" parent="C001" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -1084,7 +1084,7 @@
             <field name="OUTRAS_DED" pos="40" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C510">
+    <register name="C510" parent="C500" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1108,7 +1108,7 @@
             <field name="COD_CTA" pos="21" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C590">
+    <register name="C590" parent="C500" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1122,19 +1122,19 @@
             <field name="COD_OBS" ref="0460" pos="11" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C591">
+    <register name="C591" parent="C590" parent_type="register">
         <fields>
             <field name="VL_FCP_OP" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_FCP_ST" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C595">
+    <register name="C595" parent="C500" parent_type="register">
         <fields>
             <field name="COD_OBS" ref="0460" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C597">
+    <register name="C597" parent="C595" parent_type="register">
         <fields>
             <field name="COD_AJ" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -1145,7 +1145,7 @@
             <field name="VL_OUTROS" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C600">
+    <register name="C600" parent="C001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="COD_MUN" pos="03" type="number" size="7" dec="" format="" description="" required="OC"/>
@@ -1170,12 +1170,12 @@
             <field name="VL_COFINS" pos="22" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C601">
+    <register name="C601" parent="C600" parent_type="register">
         <fields>
             <field name="NUM_DOC_CANC" pos="02" type="number" size="9" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C610">
+    <register name="C610" parent="C600" parent_type="register">
         <fields>
             <field name="COD_CLASS" pos="02" type="number" size="4" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1195,7 +1195,7 @@
             <field name="COD_CTA" pos="17" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C690">
+    <register name="C690" parent="C600" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1209,7 +1209,7 @@
             <field name="COD_OBS" ref="0460" pos="11" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C700">
+    <register name="C700" parent="C001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="4" dec="" format="" description="" required="OC"/>
@@ -1221,7 +1221,7 @@
             <field name="CHV_COD_DIG" pos="09" type="string" size="32" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C790">
+    <register name="C790" parent="C700" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1234,14 +1234,14 @@
             <field name="COD_OBS" ref="0460" pos="11" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C791">
+    <register name="C791" parent="C790" parent_type="register">
         <fields>
             <field name="UF" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="VL_BC_ICMS_ST" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS_ST" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C800">
+    <register name="C800" parent="C001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="COD_SIT" pos="03" type="number" size="2" dec="" format="" description="" required="OC"/>
@@ -1261,7 +1261,7 @@
             <field name="VL_COFINS_ST" pos="17" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C810">
+    <register name="C810" parent="C800" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1272,7 +1272,7 @@
             <field name="CFOP" pos="08" type="number" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C815">
+    <register name="C815" parent="C810" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -1289,7 +1289,7 @@
             <field name="VL_UNIT_FCP_ST_CONV_COMPL" pos="14" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C850">
+    <register name="C850" parent="C800" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1300,13 +1300,13 @@
             <field name="COD_OBS" ref="0460" pos="08" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C855">
+    <register name="C855" parent="C800" parent_type="register">
         <fields>
             <field name="COD_OBS" ref="0460" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C857">
+    <register name="C857" parent="C855" parent_type="register">
         <fields>
             <field name="COD_AJ" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -1317,7 +1317,7 @@
             <field name="VL_OUTROS" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C860">
+    <register name="C860" parent="C001" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="NR_SAT" pos="03" type="number" size="9" dec="" format="" description="" required="OC"/>
@@ -1326,7 +1326,7 @@
             <field name="DOC_FIM" pos="06" type="number" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C870">
+    <register name="C870" parent="C860" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="5" format="0.00000" description="" required="OC"/>
@@ -1335,7 +1335,7 @@
             <field name="CFOP" pos="06" type="number" size="4" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C880">
+    <register name="C880" parent="C870" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="QUANT_CONV" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -1352,7 +1352,7 @@
             <field name="VL_UNIT_FCP_ST_CONV_COMPL" pos="14" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C890">
+    <register name="C890" parent="C860" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1363,13 +1363,13 @@
             <field name="COD_OBS" ref="0460" pos="08" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C895">
+    <register name="C895" parent="C860" parent_type="register">
         <fields>
             <field name="COD_OBS" ref="0460" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C897">
+    <register name="C897" parent="C895" parent_type="register">
         <fields>
             <field name="COD_AJ" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -1380,17 +1380,17 @@
             <field name="VL_OUTROS" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="C990">
+    <register name="C990" parent="C" parent_type="block">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D001">
+    <register name="D001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D100">
+    <register name="D100" parent="0" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -1418,14 +1418,14 @@
             <field name="COD_MUN_DEST" pos="25" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D101">
+    <register name="D101" parent="0" parent_type="register">
         <fields>
             <field name="VL_FCP_UF_DEST" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS_UF_DES" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS_UF_REM" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D110">
+    <register name="D110" parent="0" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1433,7 +1433,7 @@
             <field name="VL_OUT" pos="05" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D120">
+    <register name="D120" parent="0" parent_type="register">
         <fields>
             <field name="COD_MUN_ORIG" pos="02" type="number" size="7" dec="" format="" description="" required="OC"/>
             <field name="COD_MUN_DEST" pos="03" type="number" size="7" dec="" format="" description="" required="OC"/>
@@ -1441,7 +1441,7 @@
             <field name="UF_ID" pos="05" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D130">
+    <register name="D130" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART_CONSG" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_PART_RED" ref="0150" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1458,7 +1458,7 @@
             <field name="UF_ID" pos="14" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D140">
+    <register name="D140" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART_CONSG" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MUN_ORIG" pos="03" type="number" size="7" dec="" format="" description="" required="OC"/>
@@ -1475,7 +1475,7 @@
             <field name="VL_FRT_MM" pos="14" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D150">
+    <register name="D150" parent="0" parent_type="register">
         <fields>
             <field name="COD_MUN_ORIG" pos="02" type="number" size="7" dec="" format="" description="" required="OC"/>
             <field name="COD_MUN_DEST" pos="03" type="number" size="7" dec="" format="" description="" required="OC"/>
@@ -1489,7 +1489,7 @@
             <field name="VL_TX_ADV" pos="11" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D160">
+    <register name="D160" parent="0" parent_type="register">
         <fields>
             <field name="DESPACHO" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="CNPJ_CPF_REM" pos="03" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"/>
@@ -1500,7 +1500,7 @@
             <field name="COD_MUN_DEST" pos="08" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D161">
+    <register name="D161" parent="0" parent_type="register">
         <fields>
             <field name="IND_CARGA" pos="02" type="number" size="1" dec="" format="" description="" required="OC"/>
             <field name="CNPJ_CPF_COL" pos="03" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"/>
@@ -1511,7 +1511,7 @@
             <field name="COD_MUN_ENTG" pos="08" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D162">
+    <register name="D162" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="4" dec="" format="" description="" required="OC"/>
@@ -1524,7 +1524,7 @@
             <field name="PESO_LIQ" pos="10" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D170">
+    <register name="D170" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART_CONSG" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_PART_RED" ref="0150" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1541,7 +1541,7 @@
             <field name="UF_ID" pos="14" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D180">
+    <register name="D180" parent="0" parent_type="register">
         <fields>
             <field name="NUM_SEQ" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -1561,7 +1561,7 @@
             <field name="VL_DOC" pos="17" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D190">
+    <register name="D190" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1573,13 +1573,13 @@
             <field name="COD_OBS" ref="0460" pos="09" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D195">
+    <register name="D195" parent="0" parent_type="register">
         <fields>
             <field name="COD_OBS" ref="0460" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D197">
+    <register name="D197" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -1590,7 +1590,7 @@
             <field name="VL_OUTROS" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D300">
+    <register name="D300" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="4" dec="" format="" description="" required="OC"/>
@@ -1613,12 +1613,12 @@
             <field name="COD_CTA" pos="20" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D301">
+    <register name="D301" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DOC_CANC" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D310">
+    <register name="D310" parent="0" parent_type="register">
         <fields>
             <field name="COD_MUN_ORIG" pos="02" type="number" size="7" dec="" format="" description="" required="OC"/>
             <field name="VL_SERV" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -1626,7 +1626,7 @@
             <field name="VL_ICMS" pos="05" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D350">
+    <register name="D350" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="ECF_MOD" pos="03" type="string" size="20" dec="" format="" description="" required="OC"/>
@@ -1634,7 +1634,7 @@
             <field name="ECF_CX" pos="05" type="number" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D355">
+    <register name="D355" parent="0" parent_type="register">
         <fields>
             <field name="DT_DOC" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="CRO" pos="03" type="number" size="3" dec="" format="" description="" required="OC"/>
@@ -1644,13 +1644,13 @@
             <field name="VL_BRT" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D360">
+    <register name="D360" parent="0" parent_type="register">
         <fields>
             <field name="VL_PIS" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_COFINS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D365">
+    <register name="D365" parent="0" parent_type="register">
         <fields>
             <field name="COD_TOT_PAR" pos="02" type="string" size="7" dec="" format="" description="" required="OC"/>
             <field name="VLR_ACUM_TOT" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -1658,7 +1658,7 @@
             <field name="DESCR_NR_TOT" pos="05" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D370">
+    <register name="D370" parent="0" parent_type="register">
         <fields>
             <field name="COD_MUN_ORIG" pos="02" type="number" size="7" dec="" format="" description="" required="OC"/>
             <field name="VL_SERV" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -1667,7 +1667,7 @@
             <field name="VL_ICMS" pos="06" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D390">
+    <register name="D390" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1681,7 +1681,7 @@
             <field name="COD_OBS" ref="0460" pos="11" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D400">
+    <register name="D400" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -1700,7 +1700,7 @@
             <field name="COD_CTA" pos="16" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D410">
+    <register name="D410" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="4" dec="" format="" description="" required="OC"/>
@@ -1718,12 +1718,12 @@
             <field name="VL_ICMS" pos="15" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D411">
+    <register name="D411" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DOC_CANC" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D420">
+    <register name="D420" parent="0" parent_type="register">
         <fields>
             <field name="COD_MUN_ORIG" pos="02" type="number" size="7" dec="" format="" description="" required="OC"/>
             <field name="VL_SERV" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -1731,7 +1731,7 @@
             <field name="VL_ICMS" pos="05" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D500">
+    <register name="D500" parent="0" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -1758,7 +1758,7 @@
             <field name="TP_ASSINANTE" pos="24" type="number" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D510">
+    <register name="D510" parent="0" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1781,7 +1781,7 @@
             <field name="COD_CTA" pos="20" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D530">
+    <register name="D530" parent="0" parent_type="register">
         <fields>
             <field name="IND_SERV" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="DT_INI_SERV" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -1791,7 +1791,7 @@
             <field name="TERMINAL" pos="07" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D590">
+    <register name="D590" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1805,7 +1805,7 @@
             <field name="COD_OBS" ref="0460" pos="11" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D600">
+    <register name="D600" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="COD_MUN" pos="03" type="number" size="7" dec="" format="" description="" required="OC"/>
@@ -1826,7 +1826,7 @@
             <field name="VL_COFINS" pos="18" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D610">
+    <register name="D610" parent="0" parent_type="register">
         <fields>
             <field name="COD_CLASS" pos="02" type="number" size="4" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -1847,7 +1847,7 @@
             <field name="COD_CTA" pos="18" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D690">
+    <register name="D690" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
@@ -1861,7 +1861,7 @@
             <field name="COD_OBS" pos="11" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D695">
+    <register name="D695" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1873,7 +1873,7 @@
             <field name="CHV_COD_DIG" pos="09" type="string" size="32" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D696">
+    <register name="D696" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1886,14 +1886,14 @@
             <field name="COD_OBS" ref="0460" pos="11" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D697">
+    <register name="D697" parent="0" parent_type="register">
         <fields>
             <field name="UF" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="VL_BC_ICMS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D700">
+    <register name="D700" parent="0" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -1927,7 +1927,7 @@
             <field name="COD_MUN_DEST" pos="31" type="number" size="7" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D730">
+    <register name="D730" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1939,18 +1939,18 @@
             <field name="COD_OBS" ref="0460" pos="09" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D731">
+    <register name="D731" parent="0" parent_type="register">
         <fields>
             <field name="VL_FCP_OP" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D735">
+    <register name="D735" parent="0" parent_type="register">
         <fields>
             <field name="COD_OBS" ref="0460" pos="02" type="string" size="6" dec="" format="" description="" required="OC"/>
             <field name="TXT_COMPL" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D737">
+    <register name="D737" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ" pos="02" type="string" size="10" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -1961,7 +1961,7 @@
             <field name="VL_OUTROS" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D750">
+    <register name="D750" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SER" pos="03" type="string" size="3" dec="" format="" description="" required="OC"/>
@@ -1980,7 +1980,7 @@
             <field name="VL_COFINS" pos="16" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D760">
+    <register name="D760" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="CFOP" pos="03" type="number" size="4" dec="" format="" description="" required="OC"/>
@@ -1992,28 +1992,28 @@
             <field name="COD_OBS" ref="0460" pos="09" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D761">
+    <register name="D761" parent="0" parent_type="register">
         <fields>
             <field name="VL_FCP_OP" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="D990">
+    <register name="D990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E001">
+    <register name="E001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E100">
+    <register name="E100" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E110">
+    <register name="E110" parent="0" parent_type="register">
         <fields>
             <field name="VL_TOT_DEBITOS" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_AJ_DEBITOS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2031,14 +2031,14 @@
             <field name="DEB_ESP" pos="15" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E111">
+    <register name="E111" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ_APUR" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="VL_AJ_APUR" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E112">
+    <register name="E112" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DA" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="NUM_PROC" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2047,7 +2047,7 @@
             <field name="TXT_COMPL" pos="06" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E113">
+    <register name="E113" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2060,14 +2060,14 @@
             <field name="CHV_DOCe" pos="10" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E115">
+    <register name="E115" parent="0" parent_type="register">
         <fields>
             <field name="COD_INF_ADIC" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="VL_INF_ADIC" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E116">
+    <register name="E116" parent="0" parent_type="register">
         <fields>
             <field name="COD_OR" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="VL_OR" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2080,14 +2080,14 @@
             <field name="MES_REF" pos="10" type="number" size="6" dec="" format="000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E200">
+    <register name="E200" parent="0" parent_type="register">
         <fields>
             <field name="UF" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="DT_INI" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E210">
+    <register name="E210" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV_ST" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="VL_SLD_CRED_ANT_ST" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2105,14 +2105,14 @@
             <field name="DEB_ESP_ST" pos="15" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E220">
+    <register name="E220" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ_APUR" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="VL_AJ_APUR" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E230">
+    <register name="E230" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DA" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="NUM_PROC" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2121,7 +2121,7 @@
             <field name="TXT_COMPL" pos="06" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E240">
+    <register name="E240" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2134,7 +2134,7 @@
             <field name="CHV_DOCe" pos="10" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E250">
+    <register name="E250" parent="0" parent_type="register">
         <fields>
             <field name="COD_OR" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="VL_OR" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2147,14 +2147,14 @@
             <field name="MES_REF" pos="10" type="number" size="6" dec="" format="000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E300">
+    <register name="E300" parent="0" parent_type="register">
         <fields>
             <field name="UF" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="DT_INI" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E310">
+    <register name="E310" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV_DIFAL" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="VL_SLD_CRED_ANT_DIFAL" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2171,7 +2171,7 @@
             <field name="DEB_ESP_DIFAL" pos="14" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E310">
+    <register name="E310" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV_FCP_DIFAL" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="VL_SLD_CRED_ANT_DIFAL" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2196,14 +2196,14 @@
             <field name="DEB_ESP_FCP" pos="22" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E311">
+    <register name="E311" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ_APUR" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="VL_AJ_APUR" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E312">
+    <register name="E312" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DA" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="NUM_PROC" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2212,7 +2212,7 @@
             <field name="TXT_COMPL" pos="06" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E313">
+    <register name="E313" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2225,7 +2225,7 @@
             <field name="VL_AJ_ITEM" pos="10" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E316">
+    <register name="E316" parent="0" parent_type="register">
         <fields>
             <field name="COD_OR" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="VL_OR" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2238,14 +2238,14 @@
             <field name="MES_REF" pos="10" type="number" size="6" dec="" format="000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E500">
+    <register name="E500" parent="0" parent_type="register">
         <fields>
             <field name="IND_APUR" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="DT_INI" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E510">
+    <register name="E510" parent="0" parent_type="register">
         <fields>
             <field name="CFOP" pos="02" type="number" size="4" dec="" format="" description="" required="OC"/>
             <field name="CST_IPI" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2254,7 +2254,7 @@
             <field name="VL_IPI" pos="06" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E520">
+    <register name="E520" parent="0" parent_type="register">
         <fields>
             <field name="VL_SD_ANT_IPI" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_DEB_IPI" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2265,7 +2265,7 @@
             <field name="VL_SD_IPI" pos="08" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E530">
+    <register name="E530" parent="0" parent_type="register">
         <fields>
             <field name="IND_AJ" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="VL_AJ" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2275,7 +2275,7 @@
             <field name="DESCR_AJ" pos="07" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E531">
+    <register name="E531" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2288,17 +2288,17 @@
             <field name="CHV_NFE" pos="10" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="E990">
+    <register name="E990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G001">
+    <register name="G001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G110">
+    <register name="G110" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2311,7 +2311,7 @@
             <field name="SOM_ICMS_OC" pos="10" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G125">
+    <register name="G125" parent="0" parent_type="register">
         <fields>
             <field name="COD_IND_BEM" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="DT_MOV" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2324,7 +2324,7 @@
             <field name="VL_PARC_PASS" pos="10" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G126">
+    <register name="G126" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIM" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2336,7 +2336,7 @@
             <field name="VL_PARC_APROP" pos="09" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G130">
+    <register name="G130" parent="0" parent_type="register">
         <fields>
             <field name="IND_EMIT" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="COD_PART" ref="0150" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2348,7 +2348,7 @@
             <field name="NUM_DA" pos="09" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G140">
+    <register name="G140" parent="0" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2360,24 +2360,24 @@
             <field name="VL_ICMS_DIF_APLICADO" pos="09" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="G990">
+    <register name="G990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="H001">
+    <register name="H001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="H005">
+    <register name="H005" parent="0" parent_type="register">
         <fields>
             <field name="DT_INV" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="VL_INV" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="MOT_INV" pos="04" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="H010">
+    <register name="H010" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="UNID" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
@@ -2391,14 +2391,14 @@
             <field name="VL_ITEM_IR" pos="11" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="H020">
+    <register name="H020" parent="0" parent_type="register">
         <fields>
             <field name="CST_ICMS" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="BC_ICMS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="H030">
+    <register name="H030" parent="0" parent_type="register">
         <fields>
             <field name="VL_ICMS_OP" pos="02" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
             <field name="VL_BC_ICMS_ST" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -2406,28 +2406,28 @@
             <field name="VL_FCP" pos="05" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="H990">
+    <register name="H990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K001">
+    <register name="K001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K010">
+    <register name="K010" parent="0" parent_type="register">
         <fields>
             <field name="IND_TP_LEIAUTE" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K100">
+    <register name="K100" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K200">
+    <register name="K200" parent="0" parent_type="register">
         <fields>
             <field name="DT_EST" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2436,7 +2436,7 @@
             <field name="COD_PART" ref="0150" pos="06" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K210">
+    <register name="K210" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI_OS" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN_OS" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2445,13 +2445,13 @@
             <field name="QTD_ORI" pos="06" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K215">
+    <register name="K215" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM_DES" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD_DES" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K220">
+    <register name="K220" parent="0" parent_type="register">
         <fields>
             <field name="DT_MOV" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_ITEM_ORI" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2460,7 +2460,7 @@
             <field name="QTD_DEST" pos="06" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K230">
+    <register name="K230" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI_OP" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN_OP" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2469,7 +2469,7 @@
             <field name="QTD_ENC" pos="06" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K235">
+    <register name="K235" parent="0" parent_type="register">
         <fields>
             <field name="DT_SAIDA" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2477,14 +2477,14 @@
             <field name="COD_INS_SUBS" ref="0210" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K250">
+    <register name="K250" parent="0" parent_type="register">
         <fields>
             <field name="DT_PROD" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="04" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K255">
+    <register name="K255" parent="0" parent_type="register">
         <fields>
             <field name="DT_CONS" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2492,7 +2492,7 @@
             <field name="COD_INS_SUBS" ref="0210" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K260">
+    <register name="K260" parent="0" parent_type="register">
         <fields>
             <field name="COD_OP_OS" pos="02" type="string" size="30" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2502,14 +2502,14 @@
             <field name="QTD_RET" pos="07" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K265">
+    <register name="K265" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="0" dec="" format="" description="" required="OC"/>
             <field name="QTD_CONS" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
             <field name="QTD_RET" pos="04" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K270">
+    <register name="K270" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI_AP" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN_AP" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2520,7 +2520,7 @@
             <field name="ORIGEM" pos="08" type="string" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K275">
+    <register name="K275" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD_COR_POS" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -2528,7 +2528,7 @@
             <field name="COD_INS_SUBST" pos="05" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K280">
+    <register name="K280" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD_COR_POS" pos="04" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
@@ -2537,53 +2537,53 @@
             <field name="COD_PART" ref="0150" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K290">
+    <register name="K290" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI_OP" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN_OP" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="COD_DOC_OP" pos="04" type="string" size="30" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K291">
+    <register name="K291" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K292">
+    <register name="K292" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K300">
+    <register name="K300" parent="0" parent_type="register">
         <fields>
             <field name="DT_PROD" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K301">
+    <register name="K301" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K302">
+    <register name="K302" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="03" type="number" size="" dec="6" format="0.000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="K990">
+    <register name="K990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1001">
+    <register name="1001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1010">
+    <register name="1010" parent="0" parent_type="register">
         <fields>
             <field name="IND_EXP" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_CCRF" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -2600,7 +2600,7 @@
             <field name="IND_REST_RESSARC_COMPL_ICMS" pos="14" type="string" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1100">
+    <register name="1100" parent="0" parent_type="register">
         <fields>
             <field name="IND_DOC" pos="02" type="number" size="1" dec="" format="" description="" required="OC"/>
             <field name="NRO_DE" pos="03" type="string" size="14" dec="" format="" description="" required="OC"/>
@@ -2615,7 +2615,7 @@
             <field name="PAIS" pos="12" type="number" size="3" dec="" format="000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1105">
+    <register name="1105" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOD" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="SERIE" pos="03" type="string" size="3" dec="" format="" description="" required="OC"/>
@@ -2625,7 +2625,7 @@
             <field name="COD_ITEM" ref="0200" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1110">
+    <register name="1110" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2635,10 +2635,10 @@
             <field name="CHV_NFE" pos="07" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
             <field name="NR_MEMO" pos="08" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="QTD" pos="09" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
-            <field name="UNID" REF="0190" pos="10" type="string" size="6" dec="" format="" description="" required="OC"/>
+            <field name="UNID" ref="0190" pos="10" type="string" size="6" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1200">
+    <register name="1200" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ_APUR" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="SLD_CRED" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2648,7 +2648,7 @@
             <field name="SLD_CRED_FIM" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1210">
+    <register name="1210" parent="0" parent_type="register">
         <fields>
             <field name="TIPO_UTIL" pos="02" type="string" size="4" dec="" format="" description="" required="OC"/>
             <field name="NR_DOC" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
@@ -2656,7 +2656,7 @@
             <field name="CHV_DOCe" pos="05" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1250">
+    <register name="1250" parent="0" parent_type="register">
         <fields>
             <field name="VL_CREDITO_ICMS_OP" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_ICMS_ST_REST" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2665,7 +2665,7 @@
             <field name="VL_FCP_ST_COMPL" pos="06" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1255">
+    <register name="1255" parent="0" parent_type="register">
         <fields>
             <field name="COD_MOT_REST_COMPL" pos="02" type="string" size="5" dec="" format="" description="" required="OC"/>
             <field name="VL_CREDITO_ICMS_OP_MOT" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2675,7 +2675,7 @@
             <field name="VL_FCP_ST_COMPL_MOT" pos="07" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1300">
+    <register name="1300" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM" ref="0200" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="DT_FECH" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
@@ -2689,7 +2689,7 @@
             <field name="FECH_FISICO" pos="11" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1310">
+    <register name="1310" parent="0" parent_type="register">
         <fields>
             <field name="NUM_TANQUE" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="ESTQ_ABERT" pos="03" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
@@ -2702,7 +2702,7 @@
             <field name="FECH_FISICO" pos="10" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1320">
+    <register name="1320" parent="0" parent_type="register">
         <fields>
             <field name="NUM_BICO" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
             <field name="NR_INTERV" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
@@ -2716,7 +2716,7 @@
             <field name="VOL_VENDAS" pos="11" type="number" size="" dec="3" format="0.000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1350">
+    <register name="1350" parent="0" parent_type="register">
         <fields>
             <field name="SERIE" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="FABRICANTE" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2724,25 +2724,25 @@
             <field name="TIPO_MEDICAO" pos="05" type="string" size="1" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1360">
+    <register name="1360" parent="0" parent_type="register">
         <fields>
             <field name="NUM_LACRE" pos="02" type="string" size="20" dec="" format="" description="" required="OC"/>
             <field name="DT_APLICACAO" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1370">
+    <register name="1370" parent="0" parent_type="register">
         <fields>
             <field name="NUM_BICO" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="NUM_TANQUE" pos="04" type="string" size="3" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1390">
+    <register name="1390" parent="0" parent_type="register">
         <fields>
             <field name="COD_PROD" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1391">
+    <register name="1391" parent="0" parent_type="register">
         <fields>
             <field name="DT_REGISTRO" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="QTD_MOID" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2765,14 +2765,14 @@
             <field name="QTD_RESIDUO" pos="20" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1400">
+    <register name="1400" parent="0" parent_type="register">
         <fields>
             <field name="COD_ITEM_IPM" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="MUN" pos="03" type="number" size="7" dec="" format="" description="" required="OC"/>
             <field name="VALOR" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1500">
+    <register name="1500" parent="0" parent_type="register">
         <fields>
             <field name="IND_OPER" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="IND_EMIT" pos="03" type="string" size="1" dec="" format="" description="" required="OC"/>
@@ -2802,7 +2802,7 @@
             <field name="COD_GRUPO_TENSAO" pos="27" type="string" size="2" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1510">
+    <register name="1510" parent="0" parent_type="register">
         <fields>
             <field name="NUM_ITEM" pos="02" type="number" size="3" dec="" format="" description="" required="OC"/>
             <field name="COD_ITEM" ref="0200" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2826,14 +2826,14 @@
             <field name="COD_CTA" pos="21" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1600">
+    <register name="1600" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="TOT_CREDITO" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="TOT_DEBITO" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1601">
+    <register name="1601" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART_IP" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_PART_IT" ref="0150" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2842,7 +2842,7 @@
             <field name="TOT_OUTROS" pos="06" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1700">
+    <register name="1700" parent="0" parent_type="register">
         <fields>
             <field name="COD_DISP" pos="02" type="string" size="2" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2853,13 +2853,13 @@
             <field name="NUM_AUT" pos="08" type="string" size="60" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1710">
+    <register name="1710" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DOC_INI" pos="02" type="string" size="12" dec="" format="onlynumbers" description="" required="OC"/>
             <field name="NUM_DOC_FIN" pos="03" type="string" size="12" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1800">
+    <register name="1800" parent="0" parent_type="register">
         <fields>
             <field name="VL_CARGA" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_PASS" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2872,19 +2872,19 @@
             <field name="VL_DIF" pos="10" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1900">
+    <register name="1900" parent="0" parent_type="register">
         <fields>
             <field name="IND_APUR_ICMS" pos="02" type="string" size="1" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_OUT_APUR" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1910">
+    <register name="1910" parent="0" parent_type="register">
         <fields>
             <field name="DT_INI" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
             <field name="DT_FIN" pos="03" type="date" size="" dec="" format="ddMMyyyy" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1920">
+    <register name="1920" parent="0" parent_type="register">
         <fields>
             <field name="VL_TOT_TRANSF_DEBITOS_OA" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="VL_TOT_AJ_DEBITOS_OA" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2900,14 +2900,14 @@
             <field name="DEB_ESP_OA" pos="13" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1921">
+    <register name="1921" parent="0" parent_type="register">
         <fields>
             <field name="COD_AJ_APUR" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="VL_AJ_APUR" pos="04" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1922">
+    <register name="1922" parent="0" parent_type="register">
         <fields>
             <field name="NUM_DA" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
             <field name="NUM_PROC" pos="03" type="string" size="60" dec="" format="" description="" required="OC"/>
@@ -2916,7 +2916,7 @@
             <field name="TXT_COMPL" pos="06" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1923">
+    <register name="1923" parent="0" parent_type="register">
         <fields>
             <field name="COD_PART" ref="0150" pos="02" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="COD_MOD" pos="03" type="string" size="2" dec="" format="" description="" required="OC"/>
@@ -2929,14 +2929,14 @@
             <field name="CHV_DOCe" pos="10" type="string" size="44" dec="" format="onlynumbers" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1925">
+    <register name="1925" parent="0" parent_type="register">
         <fields>
             <field name="COD_INF_ADIC" pos="02" type="string" size="8" dec="" format="" description="" required="OC"/>
             <field name="VL_INF_ADIC" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="DESCR_COMPL_AJ" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1926">
+    <register name="1926" parent="0" parent_type="register">
         <fields>
             <field name="COD_OR" pos="02" type="string" size="3" dec="" format="" description="" required="OC"/>
             <field name="VL_OR" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2949,7 +2949,7 @@
             <field name="MES_REF" pos="10" type="number" size="6" dec="" format="000000" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1960">
+    <register name="1960" parent="0" parent_type="register">
         <fields>
             <field name="IND_AP" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
             <field name="G1_01" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2965,7 +2965,7 @@
             <field name="G1_11" pos="13" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1970">
+    <register name="1970" parent="0" parent_type="register">
         <fields>
             <field name="IND_AP" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
             <field name="G3_01" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2980,7 +2980,7 @@
             <field name="G3_09" pos="12" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1975">
+    <register name="1975" parent="0" parent_type="register">
         <fields>
             <field name="ALIQ_IMP_BASE" pos="02" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
             <field name="G3_10" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -2988,7 +2988,7 @@
             <field name="G3_12" pos="05" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1980">
+    <register name="1980" parent="0" parent_type="register">
         <fields>
             <field name="IND_AP" pos="02" type="number" size="2" dec="" format="" description="" required="OC"/>
             <field name="G4_01" pos="03" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
@@ -3005,28 +3005,28 @@
             <field name="G4_12" pos="14" type="number" size="" dec="2" format="0.00" description="" required="OC"/>
         </fields>
     </register>
-    <register name="1990">
+    <register name="1990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="9001">
+    <register name="9001" parent="0" parent_type="register">
         <fields>
             <field name="IND_MOV" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="9900">
+    <register name="9900" parent="0" parent_type="register">
         <fields>
             <field name="REG_BLC" pos="02" type="string" size="4" dec="" format="" description="" required="OC"/>
             <field name="QTD_REG_BLC" pos="03" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="9990">
+    <register name="9990" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>
     </register>
-    <register name="9999">
+    <register name="9999" parent="0" parent_type="register">
         <fields>
             <field name="QTD_LIN" pos="02" type="number" size="" dec="" format="" description="" required="OC"/>
         </fields>

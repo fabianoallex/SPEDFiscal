@@ -89,15 +89,20 @@ public class Register implements Unit {
         return name;
     }
 
-    public Field<?> getField(String fieldName){
-        return getFields().getField(fieldName);
+    //public Field<?> getField(String fieldName){
+    //    return getFields().getField(fieldName);
+    //}
+
+    public <T extends Field> T getField(String fieldName){
+        return (T)getFields().getField(fieldName);
     }
 
+    /*
     public StringField getStringField(String fieldName){
         return getFields().getStringField(fieldName);
     }
 
-    public IntegerField getIntegerField(String fieldName){
+    public Field<Integer> getIntegerField(String fieldName){
         return getFields().getIntegerField(fieldName);
     }
 
@@ -109,38 +114,41 @@ public class Register implements Unit {
         return getFields().getDateField(fieldName);
     }
 
+     */
+
     public void setFieldValue(String name, String value) throws FieldNotFoundException {
-        StringField stringField = this.getStringField(name);
+        //StringField stringField = this.getStringField(name);
+        Field<String> stringField = this.getField(name);
 
         if (stringField == null)
-            throw new FieldNotFoundException(StringField.class.getSimpleName(), name, this.getName());
+            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + String.class.getSimpleName() + ">", name, this.getName());
 
         stringField.setValue(value);
     }
 
     public void setFieldValue(String name, Double value) throws FieldNotFoundException {
-        DoubleField doubleField = this.getDoubleField(name);
+        Field<Double> doubleField = this.getField(name);
 
         if (doubleField == null)
-            throw new FieldNotFoundException(DoubleField.class.getSimpleName(), name, this.getName());
+            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + Double.class.getSimpleName() + ">", name, this.getName());
 
         doubleField.setValue(value);
     }
 
     public void setFieldValue(String name, int value) throws FieldNotFoundException {
-        IntegerField integerField = this.getIntegerField(name);
+        Field<Integer> integerField = this.getField(name);
 
         if (integerField == null)
-            throw new FieldNotFoundException(IntegerField.class.getSimpleName(), name, this.getName());
+            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + Integer.class.getSimpleName() + ">", name, this.getName());
 
         integerField.setValue(value);
     }
 
     public void setFieldValue(String name, Date date) throws FieldNotFoundException {
-        DateField dateField = this.getDateField(name);
+        Field<Date> dateField = this.getField(name);
 
         if (dateField == null)
-            throw new FieldNotFoundException(DateField.class.getSimpleName(), name, this.getName());
+            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + Date.class.getSimpleName() + ">", name, this.getName());
 
         dateField.setValue(date);
     }
@@ -157,13 +165,13 @@ public class Register implements Unit {
             String ref = fieldDefinitions.ref;
 
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING))
-                fields.addField(new StringField(fieldName));
+                fields.addField(new Field<String>(fieldName));
 
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE))
-                fields.addField(new DateField(fieldName));
+                fields.addField(new Field<Date>(fieldName));
 
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER))
-                fields.addField(dec.isEmpty() ? new IntegerField(fieldName) : new DoubleField(fieldName));
+                fields.addField(dec.isEmpty() ? new Field<Integer>(fieldName) : new Field<Double>(fieldName));
         }
 
         return fields;

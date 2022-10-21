@@ -111,14 +111,14 @@ class Register0000 extends Register{
 class Register9999 extends Register {
     public static final String REGISTER_NAME = "9999";
     public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
-    private final IntegerField fieldRegisterCount;
+    private final Field<Integer> fieldRegisterCount;
 
     Register9999(SPEDConfig config) {
         super(REGISTER_NAME, config);
-        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT_NAME);
+        fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT_NAME);
     }
 
-    public IntegerField getFieldRegisterCount() {
+    public Field<Integer> getFieldRegisterCount() {
         return fieldRegisterCount;
     }
 }
@@ -127,20 +127,21 @@ class Register9900 extends Register {
     public static final String REGISTER_NAME = "9900";
     public static final String FIELD_REGISTER_NAME = "REG_BLC";
     public static final String FIELD_REGISTER_COUNT = "QTD_REG_BLC";
-    private final StringField fieldRegisterName;
-    private final IntegerField fieldRegisterCount;
+    private final Field<String> fieldRegisterName;
+    private final Field<Integer> fieldRegisterCount;
 
     Register9900(SPEDConfig config) {
         super(REGISTER_NAME, config);
-        fieldRegisterName = this.getStringField(FIELD_REGISTER_NAME);
-        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
+        //fieldRegisterName = this.getStringField(FIELD_REGISTER_NAME);
+        fieldRegisterName = this.getField(FIELD_REGISTER_NAME);
+        fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
     }
 
-    public StringField getFieldRegisterName() {
+    public Field<String> getFieldRegisterName() {
         return fieldRegisterName;
     }
 
-    public IntegerField getFieldRegisterCount() {
+    public Field<Integer> getFieldRegisterCount() {
         return fieldRegisterCount;
     }
 }

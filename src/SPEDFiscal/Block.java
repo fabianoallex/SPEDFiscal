@@ -34,6 +34,7 @@ public class Block implements Unit {
     public Register addRegister(String name){
         Register register = new Register(name, this.config);
         this.registers.add(register);
+        register.getFields().getField("teste");
         return register;
     }
 
@@ -86,11 +87,11 @@ class OpeningRegister extends Register {
     public static final String FIELD_REGISTER_THERE_IS_MOV = "IND_MOV";
     public static final int FIELD_REGISTER_IS_THERE_MOV_YES = 0;
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
-    private final IntegerField fieldRegisterIsThereMov;
+    private final Field<Integer> fieldRegisterIsThereMov;
 
     OpeningRegister(String name, SPEDConfig config) {
         super(name, config);
-        fieldRegisterIsThereMov = this.getIntegerField(FIELD_REGISTER_THERE_IS_MOV);
+        fieldRegisterIsThereMov = this.getField(FIELD_REGISTER_THERE_IS_MOV);
     }
 
     public void setThereIsMov(boolean thereIs) {
@@ -100,14 +101,14 @@ class OpeningRegister extends Register {
 
 class ClosureRegister extends Register {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
-    private final IntegerField fieldRegisterCount;
+    private final Field<Integer> fieldRegisterCount;
 
     ClosureRegister(String name, SPEDConfig config) {
         super(name, config);
-        fieldRegisterCount = this.getIntegerField(FIELD_REGISTER_COUNT);
+        fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
     }
 
-    public IntegerField getFieldRegisterCount() {
+    public Field<Integer> getFieldRegisterCount() {
         return fieldRegisterCount;
     }
 }

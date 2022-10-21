@@ -13,7 +13,7 @@ public class Main {
             SPEDGenerator spedGenerator = new SPEDGenerator(config);
             Register r = spedGenerator.getOpeningRegister();  //0000
 
-            r.setFieldValue("COD_VER", 1);
+            r.setFieldValue("COD_VER", 9.99);
             r.setFieldValue("COD_FIN", 0);
             r.setFieldValue("DT_INI", new Date());
             r.setFieldValue("DT_FIN", new Date());
