@@ -86,6 +86,7 @@ public class Register implements Unit {
     @Override
     public String toString() {
         StringBuilder stringBuilderFields = new StringBuilder();
+        FieldFormatter fieldFormatter = new FieldFormatter();
 
         for (Map.Entry<String, Field<?>> e : fields.entrySet()) {
             Field<?> field = e.getValue();
@@ -94,7 +95,6 @@ public class Register implements Unit {
                 String fieldFormatName = this.getName() + "." + field.getName();
                 FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(fieldFormatName);
 
-                FieldFormatter fieldFormatter = new FieldFormatter();
                 stringBuilderFields.append(fieldFormatter.formatField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
             } catch (FieldNotFoundException ex) {
                 throw new RuntimeException(ex);
