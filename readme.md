@@ -12,6 +12,7 @@ definitions
                      tipo do registro pai
                      *** para uso futuro. não tratado no momento ***
         parent:      nome do registro pai
+                      *** para uso futuro. não tratado no momento ***
         key          quando informado indica se o registro é referenciado em outros registros do arquivo.
                      nome do field que será utilizado como ID ao ser referenciado por outros registros.
         

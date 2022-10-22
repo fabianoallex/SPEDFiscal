@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoracao. ajustes">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
@@ -335,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666466501367</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="readme">
+      <created>1666467428192</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1666467428192</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -385,7 +392,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refatorações rápidas 03" />
     <MESSAGE value="refatorações rápidas" />
     <MESSAGE value="substituido FileWriter por nova Interface Writer" />
     <MESSAGE value="exemplos de implementacao de Writer" />
@@ -410,6 +416,7 @@
     <MESSAGE value="Refatoracao. Renomeação de metodos" />
     <MESSAGE value="Refatoracao. alteração no metodo toString de Register para instanciar uma vez apenas o objeto fieldFormatter" />
     <MESSAGE value="Refatoracao. ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoracao. ajustes" />
+    <MESSAGE value="readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme" />
   </component>
 </project>
