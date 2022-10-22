@@ -1,9 +1,10 @@
 
 # Gerador de arquivos do SPED
-Classes para geração arquivos dentro da estrutura exigida para a ECD, EFD e ECF.
+Classes para geração de arquivos dentro da estrutura da ECF, ECD e EFD.
 
+A definição dos registros, nomes de campos, tipos de dados, formato, etc, devem ser feita previamente no arquivo definitions.xml.
 
-
+Com isso é possível ter diferentes arquivos xml, de acordo com o tipo de escrituração e versão.
 
 # Estrutura do xml
 
