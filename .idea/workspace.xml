@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração Classe Field e Fields.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +274,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666147998383</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Refatoração Classe Field e Fields. Remoção das subclasses de Field">
+      <created>1666322650866</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1666322650866</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Refatoração Classe Field e Fields.">
+      <created>1666403308331</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1666403308331</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -348,7 +359,9 @@
     <MESSAGE value="Reference implementation" />
     <MESSAGE value="refatoração FieldFormat" />
     <MESSAGE value="ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes" />
+    <MESSAGE value="Refatoração Classe Field e Fields. Remoção das subclasses de Field" />
+    <MESSAGE value="Refatoração Classe Field e Fields." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoração Classe Field e Fields." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
