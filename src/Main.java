@@ -33,15 +33,31 @@ public class Main {
             r.setFieldValue("COMPL", "teste COMPL");
             r.setFieldValue("BAIRRO", "  teste BAIRRO");
 
-            r = b0.addRegister("0200");
-            r.setFieldValue("COD_ITEM", "1000");
-            r.setFieldValue("DESCR_ITEM", "ABACATE");
 
-            System.out.println("0200 ID: " + r.getID()); //COD_ITEM
+            Register r0190 = b0.addRegister("0190");
+            r0190.setFieldValue("UNID", "M");
+            r0190.setFieldValue("DESCR", "METRO");
+
+            r0190 = b0.addRegister("0190");
+            r0190.setFieldValue("UNID", "M2");
+            r0190.setFieldValue("DESCR", "METRO QUADRADO");
+
+            r0190 = b0.addRegister("0190");
+            r0190.setFieldValue("UNID", "KG123456789");
+            r0190.setFieldValue("DESCR", "QUILO");
+
+            Register r0200 = b0.addRegister("0200");
+            r0200.setFieldValue("COD_ITEM", "1000");
+            r0200.setFieldValue("DESCR_ITEM", "ABACATE");
+            r0200.setFieldValue("UNID_INV", r0190);
+
+
+
+            System.out.println("0200 ID: " + r0200.getID()); //COD_ITEM
 
             r = b0.addRegister("0205");
             //r.setFieldValue("teste", "ABACATE");            //throws FieldNotFoundException - nao existe campo teste NO REGISTRO 0200
-            r.setFieldValue("DESCR_ANT_ITEM", "ABACATE");
+            r.setFieldValue("DESCR_ANT_ITEM", "ABACATE ANTIGO");
 
 
 

@@ -2,6 +2,7 @@ package SPEDFiscal;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 class FieldNotFoundException extends Exception {
     public FieldNotFoundException(String fieldClassName, String fieldName, String registerName) {
@@ -28,8 +29,15 @@ public class Register implements Unit {
         this.referenceKey = registerDefinitions.key;
     }
 
-    public String getID(){
-        return (this.referenceKey == null) ? null : this.getField(this.referenceKey).getValue().toString();
+    public <T> T getID() throws FieldNotFoundException {
+        if (this.referenceKey == null) return null;
+
+        Field<?> field = this.getField(this.referenceKey);
+
+        if (field == null)
+            throw new FieldNotFoundException(Field.class.getSimpleName(), this.referenceKey, this.getName());
+
+        return (T) this.getField(this.referenceKey).getValue();
     }
 
     public boolean isReference() {
@@ -77,11 +85,27 @@ public class Register implements Unit {
 
     @Override
     public String toString() {
+        StringBuilder stringBuilderFields = new StringBuilder();
+
+        for (Map.Entry<String, Field<?>> e : fields.entrySet()) {
+            Field<?> field = e.getValue();
+
+            try {
+                String fieldFormatName = this.getName() + "." + field.getName();
+                FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(fieldFormatName);
+
+                FieldFormatter fieldFormatter = new FieldFormatter();
+                stringBuilderFields.append(fieldFormatter.getFormattedField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
+            } catch (FieldNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+
         return "%s%s%s%s".formatted(
                 FieldDefinitions.FIELD_SEPARATOR,
                 this.getName(),
                 FieldDefinitions.FIELD_SEPARATOR,
-                fields.toString()
+                stringBuilderFields.toString()
         );
     }
 
