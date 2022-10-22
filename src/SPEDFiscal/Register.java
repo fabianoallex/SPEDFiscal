@@ -56,10 +56,7 @@ public class Register implements Unit {
     @Override
     public int count() {
         int c = 1; //itself
-
-        for (Unit unit : registers)
-            c += unit.count();
-
+        for (Unit unit : registers) c += unit.count();
         return c;
     }
 
