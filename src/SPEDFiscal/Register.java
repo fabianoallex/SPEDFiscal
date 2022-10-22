@@ -14,7 +14,6 @@ public class Register implements Unit {
     private final String name;
     private final ArrayList<Register> registers;
     private final Fields fields;
-    private final boolean isReference;
     private final String referenceKey;
     SPEDConfig config;
 
@@ -22,10 +21,9 @@ public class Register implements Unit {
         this.name = name;
         this.config = config;
         registers = new ArrayList<>();
-        this.fields = this.createFields();
+        this.fields = new FieldsCreator().create(this.name, this.config.getDefinitionsXmlPath());;
 
         RegisterDefinitions registerDefinitions = DefinitionsLoader.getRegisterDefinitions(name, config.definitionsXmlPath);
-        this.isReference = !(registerDefinitions.key == null || registerDefinitions.key.isEmpty());
         this.referenceKey = registerDefinitions.key;
     }
 
@@ -34,14 +32,9 @@ public class Register implements Unit {
 
         Field<?> field = this.getField(this.referenceKey);
 
-        if (field == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName(), this.referenceKey, this.getName());
+        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), this.referenceKey, this.getName());
 
-        return (T) this.getField(this.referenceKey).getValue();
-    }
-
-    public boolean isReference() {
-        return isReference;
+        return (T) field.getValue();
     }
 
     public Fields getFields() {
@@ -78,9 +71,7 @@ public class Register implements Unit {
     @Override
     public void write(Writer writer) {
         writer.write(this.toString());
-
-        for (Register register : registers)
-            register.write(writer);
+        for (Register register : registers) register.write(writer);
     }
 
     @Override
@@ -94,8 +85,12 @@ public class Register implements Unit {
             try {
                 String fieldFormatName = this.getName() + "." + field.getName();
                 FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(fieldFormatName);
+                String formattedField = fieldFormatter.formatField(field, fieldFormat);
 
-                stringBuilderFields.append(fieldFormatter.formatField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
+                stringBuilderFields
+                        .append(formattedField)
+                        .append(FieldDefinitions.FIELD_SEPARATOR)
+                ;
             } catch (FieldNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -120,8 +115,7 @@ public class Register implements Unit {
     public <T> void setFieldValue(String fieldName, T value) throws FieldNotFoundException {
         Field<T> field = this.getField(fieldName);
 
-        if (field == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
+        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
 
         field.setValue(value);
     }
@@ -129,16 +123,17 @@ public class Register implements Unit {
     public <T> T getFieldValue(String fieldName) throws FieldNotFoundException {
         Field<T> field = this.getField(fieldName);
 
-        if (field == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
+        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
 
         return field.getValue();
     }
+}
 
-    public Fields createFields() {
-        Fields fields = new Fields(this.name);
+class FieldsCreator {
+    Fields create(String registerName, String definitionsXmlPath){
+        Fields fields = new Fields();
 
-        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(this.name, this.config.getDefinitionsXmlPath())) {
+        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlPath)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
@@ -153,7 +148,9 @@ public class Register implements Unit {
                 fields.addField(new Field<Date>(fieldName));
 
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER))
-                fields.addField(dec.isEmpty() ? new Field<Integer>(fieldName) : new Field<Double>(fieldName));
+                fields.addField(dec.isEmpty() ?
+                        new Field<Integer>(fieldName) :
+                        new Field<Double>(fieldName));
         }
 
         return fields;

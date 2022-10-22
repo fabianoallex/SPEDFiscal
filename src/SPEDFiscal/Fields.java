@@ -1,7 +1,5 @@
 package SPEDFiscal;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 class Field<T>  {
@@ -10,6 +8,11 @@ class Field<T>  {
 
     protected Field(String name){
         this.name = name;
+        this.value = null;
+    }
+
+    protected Field(){
+        this.name = "";
         this.value = null;
     }
 
@@ -27,16 +30,6 @@ class Field<T>  {
 }
 
 public class Fields extends LinkedHashMap<String, Field<?>> {
-    private final String registerName;
-
-    public String getRegisterName() {
-        return registerName;
-    }
-
-    Fields(String registerName){
-        this.registerName = registerName;
-    }
-
     public void addField(Field<?> field) {
         this.put(field.getName(), field);
     }
@@ -45,8 +38,7 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
 
-            if (field.getName().equals(name))
-                return field;
+            if (field.getName().equals(name)) return field;
         }
 
         return null;

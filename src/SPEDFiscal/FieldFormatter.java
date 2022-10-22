@@ -8,25 +8,12 @@ public class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
 
     public String formatField(Field<?> field, FieldFormat fieldFormat) throws FieldNotFoundException {
-        /*
-          tratamento especifico para getValue retornando Register.
-          nesses casos sera retornado o o field vinculado ao método getID do registro
-        */
         if (field.getValue() instanceof Register register) {
-            Field<?> tempField = new Field<>("temp");
+            Field<?> tempField = new Field<>();
             tempField.setValue(register.getID());
-
-            if (!fieldFormat.getFormat().isEmpty()) {
-                if (tempField.getValue() instanceof String) return formatStringField(tempField, fieldFormat);
-                if (tempField.getValue() instanceof Integer) return formatIntegerField(tempField, fieldFormat);
-                if (tempField.getValue() instanceof Double) return formatDoubleField(tempField, fieldFormat);
-                if (tempField.getValue() instanceof Date) return formatDateField(tempField, fieldFormat);
-            }
-
-            return formatField(tempField.getValue().toString(), fieldFormat);
+            return this.formatField(tempField, fieldFormat); //recursive
         }
 
-        //tratamento para demais tipos
         if (!fieldFormat.getFormat().isEmpty()) {
             if (field.getValue() instanceof String) return formatStringField(field, fieldFormat);
             if (field.getValue() instanceof Integer) return formatIntegerField(field, fieldFormat);
