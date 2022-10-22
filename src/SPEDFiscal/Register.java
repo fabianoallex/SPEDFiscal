@@ -95,7 +95,7 @@ public class Register implements Unit {
                 FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(fieldFormatName);
 
                 FieldFormatter fieldFormatter = new FieldFormatter();
-                stringBuilderFields.append(fieldFormatter.getFormattedField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
+                stringBuilderFields.append(fieldFormatter.formatField(field, fieldFormat)).append(FieldDefinitions.FIELD_SEPARATOR);
             } catch (FieldNotFoundException ex) {
                 throw new RuntimeException(ex);
             }

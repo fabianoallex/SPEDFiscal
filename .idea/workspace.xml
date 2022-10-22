@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoracao classe Register">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoracao. Criação da Classe FieldFormatter">
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -296,7 +293,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666404285723</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Refatoracao. Criação da Classe FieldFormatter">
+      <created>1666459925003</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1666459925003</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Refatoracao. Criação da Classe FieldFormatter">
+      <created>1666460037234</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1666460037234</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,6 +381,18 @@
     <MESSAGE value="Refatoração Classe Field e Fields. Remoção das subclasses de Field" />
     <MESSAGE value="Refatoração Classe Field e Fields." />
     <MESSAGE value="Refatoracao classe Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoracao classe Register" />
+    <MESSAGE value="Refatoracao. Criação da Classe FieldFormatter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoracao. Criação da Classe FieldFormatter" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SPEDFiscal/Fields.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

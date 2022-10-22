@@ -7,7 +7,7 @@ import java.util.Date;
 public class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
 
-    public String getFormattedField(Field<?> field, FieldFormat fieldFormat) throws FieldNotFoundException {
+    public String formatField(Field<?> field, FieldFormat fieldFormat) throws FieldNotFoundException {
         /*
           tratamento especifico para getValue retornando Register.
           nesses casos sera retornado o o field vinculado ao método getID do registro
@@ -17,30 +17,30 @@ public class FieldFormatter {
             tempField.setValue(register.getID());
 
             if (!fieldFormat.getFormat().isEmpty()) {
-                if (tempField.getValue() instanceof String) return getFormattedStringField(tempField, fieldFormat);
-                if (tempField.getValue() instanceof Integer) return getFormattedIntegerField(tempField, fieldFormat);
-                if (tempField.getValue() instanceof Double) return getFormattedDoubleField(tempField, fieldFormat);
-                if (tempField.getValue() instanceof Date) return getFormattedDateField(tempField, fieldFormat);
+                if (tempField.getValue() instanceof String) return formatStringField(tempField, fieldFormat);
+                if (tempField.getValue() instanceof Integer) return formatIntegerField(tempField, fieldFormat);
+                if (tempField.getValue() instanceof Double) return formatDoubleField(tempField, fieldFormat);
+                if (tempField.getValue() instanceof Date) return formatDateField(tempField, fieldFormat);
             }
 
-            return getFormattedField(tempField.getValue().toString(), fieldFormat);
+            return formatField(tempField.getValue().toString(), fieldFormat);
         }
 
         //tratamento para demais tipos
         if (!fieldFormat.getFormat().isEmpty()) {
-            if (field.getValue() instanceof String) return getFormattedStringField(field, fieldFormat);
-            if (field.getValue() instanceof Integer) return getFormattedIntegerField(field, fieldFormat);
-            if (field.getValue() instanceof Double) return getFormattedDoubleField(field, fieldFormat);
-            if (field.getValue() instanceof Date) return getFormattedDateField(field, fieldFormat);
+            if (field.getValue() instanceof String) return formatStringField(field, fieldFormat);
+            if (field.getValue() instanceof Integer) return formatIntegerField(field, fieldFormat);
+            if (field.getValue() instanceof Double) return formatDoubleField(field, fieldFormat);
+            if (field.getValue() instanceof Date) return formatDateField(field, fieldFormat);
         }
 
         if (field.getValue() == null)
             return FieldDefinitions.FIELD_EMPTY_STRING;
 
-        return getFormattedField(field.getValue().toString(), fieldFormat);
+        return formatField(field.getValue().toString(), fieldFormat);
     }
 
-    private String getFormattedField(String value, FieldFormat fieldFormat) {
+    private String formatField(String value, FieldFormat fieldFormat) {
         value = value
                 .replace(FieldDefinitions.FIELD_SEPARATOR, " ")
                 .replace("\n", FieldDefinitions.FIELD_EMPTY_STRING)
@@ -53,42 +53,42 @@ public class FieldFormatter {
                 value;
     }
 
-    private String getFormattedDoubleField(Field<?> field, FieldFormat fieldFormat) {
+    private String formatDoubleField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
 
         if (field.getValue() == null)
             return FieldDefinitions.FIELD_EMPTY_STRING;
 
-        return getFormattedField(df.format(field.getValue()), fieldFormat);
+        return formatField(df.format(field.getValue()), fieldFormat);
     }
 
-    private String getFormattedIntegerField(Field<?> field, FieldFormat fieldFormat) {
+    private String formatIntegerField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
 
         if (field.getValue() == null)
             return FieldDefinitions.FIELD_EMPTY_STRING;
 
-        return getFormattedField(df.format(field.getValue()), fieldFormat);
+        return formatField(df.format(field.getValue()), fieldFormat);
     }
 
-    private String getFormattedStringField(Field<?> field, FieldFormat fieldFormat) {
+    private String formatStringField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() == null)
             return FieldDefinitions.FIELD_EMPTY_STRING;
 
         if (fieldFormat.getFormat().equals(FIELD_FORMAT_STRING_ONLY_NUMBERS)) {
-            return getFormattedField(field.getValue().toString().replaceAll("\\D+", ""), fieldFormat);
+            return formatField(field.getValue().toString().replaceAll("\\D+", ""), fieldFormat);
         }
 
-        return getFormattedField(field.getValue().toString(), fieldFormat);
+        return formatField(field.getValue().toString(), fieldFormat);
     }
 
-    private String getFormattedDateField(Field<?> field, FieldFormat fieldFormat) {
+    private String formatDateField(Field<?> field, FieldFormat fieldFormat) {
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
 
         if (field.getValue() == null)
             return FieldDefinitions.FIELD_EMPTY_STRING;
 
-        return getFormattedField(df.format(field.getValue()), fieldFormat);
+        return formatField(df.format(field.getValue()), fieldFormat);
     }
 
 
