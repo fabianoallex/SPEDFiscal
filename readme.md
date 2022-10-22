@@ -10,6 +10,7 @@ definitions
         name:        nome do registro
         parent_type: [block|register|file]
                      tipo do registro pai
+                     *** para uso futuro. não tratado no momento ***
         parent:      nome do registro pai
         key          quando informado indica se o registro é referenciado em outros registros do arquivo.
                      nome do field que será utilizado como ID ao ser referenciado por outros registros.
@@ -19,6 +20,7 @@ definitions
           atributos:
             name:        nome do campo
             pos:         posição do campo no registro
+                         *** para uso futuro. não tratado no momento ***
             type:        [number|string|date]
                          tipo do campo
                          tipos number são considerados inteiros se o atributo dec não for informado e double caso informado
@@ -27,10 +29,14 @@ definitions
             format:      formato do campo
                          type string:
                             onlynumber: ao formatar o valor no arquivo, mantem apenas numeros
+                         type date:
+                            formatos aceitos por SimpleDateFormat()
             description: descrição do campo conforme manual
+                         *** para uso futuro. não tratado no momento ***
             required     [O|OC]
                             O --> obrigatorio
                             OC --> 
+                         *** para uso futuro. não tratado no momento ***
             ref          quando preenchido indica o tipo do registro referenciado. 
                          o registro referenciado deve ter informado o atributo key
 ```
