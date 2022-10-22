@@ -1,3 +1,10 @@
+
+# Gerador de arquivos do SPED
+Classes para geração arquivos dentro da estrutura exigida para a ECD, EFD e ECF.
+
+
+
+
 # Estrutura do xml
 
 
