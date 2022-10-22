@@ -115,7 +115,7 @@ class Register9999 extends Register {
 
     Register9999(SPEDConfig config) {
         super(REGISTER_NAME, config);
-        fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT_NAME);
+        fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT_NAME);
     }
 
     public Field<Integer> getFieldRegisterCount() {
@@ -133,8 +133,8 @@ class Register9900 extends Register {
     Register9900(SPEDConfig config) {
         super(REGISTER_NAME, config);
         //fieldRegisterName = this.getStringField(FIELD_REGISTER_NAME);
-        fieldRegisterName = this.getField(FIELD_REGISTER_NAME);
-        fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
+        fieldRegisterName = (Field<String>) this.getField(FIELD_REGISTER_NAME);
+        fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT);
     }
 
     public Field<String> getFieldRegisterName() {

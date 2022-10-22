@@ -89,68 +89,17 @@ public class Register implements Unit {
         return name;
     }
 
-    //public Field<?> getField(String fieldName){
-    //    return getFields().getField(fieldName);
-    //}
-
-    public <T extends Field> T getField(String fieldName){
+    public <T extends Field<?>> T getField(String fieldName){
         return (T)getFields().getField(fieldName);
     }
 
-    /*
-    public StringField getStringField(String fieldName){
-        return getFields().getStringField(fieldName);
-    }
+    public <T> void setFieldValue(String name, T value) throws FieldNotFoundException {
+        Field<T> field = this.getField(name);
 
-    public Field<Integer> getIntegerField(String fieldName){
-        return getFields().getIntegerField(fieldName);
-    }
+        if (field == null)
+            throw new FieldNotFoundException(Field.class.getSimpleName(), name, this.getName());
 
-    public DoubleField getDoubleField(String fieldName){
-        return getFields().getDoubleField(fieldName);
-    }
-
-    public DateField getDateField(String fieldName){
-        return getFields().getDateField(fieldName);
-    }
-
-     */
-
-    public void setFieldValue(String name, String value) throws FieldNotFoundException {
-        //StringField stringField = this.getStringField(name);
-        Field<String> stringField = this.getField(name);
-
-        if (stringField == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + String.class.getSimpleName() + ">", name, this.getName());
-
-        stringField.setValue(value);
-    }
-
-    public void setFieldValue(String name, Double value) throws FieldNotFoundException {
-        Field<Double> doubleField = this.getField(name);
-
-        if (doubleField == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + Double.class.getSimpleName() + ">", name, this.getName());
-
-        doubleField.setValue(value);
-    }
-
-    public void setFieldValue(String name, int value) throws FieldNotFoundException {
-        Field<Integer> integerField = this.getField(name);
-
-        if (integerField == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + Integer.class.getSimpleName() + ">", name, this.getName());
-
-        integerField.setValue(value);
-    }
-
-    public void setFieldValue(String name, Date date) throws FieldNotFoundException {
-        Field<Date> dateField = this.getField(name);
-
-        if (dateField == null)
-            throw new FieldNotFoundException(Field.class.getSimpleName() + "<" + Date.class.getSimpleName() + ">", name, this.getName());
-
-        dateField.setValue(date);
+        field.setValue(value);
     }
 
     public Fields createFields() {

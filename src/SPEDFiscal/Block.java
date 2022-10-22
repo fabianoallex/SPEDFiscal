@@ -106,6 +106,8 @@ class ClosureRegister extends Register {
     ClosureRegister(String name, SPEDConfig config) {
         super(name, config);
         fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
+        //fieldRegisterCount = (Field<Integer>) this.getField2(FIELD_REGISTER_COUNT);
+
     }
 
     public Field<Integer> getFieldRegisterCount() {
