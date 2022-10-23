@@ -11,14 +11,12 @@ class FieldNotFoundException extends Exception {
 
 public class Register implements Unit {
     private final String name;
-    private final ArrayList<Register> registers;
+    private final ArrayList<Register> registers = new ArrayList<>();
     private final Fields fields;
     private final String referenceKey;
-    SPEDDefinitions definitions;
+    private final SPEDDefinitions definitions;
 
     Register(String name, SPEDDefinitions definitions){
-        registers = new ArrayList<>();
-
         this.name = name;
         this.definitions = definitions;
         this.fields = definitions.getFieldsCreator().create(this.name);
