@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração Método getField classe Register">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração Classe SPEDConfig e FieldsCreator.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDConfig.java" afterDir="false" />
     </list>
@@ -372,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666528141646</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Refatoração Classe SPEDConfig e FieldsCreator.">
+      <created>1666529131340</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1666529131340</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +429,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="substituido FileWriter por nova Interface Writer" />
     <MESSAGE value="exemplos de implementacao de Writer" />
     <MESSAGE value="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder." />
     <MESSAGE value="SPEDStringBuilder convertido para record" />
@@ -447,6 +453,7 @@
     <MESSAGE value="Refatoracao. ajustes" />
     <MESSAGE value="readme" />
     <MESSAGE value="Refatoração Método getField classe Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração Método getField classe Register" />
+    <MESSAGE value="Refatoração Classe SPEDConfig e FieldsCreator." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoração Classe SPEDConfig e FieldsCreator." />
   </component>
 </project>
