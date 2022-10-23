@@ -3,18 +3,16 @@ package SPEDFiscal;
 import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
+    private final ArrayList<Block> blocks = new ArrayList<>();
     private SPEDDefinitions definitions;
-
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
-    private final ArrayList<Block> blocks;
 
     public SPEDGenerator(SPEDDefinitions definitions){
         this.definitions = definitions;
         openingRegister = new Register0000(definitions);
         closureRegister = new Register9999(definitions);
-        blocks = new ArrayList<>();
     }
 
     public Register0000 getOpeningRegister() {
@@ -82,10 +80,7 @@ public class SPEDGenerator implements Unit {
     @Override
     public int count() {
         int c = openingRegister.count() + closureRegister.count();
-
-        for (Block block : blocks)
-            c += block.count();
-
+        for (Block block : blocks) c += block.count();
         return c;
     }
 
@@ -163,7 +158,7 @@ class Block9 extends Block {
     }
 
     void addRegister9900(String regName, int regTotal) {
-        Register9900 register9900 = new Register9900(definitions);
+        Register9900 register9900 = new Register9900(this.getDefinitions());
         register9900.getFieldRegisterName().setValue(regName);
         register9900.getFieldRegisterCount().setValue(regTotal);
         this.getRegisters().add(register9900);

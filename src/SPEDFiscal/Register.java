@@ -115,6 +115,10 @@ public class Register implements Unit {
         Field<T> field = this.getField(fieldName);
         return field.getValue();
     }
+
+    protected SPEDDefinitions getDefinitions() {
+        return this.definitions;
+    }
 }
 
 

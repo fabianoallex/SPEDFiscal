@@ -5,18 +5,17 @@ import java.util.ArrayList;
 public class Block implements Unit {
     private static final String OPENING_REGISTER_BLOCK_SUFFIX_NAME = "001";
     private static final String CLOSURE_REGISTER_BLOCK_SUFFIX_NAME = "990";
+    private final ArrayList<Register> registers = new ArrayList<>();
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
-    private final ArrayList<Register> registers;
-    SPEDDefinitions definitions;
+    private final SPEDDefinitions definitions;
 
     Block(String name, SPEDDefinitions definitions) {
         this.definitions = definitions;
         this.name = name;
         this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, definitions);
         this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, definitions);
-        this.registers = new ArrayList<>();
     }
 
     public ClosureRegister getClosureRegister() {
@@ -34,16 +33,13 @@ public class Block implements Unit {
     public Register addRegister(String name){
         Register register = new Register(name, this.definitions);
         this.registers.add(register);
-        register.getFields().getField("teste");
         return register;
     }
 
     Register getRegister(String name){
         for (int i = 0; i< registers.size()-1; i++){
             Register register = registers.get(i);
-            if (register.getName().equals(name)){
-                return register;
-            }
+            if (register.getName().equals(name)) return register;
         }
 
         return null;
@@ -64,9 +60,7 @@ public class Block implements Unit {
     @Override
     public int count() {
         int c = openingRegister.count() + closureRegister.count();
-        for (Register register : registers) {
-            c += register.count();
-        }
+        for (Register register : registers) c += register.count();
         return c;
     }
 
@@ -80,6 +74,10 @@ public class Block implements Unit {
         openingRegister.write(writer);
         for (Register register : registers) register.write(writer);
         closureRegister.write(writer);
+    }
+
+    protected SPEDDefinitions getDefinitions() {
+        return this.definitions;
     }
 }
 
