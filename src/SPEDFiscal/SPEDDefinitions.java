@@ -4,12 +4,12 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SPEDConfig {
+public class SPEDDefinitions {
     private final String definitionsXmlPath;
     private final FieldsCreator fieldsCreator;
     private final FieldFormatter fieldFormatter;
 
-    public SPEDConfig(String definitionsXmlPath) {
+    public SPEDDefinitions(String definitionsXmlPath) {
         this.definitionsXmlPath = definitionsXmlPath;
         this.fieldsCreator = new FieldsCreator(definitionsXmlPath);
         this.fieldFormatter = new FieldFormatter();

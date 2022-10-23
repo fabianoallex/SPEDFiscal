@@ -1,15 +1,14 @@
 import SPEDFiscal.*;
 
-import java.io.FileWriter;
 import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
         try {
             //configurações utilizadas pela classe SPEDGenerator
-            SPEDConfig config = new SPEDConfig("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
+            SPEDDefinitions definitions = new SPEDDefinitions("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
-            SPEDGenerator spedGenerator = new SPEDGenerator(config);
+            SPEDGenerator spedGenerator = new SPEDGenerator(definitions);
             Register r = spedGenerator.getOpeningRegister();  //0000
 
             r.setFieldValue("COD_VER", 9.99);

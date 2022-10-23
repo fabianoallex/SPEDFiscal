@@ -9,13 +9,13 @@ public class Block implements Unit {
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
     private final ArrayList<Register> registers;
-    SPEDConfig config;
+    SPEDDefinitions definitions;
 
-    Block(String name, SPEDConfig config) {
-        this.config = config;
+    Block(String name, SPEDDefinitions definitions) {
+        this.definitions = definitions;
         this.name = name;
-        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, config);
-        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, config);
+        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, definitions);
+        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, definitions);
         this.registers = new ArrayList<>();
     }
 
@@ -32,7 +32,7 @@ public class Block implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, this.config);
+        Register register = new Register(name, this.definitions);
         this.registers.add(register);
         register.getFields().getField("teste");
         return register;
@@ -89,8 +89,8 @@ class OpeningRegister extends Register {
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
     private final Field<Integer> fieldRegisterIsThereMov;
 
-    OpeningRegister(String name, SPEDConfig config) {
-        super(name, config);
+    OpeningRegister(String name, SPEDDefinitions definitions) {
+        super(name, definitions);
         try {
             fieldRegisterIsThereMov = this.getField(FIELD_REGISTER_THERE_IS_MOV);
         } catch (FieldNotFoundException e) {
@@ -107,8 +107,8 @@ class ClosureRegister extends Register {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
 
-    ClosureRegister(String name, SPEDConfig config) {
-        super(name, config);
+    ClosureRegister(String name, SPEDDefinitions definitions) {
+        super(name, definitions);
         try {
             fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
         } catch (FieldNotFoundException e) {

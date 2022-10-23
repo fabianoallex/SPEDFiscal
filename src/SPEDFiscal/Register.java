@@ -14,15 +14,15 @@ public class Register implements Unit {
     private final ArrayList<Register> registers;
     private final Fields fields;
     private final String referenceKey;
-    SPEDConfig config;
+    SPEDDefinitions definitions;
 
-    Register(String name, SPEDConfig config){
+    Register(String name, SPEDDefinitions definitions){
         registers = new ArrayList<>();
 
         this.name = name;
-        this.config = config;
-        this.fields = config.getFieldsCreator().create(this.name);
-        this.referenceKey = config.getRegisterDefinitions(this.name).key;
+        this.definitions = definitions;
+        this.fields = definitions.getFieldsCreator().create(this.name);
+        this.referenceKey = definitions.getRegisterDefinitions(this.name).key;
     }
 
     public <T> T getID() throws FieldNotFoundException {
@@ -40,7 +40,7 @@ public class Register implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, this.config);
+        Register register = new Register(name, this.definitions);
         this.registers.add(register);
         return register;
     }
@@ -78,7 +78,7 @@ public class Register implements Unit {
 
             try {
                 String fieldFormatName = this.getName() + "." + field.getName();
-                String formattedField = this.config.formatField(field, fieldFormatName);
+                String formattedField = this.definitions.formatField(field, fieldFormatName);
 
                 stringBuilderFields
                         .append(formattedField)

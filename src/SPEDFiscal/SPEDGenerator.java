@@ -3,17 +3,17 @@ package SPEDFiscal;
 import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
-    private SPEDConfig config;
+    private SPEDDefinitions definitions;
 
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
     private final ArrayList<Block> blocks;
 
-    public SPEDGenerator(SPEDConfig config){
-        this.config = config;
-        openingRegister = new Register0000(config);
-        closureRegister = new Register9999(config);
+    public SPEDGenerator(SPEDDefinitions definitions){
+        this.definitions = definitions;
+        openingRegister = new Register0000(definitions);
+        closureRegister = new Register9999(definitions);
         blocks = new ArrayList<>();
     }
 
@@ -22,7 +22,7 @@ public class SPEDGenerator implements Unit {
     }
 
     public Block addBlock(String blockName){
-        Block block = new Block(blockName, config);
+        Block block = new Block(blockName, definitions);
         this.blocks.add(block);
         return block;
     }
@@ -40,7 +40,7 @@ public class SPEDGenerator implements Unit {
 
     public void totalize(){
         this.blocks.remove(this.block9);  //se ja exister algum bloco9. remove
-        this.block9 = new Block9(config);
+        this.block9 = new Block9(definitions);
         this.blocks.add(this.block9);
 
         Counter counter = new Counter();     //counting before generate 9900
@@ -103,8 +103,8 @@ public class SPEDGenerator implements Unit {
 class Register0000 extends Register{
     public static final String REGISTER_NAME = "0000";
 
-    Register0000(SPEDConfig config) {
-        super(REGISTER_NAME, config);
+    Register0000(SPEDDefinitions definitions) {
+        super(REGISTER_NAME, definitions);
     }
 }
 
@@ -113,8 +113,8 @@ class Register9999 extends Register {
     public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
 
-    Register9999(SPEDConfig config) {
-        super(REGISTER_NAME, config);
+    Register9999(SPEDDefinitions definitions) {
+        super(REGISTER_NAME, definitions);
         try {
             fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT_NAME);
         } catch (FieldNotFoundException e) {
@@ -134,8 +134,8 @@ class Register9900 extends Register {
     private final Field<String> fieldRegisterName;
     private final Field<Integer> fieldRegisterCount;
 
-    Register9900(SPEDConfig config) {
-        super(REGISTER_NAME, config);
+    Register9900(SPEDDefinitions definitions) {
+        super(REGISTER_NAME, definitions);
         try {
             fieldRegisterName = (Field<String>) this.getField(FIELD_REGISTER_NAME);
             fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT);
@@ -156,12 +156,12 @@ class Register9900 extends Register {
 class Block9 extends Block {
     public static final String BLOCK_NAME = "9";
 
-    Block9(SPEDConfig config) {
-        super(BLOCK_NAME, config);
+    Block9(SPEDDefinitions definitions) {
+        super(BLOCK_NAME, definitions);
     }
 
     void addRegister9900(String regName, int regTotal) {
-        Register9900 register9900 = new Register9900(config);
+        Register9900 register9900 = new Register9900(definitions);
         register9900.getFieldRegisterName().setValue(regName);
         register9900.getFieldRegisterCount().setValue(regTotal);
         this.getRegisters().add(register9900);
