@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração da Classe Counter">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração da Classe Counter 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Counter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00001" summary=" [teste] alterações nas chamadas de setValue para alterações dos valores dos fields.">
-      <created>1664115246381</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1664115246381</updated>
     </task>
     <task id="LOCAL-00002" summary=" removção de imports não utilizados">
       <created>1664115415411</created>
@@ -406,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666544314877</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Refatoração da Classe Counter 2">
+      <created>1666545244164</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1666545244164</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -456,7 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="incluido metodo addRegister na classe Register" />
     <MESSAGE value="criação da package SPEDFiscal e movimentação dos arquivos para essa pck" />
     <MESSAGE value="SPEDConfig implementations" />
     <MESSAGE value="Correção no método totalize, para remover bloco 9 previamente criado." />
@@ -481,6 +479,7 @@
     <MESSAGE value="Refatoração SPEDConfig e DefinitionsLoader" />
     <MESSAGE value="SPEDConfig renomeado para SPEDDefinitions" />
     <MESSAGE value="Refatoração da Classe Counter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração da Classe Counter" />
+    <MESSAGE value="Refatoração da Classe Counter 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoração da Classe Counter 2" />
   </component>
 </project>

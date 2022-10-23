@@ -61,11 +61,13 @@ public class SPEDGenerator implements Unit {
         //update closureRegister file register counting
         this.closureRegister.getFieldRegisterCount().setValue(counter.count() + counter9900.count());
 
-        //totalize all blocks
+        //os blocos 0 e 9 devem ter incrementado +1 ao total do bloco, devido os registros 0000 e 9999
+        //não fazerem parte dos blocos 0 e 9, mas devem ser considerados na totalização desses blocos
         ArrayList<String> al = new ArrayList<>();
         al.add("0");
         al.add("9");
 
+        //totalize all blocks
         for (Block block : this.blocks)
             block.totalize(al.contains(block.getName()) ? 1 : 0);
     }
