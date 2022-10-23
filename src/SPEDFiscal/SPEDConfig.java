@@ -26,6 +26,19 @@ public class SPEDConfig {
     public FieldFormatter getFieldFormatter() {
         return this.fieldFormatter;
     }
+
+    RegisterDefinitions getRegisterDefinitions(String registerName) {
+        return DefinitionsLoader.getRegisterDefinitions(registerName, this.getDefinitionsXmlPath());
+    }
+
+    public FieldFormat getFieldFormat(String name) {
+        return DefinitionsLoader.getFieldFormat(name);
+    }
+
+    public String formatField(Field<?> field, String fieldFormatName) throws FieldNotFoundException {
+        FieldFormat fieldFormat = this.getFieldFormat(fieldFormatName);
+        return this.getFieldFormatter().formatField(field, fieldFormat);
+    }
 }
 
 class FieldsCreator {

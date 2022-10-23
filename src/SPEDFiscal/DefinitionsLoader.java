@@ -95,18 +95,12 @@ public class DefinitionsLoader {
     }
 
     public static void addFieldDefinitions(String name, FieldDefinitions[] fieldDefinitions) {
-        if (fieldsDefinitions == null) {
-            fieldsDefinitions = new HashMap<>();
-        }
-
+        if (fieldsDefinitions == null) fieldsDefinitions = new HashMap<>();
         fieldsDefinitions.put(name, fieldDefinitions);
     }
 
     public static void addRegisterDefinitions(String name, RegisterDefinitions registerDefinitions) {
-        if (registersDefinitions == null) {
-            registersDefinitions = new HashMap<>();
-        }
-
+        if (registersDefinitions == null) registersDefinitions = new HashMap<>();
         registersDefinitions.put(name, registerDefinitions);
     }
 

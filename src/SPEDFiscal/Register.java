@@ -1,7 +1,6 @@
 package SPEDFiscal;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Map;
 
 class FieldNotFoundException extends Exception {
@@ -18,13 +17,12 @@ public class Register implements Unit {
     SPEDConfig config;
 
     Register(String name, SPEDConfig config){
+        registers = new ArrayList<>();
+
         this.name = name;
         this.config = config;
-        registers = new ArrayList<>();
         this.fields = config.getFieldsCreator().create(this.name);
-
-        RegisterDefinitions registerDefinitions = DefinitionsLoader.getRegisterDefinitions(name, config.getDefinitionsXmlPath());
-        this.referenceKey = registerDefinitions.key;
+        this.referenceKey = config.getRegisterDefinitions(this.name).key;
     }
 
     public <T> T getID() throws FieldNotFoundException {
@@ -80,8 +78,7 @@ public class Register implements Unit {
 
             try {
                 String fieldFormatName = this.getName() + "." + field.getName();
-                FieldFormat fieldFormat = DefinitionsLoader.getFieldFormat(fieldFormatName);
-                String formattedField = this.config.getFieldFormatter().formatField(field, fieldFormat);
+                String formattedField = this.config.formatField(field, fieldFormatName);
 
                 stringBuilderFields
                         .append(formattedField)
