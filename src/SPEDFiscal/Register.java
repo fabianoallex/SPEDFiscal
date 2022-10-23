@@ -105,23 +105,20 @@ public class Register implements Unit {
         return name;
     }
 
-    public <T extends Field<?>> T getField(String fieldName){
-        return (T)getFields().getField(fieldName);
+    public <T extends Field<?>> T getField(String fieldName) throws FieldNotFoundException {
+        Field<?> field = this.getFields().getField(fieldName);
+        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
+
+        return (T) field;
     }
 
     public <T> void setFieldValue(String fieldName, T value) throws FieldNotFoundException {
         Field<T> field = this.getField(fieldName);
-
-        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
-
         field.setValue(value);
     }
 
     public <T> T getFieldValue(String fieldName) throws FieldNotFoundException {
         Field<T> field = this.getField(fieldName);
-
-        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
-
         return field.getValue();
     }
 }

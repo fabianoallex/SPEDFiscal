@@ -11,7 +11,7 @@ public class Block implements Unit {
     private final ArrayList<Register> registers;
     SPEDConfig config;
 
-    Block(String name, SPEDConfig config){
+    Block(String name, SPEDConfig config) {
         this.config = config;
         this.name = name;
         this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, config);
@@ -91,7 +91,11 @@ class OpeningRegister extends Register {
 
     OpeningRegister(String name, SPEDConfig config) {
         super(name, config);
-        fieldRegisterIsThereMov = this.getField(FIELD_REGISTER_THERE_IS_MOV);
+        try {
+            fieldRegisterIsThereMov = this.getField(FIELD_REGISTER_THERE_IS_MOV);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void setThereIsMov(boolean thereIs) {
@@ -105,7 +109,11 @@ class ClosureRegister extends Register {
 
     ClosureRegister(String name, SPEDConfig config) {
         super(name, config);
-        fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
+        try {
+            fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Field<Integer> getFieldRegisterCount() {
