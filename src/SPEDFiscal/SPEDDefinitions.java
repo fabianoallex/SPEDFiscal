@@ -113,39 +113,28 @@ class FieldFormatter {
 
     private String formatDoubleField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
-
-        if (field.getValue() == null)
-            return FieldDefinitions.FIELD_EMPTY_STRING;
-
+        if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
     }
 
     private String formatIntegerField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
-
-        if (field.getValue() == null)
-            return FieldDefinitions.FIELD_EMPTY_STRING;
-
+        if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
     }
 
     private String formatStringField(Field<?> field, FieldFormat fieldFormat) {
-        if (field.getValue() == null)
-            return FieldDefinitions.FIELD_EMPTY_STRING;
+        if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
 
-        if (fieldFormat.getFormat().equals(FIELD_FORMAT_STRING_ONLY_NUMBERS)) {
+        if (fieldFormat.getFormat().equals(FIELD_FORMAT_STRING_ONLY_NUMBERS))
             return formatField(field.getValue().toString().replaceAll("\\D+", ""), fieldFormat);
-        }
 
         return formatField(field.getValue().toString(), fieldFormat);
     }
 
     private String formatDateField(Field<?> field, FieldFormat fieldFormat) {
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
-
-        if (field.getValue() == null)
-            return FieldDefinitions.FIELD_EMPTY_STRING;
-
+        if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
     }
 }

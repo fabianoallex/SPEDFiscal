@@ -1,6 +1,7 @@
 package SPEDFiscal;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 class Field<T>  {
     private final String name;
@@ -37,7 +38,6 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
     public Field<?> getField(String name){
         for (Map.Entry<String, Field<?>> e : this.entrySet()) {
             Field<?> field = e.getValue();
-
             if (field.getName().equals(name)) return field;
         }
 

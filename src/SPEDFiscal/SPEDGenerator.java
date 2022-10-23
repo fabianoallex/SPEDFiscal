@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
-    private SPEDDefinitions definitions;
+    private final SPEDDefinitions definitions;
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
@@ -19,18 +19,16 @@ public class SPEDGenerator implements Unit {
         return openingRegister;
     }
 
-    public Block addBlock(String blockName){
+    public Block addBlock(String blockName) {
         Block block = new Block(blockName, definitions);
         this.blocks.add(block);
         return block;
     }
 
-    public Block getBlock(String blockName){
-        for (int i=0; i<blocks.size()-1; i++){
+    public Block getBlock(String blockName) {
+        for (int i=0; i<blocks.size()-1; i++) {
             Block block = blocks.get(i);
-            if (block.getName().equals(blockName)){
-                return block;
-            }
+            if (block.getName().equals(blockName)) return block;
         }
 
         return null;

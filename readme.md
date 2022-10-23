@@ -33,18 +33,20 @@ definitions
             type:        [number|string|date]
                          tipo do campo
                          tipos number são considerados inteiros se o atributo dec não for informado e double caso informado
-            size:        tamanho máximo do texto no registro
+            size:        tamanho máximo do texto que será enviado ao arquivo
             dec:         numero de casas decimais quando type = number. se em branco o tipo number será considerado inteiro
             format:      formato do campo
                          type string:
-                            onlynumber: ao formatar o valor no arquivo, mantem apenas numeros
+                            'onlynumber': ao formatar o valor no arquivo, mantem apenas os caracters numericos da string
                          type date:
                             formatos aceitos por SimpleDateFormat()
+                         type number:
+                            formatos aceitos por DecimalFormat()
             description: descrição do campo conforme manual
                          *** para uso futuro. não tratado no momento ***
             required     [O|OC]
                             O --> obrigatorio
-                            OC --> 
+                            OC --> obrigatorio se existir informação
                          *** para uso futuro. não tratado no momento ***
             ref          quando preenchido indica o tipo do registro referenciado. 
                          o registro referenciado deve ter informado o atributo key
