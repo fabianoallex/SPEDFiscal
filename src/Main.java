@@ -7,8 +7,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             //configurações utilizadas pela classe SPEDGenerator
-            SPEDConfig config = new SPEDConfig();
-            config.setDefinitionsXmlPath("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
+            SPEDConfig config = new SPEDConfig("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
 
             SPEDGenerator spedGenerator = new SPEDGenerator(config);
             Register r = spedGenerator.getOpeningRegister();  //0000

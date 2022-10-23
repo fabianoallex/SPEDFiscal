@@ -21,9 +21,9 @@ public class Register implements Unit {
         this.name = name;
         this.config = config;
         registers = new ArrayList<>();
-        this.fields = new FieldsCreator().create(this.name, this.config.getDefinitionsXmlPath());;
+        this.fields = config.getFieldsCreator().create(this.name);
 
-        RegisterDefinitions registerDefinitions = DefinitionsLoader.getRegisterDefinitions(name, config.definitionsXmlPath);
+        RegisterDefinitions registerDefinitions = DefinitionsLoader.getRegisterDefinitions(name, config.getDefinitionsXmlPath());
         this.referenceKey = registerDefinitions.key;
     }
 
@@ -123,30 +123,4 @@ public class Register implements Unit {
     }
 }
 
-class FieldsCreator {
-    Fields create(String registerName, String definitionsXmlPath){
-        Fields fields = new Fields();
 
-        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlPath)) {
-            String fieldName = fieldDefinitions.name;
-            String type = fieldDefinitions.type;
-            String size = fieldDefinitions.size;
-            String dec = fieldDefinitions.dec;
-            String format = fieldDefinitions.format;
-            String ref = fieldDefinitions.ref;
-
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING))
-                fields.addField(new Field<String>(fieldName));
-
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE))
-                fields.addField(new Field<Date>(fieldName));
-
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER))
-                fields.addField(dec.isEmpty() ?
-                        new Field<Integer>(fieldName) :
-                        new Field<Double>(fieldName));
-        }
-
-        return fields;
-    }
-}
