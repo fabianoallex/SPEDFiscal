@@ -56,10 +56,10 @@ public class SPEDGenerator implements Unit {
         });
 
         counter9900.increment(Register9900.REGISTER_NAME); //increment itself counting (|9900|9900|x|) --> added above
-        block9.addRegister9900(Register9900.REGISTER_NAME, counter9900.get(Register9900.REGISTER_NAME)); //add |9900|9900|x|
+        block9.addRegister9900(Register9900.REGISTER_NAME, counter9900.count(Register9900.REGISTER_NAME)); //add |9900|9900|x|
 
         //update closureRegister file register counting
-        this.closureRegister.getFieldRegisterCount().setValue(counter.sum() + counter9900.sum());
+        this.closureRegister.getFieldRegisterCount().setValue(counter.count() + counter9900.count());
 
         //totalize all blocks
         ArrayList<String> al = new ArrayList<>();
