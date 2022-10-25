@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationListener.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,16 +35,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Fabiano&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Fabiano",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="SPEDFiscal" />
@@ -75,13 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00005" summary="refatorações rápidas 03">
-      <created>1664127043555</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1664127043555</updated>
     </task>
     <task id="LOCAL-00006" summary="refatorações rápidas">
       <created>1664129425728</created>
@@ -419,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666548416201</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros.">
+      <created>1666663710323</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1666663710323</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -469,7 +464,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alteração do nome da Classe SPEDFile para SPEDGenerator." />
     <MESSAGE value="Removido ByName (getFieldByName(String name) por exemplo) de alguns métodos." />
     <MESSAGE value="SPEDStringBuilder definido como publico em arquivo separado" />
     <MESSAGE value="Removido atributo Writer da interface Unit e incluído parametro Writer no méotodo write. Alteração de todas as classes que implementam essa interface." />
@@ -494,6 +488,7 @@
     <MESSAGE value="Ajustes SPEDGenerator" />
     <MESSAGE value="Ajustes Block" />
     <MESSAGE value="Ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes" />
+    <MESSAGE value="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros." />
+    <option name="LAST_COMMIT_MESSAGE" value="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros." />
   </component>
 </project>

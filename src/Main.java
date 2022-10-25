@@ -1,14 +1,14 @@
 import SPEDFiscal.*;
 
+import java.io.FileWriter;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         try {
             //configurações utilizadas pela classe SPEDGenerator
-            SPEDDefinitions definitions = new SPEDDefinitions("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
-
-            SPEDGenerator spedGenerator = new SPEDGenerator(definitions);
+            SPEDGenerator spedGenerator = new SPEDGenerator("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
             Register r = spedGenerator.getOpeningRegister();  //0000
 
             r.setFieldValue("COD_VER", 14);
@@ -49,15 +49,11 @@ public class Main {
             r0200.setFieldValue("DESCR_ITEM", "ABACATE");
             r0200.setFieldValue("UNID_INV", r0190);
 
-
-
             System.out.println("0200 ID: " + r0200.getID()); //COD_ITEM
 
             r = b0.addRegister("0205");
             //r.setFieldValue("teste", "ABACATE");            //throws FieldNotFoundException - nao existe campo teste NO REGISTRO 0200
             r.setFieldValue("DESCR_ANT_ITEM", "ABACATE ANTIGO");
-
-
 
 
             Block bc = spedGenerator.addBlock("C");
@@ -73,18 +69,34 @@ public class Main {
             Block bd = spedGenerator.addBlock("D");
             Block be = spedGenerator.addBlock("E");
 
+            //totalizacao: gerar os registros de contagem (bloco 9)
             spedGenerator.totalize();
 
-
+            //altere aqui para 0, 1 ou 2 para testar as diferentes formas de obter a saida dos dados
+            int writerOptions = 0;
 
             //Exemplo com StringBuilder
-            SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+            if (writerOptions == 0) {
+                SPEDStringBuilder writer = new SPEDStringBuilder(new StringBuilder());
+                spedGenerator.write(writer);
+                System.out.println(writer.stringBuilder().toString());
+            }
 
-            //exemplo com FileWriter:
-            //FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
-            //SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
+            //exemplo com FileWriter
+            if (writerOptions == 1) {
+                //exemplo com FileWriter:
+                FileWriter fileWriter = new FileWriter("c:/executaveis/teste2.txt");
+                SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
+                fileWriter.close();
+            }
+
+            if (writerOptions == 2) {
+                //exemplo implementando Writer em uma lambda
+                spedGenerator.write(string -> System.out.println(string));
+            }
 
 
+            //validação dos dados (trabalho em andamento)
             spedGenerator.validate(new ValidationListener() {
                 @Override
                 public void onSuccessMessage(ValidationEvent event) {
@@ -101,12 +113,6 @@ public class Main {
                     System.out.println(event.getMessage());
                 }
             });
-
-            spedGenerator.write(writer);
-
-            //fileWriter.close();
-
-            System.out.println(writer.stringBuilder().toString());
 
 
             /*
