@@ -59,11 +59,8 @@ class FieldsCreator {
             String format = fieldDefinitions.format;
             String ref = fieldDefinitions.ref;
 
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING))
-                fields.addField(new Field<String>(fieldName));
-
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE))
-                fields.addField(new Field<Date>(fieldName));
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new Field<String>(fieldName));
+            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new Field<Date>(fieldName));
 
             if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER))
                 fields.addField(dec.isEmpty() ?
@@ -92,15 +89,13 @@ class FieldFormatter {
             if (field.getValue() instanceof Date) return formatDateField(field, fieldFormat);
         }
 
-        if (field.getValue() == null)
-            return FieldDefinitions.FIELD_EMPTY_STRING;
-
+        if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(field.getValue().toString(), fieldFormat);
     }
 
     private String formatField(String value, FieldFormat fieldFormat) {
         value = value
-                .replace(FieldDefinitions.FIELD_SEPARATOR, " ")
+                .replace(FieldDefinitions.FIELD_SEPARATOR, "/")
                 .replace("\n", FieldDefinitions.FIELD_EMPTY_STRING)
                 .replace("\r", FieldDefinitions.FIELD_EMPTY_STRING)
                 .trim();
@@ -136,5 +131,11 @@ class FieldFormatter {
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
+    }
+}
+
+class FieldValidator {
+    void validateField(Field field, String validation, ValidationListener validationListener) {
+
     }
 }

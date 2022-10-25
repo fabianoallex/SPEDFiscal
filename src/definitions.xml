@@ -37,7 +37,7 @@
             <field name="BAIRRO" pos="07" type="string" size="60" dec="" format="" description="" required="OC"/>
             <field name="FONE" pos="08" type="string" size="11" dec="" format="" description="" required="OC"/>
             <field name="FAX" pos="09" type="string" size="11" dec="" format="" description="" required="OC"/>
-            <field name="EMAIL" pos="10" type="string" size="" dec="" format="" description="" required="OC"/>
+            <field name="EMAIL" pos="10" type="string" size="" dec="" format="" description="" required="OC" validation="email"/>
         </fields>
     </register>
     <register name="0015" parent="0001" parent_type="register">

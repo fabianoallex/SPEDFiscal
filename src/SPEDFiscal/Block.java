@@ -65,8 +65,8 @@ public class Block implements Unit {
     }
 
     @Override
-    public void validate() {
-
+    public void validate(ValidationListener validationListener) {
+        for (Register register : registers ) register.validate(validationListener);
     }
 
     @Override

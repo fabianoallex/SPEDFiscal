@@ -23,6 +23,7 @@ class FieldDefinitions {
     public static final String FIELD_DEF_FORMAT = "format";
     public static final String FIELD_DEF_DESCRIPTION = "description";
     public static final String FIELD_DEF_REF = "ref";
+    public static final String FIELD_DEF_VALIDATION = "validation";
 
     String name;
     String pos;
@@ -32,6 +33,7 @@ class FieldDefinitions {
     String format;
     String description;
     String ref;
+    String validation;
 }
 
 class RegisterDefinitions {
@@ -171,6 +173,7 @@ class DefinitionsHandler extends DefaultHandler {
             fieldDefinitions.format = attributes.getValue(FieldDefinitions.FIELD_DEF_FORMAT);
             fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
             fieldDefinitions.ref = attributes.getValue(FieldDefinitions.FIELD_DEF_REF);
+            fieldDefinitions.validation = attributes.getValue(FieldDefinitions.FIELD_DEF_VALIDATION);
             fieldsDefinitions.add(fieldDefinitions);
 
             FieldFormat fieldFormat = new FieldFormat(fieldDefinitions.format, Integer.parseInt("0" + fieldDefinitions.size));

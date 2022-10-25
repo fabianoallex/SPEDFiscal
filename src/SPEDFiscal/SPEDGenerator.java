@@ -83,8 +83,8 @@ public class SPEDGenerator implements Unit {
     }
 
     @Override
-    public void validate() {
-
+    public void validate(ValidationListener validationListener) {
+        for (Block block : blocks)  block.validate(validationListener);
     }
 
     @Override

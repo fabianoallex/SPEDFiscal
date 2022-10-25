@@ -85,6 +85,23 @@ public class Main {
             //SPEDFileWriter writer = new SPEDFileWriter(fileWriter);
 
 
+            spedGenerator.validate(new ValidationListener() {
+                @Override
+                public void onSuccessMessage(ValidationEvent event) {
+                    System.out.println(event.getMessage());
+                }
+
+                @Override
+                public void onWarningMessage(ValidationEvent event) {
+                    System.out.println(event.getMessage());
+                }
+
+                @Override
+                public void onErrorMessage(ValidationEvent event) {
+                    System.out.println(event.getMessage());
+                }
+            });
+
             spedGenerator.write(writer);
 
             //fileWriter.close();

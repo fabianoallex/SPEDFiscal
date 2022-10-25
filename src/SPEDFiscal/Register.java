@@ -57,8 +57,10 @@ public class Register implements Unit {
     }
 
     @Override
-    public void validate() {
-        //todo: implementar rotinas de validação dos registros
+    public void validate(ValidationListener validationListener) {
+        //todo: implementar as rotinas de validação dos registros
+        validationListener.onSuccessMessage(new ValidationEvent("Registro " + this.name + " validado com sucesso."));
+        for (Register register : registers) register.validate(validationListener);
     }
 
     @Override

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes Block">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes">
+      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +53,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="SPEDFiscal" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -64,13 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00004" summary="refatorações rápidas 02">
-      <created>1664126772570</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1664126772570</updated>
     </task>
     <task id="LOCAL-00005" summary="refatorações rápidas 03">
       <created>1664127043555</created>
@@ -408,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666546523487</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Ajustes">
+      <created>1666548416201</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1666548416201</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -458,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Correção no método totalize, para remover bloco 9 previamente criado." />
     <MESSAGE value="Alteração do nome da Classe SPEDFile para SPEDGenerator." />
     <MESSAGE value="Removido ByName (getFieldByName(String name) por exemplo) de alguns métodos." />
     <MESSAGE value="SPEDStringBuilder definido como publico em arquivo separado" />
@@ -483,6 +493,7 @@
     <MESSAGE value="Refatoração da Classe Counter 2" />
     <MESSAGE value="Ajustes SPEDGenerator" />
     <MESSAGE value="Ajustes Block" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes Block" />
+    <MESSAGE value="Ajustes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes" />
   </component>
 </project>
