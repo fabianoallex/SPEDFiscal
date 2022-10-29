@@ -2,7 +2,6 @@ import SPEDFiscal.*;
 
 import java.io.FileWriter;
 import java.util.Date;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,14 +11,15 @@ public class Main {
             Register r = spedGenerator.getOpeningRegister();  //0000
 
             r.setFieldValue("COD_VER", 14);
-            r.setFieldValue("COD_FIN", 0);
+            r.setFieldValue("COD_FIN", 1);
             r.setFieldValue("DT_INI", new Date());
             r.setFieldValue("DT_FIN", new Date());
             r.setFieldValue("NOME", "  FABIANO ARNDT ");
             r.setFieldValue("CPF", "123.456.789-10");
-            r.setFieldValue("UF", "PR");
+            r.setFieldValue("UF", "");
             r.setFieldValue("COD_MUN", 1234567);
             r.setFieldValue("IND_PERFIL", "A");
+            r.setFieldValue("IE", "ISENTO");
             r.setFieldValue("IND_ATIV", 0);
 
             Block b0 = spedGenerator.addBlock("0");

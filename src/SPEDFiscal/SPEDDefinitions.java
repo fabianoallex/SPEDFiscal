@@ -3,6 +3,9 @@ package SPEDFiscal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SPEDDefinitions {
     private final String definitionsXmlPath;
@@ -31,11 +34,19 @@ public class SPEDDefinitions {
         return DefinitionsLoader.getRegisterDefinitions(registerName, this.getDefinitionsXmlPath());
     }
 
-    public FieldFormat getFieldFormat(String name) {
-        return DefinitionsLoader.getFieldFormat(name);
+    public FieldFormat getFieldFormat(String fieldName) {
+        return DefinitionsLoader.getFieldFormat(fieldName);
     }
 
-    public String formatField(Field<?> field, String fieldFormatName) throws FieldNotFoundException {
+    public ValidationRegex getValidationRegex(String registerName, String fieldName) {
+        return DefinitionsLoader.getValidationRegex(registerName, fieldName);
+    }
+
+    public String getRequired(String registerName, String fieldName) {
+        return DefinitionsLoader.getRequired(registerName, fieldName);
+    }
+
+    public String formatField(Field<?> field, String fieldFormatName) {
         FieldFormat fieldFormat = this.getFieldFormat(fieldFormatName);
         return this.getFieldFormatter().formatField(field, fieldFormat);
     }
@@ -75,7 +86,7 @@ class FieldsCreator {
 class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
 
-    public String formatField(Field<?> field, FieldFormat fieldFormat) throws FieldNotFoundException {
+    public String formatField(Field<?> field, FieldFormat fieldFormat)  {
         if (field.getValue() instanceof Register register) {
             Field<?> tempField = new Field<>();
             tempField.setValue(register.getID());
@@ -134,8 +145,5 @@ class FieldFormatter {
     }
 }
 
-class FieldValidator {
-    void validateField(Field field, String validation, ValidationListener validationListener) {
 
-    }
-}
+

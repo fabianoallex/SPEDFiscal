@@ -23,12 +23,16 @@ public class Register implements Unit {
         this.referenceKey = definitions.getRegisterDefinitions(this.name).key;
     }
 
-    public <T> T getID() throws FieldNotFoundException {
-        if (this.referenceKey == null) return null;
+    public <T> T getID() {
+        if (this.referenceKey == null)
+            return null;
 
-        Field<?> field = this.getField(this.referenceKey);
-
-        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), this.referenceKey, this.getName());
+        Field<?> field = null;
+        try {
+            field = this.getField(this.referenceKey);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         return (T) field.getValue();
     }
@@ -58,9 +62,10 @@ public class Register implements Unit {
 
     @Override
     public void validate(ValidationListener validationListener) {
-        //todo: implementar as rotinas de validação dos registros
-        validationListener.onSuccessMessage(new ValidationEvent("Registro " + this.name + " validado com sucesso."));
-        for (Register register : registers) register.validate(validationListener);
+        new RegisterValidator().validate(this, validationListener);
+
+        for (Register register : registers)
+            register.validate(validationListener);
     }
 
     @Override
@@ -76,17 +81,12 @@ public class Register implements Unit {
         for (Map.Entry<String, Field<?>> e : fields.entrySet()) {
             Field<?> field = e.getValue();
 
-            try {
-                String fieldFormatName = this.getName() + "." + field.getName();
-                String formattedField = this.definitions.formatField(field, fieldFormatName);
+            String fieldFormatName = this.getName() + "." + field.getName();
+            String formattedField = this.definitions.formatField(field, fieldFormatName);
 
-                stringBuilderFields
-                        .append(formattedField)
-                        .append(FieldDefinitions.FIELD_SEPARATOR)
-                ;
-            } catch (FieldNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
+            stringBuilderFields
+                    .append(formattedField)
+                    .append(FieldDefinitions.FIELD_SEPARATOR);
         }
 
         return "%s%s%s%s".formatted(

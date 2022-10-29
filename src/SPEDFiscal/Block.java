@@ -37,7 +37,7 @@ public class Block implements Unit {
     }
 
     Register getRegister(String name){
-        for (int i = 0; i< registers.size()-1; i++){
+        for (int i = 0; i < registers.size()-1; i++){
             Register register = registers.get(i);
             if (register.getName().equals(name)) return register;
         }
@@ -66,7 +66,9 @@ public class Block implements Unit {
 
     @Override
     public void validate(ValidationListener validationListener) {
+        openingRegister.validate(validationListener);
         for (Register register : registers ) register.validate(validationListener);
+        closureRegister.validate(validationListener);
     }
 
     @Override

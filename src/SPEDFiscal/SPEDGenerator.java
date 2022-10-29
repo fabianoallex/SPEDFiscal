@@ -88,7 +88,9 @@ public class SPEDGenerator implements Unit {
 
     @Override
     public void validate(ValidationListener validationListener) {
+        openingRegister.validate(validationListener);
         for (Block block : blocks)  block.validate(validationListener);
+        closureRegister.validate(validationListener);
     }
 
     @Override

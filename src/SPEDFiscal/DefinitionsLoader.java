@@ -8,6 +8,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ class FieldDefinitions {
     public static final String FIELD_DEF_DESCRIPTION = "description";
     public static final String FIELD_DEF_REF = "ref";
     public static final String FIELD_DEF_VALIDATION = "validation";
+    public static final String FIELD_DEF_REQUIRED = "required";
 
     String name;
     String pos;
@@ -34,6 +36,7 @@ class FieldDefinitions {
     String description;
     String ref;
     String validation;
+    String required;
 }
 
 class RegisterDefinitions {
@@ -74,21 +77,90 @@ class FieldFormat {
     }
 }
 
+final class ValidationRegex {
+    public static final String REGEX_DEF_NAME = "name";
+    public static final String REGEX_DEF_EXPRESSION = "expression";
+    public static final String REGEX_DEF_FAIL_MESSAGE = "fail_message";
+
+    private final String name;
+    private final String expression;
+    private final String failMessage;
+    private boolean required;
+
+    ValidationRegex(String name, String expression, String failMessage) {
+        this.name = name;
+        this.expression = expression;
+        this.failMessage = failMessage;
+        this.required = true;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getExpression() {
+        return expression;
+    }
+
+    public String getFailMessage() {
+        return failMessage;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public void setRequired(boolean required) {
+        this.required = required;
+    }
+}
+
 public class DefinitionsLoader {
-    public static String DEF_TAG_DEFINITIONS = "definitions";
-    public static String DEF_TAG_REGISTER = "register";
-    public static String DEF_TAG_FIELD = "field";
-    public static String DEF_TAG_FIELDS = "fields";
-
-    private static final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
-    private static HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
-    private static HashMap<String, RegisterDefinitions> registersDefinitions = null;
-
+    public static final String DEF_TAG_DEFINITIONS = "definitions";
+    public static final String DEF_TAG_REGISTER = "register";
+    public static final String DEF_TAG_FIELD = "field";
+    public static final String DEF_TAG_FIELDS = "fields";
+    public static final String DEF_TAG_REGEXS = "regexs";
+    public static final String DEF_TAG_REGEX = "regex";
     public static final String FIELDS_REG_TYPE_STRING = "string";
     public static final String FIELDS_REG_TYPE_NUMBER = "number";
     public static final String FIELDS_REG_TYPE_DATE = "date";
 
-    public static void addFieldFormat(String name, FieldFormat fieldFormat){
+    private static final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
+    private static final HashMap<String, ValidationRegex> validationsRegex = new HashMap<>();
+    private static HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
+    private static HashMap<String, RegisterDefinitions> registersDefinitions = null;
+
+    protected static void addValidationRegex(ValidationRegex validationRegex) {
+        validationsRegex.put(validationRegex.getName(), validationRegex);
+    }
+
+    public static String getRequired(String registerName, String fieldName) {
+        String result = "";
+
+        for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
+            if (fieldDefinitions.name.equals(fieldName)) {
+                result = fieldDefinitions.required;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    public static ValidationRegex getValidationRegex(String registerName, String fieldName) {
+        String validationRegexName = "";
+        for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
+            if (fieldDefinitions.name.equals(fieldName)) {
+                validationRegexName = fieldDefinitions.validation;
+                break;
+            }
+        }
+
+        return validationsRegex.get(validationRegexName);
+    }
+
+    public static void addFieldFormat(String name, FieldFormat fieldFormat) {
         fieldsFormat.put(name, fieldFormat);
     }
 
@@ -174,10 +246,24 @@ class DefinitionsHandler extends DefaultHandler {
             fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
             fieldDefinitions.ref = attributes.getValue(FieldDefinitions.FIELD_DEF_REF);
             fieldDefinitions.validation = attributes.getValue(FieldDefinitions.FIELD_DEF_VALIDATION);
+            fieldDefinitions.required = attributes.getValue(FieldDefinitions.FIELD_DEF_REQUIRED);
             fieldsDefinitions.add(fieldDefinitions);
 
             FieldFormat fieldFormat = new FieldFormat(fieldDefinitions.format, Integer.parseInt("0" + fieldDefinitions.size));
-            DefinitionsLoader.addFieldFormat(registerName + "." + fieldDefinitions.name, fieldFormat);
+            String fieldFormatName = registerName + "." + fieldDefinitions.name;
+
+            DefinitionsLoader.addFieldFormat(fieldFormatName, fieldFormat);
+        }
+
+        //start element regex
+        if (tag.equals(DefinitionsLoader.DEF_TAG_REGEX)) {
+            DefinitionsLoader.addValidationRegex(
+                    new ValidationRegex(
+                            attributes.getValue(ValidationRegex.REGEX_DEF_NAME),
+                            attributes.getValue(ValidationRegex.REGEX_DEF_EXPRESSION),
+                            attributes.getValue(ValidationRegex.REGEX_DEF_FAIL_MESSAGE)
+                    )
+            );
         }
     }
 
