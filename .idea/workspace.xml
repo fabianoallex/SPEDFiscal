@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação do validate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPEDFiscal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPEDFiscal.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/ValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,11 +48,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Fabiano",
+    "last_opened_file_path": "C:/nashorn/nashorn-core-15.4.jar",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.externalResources"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -77,13 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00007" summary="refatorações rápidas">
-      <created>1664129499826</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1664129499826</updated>
     </task>
     <task id="LOCAL-00008" summary="substituido FileWriter por nova Interface Writer">
       <created>1664158002433</created>
@@ -421,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666665228206</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Implementação do validate">
+      <created>1667070235910</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1667070235910</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removido ByName (getFieldByName(String name) por exemplo) de alguns métodos." />
     <MESSAGE value="SPEDStringBuilder definido como publico em arquivo separado" />
     <MESSAGE value="Removido atributo Writer da interface Unit e incluído parametro Writer no méotodo write. Alteração de todas as classes que implementam essa interface." />
     <MESSAGE value="Reference implementation" />
@@ -496,6 +495,11 @@
     <MESSAGE value="Ajustes Block" />
     <MESSAGE value="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros." />
     <MESSAGE value="Ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes" />
+    <MESSAGE value="Implementação do validate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementação do validate" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

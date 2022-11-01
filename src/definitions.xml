@@ -1,16 +1,49 @@
 <definitions>
-    <regexs>
-        <regex name="number" expression="[0-9]" fail_message="não é um número"/>
-        <regex name="cpf" expression="[0-9]{11}" fail_message="CPF inválido"/>
-        <regex name="cnpj" expression="[0-9]{14}" fail_message="CNPJ inválido"/>
-        <regex name="cnpjcpf" expression="[0-9]{14}|[0-9]{11}" fail_message="CNPJ ou CPF inválido"/>
-        <regex name="ie" expression="[0-9]{0,14}|ISENTO|PR[0-9]{4,8}" fail_message="Inscrição Estadual inválida"/>
-        <regex name="uf" expression="AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO" fail_message="UF inválida"/>
-        <regex name="perfil_apresentacao" expression="A|B|C" fail_message="Perfil de Apresentação inválido"/>
-        <regex name="tipo_atividade" expression="0|1" fail_message="Tipo de Atividade inválido"/>
-        <regex name="finalidade_arquivo" expression="0|1" fail_message="Tipo de Atividade inválido"/>
-        <regex name="cep" expression="[0-9]{8}" fail_message="CEP inválido" />
-    </regexs>
+    <validations>
+        <scritps>
+            <script name="validate_cpf" fail_message="CPF inválido"><![CDATA[
+                function validate_cpf(strCPF, objMessage) {
+                    var Soma;
+                    var Resto;
+                    Soma = 0;
+                    if (strCPF == "00000000000") return false;
+
+                    for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+                    Resto = (Soma * 10) % 11;
+
+                    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+                    if (Resto != parseInt(strCPF.substring(9, 10)) ) {
+                      objMessage.message = 'Digito verificador invalido';
+                      return false;
+                    }
+
+                    Soma = 0;
+                    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+                    Resto = (Soma * 10) % 11;
+
+                    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+                    if (Resto != parseInt(strCPF.substring(10, 11) ) ) {
+                      objMessage.message = 'Digito verificador invalido';
+                      return false;
+                    };
+
+                    return true;
+                }
+             ]]></script>
+        </scritps>
+        <regexs>
+            <regex name="number" expression="[0-9]" fail_message="não é um número"/>
+            <regex name="cpf" expression="[0-9]{11}" fail_message="CPF inválido"/>
+            <regex name="cnpj" expression="[0-9]{14}" fail_message="CNPJ inválido"/>
+            <regex name="cnpjcpf" expression="[0-9]{14}|[0-9]{11}" fail_message="CNPJ ou CPF inválido"/>
+            <regex name="ie" expression="[0-9]{0,14}|ISENTO|PR[0-9]{4,8}" fail_message="Inscrição Estadual inválida"/>
+            <regex name="uf" expression="AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO" fail_message="UF inválida"/>
+            <regex name="perfil_apresentacao" expression="A|B|C" fail_message="Perfil de Apresentação inválido"/>
+            <regex name="tipo_atividade" expression="0|1" fail_message="Tipo de Atividade inválido"/>
+            <regex name="finalidade_arquivo" expression="0|1" fail_message="Tipo de Atividade inválido"/>
+            <regex name="cep" expression="[0-9]{8}" fail_message="CEP inválido" />
+        </regexs>
+    </validations>
     <registers>
         <register name="0000" parent="" parent_type="file">
             <fields>
@@ -19,8 +52,8 @@
                 <field name="DT_INI" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
                 <field name="DT_FIN" pos="05" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
                 <field name="NOME" pos="06" type="string" size="100" dec="" format="" description="" required="O"/>
-                <field name="CNPJ" pos="07" type="string" size="14" dec="" format="onlynumbers" description="" required="OC" validation="cnpj"/>
-                <field name="CPF" pos="08" type="string" size="11" dec="" format="onlynumbers" description="" required="OC" validation="cpf"/>
+                <field name="CNPJ" pos="07" type="string" size="14" dec="" format="onlynumbers" description="" required="OC" validation="cnpj" inner_validation="cnpj"/>
+                <field name="CPF" pos="08" type="string" size="11" dec="" format="onlynumbers" description="" required="OC" validation="validate_cpf"/>
                 <field name="UF" pos="09" type="string" size="2" dec="" format="" description="" required="O" validation="uf"/>
                 <field name="IE" pos="10" type="string" size="14" dec="" format="" description="" required="O" validation="ie"/>
                 <field name="COD_MUN" pos="11" type="number" size="7" dec="" format="0000000" description="" required="O"/>

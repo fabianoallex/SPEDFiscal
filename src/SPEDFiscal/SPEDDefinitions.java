@@ -3,9 +3,6 @@ package SPEDFiscal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SPEDDefinitions {
     private final String definitionsXmlPath;
@@ -38,8 +35,12 @@ public class SPEDDefinitions {
         return DefinitionsLoader.getFieldFormat(fieldName);
     }
 
-    public ValidationRegex getValidationRegex(String registerName, String fieldName) {
-        return DefinitionsLoader.getValidationRegex(registerName, fieldName);
+    public Validation getValidation(String registerName, String fieldName) {
+        return DefinitionsLoader.getValidation(registerName, fieldName);
+    }
+
+    public String getInnerValidation(String registerName, String fieldName) {
+        return DefinitionsLoader.getInnerValidation(registerName, fieldName);
     }
 
     public String getRequired(String registerName, String fieldName) {
