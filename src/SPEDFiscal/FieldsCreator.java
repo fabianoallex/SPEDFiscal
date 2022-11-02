@@ -6,7 +6,7 @@ public class FieldsCreator {
     static public Fields create(String registerName, String definitionsXmlFile) {
         Fields fields = new Fields();
 
-        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlFile)) {
+        for (FieldDefinitions fieldDefinitions : Definitions.getFieldsDefinitions(registerName, definitionsXmlFile)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
@@ -14,10 +14,10 @@ public class FieldsCreator {
             String format = fieldDefinitions.format;
             String ref = fieldDefinitions.ref;
 
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_STRING)) fields.addField(new Field<String>(fieldName));
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_DATE)) fields.addField(new Field<Date>(fieldName));
+            if (type.equals(Definitions.FIELDS_REG_TYPE_STRING)) fields.addField(new Field<String>(fieldName));
+            if (type.equals(Definitions.FIELDS_REG_TYPE_DATE)) fields.addField(new Field<Date>(fieldName));
 
-            if (type.equals(DefinitionsLoader.FIELDS_REG_TYPE_NUMBER))
+            if (type.equals(Definitions.FIELDS_REG_TYPE_NUMBER))
                 fields.addField(dec.isEmpty() ?
                         new Field<Integer>(fieldName) :
                         new Field<Double>(fieldName));
