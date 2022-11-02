@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração FieldFormatter">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes e script de validação de cidades">
+      <change afterPath="$PROJECT_DIR$/src/scripts/validate_cidade.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/validate_cnpj.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldsCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,13 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Correção no método totalize, para remover bloco 9 previamente criado.">
-      <created>1664217195378</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1664217195378</updated>
     </task>
     <task id="LOCAL-00018" summary="Correção no método totalize, para remover bloco 9 previamente criado.">
       <created>1664219573743</created>
@@ -418,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667400661978</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Ajustes">
+      <created>1667401168077</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1667401168077</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoracao. alteração no metodo toString de Register para instanciar uma vez apenas o objeto fieldFormatter" />
     <MESSAGE value="Refatoracao. ajustes" />
     <MESSAGE value="readme" />
     <MESSAGE value="Refatoração Método getField classe Register" />
@@ -481,7 +483,6 @@
     <MESSAGE value="Ajustes SPEDGenerator" />
     <MESSAGE value="Ajustes Block" />
     <MESSAGE value="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros." />
-    <MESSAGE value="Ajustes" />
     <MESSAGE value="Implementação do validate" />
     <MESSAGE value="Implementação da class ValidationScript" />
     <MESSAGE value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
@@ -493,7 +494,9 @@
     <MESSAGE value="refatoracao RegisterValidator" />
     <MESSAGE value="Criadas classes Validator e FieldValidator" />
     <MESSAGE value="Refatoração FieldFormatter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração FieldFormatter" />
+    <MESSAGE value="Ajustes" />
+    <MESSAGE value="ajustes e script de validação de cidades" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes e script de validação de cidades" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

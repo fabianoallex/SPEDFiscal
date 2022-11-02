@@ -17,10 +17,9 @@ public class Validation {
 }
 
 final class ValidationScript extends Validation {
-    public static final String SCRIPT_ENGINE_NAME = "nashorn";
+    public static final String SCRIPT_ENGINE_NAME = "js";
     public static final String SCRIPT_DEF_NAME = "name";
     public static final String SCRIPT_DEF_FILE = "file";
-
     private final String fileName;
     private String script;
 
@@ -52,7 +51,7 @@ final class ValidationScript extends Validation {
     }
 
     public String getScript() {
-        if (this.fileName != null && this.fileName.isEmpty())
+        if (this.getFileName() != null && this.getFileName().isEmpty())
             return this.script;
 
         return getScriptFromFile();

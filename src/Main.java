@@ -1,8 +1,6 @@
 import SPEDFiscal.*;
-import javax.script.*;
 import java.io.FileWriter;
 import java.util.Date;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,9 +15,9 @@ public class Main {
             r.setFieldValue("DT_FIN", new Date());
             r.setFieldValue("NOME", "  FABIANO ARNDT ");
             r.setFieldValue("CPF", "123456789-10");
-            r.setFieldValue("CNPJ", "12345678/9012-34");
+            r.setFieldValue("CNPJ", "00.360.305/0001-04");
             r.setFieldValue("UF", "");
-            r.setFieldValue("COD_MUN", 1234567);
+            r.setFieldValue("COD_MUN", 5221602);
             r.setFieldValue("IND_PERFIL", "A");
             r.setFieldValue("IE", "ISENTO");
             r.setFieldValue("IND_ATIV", 0);

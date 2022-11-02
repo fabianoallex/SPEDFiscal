@@ -11,8 +11,7 @@ class ValidationEventField extends ValidationEvent {
     private final Register register;
 
     ValidationEventField(Register register, Field<?> field, String message) {
-        super(register.getName() + "." + field.getName() + ": \"" + message + "\"" );
-
+        super(register.getName() + "." + field.getName() + ": \"" + message + "\"." );
         this.register = register;
         this.field = field;
     }
