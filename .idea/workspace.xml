@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="remoção de inner validations">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldsCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="FieldFormatter e FieldsCreator movidos para arquivos .java próprios">
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,13 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fields definitions xml file efd-icms-ipi-v17">
-      <created>1664184676392</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1664184676392</updated>
     </task>
     <task id="LOCAL-00014" summary="incluido metodo addRegister na classe Register">
       <created>1664185884338</created>
@@ -418,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667395549926</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="FieldFormatter e FieldsCreator movidos para arquivos .java próprios">
+      <created>1667396136425</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1667396136425</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +465,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração Classe Field e Fields. Remoção das subclasses de Field" />
     <MESSAGE value="Refatoração Classe Field e Fields." />
     <MESSAGE value="Refatoracao classe Register" />
     <MESSAGE value="Refatoracao. Criação da Classe FieldFormatter" />
@@ -493,7 +489,8 @@
     <MESSAGE value="validações adicionadas a arquivos js" />
     <MESSAGE value="ajustes" />
     <MESSAGE value="remoção de inner validations" />
-    <option name="LAST_COMMIT_MESSAGE" value="remoção de inner validations" />
+    <MESSAGE value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
+    <option name="LAST_COMMIT_MESSAGE" value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
