@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="FieldFormatter e FieldsCreator movidos para arquivos .java próprios">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Criadas classes Validator e FieldValidator">
+      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,13 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00014" summary="incluido metodo addRegister na classe Register">
-      <created>1664185884338</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1664185884338</updated>
     </task>
     <task id="LOCAL-00015" summary="criação da package SPEDFiscal e movimentação dos arquivos para essa pck">
       <created>1664186743269</created>
@@ -415,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667396136425</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="classe ValidatorHelper removida">
+      <created>1667396269353</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1667396269353</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -465,9 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração Classe Field e Fields." />
-    <MESSAGE value="Refatoracao classe Register" />
-    <MESSAGE value="Refatoracao. Criação da Classe FieldFormatter" />
     <MESSAGE value="Refatoracao. Renomeação de metodos" />
     <MESSAGE value="Refatoracao. alteração no metodo toString de Register para instanciar uma vez apenas o objeto fieldFormatter" />
     <MESSAGE value="Refatoracao. ajustes" />
@@ -490,7 +491,10 @@
     <MESSAGE value="ajustes" />
     <MESSAGE value="remoção de inner validations" />
     <MESSAGE value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
-    <option name="LAST_COMMIT_MESSAGE" value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
+    <MESSAGE value="classe ValidatorHelper removida" />
+    <MESSAGE value="refatoracao RegisterValidator" />
+    <MESSAGE value="Criadas classes Validator e FieldValidator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criadas classes Validator e FieldValidator" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

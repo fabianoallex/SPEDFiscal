@@ -27,7 +27,7 @@ public class Register implements Unit {
         if (this.referenceKey == null)
             return null;
 
-        Field<?> field = null;
+        Field<?> field;
         try {
             field = this.getField(this.referenceKey);
         } catch (FieldNotFoundException e) {
@@ -62,7 +62,7 @@ public class Register implements Unit {
 
     @Override
     public void validate(ValidationListener validationListener) {
-        new RegisterValidator().validate(this, validationListener);
+        new RegisterValidator(this, validationListener).validate();
 
         for (Register register : registers)
             register.validate(validationListener);
