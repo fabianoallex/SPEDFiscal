@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ValidationScript alterado pra referenciar arquivo JS fora do xml">
-      <change afterPath="$PROJECT_DIR$/src/scripts/validate_cpf_cnpj_0000.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scripts/validate_reg_0002.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="validações adicionadas a arquivos js">
       <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,13 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00010" summary="exemplos de implementacao de Writer">
-      <created>1664161128452</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1664161128452</updated>
     </task>
     <task id="LOCAL-00011" summary="criação de duas classes que implementam a interface Writer: SPEDFileWriter e SPEDStringBuilder.">
       <created>1664183516157</created>
@@ -418,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667392504993</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="validações adicionadas a arquivos js">
+      <created>1667393988142</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1667393988142</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +465,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reference implementation" />
     <MESSAGE value="refatoração FieldFormat" />
     <MESSAGE value="ajustes" />
     <MESSAGE value="Refatoração Classe Field e Fields. Remoção das subclasses de Field" />
@@ -493,7 +489,8 @@
     <MESSAGE value="Implementação do validate" />
     <MESSAGE value="Implementação da class ValidationScript" />
     <MESSAGE value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
+    <MESSAGE value="validações adicionadas a arquivos js" />
+    <option name="LAST_COMMIT_MESSAGE" value="validações adicionadas a arquivos js" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
