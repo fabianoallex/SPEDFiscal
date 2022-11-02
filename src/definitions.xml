@@ -2,36 +2,8 @@
     <validations>
         <scritps>
             <script name="validate_cpf" file="scripts\validate_cpf.js" />
-            <script name="validate_cpf_cnpj_0000" fail_message="CPF inválido"><![CDATA[
-                function validate_cpf_cnpj_0000(strCPF, objMessage) {
-                    if (register.getFieldValue('CNPJ') && register.getFieldValue('CPF')) {
-                        objMessage.message = 'Informe apenas CNPJ ou CPF para o Registro ' + register.getName();
-                        return false;
-                    }
-
-                    if (!register.getFieldValue('CNPJ') && !register.getFieldValue('CPF')) {
-                        objMessage.message = 'Obrigatório informar CNPJ ou CPF para o Registro ' + register.getName();
-                        return false;
-                    }
-
-                    return true;
-                }
-            ]]></script>
-            <script name="validate_reg_0002" fail_message="CPF inválido"><![CDATA[
-                function validate_reg_0002(param, objMessage) {
-                    if (register.getFieldValue('CNPJ') && register.getFieldValue('CPF')) {
-                        objMessage.message = 'Informe apenas CNPJ ou CPF para o Registro ' + register.getName();
-                        return false;
-                    }
-
-                    if (!register.getFieldValue('CNPJ') && !register.getFieldValue('CPF')) {
-                        objMessage.message = 'Obrigatório informar CNPJ ou CPF para o Registro ' + register.getName();
-                        return false;
-                    }
-
-                    return true;
-                }
-            ]]></script>
+            <script name="validate_cpf_cnpj_0000" file="scripts\validate_cpf_cnpj_0000.js" />
+            <script name="validate_reg_0002" file="scripts\validate_reg_0002.js" />
         </scritps>
         <regexs>
             <regex name="number" expression="[0-9]" fail_message="não é um número"/>
