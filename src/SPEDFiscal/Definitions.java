@@ -1,18 +1,18 @@
 package SPEDFiscal;
 
 public class Definitions {
-    private final String definitionsXmlFile;
+    private final String xmlFile;
 
-    public Definitions(String definitionsXmlFile) {
-        this.definitionsXmlFile = definitionsXmlFile;
+    public Definitions(String xmlFile) {
+        this.xmlFile = xmlFile;
     }
 
-    public String getDefinitionsXmlFile() {
-        return definitionsXmlFile;
+    public String getXmlFile() {
+        return xmlFile;
     }
 
     RegisterDefinitions getRegisterDefinitions(String registerName) {
-        return DefinitionsLoader.getRegisterDefinitions(registerName, this.getDefinitionsXmlFile());
+        return DefinitionsLoader.getRegisterDefinitions(registerName, this.getXmlFile());
     }
 
     public FieldFormat getFieldFormatByFieldName(String fieldName) {
