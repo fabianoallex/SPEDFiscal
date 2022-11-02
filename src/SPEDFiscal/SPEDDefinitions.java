@@ -1,18 +1,12 @@
 package SPEDFiscal;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class SPEDDefinitions {
     private final String definitionsXmlFile;
     private final FieldsCreator fieldsCreator;
-    private final FieldFormatter fieldFormatter;
 
     public SPEDDefinitions(String definitionsXmlFile) {
         this.definitionsXmlFile = definitionsXmlFile;
         this.fieldsCreator = new FieldsCreator(definitionsXmlFile);
-        this.fieldFormatter = new FieldFormatter();
     }
 
     public String getDefinitionsXmlFile() {
@@ -23,15 +17,11 @@ public class SPEDDefinitions {
         return this.fieldsCreator;
     }
 
-    public FieldFormatter getFieldFormatter() {
-        return this.fieldFormatter;
-    }
-
     RegisterDefinitions getRegisterDefinitions(String registerName) {
         return DefinitionsLoader.getRegisterDefinitions(registerName, this.getDefinitionsXmlFile());
     }
 
-    public FieldFormat getFieldFormat(String fieldName) {
+    public FieldFormat getFieldFormatByFieldName(String fieldName) {
         return DefinitionsLoader.getFieldFormat(fieldName);
     }
 
@@ -41,11 +31,6 @@ public class SPEDDefinitions {
 
     public String getRequired(String registerName, String fieldName) {
         return DefinitionsLoader.getRequired(registerName, fieldName);
-    }
-
-    public String formatField(Field<?> field, String fieldFormatName) {
-        FieldFormat fieldFormat = this.getFieldFormat(fieldFormatName);
-        return this.getFieldFormatter().formatField(field, fieldFormat);
     }
 }
 

@@ -40,11 +40,20 @@ public class FieldValidator extends Validator {
         this.validate();
     }
 
+    private String formatField() {
+        String fieldFormatName = register.getName() + "." + field.getName();
+        FieldFormat fieldFormat = register.getDefinitions().getFieldFormatByFieldName(fieldFormatName);
+        return FieldFormatter.formatField(field, fieldFormat);
+    }
+
+    private String getFieldRequired() {
+        return register.getDefinitions().getRequired(register.getName(), field.getName());
+    }
+
     @Override
     public void validate() {
-        String fieldFormatName = register.getName() + "." + field.getName();
-        String formattedValue = register.getDefinitions().formatField(field, fieldFormatName);
-        String required = register.getDefinitions().getRequired(register.getName(), field.getName());
+        String formattedValue = this.formatField();
+        String required = this.getFieldRequired();
 
         if (required.equals("O") && formattedValue.isEmpty()) {
             String message = "Campo ogrigatório não informado";

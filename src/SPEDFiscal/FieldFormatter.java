@@ -7,11 +7,11 @@ import java.util.Date;
 public class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
 
-    public String formatField(Field<?> field, FieldFormat fieldFormat) {
+    static public String formatField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() instanceof Register register) {
             Field<?> tempField = new Field<>();
             tempField.setValue(register.getID());
-            return this.formatField(tempField, fieldFormat); //recursive
+            return formatField(tempField, fieldFormat); //recursive
         }
 
         if (!fieldFormat.getFormat().isEmpty()) {
@@ -25,7 +25,7 @@ public class FieldFormatter {
         return formatField(field.getValue().toString(), fieldFormat);
     }
 
-    private String formatField(String value, FieldFormat fieldFormat) {
+    static private String formatField(String value, FieldFormat fieldFormat) {
         value = value
                 .replace(FieldDefinitions.FIELD_SEPARATOR, "/")
                 .replace("\n", FieldDefinitions.FIELD_EMPTY_STRING)
@@ -38,19 +38,19 @@ public class FieldFormatter {
                 value;
     }
 
-    private String formatDoubleField(Field<?> field, FieldFormat fieldFormat) {
+    static private String formatDoubleField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
     }
 
-    private String formatIntegerField(Field<?> field, FieldFormat fieldFormat) {
+    static private String formatIntegerField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
     }
 
-    private String formatStringField(Field<?> field, FieldFormat fieldFormat) {
+    static private String formatStringField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
 
         if (fieldFormat.getFormat().equals(FIELD_FORMAT_STRING_ONLY_NUMBERS))
@@ -59,7 +59,7 @@ public class FieldFormatter {
         return formatField(field.getValue().toString(), fieldFormat);
     }
 
-    private String formatDateField(Field<?> field, FieldFormat fieldFormat) {
+    static private String formatDateField(Field<?> field, FieldFormat fieldFormat) {
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
         return formatField(df.format(field.getValue()), fieldFormat);
