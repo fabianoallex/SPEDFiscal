@@ -9,7 +9,7 @@ public class FieldsCreator {
         this.definitionsXmlFile = definitionsXmlFile;
     }
 
-    Fields create(String registerName) {
+    public Fields create(String registerName) {
         Fields fields = new Fields();
 
         for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlFile)) {

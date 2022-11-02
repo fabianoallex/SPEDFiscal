@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Criadas classes Validator e FieldValidator">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração FieldFormatter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldsCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,13 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00016" summary="SPEDConfig implementations">
-      <created>1664212982207</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1664212982207</updated>
     </task>
     <task id="LOCAL-00017" summary="Correção no método totalize, para remover bloco 9 previamente criado.">
       <created>1664217195378</created>
@@ -419,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667398823652</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Refatoração FieldFormatter">
+      <created>1667400661978</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1667400661978</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -469,7 +468,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoracao. Renomeação de metodos" />
     <MESSAGE value="Refatoracao. alteração no metodo toString de Register para instanciar uma vez apenas o objeto fieldFormatter" />
     <MESSAGE value="Refatoracao. ajustes" />
     <MESSAGE value="readme" />
@@ -494,7 +492,8 @@
     <MESSAGE value="classe ValidatorHelper removida" />
     <MESSAGE value="refatoracao RegisterValidator" />
     <MESSAGE value="Criadas classes Validator e FieldValidator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criadas classes Validator e FieldValidator" />
+    <MESSAGE value="Refatoração FieldFormatter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoração FieldFormatter" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

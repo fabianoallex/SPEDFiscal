@@ -96,7 +96,7 @@ public class FieldValidator extends Validator {
 
     private void scriptValidate(ValidationScript validationScript, String value) {
         ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine scriptEngine = mgr.getEngineByName("nashorn");
+        ScriptEngine scriptEngine = mgr.getEngineByName(ValidationScript.SCRIPT_ENGINE_NAME);
 
         try {
             scriptEngine.put("param", value);

@@ -17,6 +17,7 @@ public class Validation {
 }
 
 final class ValidationScript extends Validation {
+    public static final String SCRIPT_ENGINE_NAME = "nashorn";
     public static final String SCRIPT_DEF_NAME = "name";
     public static final String SCRIPT_DEF_FILE = "file";
 
