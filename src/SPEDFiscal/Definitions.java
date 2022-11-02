@@ -1,20 +1,14 @@
 package SPEDFiscal;
 
-public class SPEDDefinitions {
+public class Definitions {
     private final String definitionsXmlFile;
-    private final FieldsCreator fieldsCreator;
 
-    public SPEDDefinitions(String definitionsXmlFile) {
+    public Definitions(String definitionsXmlFile) {
         this.definitionsXmlFile = definitionsXmlFile;
-        this.fieldsCreator = new FieldsCreator(definitionsXmlFile);
     }
 
     public String getDefinitionsXmlFile() {
         return definitionsXmlFile;
-    }
-
-    public FieldsCreator getFieldsCreator() {
-        return this.fieldsCreator;
     }
 
     RegisterDefinitions getRegisterDefinitions(String registerName) {

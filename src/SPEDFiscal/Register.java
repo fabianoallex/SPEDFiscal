@@ -14,12 +14,12 @@ public class Register implements Unit {
     private final ArrayList<Register> registers = new ArrayList<>();
     private final Fields fields;
     private final String referenceKey;
-    private final SPEDDefinitions definitions;
+    private final Definitions definitions;
 
-    Register(String name, SPEDDefinitions definitions){
+    Register(String name, Definitions definitions){
         this.name = name;
         this.definitions = definitions;
-        this.fields = definitions.getFieldsCreator().create(this.name);
+        this.fields = FieldsCreator.create(this.name, this.definitions.getDefinitionsXmlFile());
         this.referenceKey = definitions.getRegisterDefinitions(this.name).key;
     }
 
@@ -121,7 +121,7 @@ public class Register implements Unit {
         return field.getValue();
     }
 
-    protected SPEDDefinitions getDefinitions() {
+    protected Definitions getDefinitions() {
         return this.definitions;
     }
 }

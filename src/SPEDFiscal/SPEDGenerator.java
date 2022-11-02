@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
-    private final SPEDDefinitions definitions;
+    private final Definitions definitions;
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
     private Block9 block9 = null;
 
-    public SPEDGenerator(SPEDDefinitions definitions){
+    public SPEDGenerator(Definitions definitions){
         this.definitions = definitions;
         openingRegister = new Register0000(definitions);
         closureRegister = new Register9999(definitions);
     }
 
     public SPEDGenerator(String definitionsXmlFile){
-        this(new SPEDDefinitions(definitionsXmlFile));
+        this(new Definitions(definitionsXmlFile));
     }
 
     public Register0000 getOpeningRegister() {
@@ -104,7 +104,7 @@ public class SPEDGenerator implements Unit {
 class Register0000 extends Register{
     public static final String REGISTER_NAME = "0000";
 
-    Register0000(SPEDDefinitions definitions) {
+    Register0000(Definitions definitions) {
         super(REGISTER_NAME, definitions);
     }
 }
@@ -114,7 +114,7 @@ class Register9999 extends Register {
     public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
 
-    Register9999(SPEDDefinitions definitions) {
+    Register9999(Definitions definitions) {
         super(REGISTER_NAME, definitions);
         try {
             fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT_NAME);
@@ -135,7 +135,7 @@ class Register9900 extends Register {
     private final Field<String> fieldRegisterName;
     private final Field<Integer> fieldRegisterCount;
 
-    Register9900(SPEDDefinitions definitions) {
+    Register9900(Definitions definitions) {
         super(REGISTER_NAME, definitions);
         try {
             fieldRegisterName = (Field<String>) this.getField(FIELD_REGISTER_NAME);
@@ -157,7 +157,7 @@ class Register9900 extends Register {
 class Block9 extends Block {
     public static final String BLOCK_NAME = "9";
 
-    Block9(SPEDDefinitions definitions) {
+    Block9(Definitions definitions) {
         super(BLOCK_NAME, definitions);
     }
 

@@ -3,13 +3,7 @@ package SPEDFiscal;
 import java.util.Date;
 
 public class FieldsCreator {
-    private final String definitionsXmlFile;
-
-    FieldsCreator(String definitionsXmlFile) {
-        this.definitionsXmlFile = definitionsXmlFile;
-    }
-
-    public Fields create(String registerName) {
+    static public Fields create(String registerName, String definitionsXmlFile) {
         Fields fields = new Fields();
 
         for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlFile)) {

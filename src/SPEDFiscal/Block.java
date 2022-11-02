@@ -9,9 +9,9 @@ public class Block implements Unit {
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
-    private final SPEDDefinitions definitions;
+    private final Definitions definitions;
 
-    Block(String name, SPEDDefinitions definitions) {
+    Block(String name, Definitions definitions) {
         this.definitions = definitions;
         this.name = name;
         this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, definitions);
@@ -78,7 +78,7 @@ public class Block implements Unit {
         closureRegister.write(writer);
     }
 
-    protected SPEDDefinitions getDefinitions() {
+    protected Definitions getDefinitions() {
         return this.definitions;
     }
 }
@@ -89,7 +89,7 @@ class OpeningRegister extends Register {
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
     private final Field<Integer> fieldRegisterIsThereMov;
 
-    OpeningRegister(String name, SPEDDefinitions definitions) {
+    OpeningRegister(String name, Definitions definitions) {
         super(name, definitions);
         try {
             fieldRegisterIsThereMov = this.getField(FIELD_REGISTER_THERE_IS_MOV);
@@ -107,7 +107,7 @@ class ClosureRegister extends Register {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
 
-    ClosureRegister(String name, SPEDDefinitions definitions) {
+    ClosureRegister(String name, Definitions definitions) {
         super(name, definitions);
         try {
             fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
