@@ -6,36 +6,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        ScriptEngineManager mgr = new ScriptEngineManager();
-        List<ScriptEngineFactory> factories = mgr.getEngineFactories();
-
-        var engine = mgr.getEngineByName("JS");
-
-        String script =
-                """ 
-                    function ola() {
-                       var ola = 'TESTE'.toLowerCase();
-                       itera();
-                       print('Ola Mundo ' + ola + '!');
-                    }
-                    
-                    function itera() {  
-                      var cont = 1;     
-                      for (var i = 0, max = 5; i < max; i++) { cont++; }
-                      print('Valor da var cont: ' + cont);
-                    }
-                    
-                    ola();
-                """;
-
-        try {
-            engine.eval(script);
-
-            engine.eval("print(1+9)");
-        } catch (ScriptException e) {
-            throw new RuntimeException(e);
-        }
-
         try {
             //configurações utilizadas pela classe SPEDGenerator
             SPEDGenerator spedGenerator = new SPEDGenerator("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
@@ -46,7 +16,8 @@ public class Main {
             r.setFieldValue("DT_INI", new Date());
             r.setFieldValue("DT_FIN", new Date());
             r.setFieldValue("NOME", "  FABIANO ARNDT ");
-            r.setFieldValue("CPF", "123456789-08");
+            r.setFieldValue("CPF", "123456789-10");
+            r.setFieldValue("CNPJ", "12345678/9012-34");
             r.setFieldValue("UF", "");
             r.setFieldValue("COD_MUN", 1234567);
             r.setFieldValue("IND_PERFIL", "A");
@@ -54,6 +25,10 @@ public class Main {
             r.setFieldValue("IND_ATIV", 0);
 
             Block b0 = spedGenerator.addBlock("0");
+
+            r = b0.addRegister("0002");
+            r.setFieldValue("CLAS_ESTAB_IND", "05");
+
             r = b0.addRegister("0005");
             r.setFieldValue("FANTASIA", "   TESTE FANTASIA");
             r.setFieldValue("CEP", "teste cep");

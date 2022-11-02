@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação do validate">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação da class ValidationScript">
+      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/scripts/validate_cpf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPEDFiscal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPEDFiscal.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDDefinitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,19 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultPlantUmlFileTemplate": "UML Class",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/nashorn/nashorn-core-15.4.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.externalResources"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/nashorn/nashorn-core-15.4.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="SPEDFiscal" />
@@ -77,13 +79,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00008" summary="substituido FileWriter por nova Interface Writer">
-      <created>1664158002433</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1664158002433</updated>
     </task>
     <task id="LOCAL-00009" summary="exemplos de implementacao de Writer">
       <created>1664159499831</created>
@@ -421,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667070235910</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Implementação da class ValidationScript">
+      <created>1667297707935</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1667297707935</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +473,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SPEDStringBuilder definido como publico em arquivo separado" />
     <MESSAGE value="Removido atributo Writer da interface Unit e incluído parametro Writer no méotodo write. Alteração de todas as classes que implementam essa interface." />
     <MESSAGE value="Reference implementation" />
     <MESSAGE value="refatoração FieldFormat" />
@@ -496,7 +497,8 @@
     <MESSAGE value="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros." />
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Implementação do validate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementação do validate" />
+    <MESSAGE value="Implementação da class ValidationScript" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementação da class ValidationScript" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

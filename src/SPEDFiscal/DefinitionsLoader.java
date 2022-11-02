@@ -7,129 +7,10 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.CharArrayWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-class FieldDefinitions {
-    public static final String FIELD_EMPTY_STRING = "";
-    public static final String FIELD_SEPARATOR = "|";
-    public static final String FIELD_DEF_NAME = "name";
-    public static final String FIELD_DEF_POS = "pos";
-    public static final String FIELD_DEF_TYPE = "type";
-    public static final String FIELD_DEF_SIZE = "size";
-    public static final String FIELD_DEF_DEC = "dec";
-    public static final String FIELD_DEF_FORMAT = "format";
-    public static final String FIELD_DEF_DESCRIPTION = "description";
-    public static final String FIELD_DEF_REF = "ref";
-    public static final String FIELD_DEF_VALIDATION = "validation";
-    public static final String FIELD_DEF_INNER_VALIDATION = "inner_validation";
-    public static final String FIELD_DEF_REQUIRED = "required";
-
-    String name;
-    String pos;
-    String type;
-    String size;
-    String dec;
-    String format;
-    String description;
-    String ref;
-    String validation;
-    String innerValidation;
-    String required;
-}
-
-class RegisterDefinitions {
-    public static final String REGISTER_DEF_NAME = "name";
-    public static final String REGISTER_DEF_PARENT_TYPE = "parent_type";
-    public static final String REGISTER_DEF_PARENT = "parent";
-    public static final String REGISTER_DEF_KEY = "key";
-
-    String name;
-    String parentType;
-    String parent;
-    String key;
-}
-
-class FieldFormat {
-    private String format;
-    private int maxSize;
-
-    FieldFormat(String format, int maxSize){
-        this.format = format;
-        this.maxSize = maxSize;
-    }
-
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
-    }
-}
-
-class Validation {
-    private final String name;
-    private final String failMessage;
-
-    Validation (String name, String failMessage) {
-        this.name = name;
-        this.failMessage = failMessage;
-    }
-
-    public String getFailMessage() {
-        return failMessage;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-
-final class ValidationScript extends Validation {
-    public static final String SCRIPT_DEF_NAME = "name";
-    public static final String SCRIPT_DEF_FAIL_MESSAGE = "fail_message";
-    private String script;
-
-    public String getScript() {
-        return script;
-    }
-
-    public void setScript(String script) {
-        this.script = script;
-    }
-
-    ValidationScript(String name, String failMessage) {
-        super(name, failMessage);
-    }
-}
-
-final class ValidationRegex extends Validation {
-    public static final String REGEX_DEF_NAME = "name";
-    public static final String REGEX_DEF_EXPRESSION = "expression";
-    public static final String REGEX_DEF_FAIL_MESSAGE = "fail_message";
-    private final String expression;
-
-    ValidationRegex(String name, String expression, String failMessage) {
-        super(name, failMessage);
-        this.expression = expression;
-    }
-
-    public String getExpression() {
-        return expression;
-    }
-}
 
 public class DefinitionsLoader {
     public static final String DEF_TAG_DEFINITIONS = "definitions";
@@ -152,16 +33,26 @@ public class DefinitionsLoader {
         validations.put(validation.getName(), validation);
     }
 
-    public static Validation getValidation(String registerName, String fieldName) {
-        String validatioName = "";
+    public static Validation[] getValidations(String registerName, String fieldName) {
+        String validationNames = "";
         for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
             if (fieldDefinitions.name.equals(fieldName)) {
-                validatioName = fieldDefinitions.validation;
+                validationNames = fieldDefinitions.validationNames;
                 break;
             }
         }
 
-        return validations.get(validatioName);
+        if (validationNames == null || validationNames.trim().equals(""))
+            return null;
+
+        String[] validationNamesArray = validationNames.split(",");
+        Validation[] validationArray = new Validation[validationNamesArray.length];
+
+        for (int i = 0; i < validationNamesArray.length; i++) {
+            validationArray[i] = validations.get(validationNamesArray[i].trim());
+        }
+
+        return validationArray;
     }
 
     public static String getRequired(String registerName, String fieldName) {
@@ -176,8 +67,6 @@ public class DefinitionsLoader {
 
         return result;
     }
-
-
 
     public static String getInnerValidation(String registerName, String fieldName) {
         for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
@@ -207,29 +96,29 @@ public class DefinitionsLoader {
         registersDefinitions.put(name, registerDefinitions);
     }
 
-    public static FieldDefinitions[] getFieldsDefinitions(String name, String definitionsXmlPath) {
+    public static FieldDefinitions[] getFieldsDefinitions(String name, String definitionsXmlFile) {
         if (fieldsDefinitions == null) {
             fieldsDefinitions = new HashMap<>();
-            load(definitionsXmlPath);
+            load(definitionsXmlFile);
         }
 
         return fieldsDefinitions.get(name);
     }
 
-    public static RegisterDefinitions getRegisterDefinitions(String name, String definitionsXmlPath) {
+    public static RegisterDefinitions getRegisterDefinitions(String name, String definitionsXmlFile) {
         if (registersDefinitions == null) {
             registersDefinitions = new HashMap<>();
-            load(definitionsXmlPath);
+            load(definitionsXmlFile);
         }
 
         return registersDefinitions.get(name);
     }
 
-    public static void load(String fieldsDefinitionsXmlPath) {
+    public static void load(String fieldsDefinitionsXmlFile) {
         try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource(fieldsDefinitionsXmlPath);
-            parser.parse(input, new DefinitionsHandler());
+            InputSource input = new InputSource(fieldsDefinitionsXmlFile);
+            parser.parse(input, new DefinitionsHandler(fieldsDefinitionsXmlFile));
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
@@ -240,8 +129,17 @@ class DefinitionsHandler extends DefaultHandler {
     private final CharArrayWriter validationScriptContents = new CharArrayWriter();
     private ValidationScript validationScript = null;
 
+    private final String xmlFile;
     private String registerName = "";
     private List<FieldDefinitions> fieldsDefinitions = null;
+
+    DefinitionsHandler(String xmlFile) {
+        this.xmlFile = xmlFile;
+    }
+
+    public String getXmlFile() {
+        return this.xmlFile;
+    }
 
     public void startDocument() {}
 
@@ -279,7 +177,7 @@ class DefinitionsHandler extends DefaultHandler {
             fieldDefinitions.format = attributes.getValue(FieldDefinitions.FIELD_DEF_FORMAT);
             fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
             fieldDefinitions.ref = attributes.getValue(FieldDefinitions.FIELD_DEF_REF);
-            fieldDefinitions.validation = attributes.getValue(FieldDefinitions.FIELD_DEF_VALIDATION);
+            fieldDefinitions.validationNames = attributes.getValue(FieldDefinitions.FIELD_DEF_VALIDATIONS);
             fieldDefinitions.innerValidation = attributes.getValue(FieldDefinitions.FIELD_DEF_INNER_VALIDATION);
             fieldDefinitions.required = attributes.getValue(FieldDefinitions.FIELD_DEF_REQUIRED);
             fieldsDefinitions.add(fieldDefinitions);
@@ -304,10 +202,15 @@ class DefinitionsHandler extends DefaultHandler {
         //start element script
         if (tag.equals(DefinitionsLoader.DEF_TAG_SCRIPT)) {
             validationScriptContents.reset();
+
+            String scriptFileName = attributes.getValue(ValidationScript.SCRIPT_DEF_FILE);
+            File xmlFile = scriptFileName != null ? new File(this.getXmlFile()) : null;
+
             validationScript = new ValidationScript(
                     attributes.getValue(ValidationScript.SCRIPT_DEF_NAME),
-                    attributes.getValue(ValidationScript.SCRIPT_DEF_FAIL_MESSAGE)
+                    scriptFileName != null ?  xmlFile.getParent() + File.separator + scriptFileName : ""
             );
+
             DefinitionsLoader.addValidation(validationScript);
         }
     }

@@ -5,18 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SPEDDefinitions {
-    private final String definitionsXmlPath;
+    private final String definitionsXmlFile;
     private final FieldsCreator fieldsCreator;
     private final FieldFormatter fieldFormatter;
 
-    public SPEDDefinitions(String definitionsXmlPath) {
-        this.definitionsXmlPath = definitionsXmlPath;
-        this.fieldsCreator = new FieldsCreator(definitionsXmlPath);
+    public SPEDDefinitions(String definitionsXmlFile) {
+        this.definitionsXmlFile = definitionsXmlFile;
+        this.fieldsCreator = new FieldsCreator(definitionsXmlFile);
         this.fieldFormatter = new FieldFormatter();
     }
 
-    public String getDefinitionsXmlPath() {
-        return definitionsXmlPath;
+    public String getDefinitionsXmlFile() {
+        return definitionsXmlFile;
     }
 
     public FieldsCreator getFieldsCreator() {
@@ -28,15 +28,15 @@ public class SPEDDefinitions {
     }
 
     RegisterDefinitions getRegisterDefinitions(String registerName) {
-        return DefinitionsLoader.getRegisterDefinitions(registerName, this.getDefinitionsXmlPath());
+        return DefinitionsLoader.getRegisterDefinitions(registerName, this.getDefinitionsXmlFile());
     }
 
     public FieldFormat getFieldFormat(String fieldName) {
         return DefinitionsLoader.getFieldFormat(fieldName);
     }
 
-    public Validation getValidation(String registerName, String fieldName) {
-        return DefinitionsLoader.getValidation(registerName, fieldName);
+    public Validation[] getValidations(String registerName, String fieldName) {
+        return DefinitionsLoader.getValidations(registerName, fieldName);
     }
 
     public String getInnerValidation(String registerName, String fieldName) {
@@ -54,16 +54,16 @@ public class SPEDDefinitions {
 }
 
 class FieldsCreator {
-    private final String definitionsXmlPath;
+    private final String definitionsXmlFile;
 
-    FieldsCreator(String definitionsXmlPath) {
-        this.definitionsXmlPath = definitionsXmlPath;
+    FieldsCreator(String definitionsXmlFile) {
+        this.definitionsXmlFile = definitionsXmlFile;
     }
 
     Fields create(String registerName){
         Fields fields = new Fields();
 
-        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlPath)) {
+        for (FieldDefinitions fieldDefinitions : DefinitionsLoader.getFieldsDefinitions(registerName, definitionsXmlFile)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
             String size = fieldDefinitions.size;
@@ -146,5 +146,69 @@ class FieldFormatter {
     }
 }
 
+class FieldDefinitions {
+    public static final String FIELD_EMPTY_STRING = "";
+    public static final String FIELD_SEPARATOR = "|";
+    public static final String FIELD_DEF_NAME = "name";
+    public static final String FIELD_DEF_POS = "pos";
+    public static final String FIELD_DEF_TYPE = "type";
+    public static final String FIELD_DEF_SIZE = "size";
+    public static final String FIELD_DEF_DEC = "dec";
+    public static final String FIELD_DEF_FORMAT = "format";
+    public static final String FIELD_DEF_DESCRIPTION = "description";
+    public static final String FIELD_DEF_REF = "ref";
+    public static final String FIELD_DEF_VALIDATIONS = "validations";
+    public static final String FIELD_DEF_INNER_VALIDATION = "inner_validation";
+    public static final String FIELD_DEF_REQUIRED = "required";
 
+    String name;
+    String pos;
+    String type;
+    String size;
+    String dec;
+    String format;
+    String description;
+    String ref;
+    String validationNames;
+    String innerValidation;
+    String required;
+}
+
+class RegisterDefinitions {
+    public static final String REGISTER_DEF_NAME = "name";
+    public static final String REGISTER_DEF_PARENT_TYPE = "parent_type";
+    public static final String REGISTER_DEF_PARENT = "parent";
+    public static final String REGISTER_DEF_KEY = "key";
+
+    String name;
+    String parentType;
+    String parent;
+    String key;
+}
+
+class FieldFormat {
+    private String format;
+    private int maxSize;
+
+    FieldFormat(String format, int maxSize){
+        this.format = format;
+        this.maxSize = maxSize;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+}
 
