@@ -39,10 +39,6 @@ public class SPEDDefinitions {
         return DefinitionsLoader.getValidations(registerName, fieldName);
     }
 
-    public String getInnerValidation(String registerName, String fieldName) {
-        return DefinitionsLoader.getInnerValidation(registerName, fieldName);
-    }
-
     public String getRequired(String registerName, String fieldName) {
         return DefinitionsLoader.getRequired(registerName, fieldName);
     }
@@ -158,7 +154,6 @@ class FieldDefinitions {
     public static final String FIELD_DEF_DESCRIPTION = "description";
     public static final String FIELD_DEF_REF = "ref";
     public static final String FIELD_DEF_VALIDATIONS = "validations";
-    public static final String FIELD_DEF_INNER_VALIDATION = "inner_validation";
     public static final String FIELD_DEF_REQUIRED = "required";
 
     String name;
@@ -170,7 +165,6 @@ class FieldDefinitions {
     String description;
     String ref;
     String validationNames;
-    String innerValidation;
     String required;
 }
 

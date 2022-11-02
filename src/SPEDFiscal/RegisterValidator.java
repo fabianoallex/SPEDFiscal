@@ -75,9 +75,6 @@ class validatorHelper {
 
 public class RegisterValidator {
     void validate(Register register, ValidationListener validationListener) {
-
-
-
         for (Map.Entry<String, Field<?>> e : register.getFields().entrySet()) {
             Field<?> field = e.getValue();
 
@@ -88,14 +85,20 @@ public class RegisterValidator {
             if (required.equals("O") && formattedValue.isEmpty()) {
                 String message = "Campo ogrigatório não informado";
                 validationListener.onErrorMessage(new ValidationEventField(register, field, message));
-                continue;
+                continue; //quando o campo for obrigatorio e não for informado, nao faz as demais validações
             }
 
-            Validation[] validations = register.getDefinitions().getValidations(register.getName(), field.getName());
+            Validation[] validations = register.getDefinitions().getValidations(
+                    register.getName(),
+                    field.getName()
+            );
 
             if (validations != null) {
                 for (Validation validation : validations) {
                     if (validation instanceof ValidationRegex validationRegex) {
+                        //se o campo não é obrigatorio e não foi informado nao aplica as
+                        // validações regex, se aplica apenas para regex, para scripts,
+                        //tratado no outro if, nao se aplica essa verificação.
                         if (!required.equals("O") && formattedValue.isEmpty()) {
                             continue;
                         }
@@ -123,14 +126,14 @@ public class RegisterValidator {
 
                             String script =
                                     """
-                                                %s;
-                                                var objMessage = {message: ''};
-                                                var isValid = %s(param, objMessage);
-                                                var message = objMessage.message;
-                                            """.formatted(
-                                            validationScript.getScript(),
-                                            validationScript.getName()
-                                    );
+                                        %s;
+                                        var objMessage = {message: ''};
+                                        var isValid = %s(param, objMessage);
+                                        var message = objMessage.message;
+                                    """.formatted(
+                                    validationScript.getScript(),
+                                    validationScript.getName()
+                                );
 
                             scriptEngine.eval(script);
 
@@ -145,15 +148,6 @@ public class RegisterValidator {
                             throw new RuntimeException(se);
                         }
                     }
-                }
-            }
-
-            String innerValidation = register.getDefinitions().getInnerValidation(register.getName(), field.getName());
-
-            if (innerValidation != null && innerValidation.equals("cpf")) {
-                if (!validatorHelper.validateCPF(formattedValue)) {
-                    String message = register.getName() + "." + field.getName() + ": \"" + formattedValue + "\": \"" + "Digito verificador inválido" + "\"";
-                    validationListener.onErrorMessage(new ValidationEvent(message));
                 }
             }
         }

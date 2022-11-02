@@ -68,16 +68,6 @@ public class DefinitionsLoader {
         return result;
     }
 
-    public static String getInnerValidation(String registerName, String fieldName) {
-        for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
-            if (fieldDefinitions.name.equals(fieldName)) {
-                return fieldDefinitions.innerValidation;
-            }
-        }
-
-        return null;
-    }
-
     public static void addFieldFormat(String name, FieldFormat fieldFormat) {
         fieldsFormat.put(name, fieldFormat);
     }
@@ -178,7 +168,6 @@ class DefinitionsHandler extends DefaultHandler {
             fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
             fieldDefinitions.ref = attributes.getValue(FieldDefinitions.FIELD_DEF_REF);
             fieldDefinitions.validationNames = attributes.getValue(FieldDefinitions.FIELD_DEF_VALIDATIONS);
-            fieldDefinitions.innerValidation = attributes.getValue(FieldDefinitions.FIELD_DEF_INNER_VALIDATION);
             fieldDefinitions.required = attributes.getValue(FieldDefinitions.FIELD_DEF_REQUIRED);
             fieldsDefinitions.add(fieldDefinitions);
 

@@ -29,7 +29,7 @@
                 <field name="DT_FIN" pos="05" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
                 <field name="NOME" pos="06" type="string" size="100" dec="" format="" description="" required="O"/>
                 <field name="CNPJ" pos="07" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"
-                       validations="cnpj_rgx, validate_cpf_cnpj_0000" inner_validation="cnpj"/>
+                       validations="cnpj_rgx, validate_cpf_cnpj_0000"/>
                 <field name="CPF" pos="08" type="string" size="11" dec="" format="onlynumbers" description="" required="OC"
                        validations="cpf_rgx, validate_cpf, validate_cpf_cnpj_0000"/>
                 <field name="UF" pos="09" type="string" size="2" dec="" format="" description="" required="O" validations="uf"/>
