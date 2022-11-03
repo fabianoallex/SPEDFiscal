@@ -51,7 +51,7 @@ final class ValidationScript extends Validation {
     }
 
     public String getScript() {
-        if (this.getFileName() != null && this.getFileName().isEmpty())
+        if (this.getFileName() == null || this.getFileName().isEmpty())
             return this.script;
 
         return getScriptFromFile();

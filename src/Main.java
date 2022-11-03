@@ -1,10 +1,7 @@
 import SPEDFiscal.*;
 
-import javax.script.ScriptEngineFactory;
-import javax.script.ScriptEngineManager;
 import java.io.FileWriter;
 import java.util.Date;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -120,7 +117,6 @@ public class Main {
                     System.out.println(event.getMessage());
                 }
             });
-
 
             /*
             0200 ID: 1000
