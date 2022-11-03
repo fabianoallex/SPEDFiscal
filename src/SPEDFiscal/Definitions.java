@@ -65,9 +65,13 @@ public class Definitions {
     public static final String FIELDS_REG_TYPE_DATE = "date";
     private static final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
     private static final HashMap<String, Validation> validations = new HashMap<>();
-    private static HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
-    private static HashMap<String, RegisterDefinitions> registersDefinitions = null;
+    private static volatile HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
+    private static volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
+
+    public Definitions(String xmlFile) {
+        this.xmlFile = xmlFile;
+    }
 
     protected static void addValidation(Validation validation) {
         validations.put(validation.getName(), validation);
@@ -124,8 +128,12 @@ public class Definitions {
 
     public static FieldDefinitions[] getFieldsDefinitions(String name, String definitionsXmlFile) {
         if (fieldsDefinitions == null) {
-            fieldsDefinitions = new HashMap<>();
-            DefinitionsLoader.load(definitionsXmlFile);
+            synchronized (Definitions.class) {
+                if (fieldsDefinitions == null) {
+                    fieldsDefinitions = new HashMap<>();
+                    DefinitionsLoader.load(definitionsXmlFile);
+                }
+            }
         }
 
         return fieldsDefinitions.get(name);
@@ -135,18 +143,18 @@ public class Definitions {
         return fieldsFormat.get(fieldName);
     }
 
-    public Definitions(String xmlFile) {
-        this.xmlFile = xmlFile;
-    }
-
     public String getXmlFile() {
         return xmlFile;
     }
 
     RegisterDefinitions getRegisterDefinitions(String registerName) {
         if (registersDefinitions == null) {
-            registersDefinitions = new HashMap<>();
-            DefinitionsLoader.load(this.getXmlFile());
+            synchronized (this) {
+                if (registersDefinitions == null) {
+                    registersDefinitions = new HashMap<>();
+                    DefinitionsLoader.load(this.getXmlFile());
+                }
+            }
         }
 
         return registersDefinitions.get(registerName);

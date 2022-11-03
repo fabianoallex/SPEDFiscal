@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração classe Definitions e DefinitionsLoader">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/DefinitionsLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,13 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00022" summary="refatoração FieldFormat">
-      <created>1664332962287</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1664332962287</updated>
     </task>
     <task id="LOCAL-00023" summary="ajustes">
       <created>1664336618907</created>
@@ -416,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667415093776</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java">
+      <created>1667415363616</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1667415363616</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -466,7 +467,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração Classe SPEDConfig e FieldsCreator." />
     <MESSAGE value="Refatoração SPEDConfig e FieldFormatter." />
     <MESSAGE value="Refatoração SPEDConfig e DefinitionsLoader" />
     <MESSAGE value="SPEDConfig renomeado para SPEDDefinitions" />
@@ -491,7 +491,8 @@
     <MESSAGE value="SPEDDefinitions.java renomeado para Definitions" />
     <MESSAGE value="atributo definitionsXmlFile renomeado para xmlFile" />
     <MESSAGE value="Refatoração classe Definitions e DefinitionsLoader" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração classe Definitions e DefinitionsLoader" />
+    <MESSAGE value="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
