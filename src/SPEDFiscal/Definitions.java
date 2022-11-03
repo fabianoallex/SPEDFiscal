@@ -149,7 +149,7 @@ public class Definitions {
 
     RegisterDefinitions getRegisterDefinitions(String registerName) {
         if (registersDefinitions == null) {
-            synchronized (this) {
+            synchronized(this) {
                 if (registersDefinitions == null) {
                     registersDefinitions = new HashMap<>();
                     DefinitionsLoader.load(this.getXmlFile());

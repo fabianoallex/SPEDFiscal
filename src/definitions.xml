@@ -6,6 +6,7 @@
             <script name="validate_cidade" file="scripts\validate_cidade.js" />
             <script name="validate_cpf_cnpj_0000" file="scripts\validate_cpf_cnpj_0000.js" />
             <script name="validate_reg_0002" file="scripts\validate_reg_0002.js" />
+            <script name="validate_dates_0000" file="scripts\validate_dates_0000.js" />
         </scritps>
         <regexs>
             <regex name="number" expression="[0-9]" fail_message="não é um número"/>
@@ -29,8 +30,8 @@
                 <field name="COD_VER" pos="02" type="number" size="3" dec="" format="000" description="" required="O"/>
                 <field name="COD_FIN" pos="03" type="number" size="1" dec="" format="" description="" required="O"
                        validations="finalidade_arquivo"/>
-                <field name="DT_INI" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
-                <field name="DT_FIN" pos="05" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
+                <field name="DT_INI" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dates_0000"/>
+                <field name="DT_FIN" pos="05" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dates_0000"/>
                 <field name="NOME" pos="06" type="string" size="100" dec="" format="" description="" required="O"/>
                 <field name="CNPJ" pos="07" type="string" size="14" dec="" format="onlynumbers" description="" required="OC"
                        validations="cnpj_rgx, validate_cnpj, validate_cpf_cnpj_0000"/>

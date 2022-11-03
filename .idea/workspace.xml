@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="getFieldsDefinitions e getRegisterDefinitions alterados para thread-safe">
+      <change afterPath="$PROJECT_DIR$/src/scripts/validate_dates_0000.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/definitions.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00023" summary="ajustes">
-      <created>1664336618907</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1664336618907</updated>
     </task>
     <task id="LOCAL-00024" summary="ajustes">
       <created>1664337260086</created>
@@ -417,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667415363616</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="getFieldsDefinitions e getRegisterDefinitions alterados para thread-safe">
+      <created>1667443959915</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1667443959915</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -467,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração SPEDConfig e FieldFormatter." />
     <MESSAGE value="Refatoração SPEDConfig e DefinitionsLoader" />
     <MESSAGE value="SPEDConfig renomeado para SPEDDefinitions" />
     <MESSAGE value="Refatoração da Classe Counter" />
@@ -492,7 +493,8 @@
     <MESSAGE value="atributo definitionsXmlFile renomeado para xmlFile" />
     <MESSAGE value="Refatoração classe Definitions e DefinitionsLoader" />
     <MESSAGE value="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java" />
+    <MESSAGE value="getFieldsDefinitions e getRegisterDefinitions alterados para thread-safe" />
+    <option name="LAST_COMMIT_MESSAGE" value="getFieldsDefinitions e getRegisterDefinitions alterados para thread-safe" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

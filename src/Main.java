@@ -8,19 +8,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        ScriptEngineManager manager = new ScriptEngineManager();
-        List<ScriptEngineFactory> factories = manager.getEngineFactories();
-        for (ScriptEngineFactory factory : factories) {
-            System.out.println(factory.getEngineName());
-            System.out.println(factory.getEngineVersion());
-            System.out.println(factory.getLanguageName());
-            System.out.println(factory.getLanguageVersion());
-            System.out.println(factory.getExtensions());
-            System.out.println(factory.getMimeTypes());
-            System.out.println(factory.getNames());
-        }
-
-
         try {
             //configurações utilizadas pela classe SPEDGenerator
             SPEDGenerator spedGenerator = new SPEDGenerator("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
@@ -29,7 +16,7 @@ public class Main {
             r.setFieldValue("COD_VER", 14);
             r.setFieldValue("COD_FIN", 1);
             r.setFieldValue("DT_INI", new Date());
-            r.setFieldValue("DT_FIN", new Date());
+            r.setFieldValue("DT_FIN", new Date(555525));
             r.setFieldValue("NOME", "  FABIANO ARNDT ");
             r.setFieldValue("CPF", "123456789-10");
             r.setFieldValue("CNPJ", "00.360.305/0001-04");
