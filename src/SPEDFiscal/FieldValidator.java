@@ -73,6 +73,16 @@ public class FieldValidator extends Validator {
 
             if (validation instanceof ValidationScript validationScript)
                 scriptValidate(validationScript, formattedValue);
+
+            if (validation instanceof ValidationInjected validationInjected)
+                injectedValidate(validationInjected, formattedValue);
+        }
+    }
+
+    private void injectedValidate(ValidationInjected validationInjected, String value) {
+        if (!validationInjected.validate(value, register)) {
+            String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + "teste" + "\"";
+            this.getValidationListener().onErrorMessage(new ValidationEvent(message));
         }
     }
 

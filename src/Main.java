@@ -3,11 +3,34 @@ import SPEDFiscal.*;
 import java.io.FileWriter;
 import java.util.Date;
 
+class MyValidationHelper implements ValidationHelper {
+    @Override
+    public String[] getValidationNames() {
+        return new String[] {
+                "validate_cpf222",
+                "validate_cnpj"
+        };
+    }
+
+    @Override
+    public boolean validate(String validationName, String value, Register register) {
+        if (validationName.equals("validate_cpf222")) {
+            return validate_cpf(value);
+        }
+
+        return true;
+    }
+
+    private boolean validate_cpf(String cpf){
+        return false;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         try {
             //configurações utilizadas pela classe SPEDGenerator
-            SPEDGenerator spedGenerator = new SPEDGenerator("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml");
+            SPEDGenerator spedGenerator = new SPEDGenerator("C:\\Users\\User\\IdeaProjects\\SPED-efd\\src\\definitions.xml", new MyValidationHelper());
             Register r = spedGenerator.getOpeningRegister();  //0000
 
             r.setFieldValue("COD_VER", 14);

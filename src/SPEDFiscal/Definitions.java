@@ -68,9 +68,19 @@ public class Definitions {
     private static volatile HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
     private static volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
+    private final ValidationHelper validationHelper;
 
-    public Definitions(String xmlFile) {
+    public Definitions(String xmlFile, ValidationHelper validationHelper) {
         this.xmlFile = xmlFile;
+        this.validationHelper = validationHelper;
+
+        for (String validationName : validationHelper.getValidationNames()) {
+            addValidation(new ValidationInjected(validationHelper, validationName));
+        }
+    }
+
+    public ValidationHelper getValidationHelper() {
+        return validationHelper;
     }
 
     protected static void addValidation(Validation validation) {

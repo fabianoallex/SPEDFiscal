@@ -15,8 +15,8 @@ public class SPEDGenerator implements Unit {
         closureRegister = new Register9999(definitions);
     }
 
-    public SPEDGenerator(String definitionsXmlFile){
-        this(new Definitions(definitionsXmlFile));
+    public SPEDGenerator(String definitionsXmlFile, ValidationHelper validationHelper){
+        this(new Definitions(definitionsXmlFile, validationHelper));
     }
 
     public Register0000 getOpeningRegister() {

@@ -29,7 +29,7 @@
             <fields>
                 <field name="COD_VER" pos="02" type="number" size="3" dec="" format="000" description="" required="O"/>
                 <field name="COD_FIN" pos="03" type="number" size="1" dec="" format="" description="" required="O"
-                       validations="finalidade_arquivo"/>
+                       validations="finalidade_arquivo, validate_cpf222"/>
                 <field name="DT_INI" pos="04" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dates_0000"/>
                 <field name="DT_FIN" pos="05" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dates_0000"/>
                 <field name="NOME" pos="06" type="string" size="100" dec="" format="" description="" required="O"/>

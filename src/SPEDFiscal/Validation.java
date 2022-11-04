@@ -16,6 +16,22 @@ public class Validation {
     }
 }
 
+final class ValidationInjected extends Validation {
+    private final ValidationHelper validationHelper;
+    ValidationInjected(ValidationHelper validationHelper, String name) {
+        super(name);
+        this.validationHelper = validationHelper;
+    }
+
+    public ValidationHelper getValidationHelper() {
+        return validationHelper;
+    }
+
+    public boolean validate(String param, Register register) {
+        return validationHelper.validate(this.getName(), param, register);
+    }
+}
+
 final class ValidationScript extends Validation {
     public static final String SCRIPT_ENGINE_NAME = "js";
     public static final String SCRIPT_DEF_NAME = "name";
