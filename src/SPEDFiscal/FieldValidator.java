@@ -41,12 +41,12 @@ public class FieldValidator extends Validator {
 
     private String formatField() {
         String fieldFormatName = register.getName() + "." + field.getName();
-        FieldFormat fieldFormat = Definitions.getFieldFormatByFieldName(fieldFormatName);
+        FieldFormat fieldFormat = register.getDefinitions().getFieldFormatByFieldName(fieldFormatName);
         return FieldFormatter.formatField(field, fieldFormat);
     }
 
     private String getFieldRequired() {
-        return Definitions.getRequired(register.getName(), field.getName());
+        return register.getDefinitions().getRequired(register.getName(), field.getName());
     }
 
     @Override
@@ -60,7 +60,7 @@ public class FieldValidator extends Validator {
             return; //quando o campo for obrigatorio e não for informado, nao faz as demais validações
         }
 
-        Validation[] validations = Definitions.getValidations(
+        Validation[] validations = register.getDefinitions().getValidations(
                 register.getName(),
                 field.getName()
         );

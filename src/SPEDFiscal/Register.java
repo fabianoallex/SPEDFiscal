@@ -19,7 +19,7 @@ public class Register implements Unit {
     Register(String name, Definitions definitions){
         this.name = name;
         this.definitions = definitions;
-        this.fields = FieldsCreator.create(this.name, this.definitions.getXmlFile());
+        this.fields = FieldsCreator.create(this.name, this.definitions);
         this.referenceKey = definitions.getRegisterDefinitions(this.name).key;
     }
 

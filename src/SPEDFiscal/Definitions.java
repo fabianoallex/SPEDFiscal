@@ -63,10 +63,10 @@ public class Definitions {
     public static final String FIELDS_REG_TYPE_STRING = "string";
     public static final String FIELDS_REG_TYPE_NUMBER = "number";
     public static final String FIELDS_REG_TYPE_DATE = "date";
-    private static final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
-    private static final HashMap<String, Validation> validations = new HashMap<>();
-    private static volatile HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
-    private static volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
+    private final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
+    private final HashMap<String, Validation> validations = new HashMap<>();
+    private volatile HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
+    private volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
     private final ValidationHelper validationHelper;
 
@@ -83,11 +83,11 @@ public class Definitions {
         return validationHelper;
     }
 
-    protected static void addValidation(Validation validation) {
+    protected void addValidation(Validation validation) {
         validations.put(validation.getName(), validation);
     }
 
-    public static Validation[] getValidations(String registerName, String fieldName) {
+    public Validation[] getValidations(String registerName, String fieldName) {
         String validationNames = "";
         for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
             if (fieldDefinitions.name.equals(fieldName)) {
@@ -109,7 +109,7 @@ public class Definitions {
         return validationArray;
     }
 
-    public static String getRequired(String registerName, String fieldName) {
+    public String getRequired(String registerName, String fieldName) {
         String result = "";
 
         for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
@@ -122,26 +122,26 @@ public class Definitions {
         return result;
     }
 
-    public static void addFieldFormat(String name, FieldFormat fieldFormat) {
+    public void addFieldFormat(String name, FieldFormat fieldFormat) {
         fieldsFormat.put(name, fieldFormat);
     }
 
-    public static void addFieldDefinitions(String name, FieldDefinitions[] fieldDefinitions) {
+    public void addFieldDefinitions(String name, FieldDefinitions[] fieldDefinitions) {
         if (fieldsDefinitions == null) fieldsDefinitions = new HashMap<>();
         fieldsDefinitions.put(name, fieldDefinitions);
     }
 
-    public static void addRegisterDefinitions(String name, RegisterDefinitions registerDefinitions) {
+    public void addRegisterDefinitions(String name, RegisterDefinitions registerDefinitions) {
         if (registersDefinitions == null) registersDefinitions = new HashMap<>();
         registersDefinitions.put(name, registerDefinitions);
     }
 
-    public static FieldDefinitions[] getFieldsDefinitions(String name, String definitionsXmlFile) {
+    public FieldDefinitions[] getFieldsDefinitions(String name) {
         if (fieldsDefinitions == null) {
             synchronized (Definitions.class) {
                 if (fieldsDefinitions == null) {
                     fieldsDefinitions = new HashMap<>();
-                    DefinitionsLoader.load(definitionsXmlFile);
+                    DefinitionsLoader.load(this);
                 }
             }
         }
@@ -149,7 +149,7 @@ public class Definitions {
         return fieldsDefinitions.get(name);
     }
 
-    public static FieldFormat getFieldFormatByFieldName(String fieldName) {
+    public FieldFormat getFieldFormatByFieldName(String fieldName) {
         return fieldsFormat.get(fieldName);
     }
 
@@ -162,7 +162,7 @@ public class Definitions {
             synchronized(this) {
                 if (registersDefinitions == null) {
                     registersDefinitions = new HashMap<>();
-                    DefinitionsLoader.load(this.getXmlFile());
+                    DefinitionsLoader.load(this);
                 }
             }
         }
@@ -172,11 +172,11 @@ public class Definitions {
 }
 
 class DefinitionsLoader {
-    public static void load(String xmlFile) {
+    public static void load(Definitions definitions) {
         try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource(xmlFile);
-            parser.parse(input, new DefinitionsHandler(xmlFile));
+            InputSource input = new InputSource(definitions.getXmlFile());
+            parser.parse(input, new DefinitionsHandler(definitions));
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
@@ -187,16 +187,16 @@ class DefinitionsHandler extends DefaultHandler {
     private final CharArrayWriter validationScriptContents = new CharArrayWriter();
     private ValidationScript validationScript = null;
 
-    private final String xmlFile;
+    private final Definitions definitions;
     private String registerName = "";
     private List<FieldDefinitions> fieldsDefinitions = null;
 
-    DefinitionsHandler(String xmlFile) {
-        this.xmlFile = xmlFile;
+    DefinitionsHandler(Definitions definitions) {
+        this.definitions = definitions;
     }
 
-    public String getXmlFile() {
-        return this.xmlFile;
+    public Definitions getDefinitions() {
+        return this.definitions;
     }
 
     public void startDocument() {}
@@ -215,7 +215,7 @@ class DefinitionsHandler extends DefaultHandler {
             registerDefinitions.parent = attributes.getValue(RegisterDefinitions.REGISTER_DEF_PARENT);
             registerDefinitions.parentType = attributes.getValue(RegisterDefinitions.REGISTER_DEF_PARENT_TYPE);
             registerDefinitions.key = attributes.getValue(RegisterDefinitions.REGISTER_DEF_KEY);
-            Definitions.addRegisterDefinitions(registerName, registerDefinitions);
+            definitions.addRegisterDefinitions(registerName, registerDefinitions);
         }
 
         //start element fields
@@ -242,12 +242,12 @@ class DefinitionsHandler extends DefaultHandler {
             FieldFormat fieldFormat = new FieldFormat(fieldDefinitions.format, Integer.parseInt("0" + fieldDefinitions.size));
             String fieldFormatName = registerName + "." + fieldDefinitions.name;
 
-            Definitions.addFieldFormat(fieldFormatName, fieldFormat);
+            definitions.addFieldFormat(fieldFormatName, fieldFormat);
         }
 
         //start element regex
         if (tag.equals(Definitions.DEF_TAG_REGEX)) {
-            Definitions.addValidation(
+            definitions.addValidation(
                     new ValidationRegex(
                             attributes.getValue(ValidationRegex.REGEX_DEF_NAME),
                             attributes.getValue(ValidationRegex.REGEX_DEF_EXPRESSION),
@@ -261,14 +261,14 @@ class DefinitionsHandler extends DefaultHandler {
             validationScriptContents.reset();
 
             String scriptFileName = attributes.getValue(ValidationScript.SCRIPT_DEF_FILE);
-            File xmlFile = scriptFileName != null ? new File(this.getXmlFile()) : null;
+            File xmlFile = scriptFileName != null ? new File(this.getDefinitions().getXmlFile()) : null;
 
             validationScript = new ValidationScript(
                     attributes.getValue(ValidationScript.SCRIPT_DEF_NAME),
                     scriptFileName != null ?  xmlFile.getParent() + File.separator + scriptFileName : ""
             );
 
-            Definitions.addValidation(validationScript);
+            definitions.addValidation(validationScript);
         }
     }
 
@@ -277,7 +277,7 @@ class DefinitionsHandler extends DefaultHandler {
         if (tag.equals(Definitions.DEF_TAG_FIELDS)) {
             FieldDefinitions[] fd = new FieldDefinitions[fieldsDefinitions.size()];
             fieldsDefinitions.toArray(fd);
-            Definitions.addFieldDefinitions(registerName, fd);
+            definitions.addFieldDefinitions(registerName, fd);
         }
 
         //end element script
