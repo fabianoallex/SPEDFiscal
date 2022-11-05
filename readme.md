@@ -59,12 +59,16 @@ definitions
                             formatos aceitos por DecimalFormat()
             description: descrição do campo conforme manual
                          *** para uso futuro. não tratado no momento ***
-            required     [O|OC]
+            required:    [O|OC]
                             O --> obrigatorio
                             OC --> obrigatorio se existir informação
                          *** para uso futuro. não tratado no momento ***
-            ref          quando preenchido indica o tipo do registro referenciado. 
+            ref:         quando preenchido indica o tipo do registro referenciado. 
                          o registro referenciado deve ter informado o atributo key
+            validations: nomes da functions de validação que serão aplicadas ao field, separadas por virgula
+                         para cada nome será verificado se é um exempressão regular ou um scrpit. 
+                         não sendo nenhum dos dois será invocado, via reflexion, o método da classe ValidationHelper,
+                         com mesmo nome, passado como parametro no construtor da Classe Definitions.
 ```
 
 # exemplo
