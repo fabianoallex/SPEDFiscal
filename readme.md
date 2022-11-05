@@ -1,6 +1,6 @@
 
 # Gerador de arquivos do SPED
-Classes para geração de arquivos dentro da estrutura da ECF, ECD e EFD.
+Lib para geração de arquivos dentro da estrutura da ECF, ECD e EFD.
 
 A definição dos registros, nomes de campos, tipos de dados, formato, etc, devem ser feita previamente no arquivo definitions.xml.
 
@@ -13,6 +13,21 @@ Com isso é possível ter diferentes arquivos xml, de acordo com o tipo de escri
 ```txt
 definitions
   tags:
+    validations:    lista de validações definidas diretamente no xml, pode ser uma function javascript
+                    ou uma expressao regular
+        scripts:    lista de scripts
+          script:   tag script define uma funcao javascript para validacao
+            atrib
+              name: nome da função javascript
+              file: caminho onde está o arquivo de script. padrão: [xml_path\scripts\nome_do_arquivo.js]
+                    se não informado, o script será o conteudo da tag: <script><![CDATA[function x() {...}]]></script>
+              
+        regexs:     lista de expressoes regulares utilizadas para validar um valor
+          regex:
+            atrib
+              name: nome que identifica a expressão regular
+              expression: expressão regular
+              fail_message: mensagem de erro retornada caso a validação falhe.
     register
       atributos:
         name:        nome do registro
@@ -52,3 +67,5 @@ definitions
                          o registro referenciado deve ter informado o atributo key
 ```
 
+# exemplo
+https://github.com/fabianoallex/SPEDFiscalLibExample
