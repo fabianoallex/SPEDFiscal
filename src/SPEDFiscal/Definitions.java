@@ -73,10 +73,6 @@ public class Definitions {
     public Definitions(String xmlFile, ValidationHelper validationHelper) {
         this.xmlFile = xmlFile;
         this.validationHelper = validationHelper;
-
-        for (String validationName : validationHelper.getValidationNames()) {
-            addValidation(new ValidationInjected(validationHelper, validationName));
-        }
     }
 
     public ValidationHelper getValidationHelper() {
@@ -103,7 +99,15 @@ public class Definitions {
         Validation[] validationArray = new Validation[validationNamesArray.length];
 
         for (int i = 0; i < validationNamesArray.length; i++) {
-            validationArray[i] = validations.get(validationNamesArray[i].trim());
+            String validationName = validationNamesArray[i];
+            Validation validation = validations.get(validationName.trim());
+
+            if (validation == null) {
+                validation = new ValidationReflection(getValidationHelper(), validationName.trim());
+                addValidation(validation);
+            }
+
+            validationArray[i] = validation;
         }
 
         return validationArray;

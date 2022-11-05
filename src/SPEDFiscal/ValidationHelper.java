@@ -1,6 +1,5 @@
 package SPEDFiscal;
 
 public interface ValidationHelper {
-    public String[] getValidationNames();
-    public boolean validate(String validationName, String value, Register register);
+    public boolean validate(ValidationMessage validationMessage, String methodName, String value, Register register);
 }

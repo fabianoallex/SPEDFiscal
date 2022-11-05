@@ -54,10 +54,11 @@ public class FieldValidator extends Validator {
         String formattedValue = this.formatField();
         String required = this.getFieldRequired();
 
+        //quando o campo for obrigatorio e não for informado, nao faz as demais validações
         if (required.equals("O") && formattedValue.isEmpty()) {
             String message = "Campo ogrigatório não informado";
             this.getValidationListener().onErrorMessage(new ValidationEventField(register, field, message));
-            return; //quando o campo for obrigatorio e não for informado, nao faz as demais validações
+            return;
         }
 
         Validation[] validations = register.getDefinitions().getValidations(
@@ -74,14 +75,16 @@ public class FieldValidator extends Validator {
             if (validation instanceof ValidationScript validationScript)
                 scriptValidate(validationScript, formattedValue);
 
-            if (validation instanceof ValidationInjected validationInjected)
-                injectedValidate(validationInjected, formattedValue);
+            if (validation instanceof ValidationReflection validationReflection)
+                reflectionValidate(validationReflection, formattedValue);
         }
     }
 
-    private void injectedValidate(ValidationInjected validationInjected, String value) {
-        if (!validationInjected.validate(value, register)) {
-            String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + "teste" + "\"";
+    private void reflectionValidate(ValidationReflection validationReflection, String value) {
+        ValidationMessage validationMessage = new ValidationMessage();
+
+        if (!validationReflection.validate(validationMessage, value, register)) {
+            String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + validationMessage.getMessage() + "\"";
             this.getValidationListener().onErrorMessage(new ValidationEvent(message));
         }
     }

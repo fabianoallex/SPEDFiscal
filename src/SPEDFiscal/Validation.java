@@ -3,7 +3,6 @@ package SPEDFiscal;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -20,19 +19,19 @@ public class Validation {
     }
 }
 
-final class ValidationInjected extends Validation {
+final class ValidationReflection extends Validation {
     private final ValidationHelper validationHelper;
-    ValidationInjected(ValidationHelper validationHelper, String name) {
+    ValidationReflection(ValidationHelper validationHelper, String name) {
         super(name);
         this.validationHelper = validationHelper;
     }
 
-    public ValidationHelper getValidationHelper() {
-        return validationHelper;
+    public ValidationHelper getvalidationHelper() {
+        return this.validationHelper;
     }
 
-    public boolean validate(String param, Register register) {
-        return validationHelper.validate(this.getName(), param, register);
+    public boolean validate(ValidationMessage validationMessage, String value, Register register) {
+         return this.getvalidationHelper().validate(validationMessage, this.getName(), value, register);
     }
 }
 

@@ -3,12 +3,6 @@ package SPEDFiscal;
 import java.util.ArrayList;
 import java.util.Map;
 
-class FieldNotFoundException extends Exception {
-    public FieldNotFoundException(String fieldClassName, String fieldName, String registerName) {
-        super(String.format("%s '%s' não encontrado no Registro '%s'.", fieldClassName, fieldName, registerName));
-    }
-}
-
 public class Register implements Unit {
     private final String name;
     private final ArrayList<Register> registers = new ArrayList<>();
