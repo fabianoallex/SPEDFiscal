@@ -1,4 +1,4 @@
-package SPEDFiscal;
+package SPEDFiscalLib;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;

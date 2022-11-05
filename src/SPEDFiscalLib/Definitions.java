@@ -1,4 +1,4 @@
-package SPEDFiscal;
+package SPEDFiscalLib;
 
 import java.util.HashMap;
 import org.xml.sax.Attributes;

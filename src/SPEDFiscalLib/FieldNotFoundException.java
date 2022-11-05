@@ -1,4 +1,4 @@
-package SPEDFiscal;
+package SPEDFiscalLib;
 
 public class FieldNotFoundException extends Exception {
     public FieldNotFoundException(String fieldClassName, String fieldName, String registerName) {

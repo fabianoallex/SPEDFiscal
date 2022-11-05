@@ -1,4 +1,4 @@
-package SPEDFiscal;
+package SPEDFiscalLib;
 
 import java.util.ArrayList;
 import java.util.Map;

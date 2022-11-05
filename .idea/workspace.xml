@@ -2,22 +2,36 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="SPEDFiscal:jar" />
+      <artifact name="SPEDFiscalLib:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Projeto configurado como Lib, removido Main. movido definitions.xml e scripts para exemplo de uso da lib.">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationMessage.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/ValidationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Counter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/FieldsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldsCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/RegisterValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDFileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDStringBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDStringBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/ValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/ValidationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/ValidationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Writer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +54,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -49,19 +70,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/SPEDFiscalLib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/SPEDFiscalLib",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.externalResources"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="SPEDFiscal" />
@@ -84,13 +105,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00030" summary="ajustes">
-      <created>1666147998383</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1666147998383</updated>
     </task>
     <task id="LOCAL-00031" summary="Refatoração Classe Field e Fields. Remoção das subclasses de Field">
       <created>1666322650866</created>
@@ -428,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667620216042</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses.">
+      <created>1667672065171</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1667672065172</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -478,7 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajustes Block" />
     <MESSAGE value="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros." />
     <MESSAGE value="Implementação do validate" />
     <MESSAGE value="Implementação da class ValidationScript" />
@@ -503,7 +523,8 @@
     <MESSAGE value="Propriedades estáticas da classe Definitions convertidos para propriedades de objetos." />
     <MESSAGE value="ajustes" />
     <MESSAGE value="Projeto configurado como Lib, removido Main. movido definitions.xml e scripts para exemplo de uso da lib." />
-    <option name="LAST_COMMIT_MESSAGE" value="Projeto configurado como Lib, removido Main. movido definitions.xml e scripts para exemplo de uso da lib." />
+    <MESSAGE value="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,4 +1,4 @@
-package SPEDFiscal;
+package SPEDFiscalLib;
 
 public record SPEDStringBuilder(StringBuilder stringBuilder) implements Writer {
     @Override
