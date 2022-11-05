@@ -3,6 +3,10 @@ package SPEDFiscal;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class Validation {
     private final String name;
@@ -44,7 +48,9 @@ final class ValidationScript extends Validation {
         String linha = "";
 
         try {
-            BufferedReader buffRead = new BufferedReader(new FileReader(this.getFileName()));
+            URL url = new URL(this.fileName);
+
+            BufferedReader buffRead = new BufferedReader(new FileReader(Paths.get(url.toURI()).toFile()));
 
             while (linha != null) {
                 stringBuilder.append(linha);
@@ -52,7 +58,7 @@ final class ValidationScript extends Validation {
             }
 
             buffRead.close();
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
 
@@ -87,8 +93,7 @@ final class ValidationScript extends Validation {
 
     ValidationScript(String name, String fileName) {
         super(name);
-        this.fileName = fileName;
-    }
+        this.fileName = fileName;    }
 }
 
 final class ValidationRegex extends Validation {

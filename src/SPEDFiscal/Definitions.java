@@ -265,6 +265,7 @@ class DefinitionsHandler extends DefaultHandler {
 
             validationScript = new ValidationScript(
                     attributes.getValue(ValidationScript.SCRIPT_DEF_NAME),
+                    //scriptFileName
                     scriptFileName != null ?  xmlFile.getParent() + File.separator + scriptFileName : ""
             );
 

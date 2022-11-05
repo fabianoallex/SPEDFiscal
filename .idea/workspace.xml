@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SPEDFiscal:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Propriedades estáticas da classe Definitions convertidos para propriedades de objetos.">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes">
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ojdbc8.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/SPEDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPEDFiscal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPEDFiscalLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscal/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/definitions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/validate_cidade.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/validate_cnpj.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/validate_cpf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/validate_cpf_cnpj_0000.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/validate_dates_0000.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/validate_reg_0002.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,19 +55,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/nashorn/nashorn-core-15.4.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/SPEDFiscalLib",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.externalResources"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="SPEDFiscal" />
@@ -59,7 +76,20 @@
   <component name="RunManager">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="SPEDFiscal" />
+      <module name="SPEDFiscalLib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SPEDFiscalLib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SPEDFiscalLib" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -73,13 +103,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00028" summary="ajustes">
-      <created>1665944363055</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1665944363055</updated>
     </task>
     <task id="LOCAL-00029" summary="ajustes">
       <created>1666144954663</created>
@@ -417,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667532249631</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="ajustes">
+      <created>1667533113646</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1667533113646</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +504,6 @@
     <MESSAGE value="Implementação da class ValidationScript" />
     <MESSAGE value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
     <MESSAGE value="validações adicionadas a arquivos js" />
-    <MESSAGE value="ajustes" />
     <MESSAGE value="remoção de inner validations" />
     <MESSAGE value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
     <MESSAGE value="classe ValidatorHelper removida" />
@@ -492,7 +521,8 @@
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Incluida interface ValidationHelper" />
     <MESSAGE value="Propriedades estáticas da classe Definitions convertidos para propriedades de objetos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Propriedades estáticas da classe Definitions convertidos para propriedades de objetos." />
+    <MESSAGE value="ajustes" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
