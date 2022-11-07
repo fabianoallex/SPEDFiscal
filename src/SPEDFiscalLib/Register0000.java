@@ -9,9 +9,6 @@ public class Register0000 implements Unit {
         this.register = register;
     }
 
-    //Register0000(Definitions definitions) {
-    //    super(REGISTER_NAME, definitions);
-    //}
     public Register getRegister() {
         return register;
     }

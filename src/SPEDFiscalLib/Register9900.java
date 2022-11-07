@@ -22,18 +22,6 @@ public class Register9900 implements Unit {
     public Register getRegister() {
         return register;
     }
-/*
-    Register9900(Definitions definitions) {
-        super(REGISTER_NAME, definitions);
-        try {
-            fieldRegisterName = (Field<String>) this.getField(FIELD_REGISTER_NAME);
-            fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT);
-        } catch (FieldNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
- */
 
     public Field<String> getFieldRegisterName() {
         return fieldRegisterName;

@@ -3,7 +3,7 @@ package SPEDFiscalLib;
 public class ClosureRegister implements Unit {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
-    private Register register;
+    private final Register register;
 
     ClosureRegister(Register register) {
         this.register = register;

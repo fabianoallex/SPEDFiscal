@@ -9,21 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Alteração do nome da package para SPEDFiscalLib">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block9.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDFactory.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração: Criada Classe SPEDFactory">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldsCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,13 +88,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Refatoração Classe Field e Fields.">
-      <created>1666403308331</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1666403308331</updated>
     </task>
     <task id="LOCAL-00033" summary="Refatoracao classe Register">
       <created>1666404285723</created>
@@ -441,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667674888475</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Refatoração: Criada Classe SPEDFactory">
+      <created>1667788096401</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1667788096401</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +482,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementação do validate" />
     <MESSAGE value="Implementação da class ValidationScript" />
     <MESSAGE value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
     <MESSAGE value="validações adicionadas a arquivos js" />
@@ -516,14 +506,15 @@
     <MESSAGE value="Projeto configurado como Lib, removido Main. movido definitions.xml e scripts para exemplo de uso da lib." />
     <MESSAGE value="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses." />
     <MESSAGE value="Alteração do nome da package para SPEDFiscalLib" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alteração do nome da package para SPEDFiscalLib" />
+    <MESSAGE value="Refatoração: Criada Classe SPEDFactory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoração: Criada Classe SPEDFactory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java</url>
-          <line>25</line>
+          <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

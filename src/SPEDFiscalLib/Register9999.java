@@ -19,18 +19,6 @@ public class Register9999 implements Unit {
         return register;
     }
 
-    /*
-    Register9999(Definitions definitions) {
-        super(REGISTER_NAME, definitions);
-        try {
-            fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT_NAME);
-        } catch (FieldNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-     */
-
     public Field<Integer> getFieldRegisterCount() {
         return fieldRegisterCount;
     }
