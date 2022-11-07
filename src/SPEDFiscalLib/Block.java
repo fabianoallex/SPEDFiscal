@@ -9,13 +9,17 @@ public class Block implements Unit {
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
-    private final Definitions definitions;
+    private final SPEDFactory factory;
 
-    Block(String name, Definitions definitions) {
-        this.definitions = definitions;
+    Block(String name, SPEDFactory factory) {
+        this.factory = factory;
         this.name = name;
-        this.openingRegister = new OpeningRegister(name + OPENING_REGISTER_BLOCK_SUFFIX_NAME, definitions);
-        this.closureRegister = new ClosureRegister(name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME, definitions);
+        this.openingRegister = factory.createOpeningRegister(this.name + OPENING_REGISTER_BLOCK_SUFFIX_NAME);
+        this.closureRegister = factory.createClosureRegister(this.name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME);
+    }
+
+    public SPEDFactory getFactory() {
+        return factory;
     }
 
     public ClosureRegister getClosureRegister() {
@@ -31,7 +35,7 @@ public class Block implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, this.definitions);
+        Register register = this.factory.createRegister(name);
         this.registers.add(register);
         return register;
     }
@@ -39,7 +43,8 @@ public class Block implements Unit {
     Register getRegister(String name){
         for (int i = 0; i < registers.size()-1; i++){
             Register register = registers.get(i);
-            if (register.getName().equals(name)) return register;
+            if (register.getName().equals(name))
+                return register;
         }
 
         return null;
@@ -77,46 +82,5 @@ public class Block implements Unit {
         for (Register register : registers) register.write(writer);
         closureRegister.write(writer);
     }
-
-    protected Definitions getDefinitions() {
-        return this.definitions;
-    }
 }
 
-class OpeningRegister extends Register {
-    public static final String FIELD_REGISTER_THERE_IS_MOV = "IND_MOV";
-    public static final int FIELD_REGISTER_IS_THERE_MOV_YES = 0;
-    public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
-    private final Field<Integer> fieldRegisterIsThereMov;
-
-    OpeningRegister(String name, Definitions definitions) {
-        super(name, definitions);
-        try {
-            fieldRegisterIsThereMov = this.getField(FIELD_REGISTER_THERE_IS_MOV);
-        } catch (FieldNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void setThereIsMov(boolean thereIs) {
-        fieldRegisterIsThereMov.setValue((thereIs) ? FIELD_REGISTER_IS_THERE_MOV_YES : FIELD_REGISTER_IS_THERE_MOV_NO);
-    }
-}
-
-class ClosureRegister extends Register {
-    public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
-    private final Field<Integer> fieldRegisterCount;
-
-    ClosureRegister(String name, Definitions definitions) {
-        super(name, definitions);
-        try {
-            fieldRegisterCount = this.getField(FIELD_REGISTER_COUNT);
-        } catch (FieldNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Field<Integer> getFieldRegisterCount() {
-        return fieldRegisterCount;
-    }
-}

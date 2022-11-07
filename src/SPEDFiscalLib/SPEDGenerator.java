@@ -4,19 +4,15 @@ import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
-    private final Definitions definitions;
     private final Register0000 openingRegister;
     private final Register9999 closureRegister;
+    private final SPEDFactory factory;
     private Block9 block9 = null;
 
-    public SPEDGenerator(Definitions definitions){
-        this.definitions = definitions;
-        openingRegister = new Register0000(definitions);
-        closureRegister = new Register9999(definitions);
-    }
-
-    public SPEDGenerator(String XmlFile, ValidationHelper validationHelper){
-        this(new Definitions(XmlFile, validationHelper));
+    SPEDGenerator(SPEDFactory factory) {
+        this.factory = factory;
+        openingRegister = this.factory.createRegister0000();
+        closureRegister = this.factory.createRegister9999();
     }
 
     public Register0000 getOpeningRegister() {
@@ -24,7 +20,7 @@ public class SPEDGenerator implements Unit {
     }
 
     public Block addBlock(String blockName) {
-        Block block = new Block(blockName, definitions);
+        Block block = new Block(blockName, factory);
         this.blocks.add(block);
         return block;
     }
@@ -40,7 +36,7 @@ public class SPEDGenerator implements Unit {
 
     public void totalize(){
         this.blocks.remove(this.block9);  //se ja exister algum bloco9. remove
-        this.block9 = new Block9(definitions);
+        this.block9 = new Block9(this.factory);
         this.blocks.add(this.block9);
 
         Counter counter = new Counter();     //counting before generate 9900
@@ -101,70 +97,4 @@ public class SPEDGenerator implements Unit {
     }
 }
 
-class Register0000 extends Register{
-    public static final String REGISTER_NAME = "0000";
 
-    Register0000(Definitions definitions) {
-        super(REGISTER_NAME, definitions);
-    }
-}
-
-class Register9999 extends Register {
-    public static final String REGISTER_NAME = "9999";
-    public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
-    private final Field<Integer> fieldRegisterCount;
-
-    Register9999(Definitions definitions) {
-        super(REGISTER_NAME, definitions);
-        try {
-            fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT_NAME);
-        } catch (FieldNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Field<Integer> getFieldRegisterCount() {
-        return fieldRegisterCount;
-    }
-}
-
-class Register9900 extends Register {
-    public static final String REGISTER_NAME = "9900";
-    public static final String FIELD_REGISTER_NAME = "REG_BLC";
-    public static final String FIELD_REGISTER_COUNT = "QTD_REG_BLC";
-    private final Field<String> fieldRegisterName;
-    private final Field<Integer> fieldRegisterCount;
-
-    Register9900(Definitions definitions) {
-        super(REGISTER_NAME, definitions);
-        try {
-            fieldRegisterName = (Field<String>) this.getField(FIELD_REGISTER_NAME);
-            fieldRegisterCount = (Field<Integer>) this.getField(FIELD_REGISTER_COUNT);
-        } catch (FieldNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Field<String> getFieldRegisterName() {
-        return fieldRegisterName;
-    }
-
-    public Field<Integer> getFieldRegisterCount() {
-        return fieldRegisterCount;
-    }
-}
-
-class Block9 extends Block {
-    public static final String BLOCK_NAME = "9";
-
-    Block9(Definitions definitions) {
-        super(BLOCK_NAME, definitions);
-    }
-
-    void addRegister9900(String regName, int regTotal) {
-        Register9900 register9900 = new Register9900(this.getDefinitions());
-        register9900.getFieldRegisterName().setValue(regName);
-        register9900.getFieldRegisterCount().setValue(regTotal);
-        this.getRegisters().add(register9900);
-    }
-}

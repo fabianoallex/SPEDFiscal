@@ -41,12 +41,12 @@ public class FieldValidator extends Validator {
 
     private String formatField() {
         String fieldFormatName = register.getName() + "." + field.getName();
-        FieldFormat fieldFormat = register.getDefinitions().getFieldFormatByFieldName(fieldFormatName);
+        FieldFormat fieldFormat = register.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
         return FieldFormatter.formatField(field, fieldFormat);
     }
 
     private String getFieldRequired() {
-        return register.getDefinitions().getRequired(register.getName(), field.getName());
+        return register.getFactory().getDefinitions().getRequired(register.getName(), field.getName());
     }
 
     @Override
@@ -61,7 +61,7 @@ public class FieldValidator extends Validator {
             return;
         }
 
-        Validation[] validations = register.getDefinitions().getValidations(
+        Validation[] validations = register.getFactory().getDefinitions().getValidations(
                 register.getName(),
                 field.getName()
         );

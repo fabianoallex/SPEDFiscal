@@ -3,18 +3,18 @@ package SPEDFiscalLib;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Register implements Unit {
+final public class Register implements Unit {
     private final String name;
     private final ArrayList<Register> registers = new ArrayList<>();
     private final Fields fields;
     private final String referenceKey;
-    private final Definitions definitions;
+    private final SPEDFactory factory;
 
-    Register(String name, Definitions definitions){
+    Register(String name, SPEDFactory factory) {
         this.name = name;
-        this.definitions = definitions;
-        this.fields = FieldsCreator.create(this.name, this.definitions);
-        this.referenceKey = definitions.getRegisterDefinitions(this.name).key;
+        this.factory = factory;
+        this.fields =  this.factory.createFields(name);
+        this.referenceKey = this.factory.getDefinitions().getRegisterDefinitions(this.name).key;
     }
 
     public <T> T getID() {
@@ -36,7 +36,7 @@ public class Register implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = new Register(name, this.definitions);
+        Register register = this.factory.createRegister(name);
         this.registers.add(register);
         return register;
     }
@@ -70,7 +70,7 @@ public class Register implements Unit {
 
     private String formatField(Field<?> field) {
         String fieldFormatName = this.getName() + "." + field.getName();
-        FieldFormat fieldFormat = this.getDefinitions().getFieldFormatByFieldName(fieldFormatName);
+        FieldFormat fieldFormat = this.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
         return FieldFormatter.formatField(field, fieldFormat);
     }
 
@@ -115,8 +115,9 @@ public class Register implements Unit {
         return field.getValue();
     }
 
-    protected Definitions getDefinitions() {
-        return this.definitions;
+
+    public SPEDFactory getFactory() {
+        return this.factory;
     }
 }
 
