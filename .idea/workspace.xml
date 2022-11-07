@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +86,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Refatoracao. Criação da Classe FieldFormatter">
-      <created>1666459925003</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1666459925003</updated>
     </task>
     <task id="LOCAL-00035" summary="Refatoracao. Criação da Classe FieldFormatter">
       <created>1666460037234</created>
@@ -432,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667788335470</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999.">
+      <created>1667790026392</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1667790026392</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -482,7 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementação da class ValidationScript" />
     <MESSAGE value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
     <MESSAGE value="validações adicionadas a arquivos js" />
     <MESSAGE value="remoção de inner validations" />
@@ -507,7 +504,8 @@
     <MESSAGE value="Alteração do nome da package para SPEDFiscalLib" />
     <MESSAGE value="Refatoração: Criada Classe SPEDFactory" />
     <MESSAGE value="Ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes" />
+    <MESSAGE value="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
