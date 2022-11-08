@@ -1,20 +1,14 @@
 package SPEDFiscalLib;
 
 abstract public class NamedRegister implements Unit {
-    private final String name;
     private final Register register;
 
-    NamedRegister(String name, Register register) {
-        this.name = name;
+    NamedRegister(Register register) {
         this.register = register;
     }
 
     public Register getRegister() {
         return register;
-    }
-
-    public String getName(){
-        return this.name;
     }
 
     @Override

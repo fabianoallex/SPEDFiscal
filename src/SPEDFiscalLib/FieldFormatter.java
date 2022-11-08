@@ -7,6 +7,12 @@ import java.util.Date;
 public class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
 
+    static public String formatField(Field<?> field, Register register) {
+        String fieldFormatName = register.getName() + "." + field.getName();
+        FieldFormat fieldFormat = register.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
+        return formatField(field, fieldFormat);
+    }
+
     static public String formatField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() instanceof Register register) {
             Field<?> tempField = new Field<>();

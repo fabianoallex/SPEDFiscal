@@ -47,18 +47,16 @@ public class SPEDFactory {
         for (FieldDefinitions fieldDefinitions : this.definitions.getFieldsDefinitions(registerName)) {
             String fieldName = fieldDefinitions.name;
             String type = fieldDefinitions.type;
-            String size = fieldDefinitions.size;
             String dec = fieldDefinitions.dec;
-            String format = fieldDefinitions.format;
-            String ref = fieldDefinitions.ref;
+            String required = fieldDefinitions.required;
 
-            if (type.equals(Definitions.FIELDS_REG_TYPE_STRING)) fields.addField(new Field<String>(fieldName));
-            if (type.equals(Definitions.FIELDS_REG_TYPE_DATE)) fields.addField(new Field<Date>(fieldName));
+            if (type.equals(Definitions.FIELDS_REG_TYPE_STRING)) fields.addField(new Field<String>(fieldName, required));
+            if (type.equals(Definitions.FIELDS_REG_TYPE_DATE)) fields.addField(new Field<Date>(fieldName, required));
 
             if (type.equals(Definitions.FIELDS_REG_TYPE_NUMBER))
                 fields.addField(dec.isEmpty() ?
-                        new Field<Integer>(fieldName) :
-                        new Field<Double>(fieldName));
+                        new Field<Integer>(fieldName, required) :
+                        new Field<Double>(fieldName, required));
         }
 
         return fields;

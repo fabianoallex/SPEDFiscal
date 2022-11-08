@@ -9,10 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999.">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,13 +94,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Refatoracao. Criação da Classe FieldFormatter">
-      <created>1666460037234</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1666460037234</updated>
     </task>
     <task id="LOCAL-00036" summary="Refatoracao. Renomeação de metodos">
       <created>1666460659479</created>
@@ -430,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667790026392</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister">
+      <created>1667790484726</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1667790484726</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -480,7 +488,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ValidationScript alterado pra referenciar arquivo JS fora do xml" />
     <MESSAGE value="validações adicionadas a arquivos js" />
     <MESSAGE value="remoção de inner validations" />
     <MESSAGE value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
@@ -505,7 +512,8 @@
     <MESSAGE value="Refatoração: Criada Classe SPEDFactory" />
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999." />
+    <MESSAGE value="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

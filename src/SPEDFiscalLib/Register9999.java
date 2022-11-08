@@ -6,7 +6,7 @@ public class Register9999 extends NamedRegister {
     private final Field<Integer> fieldRegisterCount;
 
     Register9999(Register register) {
-        super(REGISTER_NAME, register);
+        super(register);
         try {
             fieldRegisterCount = this.getRegister().getField(FIELD_REGISTER_COUNT_NAME);
         } catch (FieldNotFoundException e) {

@@ -5,7 +5,7 @@ public class ClosureRegister extends NamedRegister {
     private final Field<Integer> fieldRegisterCount;
 
     ClosureRegister(Register register) {
-        super(register.getName(), register);
+        super(register);
         try {
             fieldRegisterCount = this.getRegister().getField(FIELD_REGISTER_COUNT);
         } catch (FieldNotFoundException e) {

@@ -39,20 +39,10 @@ public class FieldValidator extends Validator {
         this.validate();
     }
 
-    private String formatField() {
-        String fieldFormatName = register.getName() + "." + field.getName();
-        FieldFormat fieldFormat = register.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
-        return FieldFormatter.formatField(field, fieldFormat);
-    }
-
-    private String getFieldRequired() {
-        return register.getFactory().getDefinitions().getRequired(register.getName(), field.getName());
-    }
-
     @Override
     public void validate() {
-        String formattedValue = this.formatField();
-        String required = this.getFieldRequired();
+        String formattedValue = FieldFormatter.formatField(this.field, this.register);
+        String required = this.field.getRequired();
 
         //quando o campo for obrigatorio e não for informado, nao faz as demais validações
         if (required.equals("O") && formattedValue.isEmpty()) {
