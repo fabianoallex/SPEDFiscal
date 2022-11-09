@@ -7,8 +7,8 @@ public class Register9900 extends NamedRegister {
     private final Field<String> fieldRegisterName;
     private final Field<Integer> fieldRegisterCount;
 
-    Register9900(Register register) {
-        super(register);
+    Register9900(SPEDFactory factory) {
+        super(factory, REGISTER_NAME);
         try {
             fieldRegisterName = this.getRegister().getField(FIELD_REGISTER_NAME);
             fieldRegisterCount = this.getRegister().getField(FIELD_REGISTER_COUNT);

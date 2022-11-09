@@ -22,23 +22,23 @@ public class SPEDFactory {
     }
 
     public Register0000 createRegister0000() {
-        return new Register0000(this.createRegister(Register0000.REGISTER_NAME));
+        return new Register0000(this);
     }
 
     public Register9900 createRegister9900() {
-        return new Register9900(this.createRegister(Register9900.REGISTER_NAME));
+        return new Register9900(this);
     }
 
     public Register9999 createRegister9999() {
-        return new Register9999(this.createRegister(Register9999.REGISTER_NAME));
+        return new Register9999(this);
     }
 
     public OpeningRegister createOpeningRegister(String name) {
-        return new OpeningRegister(this.createRegister(name));
+        return new OpeningRegister(this, name);
     }
 
     public ClosureRegister createClosureRegister(String name) {
-        return new ClosureRegister(this.createRegister(name));
+        return new ClosureRegister(this, name);
     }
 
     public Fields createFields(String registerName) {

@@ -6,8 +6,8 @@ public class OpeningRegister extends NamedRegister {
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
     private final Field<Integer> fieldRegisterIsThereMov;
 
-    OpeningRegister(Register register) {
-        super(register);
+    OpeningRegister(SPEDFactory factory, String name) {
+        super(factory, name);
         try {
             fieldRegisterIsThereMov = this.getRegister().getField(FIELD_REGISTER_THERE_IS_MOV);
         } catch (FieldNotFoundException e) {

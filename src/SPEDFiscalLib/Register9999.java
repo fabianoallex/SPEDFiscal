@@ -5,8 +5,8 @@ public class Register9999 extends NamedRegister {
     public static final String FIELD_REGISTER_COUNT_NAME = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
 
-    Register9999(Register register) {
-        super(register);
+    Register9999(SPEDFactory factory) {
+        super(factory, REGISTER_NAME);
         try {
             fieldRegisterCount = this.getRegister().getField(FIELD_REGISTER_COUNT_NAME);
         } catch (FieldNotFoundException e) {
