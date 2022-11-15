@@ -11,7 +11,7 @@ class ValidationEventField extends ValidationEvent {
     private final Register register;
 
     ValidationEventField(Register register, Field<?> field, String message) {
-        super(register.getName() + "." + field.getName() + ": \"" + message + "\"." );
+        super(register.getName() + "." + field.getName() + ": \"" + message + "\".", register);
         this.register = register;
         this.field = field;
     }
@@ -75,7 +75,7 @@ public class FieldValidator extends Validator {
 
         if (!validationReflection.validate(validationMessage, value, register)) {
             String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + validationMessage.getMessage() + "\"";
-            this.getValidationListener().onErrorMessage(new ValidationEvent(message));
+            this.getValidationListener().onErrorMessage(new ValidationEvent(message, register));
         }
     }
 
@@ -91,7 +91,7 @@ public class FieldValidator extends Validator {
             Matcher matcher = pattern.matcher(value);
             if (!matcher.matches()) {
                 String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + failMessage + "\"";
-                this.getValidationListener().onErrorMessage(new ValidationEvent(message));
+                this.getValidationListener().onErrorMessage(new ValidationEvent(message, register));
             }
         }
     }
@@ -120,7 +120,7 @@ public class FieldValidator extends Validator {
 
             if (isValidObject instanceof Boolean isValid && !isValid) {
                 message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + message + "\".";
-                this.getValidationListener().onErrorMessage(new ValidationEvent((String) message));
+                this.getValidationListener().onErrorMessage(new ValidationEvent((String) message, register));
             }
         } catch (ScriptException se) {
             throw new RuntimeException(se);

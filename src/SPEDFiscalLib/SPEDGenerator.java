@@ -4,19 +4,22 @@ import java.util.ArrayList;
 
 public class SPEDGenerator implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
-    private final Register0000 openingRegister;
-    private final Register9999 closureRegister;
+    private final Register0000 register0000;
+    private final Register9999 register9999;
     private final SPEDFactory factory;
     private Block9 block9 = null;
 
     SPEDGenerator(SPEDFactory factory) {
         this.factory = factory;
-        openingRegister = this.factory.createRegister0000();
-        closureRegister = this.factory.createRegister9999();
+        register0000 = this.factory.createRegister0000();
+        register9999 = this.factory.createRegister9999();
     }
 
-    public Register0000 getOpeningRegister() {
-        return openingRegister;
+    public Register0000 getRegister0000() {
+        return register0000;
+    }
+    public Register9999 getRegister9999() {
+        return register9999;
     }
 
     public Block addBlock(String blockName) {
@@ -55,7 +58,7 @@ public class SPEDGenerator implements Unit {
         block9.addRegister9900(Register9900.REGISTER_NAME, counter9900.count(Register9900.REGISTER_NAME)); //add |9900|9900|x|
 
         //update closureRegister file register counting
-        this.closureRegister.getFieldRegisterCount().setValue(counter.count() + counter9900.count());
+        this.register9999.getFieldRegisterCount().setValue(counter.count() + counter9900.count());
 
         //os blocos 0 e 9 devem ter incrementado +1 ao total do bloco, devido os registros 0000 e 9999
         //não fazerem parte dos blocos 0 e 9, mas devem ser considerados na totalização desses blocos
@@ -70,30 +73,30 @@ public class SPEDGenerator implements Unit {
 
     @Override
     public void count(Counter counter) {
-        openingRegister.count(counter);
-        closureRegister.count(counter);
+        register0000.count(counter);
+        register9999.count(counter);
         blocks.forEach((block -> block.count(counter)));
     }
 
     @Override
     public int count() {
-        int c = openingRegister.count() + closureRegister.count();
+        int c = register0000.count() + register9999.count();
         for (Block block : blocks) c += block.count();
         return c;
     }
 
     @Override
     public void validate(ValidationListener validationListener) {
-        openingRegister.validate(validationListener);
+        register0000.validate(validationListener);
         for (Block block : blocks)  block.validate(validationListener);
-        closureRegister.validate(validationListener);
+        register9999.validate(validationListener);
     }
 
     @Override
     public void write(Writer writer) {
-        openingRegister.write(writer);
+        register0000.write(writer);
         for (Block block : blocks) block.write(writer);
-        closureRegister.write(writer);
+        register9999.write(writer);
     }
 }
 

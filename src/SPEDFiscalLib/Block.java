@@ -40,16 +40,6 @@ public class Block implements Unit {
         return register;
     }
 
-    Register getRegister(String name){
-        for (int i = 0; i < registers.size()-1; i++){
-            Register register = registers.get(i);
-            if (register.getName().equals(name))
-                return register;
-        }
-
-        return null;
-    }
-
     void totalize(int initCount) {
         closureRegister.getFieldRegisterCount().setValue(this.count() + initCount);
         openingRegister.setThereIsMov((closureRegister.getFieldRegisterCount().getValue() > 2 ));
