@@ -1,6 +1,6 @@
 package SPEDFiscalLib;
 
 public interface Writer {
-    void write(String string);
+    void write(String string, Register register);
 }
 

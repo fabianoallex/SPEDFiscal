@@ -64,7 +64,7 @@ final public class Register implements Unit {
 
     @Override
     public void write(Writer writer) {
-        writer.write(this.toString());
+        writer.write(this.toString(), this);
         for (Register register : registers) register.write(writer);
     }
 

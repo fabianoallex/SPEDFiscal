@@ -45,28 +45,55 @@ final public class Field<T> {
         return value;
     }
 
+    public String getValueAsString() {
+        if (getValue() instanceof String valueAsString) {
+            return valueAsString.isEmpty() ? "" : valueAsString;
+        }
+
+        if (getValue() instanceof Integer valueAsInteger) {
+            return valueAsInteger.toString();
+        }
+
+        if (getValue() instanceof Double valueAsDouble) {
+            return valueAsDouble.toString();
+        }
+
+        if (getValue() instanceof Date valueAsDate) {
+            return new SimpleDateFormat("dd/MM/yyyy").format(valueAsDate);
+        }
+
+        if (getValue() instanceof Register valueAsRegister) {
+            Field<?> tempField = new Field<>();
+            tempField.setValue(valueAsRegister.getID());
+
+            return tempField.getValueAsString(); //recursive
+        }
+
+        return (getValue() != null ? (String) getValue() : "");
+    }
+
     public void setValueFromString(String value) throws ParseException {
         if (getValue() instanceof String) {
             Field<String> stringField = (Field<String>) this;
-            stringField.setValue(value);
+            stringField.setValue(value.isEmpty() ? null : value);
             return;
         }
 
         if (getValue() instanceof Integer) {
             Field<Integer> integerField = (Field<Integer>) this;
-            integerField.setValue(Integer.parseInt(value));
+            integerField.setValue(value.isEmpty() ? null : Integer.parseInt(value));
             return;
         }
 
         if (getValue() instanceof Double) {
             Field<Double> doubleField = (Field<Double>) this;
-            doubleField.setValue(Double.parseDouble(value));
+            doubleField.setValue(value.isEmpty() ? null : Double.parseDouble(value));
             return;
         }
 
         if (getValue() instanceof Date) {
             Field<Date> dateField = (Field<Date>) this;
-            dateField.setValue(new SimpleDateFormat("dd/MM/yyyy").parse(value));
+            dateField.setValue(value.isEmpty() ? null : new SimpleDateFormat("dd/MM/yyyy").parse(value));
             return;
         }
 

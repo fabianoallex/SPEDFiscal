@@ -9,15 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração NamedRegister. Construtor irá receber o factory ao invés de Register">
-      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Field.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Alteraçao da interface Writer para retornar além do texto, o objeto registro">
+      <change afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidationEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDFileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDStringBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDStringBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Writer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Refatoracao. ajustes">
-      <created>1666465160508</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1666465160508</updated>
     </task>
     <task id="LOCAL-00039" summary="Refatoracao. ajustes">
       <created>1666466501367</created>
@@ -437,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667957573379</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Ajustes na Classe Field">
+      <created>1668522601887</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1668522601888</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,8 +487,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FieldFormatter e FieldsCreator movidos para arquivos .java próprios" />
-    <MESSAGE value="classe ValidatorHelper removida" />
     <MESSAGE value="refatoracao RegisterValidator" />
     <MESSAGE value="Criadas classes Validator e FieldValidator" />
     <MESSAGE value="Refatoração FieldFormatter" />
@@ -512,7 +510,9 @@
     <MESSAGE value="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister" />
     <MESSAGE value="Refatorações" />
     <MESSAGE value="Refatoração NamedRegister. Construtor irá receber o factory ao invés de Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração NamedRegister. Construtor irá receber o factory ao invés de Register" />
+    <MESSAGE value="Ajustes na Classe Field" />
+    <MESSAGE value="Alteraçao da interface Writer para retornar além do texto, o objeto registro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alteraçao da interface Writer para retornar além do texto, o objeto registro" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

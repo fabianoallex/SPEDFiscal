@@ -11,7 +11,7 @@ public class SPEDFileWriter implements Writer {
     }
 
     @Override
-    public void write(String string) {
+    public void write(String string, Register register) {
         this.printWriter.println(string);
     }
 }
