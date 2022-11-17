@@ -55,7 +55,6 @@ public class FieldValidator extends Validator {
         ValidationMessage validationMessage = new ValidationMessage();
 
         if (!validationReflection.validate(validationMessage, value, register)) {
-            //String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + validationMessage.getMessage() + "\"";
             String message = "[" + value + "]: " + validationMessage.getMessage();
             this.getValidationListener().onErrorMessage(new FieldValidationEvent(register, field, message));
         }
@@ -72,7 +71,6 @@ public class FieldValidator extends Validator {
             Pattern pattern = Pattern.compile(expression);
             Matcher matcher = pattern.matcher(value);
             if (!matcher.matches()) {
-                //String message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + failMessage + "\"";
                 String message = "[" + value + "]: " + failMessage;
                 this.getValidationListener().onErrorMessage(new FieldValidationEvent(register, field, message));
             }
@@ -102,7 +100,6 @@ public class FieldValidator extends Validator {
             var message = scriptEngine.get("message");
 
             if (isValidObject instanceof Boolean isValid && !isValid) {
-                //message = register.getName() + "." + field.getName() + ": \"" + value + "\": \"" + message + "\".";
                 message = "[" + value + "]: " + message;
                 this.getValidationListener().onErrorMessage(new FieldValidationEvent(register, field, (String) message));
             }

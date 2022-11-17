@@ -2,10 +2,10 @@ package SPEDFiscalLib;
 
 import java.util.Date;
 
-public class SPEDFactory {
+public class Factory {
     private final Definitions definitions;
 
-    public SPEDFactory(Definitions definitions) {
+    public Factory(Definitions definitions) {
         this.definitions = definitions;
     }
 

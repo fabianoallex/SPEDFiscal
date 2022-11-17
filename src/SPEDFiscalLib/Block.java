@@ -9,16 +9,16 @@ public class Block implements Unit {
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
-    private final SPEDFactory factory;
+    private final Factory factory;
 
-    Block(String name, SPEDFactory factory) {
+    Block(String name, Factory factory) {
         this.factory = factory;
         this.name = name;
         this.openingRegister = factory.createOpeningRegister(this.name + OPENING_REGISTER_BLOCK_SUFFIX_NAME);
         this.closureRegister = factory.createClosureRegister(this.name + CLOSURE_REGISTER_BLOCK_SUFFIX_NAME);
     }
 
-    public SPEDFactory getFactory() {
+    public Factory getFactory() {
         return factory;
     }
 

@@ -3,7 +3,7 @@ package SPEDFiscalLib;
 abstract public class NamedRegister implements Unit {
     private final Register register;
 
-    NamedRegister(SPEDFactory factory, String name) {
+    NamedRegister(Factory factory, String name) {
         this.register = factory.createRegister(name);
     }
 

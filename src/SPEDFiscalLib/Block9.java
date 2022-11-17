@@ -3,7 +3,7 @@ package SPEDFiscalLib;
 public class Block9 extends Block {
     public static final String BLOCK_NAME = "9";
 
-    Block9(SPEDFactory factory) {
+    Block9(Factory factory) {
         super(BLOCK_NAME, factory);
     }
 

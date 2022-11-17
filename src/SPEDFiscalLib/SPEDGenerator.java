@@ -6,10 +6,10 @@ public class SPEDGenerator implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
     private final Register0000 register0000;
     private final Register9999 register9999;
-    private final SPEDFactory factory;
+    private final Factory factory;
     private Block9 block9 = null;
 
-    SPEDGenerator(SPEDFactory factory) {
+    SPEDGenerator(Factory factory) {
         this.factory = factory;
         register0000 = this.factory.createRegister0000();
         register9999 = this.factory.createRegister9999();

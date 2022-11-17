@@ -8,9 +8,9 @@ final public class Register implements Unit {
     private final ArrayList<Register> registers = new ArrayList<>();
     private final Fields fields;
     private final String referenceKey;
-    private final SPEDFactory factory;
+    private final Factory factory;
 
-    Register(String name, SPEDFactory factory) {
+    Register(String name, Factory factory) {
         this.name = name;
         this.factory = factory;
         this.fields =  this.factory.createFields(name);
@@ -116,7 +116,7 @@ final public class Register implements Unit {
     }
 
 
-    public SPEDFactory getFactory() {
+    public Factory getFactory() {
         return this.factory;
     }
 }

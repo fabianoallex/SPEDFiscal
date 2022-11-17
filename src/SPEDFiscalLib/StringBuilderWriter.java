@@ -1,6 +1,6 @@
 package SPEDFiscalLib;
 
-public record SPEDStringBuilder(StringBuilder stringBuilder) implements Writer {
+public record StringBuilderWriter(StringBuilder stringBuilder) implements Writer {
     @Override
     public void write(String string, Register register) {
         this.stringBuilder.append(string);

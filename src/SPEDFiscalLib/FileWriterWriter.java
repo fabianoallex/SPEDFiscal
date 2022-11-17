@@ -3,10 +3,10 @@ package SPEDFiscalLib;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-public class SPEDFileWriter implements Writer {
+public class FileWriterWriter implements Writer {
     private final PrintWriter printWriter;
 
-    public SPEDFileWriter(FileWriter fileWriter) {
+    public FileWriterWriter(FileWriter fileWriter) {
         this.printWriter = new PrintWriter(fileWriter);
     }
 
