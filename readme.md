@@ -71,5 +71,7 @@ definitions
                          com mesmo nome, passado como parametro no construtor da Classe Definitions.
 ```
 
-# exemplo
+# exemplos
 https://github.com/fabianoallex/SPEDFiscalLibExample
+
+https://github.com/fabianoallex/SPEDFiscalLibExampleFX
