@@ -1,5 +1,7 @@
 package SPEDFiscalLib;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 
 public class Factory {
@@ -60,5 +62,13 @@ public class Factory {
         }
 
         return fields;
+    }
+
+    public NamedRegister createNamedRegister(Class<? extends NamedRegister> clazz) {
+        try {
+            return clazz.getConstructor(Factory.class).newInstance(this);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

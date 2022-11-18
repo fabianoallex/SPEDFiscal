@@ -1,5 +1,7 @@
 package SPEDFiscalLib;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Block implements Unit {
@@ -38,6 +40,12 @@ public class Block implements Unit {
         Register register = this.factory.createRegister(name);
         this.registers.add(register);
         return register;
+    }
+
+    public NamedRegister addNamedRegister(Class<? extends NamedRegister> clazz) {
+        NamedRegister namedRegister = this.factory.createNamedRegister(clazz);
+        this.registers.add(namedRegister.getRegister());
+        return namedRegister;
     }
 
     void totalize(int initCount) {
