@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Incluídos Métodos AddNamedRegister nas Classes Block e Register.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Factory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,13 +87,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00041" summary="readme">
-      <created>1666467493442</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1666467493442</updated>
     </task>
     <task id="LOCAL-00042" summary="readme">
       <created>1666468232960</created>
@@ -434,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668649794218</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Incluídos Métodos AddNamedRegister nas Classes Block e Register.">
+      <created>1668741351376</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1668741351376</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -484,7 +481,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Criadas classes Validator e FieldValidator" />
     <MESSAGE value="Refatoração FieldFormatter" />
     <MESSAGE value="ajustes e script de validação de cidades" />
     <MESSAGE value="SPEDDefinitions.java renomeado para Definitions" />
@@ -509,7 +505,8 @@
     <MESSAGE value="Alteraçao da interface Writer para retornar além do texto, o objeto registro" />
     <MESSAGE value="Ajustes das mensagens nas classes de validação" />
     <MESSAGE value="Ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes" />
+    <MESSAGE value="Incluídos Métodos AddNamedRegister nas Classes Block e Register." />
+    <option name="LAST_COMMIT_MESSAGE" value="Incluídos Métodos AddNamedRegister nas Classes Block e Register." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

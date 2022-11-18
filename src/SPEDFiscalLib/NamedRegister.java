@@ -12,6 +12,11 @@ abstract public class NamedRegister implements Unit {
     }
 
     @Override
+    public String toString() {
+        return this.getRegister().toString();
+    }
+
+    @Override
     public void count(Counter counter) {
         this.register.count(counter);
     }
