@@ -1,5 +1,7 @@
 package SPEDFiscalLib;
 
+import java.util.Date;
+
 abstract public class NamedRegister implements Unit {
     private final Register register;
 
@@ -9,6 +11,38 @@ abstract public class NamedRegister implements Unit {
 
     public Register getRegister() {
         return register;
+    }
+
+    public Field<String> getStringField(String fieldName) {
+        try {
+            return this.getRegister().getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field<Date> getDateField(String fieldName) {
+        try {
+            return this.getRegister().getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field<Integer> getIntegerField(String fieldName) {
+        try {
+            return this.getRegister().getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field<Double> getDoubleField(String fieldName) {
+        try {
+            return this.getRegister().getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

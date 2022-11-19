@@ -76,12 +76,6 @@ final public class Register implements Unit {
         for (Register register : registers) register.write(writer);
     }
 
-    private String formatField(Field<?> field) {
-        String fieldFormatName = this.getName() + "." + field.getName();
-        FieldFormat fieldFormat = this.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
-        return FieldFormatter.formatField(field, fieldFormat);
-    }
-
     @Override
     public String toString() {
         StringBuilder stringBuilderFields = new StringBuilder();
@@ -90,7 +84,7 @@ final public class Register implements Unit {
             Field<?> field = e.getValue();
 
             stringBuilderFields
-                    .append(this.formatField(field))
+                    .append(FieldFormatter.formatField(field, this))
                     .append(FieldDefinitions.FIELD_SEPARATOR);
         }
 
