@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 public class Validation {
     private final String name;
@@ -43,25 +44,17 @@ final class ValidationScript extends Validation {
     private String script;
 
     private String getFileContents() {
-        StringBuilder stringBuilder = new StringBuilder();
-        String linha = "";
-
         try {
             URL url = new URL(this.fileName);
-
             BufferedReader buffRead = new BufferedReader(new FileReader(Paths.get(url.toURI()).toFile()));
-
-            while (linha != null) {
-                stringBuilder.append(linha);
-                linha = buffRead.readLine();
-            }
-
+            final String fileContents = buffRead
+                    .lines()
+                    .collect(Collectors.joining("\n"));
             buffRead.close();
+            return fileContents;
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
-
-        return stringBuilder.toString();
     }
 
     private String getScriptFromFile() {

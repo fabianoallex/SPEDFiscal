@@ -1,6 +1,7 @@
 package SPEDFiscalLib;
 
-import java.util.HashMap;
+import java.util.*;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -11,8 +12,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.CharArrayWriter;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
 
 class FieldDefinitions {
     public static final String FIELD_EMPTY_STRING = "";
@@ -84,13 +84,12 @@ public class Definitions {
     }
 
     public Validation[] getValidations(String registerName, String fieldName) {
-        String validationNames = "";
-        for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
-            if (fieldDefinitions.name.equals(fieldName)) {
-                validationNames = fieldDefinitions.validationNames;
-                break;
-            }
-        }
+
+        String validationNames = Arrays.stream(fieldsDefinitions.get(registerName))
+                .filter(fd -> fd.name.equals(fieldName))
+                .map(d -> d.validationNames == null ? "" : d.validationNames)
+                .findAny()
+                .orElse(null);
 
         if (validationNames == null || validationNames.trim().equals(""))
             return null;
@@ -114,16 +113,11 @@ public class Definitions {
     }
 
     public String getRequired(String registerName, String fieldName) {
-        String result = "";
-
-        for (FieldDefinitions fieldDefinitions : fieldsDefinitions.get(registerName)) {
-            if (fieldDefinitions.name.equals(fieldName)) {
-                result = fieldDefinitions.required;
-                break;
-            }
-        }
-
-        return result;
+        return Arrays.stream(fieldsDefinitions.get(registerName))
+                .filter(fieldDefinitions -> fieldDefinitions.name.equals(fieldName))
+                .map(definitions -> definitions.required)
+                .findAny()
+                .orElse("");
     }
 
     public void addFieldFormat(String name, FieldFormat fieldFormat) {

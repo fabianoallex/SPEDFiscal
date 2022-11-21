@@ -1,6 +1,7 @@
 package SPEDFiscalLib;
 
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class Counter extends HashMap<String, Integer> {
     public void increment(String name) {
@@ -9,12 +10,7 @@ public class Counter extends HashMap<String, Integer> {
     }
 
     public int count() {
-        int total = 0;
-        for (Entry<String, Integer> entry : this.entrySet()) {
-            Integer count = entry.getValue();
-            total += count;
-        }
-        return total;
+        return this.values().stream().mapToInt(Integer::intValue).sum();
     }
 
     public int count(String name) {

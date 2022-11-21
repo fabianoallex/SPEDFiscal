@@ -1,7 +1,5 @@
 package SPEDFiscalLib;
 
-import java.util.Map;
-
 public class RegisterValidator extends Validator {
     private final Register register;
     private final FieldValidator fieldValidator;
@@ -18,9 +16,6 @@ public class RegisterValidator extends Validator {
 
     @Override
     public void validate() {
-        for (Map.Entry<String, Field<?>> e : register.getFields().entrySet()) {
-            Field<?> field = e.getValue();
-            fieldValidator.validate(field);
-        }
+        register.getFields().forEach((key, field) -> fieldValidator.validate(field));
     }
 }

@@ -9,10 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="redefinido método toString da classe NamedRegister">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Counter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/RegisterValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00043" summary="readme">
-      <created>1666468515226</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1666468515226</updated>
     </task>
     <task id="LOCAL-00044" summary="Refatoração Método getField classe Register">
       <created>1666528141646</created>
@@ -432,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668741971750</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField">
+      <created>1668867965695</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1668867965696</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -482,7 +487,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ajustes e script de validação de cidades" />
     <MESSAGE value="SPEDDefinitions.java renomeado para Definitions" />
     <MESSAGE value="atributo definitionsXmlFile renomeado para xmlFile" />
     <MESSAGE value="Refatoração classe Definitions e DefinitionsLoader" />
@@ -507,7 +511,8 @@
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Incluídos Métodos AddNamedRegister nas Classes Block e Register." />
     <MESSAGE value="redefinido método toString da classe NamedRegister" />
-    <option name="LAST_COMMIT_MESSAGE" value="redefinido método toString da classe NamedRegister" />
+    <MESSAGE value="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

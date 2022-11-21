@@ -1,9 +1,7 @@
 package SPEDFiscalLib;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 final public class Register implements Unit {
     private final String name;
@@ -78,21 +76,17 @@ final public class Register implements Unit {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilderFields = new StringBuilder();
+        final String collect = fields.values()
+                .stream()
+                .map(field -> FieldFormatter.formatField(field, this))
+                .collect(Collectors.joining(FieldDefinitions.FIELD_SEPARATOR));
 
-        for (Map.Entry<String, Field<?>> e : fields.entrySet()) {
-            Field<?> field = e.getValue();
-
-            stringBuilderFields
-                    .append(FieldFormatter.formatField(field, this))
-                    .append(FieldDefinitions.FIELD_SEPARATOR);
-        }
-
-        return "%s%s%s%s".formatted(
+        return "%s%s%s%s%s".formatted(
                 FieldDefinitions.FIELD_SEPARATOR,
                 this.getName(),
                 FieldDefinitions.FIELD_SEPARATOR,
-                stringBuilderFields.toString()
+                collect,
+                FieldDefinitions.FIELD_SEPARATOR
         );
     }
 
@@ -116,7 +110,6 @@ final public class Register implements Unit {
         Field<T> field = this.getField(fieldName);
         return field.getValue();
     }
-
 
     public Factory getFactory() {
         return this.factory;
