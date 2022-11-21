@@ -55,23 +55,22 @@ final public class Register implements Unit {
 
     @Override
     public int count() {
-        int c = 1; //itself
-        for (Unit unit : registers) c += unit.count();
-        return c;
+        return registers.stream()
+                .map(Register::count)
+                .mapToInt(value -> value)
+                .sum() + 1;
     }
 
     @Override
     public void validate(ValidationListener validationListener) {
         new RegisterValidator(this, validationListener).validate();
-
-        for (Register register : registers)
-            register.validate(validationListener);
+        registers.forEach(register -> register.validate(validationListener));
     }
 
     @Override
     public void write(Writer writer) {
         writer.write(this.toString(), this);
-        for (Register register : registers) register.write(writer);
+        registers.forEach(register -> register.write(writer));
     }
 
     @Override
