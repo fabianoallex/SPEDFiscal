@@ -2,9 +2,11 @@ package SPEDFiscalLib;
 
 public class Block9 extends Block {
     public static final String BLOCK_NAME = "9";
+    public static final String OPENING_REGISTER_NAME = "9001";
+    public static final String CLOSURE_REGISTER_NAME = "9990";
 
     Block9(Factory factory) {
-        super(BLOCK_NAME, factory);
+        super(BLOCK_NAME, OPENING_REGISTER_NAME, CLOSURE_REGISTER_NAME, factory);
     }
 
     void addRegister9900(String regName, int regTotal) {

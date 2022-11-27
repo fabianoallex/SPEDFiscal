@@ -1,6 +1,7 @@
 package SPEDFiscalLib;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SPEDGenerator implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
@@ -22,6 +23,12 @@ public class SPEDGenerator implements Unit {
         return register9999;
     }
 
+    public Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
+        Block block = new Block(blockName, openingRegisterName, closureRegisterName, factory);
+        this.blocks.add(block);
+        return block;
+    }
+
     public Block addBlock(String blockName) {
         Block block = new Block(blockName, factory);
         this.blocks.add(block);
@@ -37,7 +44,7 @@ public class SPEDGenerator implements Unit {
         return null;
     }
 
-    public void totalize(){
+    public void generateBlock9(){
         this.blocks.remove(this.block9);  //se ja exister algum bloco9. remove
         this.block9 = new Block9(this.factory);
         this.blocks.add(this.block9);
@@ -56,19 +63,12 @@ public class SPEDGenerator implements Unit {
 
         counter9900.increment(Register9900.REGISTER_NAME); //increment itself counting (|9900|9900|x|) --> added above
         block9.addRegister9900(Register9900.REGISTER_NAME, counter9900.count(Register9900.REGISTER_NAME)); //add |9900|9900|x|
+    }
 
-        //update closureRegister file register counting
-        this.register9999.getFieldRegisterCount().setValue(counter.count() + counter9900.count());
-
-        //os blocos 0 e 9 devem ter incrementado +1 ao total do bloco, devido os registros 0000 e 9999
-        //não fazerem parte dos blocos 0 e 9, mas devem ser considerados na totalização desses blocos
-        ArrayList<String> al = new ArrayList<>();
-        al.add("0");
-        al.add("9");
-
-        //totalize all blocks
-        for (Block block : this.blocks)
-            block.totalize(al.contains(block.getName()) ? 1 : 0);
+    public void totalize() {
+        List<String> blocks0and9 = List.of("0", "9"); //0 e 9 tem +1 incrementado ao total do bloco
+        blocks.forEach(block -> block.totalize(blocks0and9.contains(block.getName()) ? 1 : 0));
+        register9999.getFieldRegisterCount().setValue(this.count());
     }
 
     @Override

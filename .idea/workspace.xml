@@ -11,7 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração. Substituição de laços for por Stream.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/Block9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Refatoração Classe SPEDConfig e FieldsCreator.">
-      <created>1666529131340</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1666529131340</updated>
     </task>
     <task id="LOCAL-00046" summary="Refatoração SPEDConfig e FieldFormatter.">
       <created>1666529670086</created>
@@ -431,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669000662440</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Refatoração. Substituição de laços for por Stream.">
+      <created>1669001272325</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1669001272326</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
