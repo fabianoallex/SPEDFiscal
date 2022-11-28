@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatoração da classe Block para considerar opcionais os Registros de abertura e encerramento dos blocos, visando atender leiaout do LCDPR - livro caixa de produtor rural">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" afterDir="false" />
-    </list>
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes em NamedRegister" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,13 +84,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Refatoração SPEDConfig e DefinitionsLoader">
-      <created>1666534652906</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1666534652906</updated>
     </task>
     <task id="LOCAL-00048" summary="SPEDConfig renomeado para SPEDDefinitions">
       <created>1666535155429</created>
@@ -431,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669572096195</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="ajustes em NamedRegister">
+      <created>1669604320654</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1669604320654</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -481,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração classe Definitions e DefinitionsLoader" />
     <MESSAGE value="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java" />
     <MESSAGE value="getFieldsDefinitions e getRegisterDefinitions alterados para thread-safe" />
     <MESSAGE value="criado script para validar datas de inicio e fim do registro 0000" />
@@ -506,7 +502,8 @@
     <MESSAGE value="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField" />
     <MESSAGE value="Refatoração. Substituição de laços for por Stream." />
     <MESSAGE value="Refatoração da classe Block para considerar opcionais os Registros de abertura e encerramento dos blocos, visando atender leiaout do LCDPR - livro caixa de produtor rural" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração da classe Block para considerar opcionais os Registros de abertura e encerramento dos blocos, visando atender leiaout do LCDPR - livro caixa de produtor rural" />
+    <MESSAGE value="ajustes em NamedRegister" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes em NamedRegister" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

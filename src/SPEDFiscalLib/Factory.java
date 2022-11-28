@@ -54,7 +54,6 @@ public class Factory {
 
             if (type.equals(Definitions.FIELDS_REG_TYPE_STRING)) fields.addField(new Field<String>(fieldName, required));
             if (type.equals(Definitions.FIELDS_REG_TYPE_DATE)) fields.addField(new Field<Date>(fieldName, required));
-
             if (type.equals(Definitions.FIELDS_REG_TYPE_NUMBER))
                 fields.addField(dec.isEmpty() ?
                         new Field<Integer>(fieldName, required) :
