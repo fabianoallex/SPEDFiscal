@@ -9,6 +9,14 @@ abstract public class NamedRegister implements Unit {
         this.register = factory.createRegister(name);
     }
 
+    public NamedRegister addNamedRegister(Class<? extends NamedRegister> clazz) {
+        return this.register.addNamedRegister(clazz);
+    }
+
+    public Register addRegister(String name){
+        return this.register.addRegister(name);
+    }
+
     public Register getRegister() {
         return register;
     }
