@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 import java.util.*;
 
@@ -12,7 +12,6 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.CharArrayWriter;
 import java.io.File;
 import java.io.IOException;
-import java.util.stream.Collectors;
 
 class FieldDefinitions {
     public static final String FIELD_EMPTY_STRING = "";

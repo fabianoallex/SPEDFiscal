@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public interface Unit {
     void count(Counter counter);

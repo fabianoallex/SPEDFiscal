@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class OpeningRegister extends NamedRegister {
     public static final String FIELD_REGISTER_THERE_IS_MOV = "IND_MOV";

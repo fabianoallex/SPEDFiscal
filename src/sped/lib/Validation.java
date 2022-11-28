@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

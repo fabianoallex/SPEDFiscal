@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class ValidationMessage {
     private String message;

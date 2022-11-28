@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public abstract class Validator {
     private final ValidationListener validationListener;

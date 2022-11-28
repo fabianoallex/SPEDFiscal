@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class RegisterValidator extends Validator {
     private final Register register;

@@ -9,7 +9,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes em NamedRegister" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes em NamedRegister">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Block9.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ClosureRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Counter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldValidationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Fields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FileWriterWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FileWriterWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/NamedRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/OpeningRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register0000.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register9900.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register9999.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/RegisterValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/SPEDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/StringBuilderWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/StringBuilderWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,13 +117,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00048" summary="SPEDConfig renomeado para SPEDDefinitions">
-      <created>1666535155429</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1666535155429</updated>
     </task>
     <task id="LOCAL-00049" summary="Refatoração da Classe Counter">
       <created>1666544314877</created>
@@ -428,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669604320654</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="ajustes em NamedRegister">
+      <created>1669605570088</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1669605570088</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

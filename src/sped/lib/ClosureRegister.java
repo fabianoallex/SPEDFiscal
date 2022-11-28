@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class ClosureRegister extends NamedRegister {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";

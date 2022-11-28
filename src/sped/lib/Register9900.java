@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class Register9900 extends NamedRegister {
     public static final String REGISTER_NAME = "9900";

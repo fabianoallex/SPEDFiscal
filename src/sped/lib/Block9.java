@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class Block9 extends Block {
     public static final String BLOCK_NAME = "9";

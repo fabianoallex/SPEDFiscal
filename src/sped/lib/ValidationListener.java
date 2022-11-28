@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public interface ValidationListener {
     void onSuccessMessage(ValidationEvent event);

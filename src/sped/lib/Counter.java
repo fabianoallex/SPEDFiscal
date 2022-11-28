@@ -1,7 +1,6 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class Counter extends HashMap<String, Integer> {
     public void increment(String name) {

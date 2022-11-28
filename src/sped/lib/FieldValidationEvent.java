@@ -1,4 +1,4 @@
-package SPEDFiscalLib;
+package sped.lib;
 
 public class FieldValidationEvent extends ValidationEvent {
     private final Field<?> field;
