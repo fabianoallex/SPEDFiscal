@@ -14,6 +14,16 @@ public class RegisterQ100 extends NamedRegister {
         TipoLancamento(Integer value) {
             this.value = value;
         }
+
+        public static TipoLancamento valueOf(int value) {
+            for (TipoLancamento tipoLancamento : values()) {
+                if (tipoLancamento.value.equals(value)) {
+                    return tipoLancamento;
+                }
+            }
+
+            return null;
+        }
     };
 
     enum TipoDocumento {
@@ -135,6 +145,10 @@ public class RegisterQ100 extends NamedRegister {
 
     public Double getValorSaida() {
         return this.getDoubleField(FIELD_VAL_SAIDA).getValue();
+    }
+
+    public TipoLancamento getTipoLancamento() {
+        return TipoLancamento.valueOf(this.getIntegerField(FIELD_TIPO_LANC).getValue());
     }
 
     public Double getSaldoFinal() {
