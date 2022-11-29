@@ -6,18 +6,19 @@ import java.util.Date;
 
 public class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
+    public static final String FIELD_FORMAT_LCDPR_DOUBLE_FORMAT = "lcdprdouble";
 
-    static public String formatField(Field<?> field, Register register) {
+    static public String sanitizeField(Field<?> field, Register register) {
         String fieldFormatName = register.getName() + "." + field.getName();
         FieldFormat fieldFormat = register.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
-        return formatField(field, fieldFormat);
+        return sanitizeField(field, fieldFormat);
     }
 
-    static public String formatField(Field<?> field, FieldFormat fieldFormat) {
+    static public String sanitizeField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() instanceof Register register) {
             Field<?> tempField = new Field<>();
             tempField.setValue(register.getID());
-            return formatField(tempField, fieldFormat); //recursive
+            return sanitizeField(tempField, fieldFormat); //recursive
         }
 
         if (!fieldFormat.getFormat().isEmpty()) {
@@ -28,12 +29,11 @@ public class FieldFormatter {
         }
 
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
-        return formatField(field.getValue().toString(), fieldFormat);
+        return sanitizeField(field.getValue().toString(), fieldFormat);
     }
 
-    static private String formatField(String value, FieldFormat fieldFormat) {
+    static private String sanitizeField(String value, FieldFormat fieldFormat) {
         value = value
-                .replace(FieldDefinitions.FIELD_SEPARATOR, "/")
                 .replace("\n", FieldDefinitions.FIELD_EMPTY_STRING)
                 .replace("\r", FieldDefinitions.FIELD_EMPTY_STRING)
                 .trim();
@@ -45,30 +45,37 @@ public class FieldFormatter {
     }
 
     static private String formatDoubleField(Field<?> field, FieldFormat fieldFormat) {
+        if (field.getValue() == null)
+            return FieldDefinitions.FIELD_EMPTY_STRING;
+
+        if (fieldFormat.getFormat().equals(FIELD_FORMAT_LCDPR_DOUBLE_FORMAT)) {
+            DecimalFormat df = new DecimalFormat("0");
+            return sanitizeField(df.format(((Field<Double>)field).getValue()*100), fieldFormat);
+        }
+
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
-        if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
-        return formatField(df.format(field.getValue()), fieldFormat);
+        return sanitizeField(df.format(field.getValue()), fieldFormat);
     }
 
     static private String formatIntegerField(Field<?> field, FieldFormat fieldFormat) {
         DecimalFormat df = new DecimalFormat(fieldFormat.getFormat());
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
-        return formatField(df.format(field.getValue()), fieldFormat);
+        return sanitizeField(df.format(field.getValue()), fieldFormat);
     }
 
     static private String formatStringField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
 
         if (fieldFormat.getFormat().equals(FIELD_FORMAT_STRING_ONLY_NUMBERS))
-            return formatField(field.getValue().toString().replaceAll("\\D+", ""), fieldFormat);
+            return sanitizeField(field.getValue().toString().replaceAll("\\D+", ""), fieldFormat);
 
-        return formatField(field.getValue().toString(), fieldFormat);
+        return sanitizeField(field.getValue().toString(), fieldFormat);
     }
 
     static private String formatDateField(Field<?> field, FieldFormat fieldFormat) {
         SimpleDateFormat df = new SimpleDateFormat(fieldFormat.getFormat());
         if (field.getValue() == null) return FieldDefinitions.FIELD_EMPTY_STRING;
-        return formatField(df.format(field.getValue()), fieldFormat);
+        return sanitizeField(df.format(field.getValue()), fieldFormat);
     }
 }
 

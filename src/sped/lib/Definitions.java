@@ -1,7 +1,6 @@
 package sped.lib;
 
 import java.util.*;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -13,45 +12,9 @@ import java.io.CharArrayWriter;
 import java.io.File;
 import java.io.IOException;
 
-class FieldDefinitions {
-    public static final String FIELD_EMPTY_STRING = "";
-    public static final String FIELD_SEPARATOR = "|";
-    public static final String FIELD_DEF_NAME = "name";
-    public static final String FIELD_DEF_POS = "pos";
-    public static final String FIELD_DEF_TYPE = "type";
-    public static final String FIELD_DEF_SIZE = "size";
-    public static final String FIELD_DEF_DEC = "dec";
-    public static final String FIELD_DEF_FORMAT = "format";
-    public static final String FIELD_DEF_DESCRIPTION = "description";
-    public static final String FIELD_DEF_REF = "ref";
-    public static final String FIELD_DEF_VALIDATIONS = "validations";
-    public static final String FIELD_DEF_REQUIRED = "required";
-
-    String name;
-    String pos;
-    String type;
-    String size;
-    String dec;
-    String format;
-    String description;
-    String ref;
-    String validationNames;
-    String required;
-}
-
-class RegisterDefinitions {
-    public static final String REGISTER_DEF_NAME = "name";
-    public static final String REGISTER_DEF_PARENT_TYPE = "parent_type";
-    public static final String REGISTER_DEF_PARENT = "parent";
-    public static final String REGISTER_DEF_KEY = "key";
-
-    String name;
-    String parentType;
-    String parent;
-    String key;
-}
-
 public class Definitions {
+    public static final String REGISTER_FIELD_SEPARATOR_DEFAULT = "|";
+    public static final String REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT = REGISTER_FIELD_SEPARATOR_DEFAULT;
     public static final String DEF_TAG_DEFINITIONS = "definitions";
     public static final String DEF_TAG_REGISTER = "register";
     public static final String DEF_TAG_FIELD = "field";
@@ -68,10 +31,31 @@ public class Definitions {
     private volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
     private final ValidationHelper validationHelper;
+    private String registerSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
+    private String registerBeginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
 
     public Definitions(String xmlFile, ValidationHelper validationHelper) {
         this.xmlFile = xmlFile;
         this.validationHelper = validationHelper;
+    }
+
+    public Definitions(String xmlFile, ValidationHelper validationHelper, String registerSeparator, String registerBeginEndSeparator) {
+        this(xmlFile, validationHelper);
+        this.registerSeparator = registerSeparator;
+        this.registerBeginEndSeparator = registerBeginEndSeparator;
+    }
+
+    public Definitions(String xmlFile, ValidationHelper validationHelper, String registerBeginEndSeparator) {
+        this(xmlFile, validationHelper);
+        this.registerBeginEndSeparator = registerBeginEndSeparator;
+    }
+
+    public String getRegisterSeparator() {
+        return registerSeparator;
+    }
+
+    public String getRegisterBeginEndSeparator() {
+        return registerBeginEndSeparator;
     }
 
     public ValidationHelper getValidationHelper() {
@@ -287,4 +271,41 @@ class DefinitionsHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length) {
         validationScriptContents.write( ch, start, length );
     }
+}
+
+class FieldDefinitions {
+    public static final String FIELD_EMPTY_STRING = "";
+    public static final String FIELD_DEF_NAME = "name";
+    public static final String FIELD_DEF_POS = "pos";
+    public static final String FIELD_DEF_TYPE = "type";
+    public static final String FIELD_DEF_SIZE = "size";
+    public static final String FIELD_DEF_DEC = "dec";
+    public static final String FIELD_DEF_FORMAT = "format";
+    public static final String FIELD_DEF_DESCRIPTION = "description";
+    public static final String FIELD_DEF_REF = "ref";
+    public static final String FIELD_DEF_VALIDATIONS = "validations";
+    public static final String FIELD_DEF_REQUIRED = "required";
+
+    String name;
+    String pos;
+    String type;
+    String size;
+    String dec;
+    String format;
+    String description;
+    String ref;
+    String validationNames;
+    String required;
+}
+
+class RegisterDefinitions {
+    public static final String REGISTER_DEF_NAME = "name";
+    public static final String REGISTER_DEF_PARENT_TYPE = "parent_type";
+    public static final String REGISTER_DEF_PARENT = "parent";
+    public static final String REGISTER_DEF_KEY = "key";
+
+    String name;
+    String parentType;
+    String parent;
+    String key;
 }

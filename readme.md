@@ -56,6 +56,8 @@ definitions
                          type date:
                             formatos aceitos por SimpleDateFormat()
                          type number:
+                            'lcdprdouble': formato especifico para atender formatacao do LCDPR livro caixa de produtor rural
+                                esse formato transforma 125,30 em 12530. 
                             formatos aceitos por DecimalFormat()
             description: descrição do campo conforme manual
                          *** para uso futuro. não tratado no momento ***

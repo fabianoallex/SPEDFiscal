@@ -9,39 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes em NamedRegister">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="refatoração das packages">
+      <change afterPath="$PROJECT_DIR$/resources/lcdpr/definitions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_cnpj.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_cpf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_cpf_cnpj_0000.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_reg_0002.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/Register0010.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/Register0030.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/Register0040.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/Register0045.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ100.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/Registro0050.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Block9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Block9.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ClosureRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Counter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldValidationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Fields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/FileWriterWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FileWriterWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/NamedRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/OpeningRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register0000.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register9900.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register9999.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/RegisterValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/StringBuilderWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/StringBuilderWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/ValidationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/ValidationMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SPEDFiscalLib/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Writer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lib/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,23 +66,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/SPEDFiscalLib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultPlantUmlFileTemplate": "UML Class",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-18",
+    "last_opened_file_path": "C:/Users/User/IdeaProjects/SPEDFiscalLib/resources/lcdpr",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.externalResources"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="SPEDFiscal" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
+      <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\src\sped\lcdpr" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,13 +106,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Refatoração da Classe Counter">
-      <created>1666544314877</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1666544314877</updated>
     </task>
     <task id="LOCAL-00050" summary="Refatoração da Classe Counter 2">
       <created>1666545244164</created>
@@ -461,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669605570088</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="refatoração das packages">
+      <created>1669678995390</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1669678995391</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -511,7 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Classe DefinitionsLoader e DefinitionsHandler movidas para o arquivo Definitions.java" />
     <MESSAGE value="getFieldsDefinitions e getRegisterDefinitions alterados para thread-safe" />
     <MESSAGE value="criado script para validar datas de inicio e fim do registro 0000" />
     <MESSAGE value="criado script para validar datas de início e fim do registro 0000" />
@@ -536,7 +524,8 @@
     <MESSAGE value="Refatoração. Substituição de laços for por Stream." />
     <MESSAGE value="Refatoração da classe Block para considerar opcionais os Registros de abertura e encerramento dos blocos, visando atender leiaout do LCDPR - livro caixa de produtor rural" />
     <MESSAGE value="ajustes em NamedRegister" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes em NamedRegister" />
+    <MESSAGE value="refatoração das packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="refatoração das packages" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
