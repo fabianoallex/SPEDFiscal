@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação RegisterQ100">
-      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/BlockQ.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação RegisterQ200 e BlockQ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ100.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ100.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ200.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ200.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/BlockQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/BlockQ.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,13 +91,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Ajustes">
-      <created>1666548416201</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1666548416201</updated>
     </task>
     <task id="LOCAL-00054" summary="ValidationEvent: Iniciada as implementações das rotinas de validação dos registros.">
       <created>1666663710323</created>
@@ -438,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669693099407</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="Implementação RegisterQ200 e BlockQ">
+      <created>1669777800038</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1669777800038</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -488,7 +485,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="criado script para validar datas de início e fim do registro 0000" />
     <MESSAGE value="Incluida interface ValidationHelper" />
     <MESSAGE value="Propriedades estáticas da classe Definitions convertidos para propriedades de objetos." />
     <MESSAGE value="ajustes" />
@@ -513,7 +509,8 @@
     <MESSAGE value="refatoração das packages" />
     <MESSAGE value="Implementações de classes específicas para atender o LCDPR - Livro Caixa Digital de Produtor Rural" />
     <MESSAGE value="Implementação RegisterQ100" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementação RegisterQ100" />
+    <MESSAGE value="Implementação RegisterQ200 e BlockQ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementação RegisterQ200 e BlockQ" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

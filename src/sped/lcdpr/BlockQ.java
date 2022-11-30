@@ -38,8 +38,13 @@ public class BlockQ extends Block {
         });
     }
 
-    public void generateQ200() {
+    private void removeQ200() {
+        registersQ200.forEach(registerQ200 -> this.getRegisters().remove(registerQ200.getRegister()));
         registersQ200.clear();
+    }
+
+    public void generateQ200() {
+        removeQ200();
 
         AtomicReference<Double> saldoFinalMesAnterior = new AtomicReference<>(0.0);
 
@@ -48,7 +53,8 @@ public class BlockQ extends Block {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMyyyy");
                     var anoMes = simpleDateFormat.format(registerQ100.getDate());
                     return Integer.parseInt(anoMes);
-                })).forEach((anoMes, registerQ100List) -> {
+                }))
+                .forEach((anoMes, registerQ100List) -> {
                     final RegisterQ200 registerQ200 = addRegisterQ200();
                     registerQ200.setMesAno(anoMes);
                     registerQ200.setSaldoFinal(saldoFinalMesAnterior.get());
