@@ -1,18 +1,19 @@
 package sped.lib;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Block implements Unit {
-    private final ArrayList<Register> registers = new ArrayList<>();
+    private final List<Register> registers = new ArrayList<>();
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
     private final Factory factory;
 
-    Block(String blockName, String openingRegisterName, String closureRegisterName, Factory factory) {
+    protected Block(String blockName, String openingRegisterName, String closureRegisterName, Factory factory) {
         this.factory = factory;
         this.name = blockName;
 
@@ -29,7 +30,7 @@ public class Block implements Unit {
         this.closureRegister = tempClosureRegister;
     }
 
-    Block(String blockName, Factory factory) {
+    protected Block(String blockName, Factory factory) {
         this(blockName, "", "", factory);
     }
 
@@ -41,7 +42,7 @@ public class Block implements Unit {
         return closureRegister;
     }
 
-    public ArrayList<Register> getRegisters() {
+    public List<Register> getRegisters() {
         return registers;
     }
 

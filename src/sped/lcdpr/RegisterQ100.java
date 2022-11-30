@@ -133,10 +133,8 @@ public class RegisterQ100 extends NamedRegister {
         this.getDoubleField(FIELD_VAL_SAIDA).setValue(tipo.equals(TipoLancamento.DESPESA) ? value : 0.00);
     }
 
-    public void setSaldoFinal(Double value) {
-        this.getDoubleField(FIELD_SALDO_FINAL).setValue(Math.abs(value));
-        this.getStringField(FIELD_NAT_SALDO_FINAL).setValue(
-                value < 0 ? FIELD_NAT_SALDO_FINAL_NEGATIVE : FIELD_NAT_SALDO_FINAL_POSITIVE);
+    public Double getValorLancamento() {
+        return getValorEntrada() + getValorSaida();
     }
 
     public Double getValorEntrada() {
@@ -145,6 +143,12 @@ public class RegisterQ100 extends NamedRegister {
 
     public Double getValorSaida() {
         return this.getDoubleField(FIELD_VAL_SAIDA).getValue();
+    }
+
+    public void setSaldoFinal(Double value) {
+        this.getDoubleField(FIELD_SALDO_FINAL).setValue(Math.abs(value));
+        this.getStringField(FIELD_NAT_SALDO_FINAL).setValue(
+                value < 0 ? FIELD_NAT_SALDO_FINAL_NEGATIVE : FIELD_NAT_SALDO_FINAL_POSITIVE);
     }
 
     public TipoLancamento getTipoLancamento() {
