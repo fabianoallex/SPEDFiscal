@@ -1,8 +1,6 @@
 package sped.lib;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -41,18 +39,35 @@ final class ValidationScript extends Validation {
     public static final String SCRIPT_DEF_NAME = "name";
     public static final String SCRIPT_DEF_FILE = "file";
     private final String fileName;
+    private final DefinitionsFileLoader definitionsFileLoader;
     private String script;
+
+    ValidationScript(String name, String fileName, DefinitionsFileLoader definitionsFileLoader) {
+        super(name);
+        this.definitionsFileLoader = definitionsFileLoader;
+        this.fileName = fileName;
+    }
+
+    ValidationScript(String name) {
+        this(name, "", null);
+    }
 
     private String getFileContents() {
         try {
-            URL url = new URL(this.fileName);
-            BufferedReader buffRead = new BufferedReader(new FileReader(Paths.get(url.toURI()).toFile()));
+            //URL url = new URL(this.fileName);
+
+            BufferedReader buffRead = new BufferedReader(new InputStreamReader(this.definitionsFileLoader.getInputStream(this.fileName)));
+
+            //BufferedReader buffRead = new BufferedReader(new FileReader(Paths.get(url.toURI()).toFile()));
+
             final String fileContents = buffRead
                     .lines()
                     .collect(Collectors.joining("\n"));
+
             buffRead.close();
+
             return fileContents;
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -78,14 +93,6 @@ final class ValidationScript extends Validation {
     public String getFileName() {
         return fileName;
     }
-
-    ValidationScript(String name) {
-        this(name, "");
-    }
-
-    ValidationScript(String name, String fileName) {
-        super(name);
-        this.fileName = fileName;    }
 }
 
 final class ValidationRegex extends Validation {

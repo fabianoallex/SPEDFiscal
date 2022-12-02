@@ -1,5 +1,6 @@
 package sped.lib;
 
+import java.io.InputStream;
 import java.util.*;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -30,6 +31,7 @@ public class Definitions {
     private volatile HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
     private volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
+    private DefinitionsFileLoader definitionsFileLoader;
     private final ValidationHelper validationHelper;
     private String registerSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
     private String registerBeginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
@@ -48,6 +50,14 @@ public class Definitions {
     public Definitions(String xmlFile, ValidationHelper validationHelper, String registerBeginEndSeparator) {
         this(xmlFile, validationHelper);
         this.registerBeginEndSeparator = registerBeginEndSeparator;
+    }
+
+    public void setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
+        this.definitionsFileLoader = definitionsFileLoader;
+    }
+
+    public DefinitionsFileLoader getDefinitionsFileLoader() {
+        return this.definitionsFileLoader;
     }
 
     public String getRegisterSeparator() {
@@ -156,7 +166,8 @@ class DefinitionsLoader {
     public static void load(Definitions definitions) {
         try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource(definitions.getXmlFile());
+            InputSource input = new InputSource(
+                    definitions.getDefinitionsFileLoader().getInputStream(definitions.getXmlFile()));
             parser.parse(input, new DefinitionsHandler(definitions));
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
@@ -242,12 +253,12 @@ class DefinitionsHandler extends DefaultHandler {
             validationScriptContents.reset();
 
             String scriptFileName = attributes.getValue(ValidationScript.SCRIPT_DEF_FILE);
-            File xmlFile = scriptFileName != null ? new File(this.getDefinitions().getXmlFile()) : null;
+            //File xmlFile = scriptFileName != null ? new File(this.getDefinitions().getXmlFile()) : null;
 
             validationScript = new ValidationScript(
                     attributes.getValue(ValidationScript.SCRIPT_DEF_NAME),
-                    //scriptFileName
-                    scriptFileName != null ?  xmlFile.getParent() + File.separator + scriptFileName : ""
+                    scriptFileName,
+                    this.definitions.getDefinitionsFileLoader()
             );
 
             definitions.addValidation(validationScript);

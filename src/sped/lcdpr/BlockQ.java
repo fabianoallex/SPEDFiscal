@@ -2,7 +2,6 @@ package sped.lcdpr;
 
 import sped.lib.Block;
 import sped.lib.Factory;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public class BlockQ extends Block {
     public void generateQ200() {
         removeQ200();
 
-        AtomicReference<Double> saldoFinalMesAnterior = new AtomicReference<>(0.0);
+        final AtomicReference<Double> saldoFinalMesAnterior = new AtomicReference<>(0.0);
 
         registersQ100.stream()
                 .collect(Collectors.groupingBy(registerQ100 -> {
