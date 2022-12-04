@@ -8,17 +8,17 @@ public class FieldFormatter {
     public static final String FIELD_FORMAT_STRING_ONLY_NUMBERS = "onlynumbers";
     public static final String FIELD_FORMAT_LCDPR_DOUBLE_FORMAT = "lcdprdouble";
 
-    static public String sanitizeField(Field<?> field, Register register) {
+    static public String formatField(Field<?> field, Register register) {
         String fieldFormatName = register.getName() + "." + field.getName();
         FieldFormat fieldFormat = register.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
-        return sanitizeField(field, fieldFormat);
+        return formatField(field, fieldFormat);
     }
 
-    static public String sanitizeField(Field<?> field, FieldFormat fieldFormat) {
+    static public String formatField(Field<?> field, FieldFormat fieldFormat) {
         if (field.getValue() instanceof Register register) {
             Field<?> tempField = new Field<>();
             tempField.setValue(register.getID());
-            return sanitizeField(tempField, fieldFormat); //recursive
+            return formatField(tempField, fieldFormat); //recursive
         }
 
         if (!fieldFormat.getFormat().isEmpty()) {

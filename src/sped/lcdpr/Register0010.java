@@ -3,8 +3,6 @@ package sped.lcdpr;
 import sped.lib.Factory;
 import sped.lib.NamedRegister;
 
-import java.util.jar.Attributes;
-
 public class Register0010 extends NamedRegister {
     public static String REGISTER_NAME = "0010";
     public static String FIELD_FORMA_APURACAO = "FORMA_APUR";

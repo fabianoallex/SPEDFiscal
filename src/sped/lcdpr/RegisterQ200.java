@@ -7,8 +7,8 @@ import sped.lib.NamedRegister;
 public class RegisterQ200 extends NamedRegister {
     public static String REGISTER_NAME = "Q200";
     public static String FIELD_MES_ANO = "MES";
-    public static String FIELD_VAL_ENTRADA = "VAL_ENTRADA";
-    public static String FIELD_VAL_SAIDA = "VAL_SAIDA";
+    public static String FIELD_VAL_ENTRADA = "VL_ENTRADA";
+    public static String FIELD_VAL_SAIDA = "VL_SAIDA";
     public static String FIELD_SALDO_FINAL = "SLD_FIN";
     public static String FIELD_NAT_SALDO_FINAL = "NAT_SLD_FIN";
     public static String FIELD_NAT_SALDO_FINAL_POSITIVE = "P";

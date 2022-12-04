@@ -5,4 +5,5 @@ module SPEDFiscalLib {
     requires org.openjdk.nashorn;
 
     exports sped.lib;
+    exports sped.lcdpr;
 }

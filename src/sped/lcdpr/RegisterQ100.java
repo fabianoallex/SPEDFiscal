@@ -5,7 +5,7 @@ import sped.lib.NamedRegister;
 import java.util.Date;
 
 public class RegisterQ100 extends NamedRegister {
-    enum TipoLancamento {
+    public enum TipoLancamento {
         RECEITA(1),
         DESPESA(2),
         ADIANTAMENTO(3);
@@ -26,7 +26,7 @@ public class RegisterQ100 extends NamedRegister {
         }
     };
 
-    enum TipoDocumento {
+    public enum TipoDocumento {
         NOTA_FISCAL(1),
         FATURA(2),
         RECIBO(3),
@@ -60,8 +60,8 @@ public class RegisterQ100 extends NamedRegister {
     public static String FIELD_HISTORICO = "HIST";
     public static String FIELD_ID_PARTICIPANTE = "ID_PARTIC";
     public static String FIELD_TIPO_LANC = "TIPO_LANC";
-    public static String FIELD_VAL_ENTRADA = "VAL_ENTRADA";
-    public static String FIELD_VAL_SAIDA = "VAL_SAIDA";
+    public static String FIELD_VAL_ENTRADA = "VL_ENTRADA";
+    public static String FIELD_VAL_SAIDA = "VL_SAIDA";
     public static String FIELD_SALDO_FINAL = "SLD_FIN";
     public static String FIELD_NAT_SALDO_FINAL = "NAT_SLD_FIN";
     public static String FIELD_NAT_SALDO_FINAL_POSITIVE = "P";

@@ -1,5 +1,6 @@
 package sped.lib;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,24 @@ public class SPEDGenerator implements Unit {
         register9999 = this.factory.createRegister9999();
     }
 
+    public NamedRegister createNamedRegisterTo0000(Class<? extends NamedRegister> clazz) {
+        try {
+            return clazz.getConstructor(Register.class)
+                    .newInstance(this.register0000.getRegister());
+        } catch (InstantiationException | IllegalAccessException
+                 | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public NamedRegister createNamedRegisterTo9999(Class<? extends NamedRegister> clazz) {
+        try {
+            return clazz.getConstructor(Register.class).newInstance(this.register0000.getRegister());
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Register0000 getRegister0000() {
         return register0000;
     }
@@ -25,6 +44,12 @@ public class SPEDGenerator implements Unit {
 
     public Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
         Block block = new Block(blockName, openingRegisterName, closureRegisterName, factory);
+        this.blocks.add(block);
+        return block;
+    }
+
+    public Block addBlock(Class<? extends Block> clazz) {
+        Block block = this.factory.createBlock(clazz);
         this.blocks.add(block);
         return block;
     }
@@ -66,7 +91,7 @@ public class SPEDGenerator implements Unit {
     }
 
     public void totalize() {
-        List<String> blocks0and9 = List.of("0", "9"); //0 e 9 tem +1 incrementado ao total do bloco
+        List<String> blocks0and9 = List.of("0", "9"); //blocos 0 e 9 tem +1 incrementado ao total
         blocks.forEach(block -> block.totalize(blocks0and9.contains(block.getName()) ? 1 : 0));
         register9999.getFieldRegisterCount().setValue(this.count());
     }

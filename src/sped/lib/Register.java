@@ -77,7 +77,7 @@ final public class Register implements Unit {
     public String toString() {
         final String collect = fields.values()
                 .stream()
-                .map(field -> FieldFormatter.sanitizeField(field, this))
+                .map(field -> FieldFormatter.formatField(field, this))
                 .collect(Collectors.joining(this.factory.getDefinitions().getRegisterSeparator()));
 
         return "%s%s%s%s%s".formatted(

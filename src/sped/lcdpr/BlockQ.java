@@ -13,7 +13,7 @@ public class BlockQ extends Block {
     private final List<RegisterQ100> registersQ100 = new ArrayList<>();
     private final List<RegisterQ200> registersQ200 = new ArrayList<>();
 
-    protected BlockQ(Factory factory) {
+    public BlockQ(Factory factory) {
         super(BLOCK_NAME, factory);
     }
 

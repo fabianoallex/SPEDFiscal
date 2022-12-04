@@ -69,4 +69,12 @@ public class Factory {
             throw new RuntimeException(e);
         }
     }
+
+    public Block createBlock(Class<? extends Block> clazz) {
+        try {
+            return clazz.getConstructor(Factory.class).newInstance(this);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

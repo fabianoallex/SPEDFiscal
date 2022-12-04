@@ -22,7 +22,7 @@ public class FieldValidator extends Validator {
 
     @Override
     public void validate() {
-        String formattedValue = FieldFormatter.sanitizeField(this.field, this.register);
+        String formattedValue = FieldFormatter.formatField(this.field, this.register);
         String required = this.field.getRequired();
 
         //quando o campo for obrigatorio e não for informado, nao faz as demais validações

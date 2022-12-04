@@ -169,6 +169,7 @@ class DefinitionsLoader {
             InputSource input = new InputSource(
                     definitions.getDefinitionsFileLoader().getInputStream(definitions.getXmlFile()));
             parser.parse(input, new DefinitionsHandler(definitions));
+
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
