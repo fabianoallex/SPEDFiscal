@@ -49,17 +49,16 @@ public class BlockQ extends Block {
         final AtomicReference<Double> saldoFinalMesAnterior = new AtomicReference<>(0.0);
 
         var map = registersQ100.stream()
-                .collect(Collectors.groupingBy(registerQ100 -> {
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
-                    return simpleDateFormat.format(registerQ100.getDate());
-                }));
+                .collect(Collectors.groupingBy(
+                        registerQ100 -> new SimpleDateFormat("yyyyMM").format(registerQ100.getDate())
+                ));
 
         new TreeMap<>(map)
-                .forEach((mesAno, registerQ100List) -> {
+                .forEach((anoMes, registerQ100List) -> {
                     final RegisterQ200 registerQ200 = addRegisterQ200();
 
-                    var anoMes = Integer.parseInt(mesAno.substring(4, 6) + mesAno.substring(0, 4)); //MMyyyy
-                    registerQ200.setMesAno(anoMes);
+                    var mesAno = Integer.parseInt(anoMes.substring(4, 6) + anoMes.substring(0, 4)); //MMyyyy
+                    registerQ200.setMesAno(mesAno);
                     registerQ200.setSaldoFinal(saldoFinalMesAnterior.get());
 
                     registerQ100List.forEach(registerQ100 -> {
