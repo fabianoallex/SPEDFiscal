@@ -29,7 +29,7 @@ public class SPEDGenerator implements Unit {
 
     public NamedRegister createNamedRegisterTo9999(Class<? extends NamedRegister> clazz) {
         try {
-            return clazz.getConstructor(Register.class).newInstance(this.register0000.getRegister());
+            return clazz.getConstructor(Register.class).newInstance(this.register9999.getRegister());
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }

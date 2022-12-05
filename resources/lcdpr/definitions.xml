@@ -92,8 +92,8 @@
         <register name="Q100" parent="0" parent_type="block">
             <fields>
                 <field name="DATA" pos="02" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
-                <field name="COD_IMOVEL" pos="03" type="number" size="3" dec="" format="" description="" required="O"/>
-                <field name="COD_CONTA" pos="04" type="number" size="3" dec="" format="" description="" required="O"/>
+                <field name="COD_IMOVEL" pos="03" type="number" size="3" dec="" format="000" description="" required="O"/>
+                <field name="COD_CONTA" pos="04" type="number" size="3" dec="" format="000" description="" required="O"/>
                 <field name="NUM_DOC" pos="05" type="string" size="" dec="" format="" description="" required="OC"/>
                 <field name="TIPO_DOC" pos="06" type="number" size="1" dec="" format="" description="" required="O"/>
                 <field name="HIST" pos="07" type="string" size="" dec="" format="" description="" required="O"/>
@@ -108,16 +108,16 @@
         <register name="Q200" parent="0" parent_type="block">
             <fields>
                 <field name="MES" pos="02" type="number" size="6" dec="" format="000000" description="" required="O"/>
-                <field name="VL_ENTRADA" pos="03" type="number" size="19" dec="2" format="" description="" required="O"/>
-                <field name="VL_SAIDA" pos="04" type="number" size="19" dec="2" format="" description="" required="O"/>
-                <field name="SLD_FIN" pos="05" type="number" size="19" dec="2" format="" description="" required="O"/>
+                <field name="VL_ENTRADA" pos="03" type="number" size="19" dec="2" format="lcdprdouble" description="" required="O"/>
+                <field name="VL_SAIDA" pos="04" type="number" size="19" dec="2" format="lcdprdouble" description="" required="O"/>
+                <field name="SLD_FIN" pos="05" type="number" size="19" dec="2" format="lcdprdouble" description="" required="O"/>
                 <field name="NAT_SLD_FIN" pos="06" type="string" size="1" dec="" format="" description="" required="O"/>
             </fields>
         </register>
-        <register name="9999" parent="0" parent_type="register">
+        <register name="9999" parent="0" parent_type="file">
             <fields>
                 <field name="IDENT_NOME" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
-                <field name="IDENT_CPF_CNPJ" pos="03" type="string" size="" dec="" format="" description="" required="OC"/>
+                <field name="IDENT_CPF_CNPJ" pos="03" type="string" size="" dec="" format="onlynumbers" description="" required="OC"/>
                 <field name="IND_CRC" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
                 <field name="EMAIL" pos="05" type="string" size="115" dec="" format="" description="" required="OC"/>
                 <field name="FONE" pos="06" type="string" size="15" dec="" format="" description="" required="OC"/>

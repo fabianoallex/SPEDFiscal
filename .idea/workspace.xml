@@ -9,21 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Incluída classe DefinitionsFileLoader que irá resolver de onde buscar os arquivos utilizados pela classe Definitions e irá devolver um InputStream.">
-      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/OpeningRegisterLCDPR.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes para geração da LCDPR">
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/ClosureRegisterLCDPR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lcdpr/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/definitions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/BlockQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/BlockQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/Register0010.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/Register0010.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ100.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ100.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ200.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ200.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/NamedRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/lib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lib/SPEDGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultPlantUmlFileTemplate": "UML Class",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-18",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/SPEDFiscalLib/resources",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.externalResources"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/SPEDFiscalLib/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="SPEDFiscal" />
@@ -108,13 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Implementação do validate">
-      <created>1667070235910</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1667070235910</updated>
     </task>
     <task id="LOCAL-00057" summary="Implementação da class ValidationScript">
       <created>1667297707935</created>
@@ -452,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669976191389</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Ajustes para geração da LCDPR">
+      <created>1670180787090</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1670180787090</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -502,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ajustes" />
     <MESSAGE value="Projeto configurado como Lib, removido Main. movido definitions.xml e scripts para exemplo de uso da lib." />
     <MESSAGE value="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses." />
     <MESSAGE value="Alteração do nome da package para SPEDFiscalLib" />
@@ -527,7 +517,8 @@
     <MESSAGE value="Implementação RegisterQ200 e BlockQ" />
     <MESSAGE value="Implementação do método removeQ200 em BlockQ" />
     <MESSAGE value="Incluída classe DefinitionsFileLoader que irá resolver de onde buscar os arquivos utilizados pela classe Definitions e irá devolver um InputStream." />
-    <option name="LAST_COMMIT_MESSAGE" value="Incluída classe DefinitionsFileLoader que irá resolver de onde buscar os arquivos utilizados pela classe Definitions e irá devolver um InputStream." />
+    <MESSAGE value="Ajustes para geração da LCDPR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes para geração da LCDPR" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

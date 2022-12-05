@@ -4,6 +4,8 @@ import sped.lib.Block;
 import sped.lib.Factory;
 import sped.lib.NamedRegister;
 
+import java.util.Optional;
+
 public class RegisterQ200 extends NamedRegister {
     public static String REGISTER_NAME = "Q200";
     public static String FIELD_MES_ANO = "MES";
@@ -35,11 +37,21 @@ public class RegisterQ200 extends NamedRegister {
     }
 
     public void incrementValorEntrada(Double value) {
-        this.getDoubleField(FIELD_VAL_ENTRADA).setValue(value + this.getDoubleField(FIELD_VAL_ENTRADA).getValue());
+        if (this.getDoubleField(FIELD_VAL_ENTRADA).getValue() != null)
+            value = value +  this.getDoubleField(FIELD_VAL_ENTRADA).getValue();
+
+        setValorEntrada(value);
+
+        //this.getDoubleField(FIELD_VAL_ENTRADA).setValue(value);
     }
 
     public void incrementValorSaida(Double value) {
-        this.getDoubleField(FIELD_VAL_SAIDA).setValue(value + this.getDoubleField(FIELD_VAL_SAIDA).getValue());
+        if (this.getDoubleField(FIELD_VAL_SAIDA).getValue() != null)
+            value = value +  this.getDoubleField(FIELD_VAL_SAIDA).getValue();
+
+        //this.getDoubleField(FIELD_VAL_SAIDA).setValue(value);
+
+        setValorSaida(value);
     }
 
     public Double getValorLancamento() {

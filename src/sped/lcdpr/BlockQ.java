@@ -5,6 +5,7 @@ import sped.lib.Factory;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -47,21 +48,24 @@ public class BlockQ extends Block {
 
         final AtomicReference<Double> saldoFinalMesAnterior = new AtomicReference<>(0.0);
 
-        registersQ100.stream()
+        var map = registersQ100.stream()
                 .collect(Collectors.groupingBy(registerQ100 -> {
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMyyyy");
-                    var anoMes = simpleDateFormat.format(registerQ100.getDate());
-                    return Integer.parseInt(anoMes);
-                }))
-                .forEach((anoMes, registerQ100List) -> {
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
+                    return simpleDateFormat.format(registerQ100.getDate());
+                }));
+
+        new TreeMap<>(map)
+                .forEach((mesAno, registerQ100List) -> {
                     final RegisterQ200 registerQ200 = addRegisterQ200();
+
+                    var anoMes = Integer.parseInt(mesAno.substring(4, 6) + mesAno.substring(0, 4)); //MMyyyy
                     registerQ200.setMesAno(anoMes);
                     registerQ200.setSaldoFinal(saldoFinalMesAnterior.get());
 
                     registerQ100List.forEach(registerQ100 -> {
                         registerQ200.incrementValorEntrada(registerQ100.getValorEntrada());
                         registerQ200.incrementValorSaida(registerQ100.getValorSaida());
-                        registerQ200.incrementSaldoFinal(registerQ100.getSaldoFinal());
+                        registerQ200.incrementSaldoFinal(registerQ100.getValorEntrada() - registerQ100.getValorSaida());
                     });
 
                     saldoFinalMesAnterior.set(registerQ200.getSaldoFinal());
