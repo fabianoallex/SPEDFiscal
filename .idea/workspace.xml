@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="separação em arquivos .java distintos para classes GeneratorBase e Generator.">
+      <change afterPath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Generator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,20 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00060" summary="ajustes">
-      <created>1667394162955</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1667394162955</updated>
-    </task>
-    <task id="LOCAL-00061" summary="remoção de inner validations">
-      <created>1667395549926</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1667395549926</updated>
     </task>
     <task id="LOCAL-00062" summary="FieldFormatter e FieldsCreator movidos para arquivos .java próprios">
       <created>1667396136425</created>
@@ -442,7 +428,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670377149495</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="refatoração da classe SPEDGenerator.java. Renomeada para Generator e criada classe GeneratorBase.">
+      <created>1670378922119</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1670378922119</updated>
+    </task>
+    <task id="LOCAL-00110" summary="separação em arquivos .java distintos para classes GeneratorBase e Generator.">
+      <created>1670379136772</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1670379136772</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,8 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alteração do nome da package para SPEDFiscalLib" />
-    <MESSAGE value="Refatoração: Criada Classe SPEDFactory" />
     <MESSAGE value="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999." />
     <MESSAGE value="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister" />
     <MESSAGE value="Refatorações" />
@@ -517,7 +515,9 @@
     <MESSAGE value="Ajustes para geração da LCDPR" />
     <MESSAGE value="ajustes" />
     <MESSAGE value="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr" />
-    <option name="LAST_COMMIT_MESSAGE" value="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr" />
+    <MESSAGE value="refatoração da classe SPEDGenerator.java. Renomeada para Generator e criada classe GeneratorBase." />
+    <MESSAGE value="separação em arquivos .java distintos para classes GeneratorBase e Generator." />
+    <option name="LAST_COMMIT_MESSAGE" value="separação em arquivos .java distintos para classes GeneratorBase e Generator." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

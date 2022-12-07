@@ -14,8 +14,8 @@ public class Factory {
         return definitions;
     }
 
-    public Generator createSPEDGenerator() {
-        return new Generator(this);
+    public SpedGenerator createSPEDGenerator() {
+        return new SpedGenerator(this);
     }
 
     public Register createRegister(String name) {

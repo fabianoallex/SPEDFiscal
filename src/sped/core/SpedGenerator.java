@@ -1,15 +1,14 @@
 package sped.core;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Generator extends GeneratorBase {
+public class SpedGenerator extends GeneratorBase {
     private final Register0000 register0000;
     private final Register9999 register9999;
     private Block9 block9 = null;
 
-    Generator(Factory factory) {
+    SpedGenerator(Factory factory) {
         super(factory);
         register0000 = this.getFactory().createRegister0000();
         register9999 = this.getFactory().createRegister9999();
