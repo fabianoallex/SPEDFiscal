@@ -3,24 +3,49 @@ package sped.lcdpr.v0013;
 import sped.core.Factory;
 import sped.core.NamedRegister;
 
+import java.util.Arrays;
+
 public class Register0040 extends NamedRegister {
-    public static String REGISTER_NAME = "0040";
-    public static String FIELD_CODIGO_IMOVEL = "COD_IMOVEL";
-    public static String FIELD_PAIS = "PAIS";
-    public static String FIELD_MOEDA = "MOEDA";
-    public static String FIELD_CAD_ITR = "CAD_ITR";
-    public static String FIELD_CAEPF = "CAEPF";
-    public static String FIELD_IE = "INSCR_ESTADUAL";
-    public static String FIELD_NOME_IMOVEL = "NOME_IMOVEL";
-    public static String FIELD_ENDERECO = "ENDERECO";
-    public static String FIELD_NUMERO = "NUM";
-    public static String FIELD_COMPLEMENTO = "COMPL";
-    public static String FIELD_BAIRRO = "BAIRRO";
-    public static String FIELD_UF = "UF";
-    public static String FIELD_CODIGO_MUNICIPIO = "COD_MUN";
-    public static String FIELD_CEP = "CEP";
-    public static String FIELD_TIPO_EXPLORACAO = "TIPO_EXPLORACAO";
-    public static String FIELD_PARTICIPACAO = "PARTICIPACAO";
+    public enum TipoExploracao {
+        EXPLORACAO_INDIVIDUAL(1),
+        CONDOMINIO(2),
+        ARRENDADO(3),
+        PARCERIA(4),
+        COMODATO(5),
+        OUTROS(6);
+
+        final Integer value;
+
+        TipoExploracao(Integer value) {
+            this.value = value;
+        }
+
+        public static Register0040.TipoExploracao valueOf(int value) {
+            for (Register0040.TipoExploracao tipoExploracao : values())
+                if (tipoExploracao.value.equals(value))
+                    return tipoExploracao;
+
+            return null;
+        }
+    };
+
+    public final static String REGISTER_NAME = "0040";
+    public final static String FIELD_CODIGO_IMOVEL = "COD_IMOVEL";
+    public final static String FIELD_PAIS = "PAIS";
+    public final static String FIELD_MOEDA = "MOEDA";
+    public final static String FIELD_CAD_ITR = "CAD_ITR";
+    public final static String FIELD_CAEPF = "CAEPF";
+    public final static String FIELD_IE = "INSCR_ESTADUAL";
+    public final static String FIELD_NOME_IMOVEL = "NOME_IMOVEL";
+    public final static String FIELD_ENDERECO = "ENDERECO";
+    public final static String FIELD_NUMERO = "NUM";
+    public final static String FIELD_COMPLEMENTO = "COMPL";
+    public final static String FIELD_BAIRRO = "BAIRRO";
+    public final static String FIELD_UF = "UF";
+    public final static String FIELD_CODIGO_MUNICIPIO = "COD_MUN";
+    public final static String FIELD_CEP = "CEP";
+    public final static String FIELD_TIPO_EXPLORACAO = "TIPO_EXPLORACAO";
+    public final static String FIELD_PARTICIPACAO = "PARTICIPACAO";
 
     public Register0040(Factory factory) {
         super(factory, REGISTER_NAME);
@@ -138,12 +163,12 @@ public class Register0040 extends NamedRegister {
         return this.getStringField(FIELD_CEP).getValue();
     }
 
-    public void setTipoExploracao(Integer tipoExploracao) {
-        this.getIntegerField(FIELD_TIPO_EXPLORACAO).setValue(tipoExploracao);
+    public void setTipoExploracao(TipoExploracao tipoExploracao) {
+        this.getIntegerField(FIELD_TIPO_EXPLORACAO).setValue(tipoExploracao.value);
     }
 
-    public Integer getTipoExploracao() {
-        return this.getIntegerField(FIELD_TIPO_EXPLORACAO).getValue();
+    public TipoExploracao getTipoExploracao() {
+        return TipoExploracao.valueOf(this.getIntegerField(FIELD_TIPO_EXPLORACAO).getValue());
     }
 
     public void setParticipacao(Double participacao) {

@@ -4,6 +4,28 @@ import sped.core.Factory;
 import sped.core.NamedRegister;
 
 public class Register0045 extends NamedRegister {
+    public enum TipoContraparte {
+        CONDOMINIO(1),
+        ARRENDADOR(2),
+        PARCEIRO(3),
+        COMODANTE(4),
+        OUTRO(5);
+
+        final Integer value;
+
+        TipoContraparte(Integer value) {
+            this.value = value;
+        }
+
+        public static Register0045.TipoContraparte valueOf(int value) {
+            for (Register0045.TipoContraparte tipoContraparte : values())
+                if (tipoContraparte.value.equals(value))
+                    return tipoContraparte;
+
+            return null;
+        }
+    };
+
     public static String REGISTER_NAME = "0045";
     public static String FIELD_CODIGO_IMOVEL = "COD_IMOVEL";
     public static String FIELD_TIPO_CONTRAPARTE = "TIPO_CONTRAPARTE";
@@ -23,12 +45,12 @@ public class Register0045 extends NamedRegister {
         return this.getIntegerField(FIELD_CODIGO_IMOVEL).getValue();
     }
 
-    public void setTipoContraparte(Integer tipoContraparte) {
-        this.getIntegerField(FIELD_TIPO_CONTRAPARTE).setValue(tipoContraparte);
+    public void setTipoContraparte(TipoContraparte tipoContraparte) {
+        this.getIntegerField(FIELD_TIPO_CONTRAPARTE).setValue(tipoContraparte.value);
     }
 
-    public Integer getTipoContraparte() {
-        return this.getIntegerField(FIELD_TIPO_CONTRAPARTE).getValue();
+    public TipoContraparte getTipoContraparte() {
+        return TipoContraparte.valueOf(this.getIntegerField(FIELD_TIPO_CONTRAPARTE).getValue());
     }
 
     public void setCpfCnpj(String cpfCnpj) {

@@ -65,9 +65,9 @@
                 <field name="UF" pos="13" type="string" size="2" dec="" format="" description="" required="OC" validations="uf"/>
                 <field name="COD_MUN" pos="14" type="number" size="" dec="" format="" description="" required="OC"
                        validations="codigo_municipio, validate_codigo_municipio"/>
-                <field name="CEP" pos="15" type="string" size="8" dec="" format="" description="" required="OC"/>
+                <field name="CEP" pos="15" type="string" size="8" dec="" format="onlynumbers" description="" required="OC"/>
                 <field name="TIPO_EXPLORACAO" pos="16" type="number" size="1" dec="" format="" description="" required="O"/>
-                <field name="PARTICIPACAO" pos="17" type="number" size="5" dec="2" format="00000" description="" required="O"/>
+                <field name="PARTICIPACAO" pos="17" type="number" size="5" dec="2" format="lcdprdouble" description="" required="O"/>
             </fields>
         </register>
         <register name="0045" parent="0" parent_type="block">

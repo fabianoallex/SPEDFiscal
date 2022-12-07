@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Generator renomeada para SpedGenerator">
-      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Criada Classe LcdprGenerator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/ClosureRegisterLCDPR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/ClosureRegisterLCDPR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0045.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0045.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,13 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00063" summary="classe ValidatorHelper removida">
-      <created>1667396269353</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1667396269353</updated>
     </task>
     <task id="LOCAL-00064" summary="Criadas classes Validator e FieldValidator">
       <created>1667398823652</created>
@@ -442,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670379479562</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Criada Classe LcdprGenerator">
+      <created>1670381980104</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1670381980104</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister" />
     <MESSAGE value="Refatorações" />
     <MESSAGE value="Refatoração NamedRegister. Construtor irá receber o factory ao invés de Register" />
     <MESSAGE value="Ajustes na Classe Field" />
@@ -517,7 +516,8 @@
     <MESSAGE value="refatoração da classe SPEDGenerator.java. Renomeada para Generator e criada classe GeneratorBase." />
     <MESSAGE value="separação em arquivos .java distintos para classes GeneratorBase e Generator." />
     <MESSAGE value="Generator renomeada para SpedGenerator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generator renomeada para SpedGenerator" />
+    <MESSAGE value="Criada Classe LcdprGenerator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criada Classe LcdprGenerator" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
