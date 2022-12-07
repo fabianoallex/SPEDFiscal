@@ -1,8 +1,8 @@
 <definitions>
     <validations>
         <scritps>
-            <script name="validate_cpf" file="lcdpr/scripts/validate_cpf.js" />
-            <script name="validate_cnpj" file="lcdpr/scripts/validate_cnpj.js" />
+            <script name="validate_cpf" file="lcdpr/v0013/scripts/validate_cpf.js" />
+            <script name="validate_cnpj" file="lcdpr/v0013/scripts/validate_cnpj.js" />
         </scritps>
         <regexs>
             <regex name="number" expression="[0-9]" fail_message="não é um número"/>

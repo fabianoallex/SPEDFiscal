@@ -10,55 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr">
-      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0010.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_cnpj.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_cnpj.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_cpf.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_cpf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_cpf_cnpj_0000.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_cpf_cnpj_0000.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/scripts/validate_reg_0002.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_reg_0002.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/BlockQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/BlockQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/ClosureRegisterLCDPR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/ClosureRegisterLCDPR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/OpeningRegisterLCDPR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/OpeningRegisterLCDPR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/Register0010.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/Register0030.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0030.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/Register0040.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/Register0045.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0045.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ100.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ100.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/RegisterQ200.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ200.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/Registro0050.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Registro0050.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Block9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Block9.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ClosureRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Counter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/DefinitionsFileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/DefinitionsFileLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldValidationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FieldValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Fields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/FileWriterWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FileWriterWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/NamedRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/OpeningRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register0000.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register9900.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register9999.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/RegisterValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/SPEDGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/StringBuilderWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/StringBuilderWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/ValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/ValidationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/ValidationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/ValidationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lib/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/SPEDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Generator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +76,7 @@
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\src\sped\lcdpr" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr\v0013" />
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources" />
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
     </key>
@@ -142,13 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00059" summary="validações adicionadas a arquivos js">
-      <created>1667393988142</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1667393988142</updated>
     </task>
     <task id="LOCAL-00060" summary="ajustes">
       <created>1667394162955</created>
@@ -486,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670210659794</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr">
+      <created>1670377149495</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1670377149495</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
