@@ -59,4 +59,8 @@ public class ClosureRegisterLCDPR extends NamedRegister {
     public Integer getQuantidadeLinhas() {
         return this.getIntegerField(FIELD_QTD_LIN).getValue();
     }
+
+    public void setQuantidadeLinhas(Integer quantidadeLinhas) {
+        this.getIntegerField(FIELD_QTD_LIN).setValue(quantidadeLinhas);
+    }
 }

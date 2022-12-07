@@ -1,5 +1,7 @@
 package sped.core;
 
+import sped.lcdpr.v0013.ClosureRegisterLCDPR;
+import sped.lcdpr.v0013.OpeningRegisterLCDPR;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -77,7 +79,9 @@ public class SpedGenerator extends GeneratorBase {
 
     @Override
     public int count() {
-        return register0000.count() + register9999.count() + super.count();
+        return super.count() +
+                register0000.count() +
+                register9999.count();
     }
 
     @Override
