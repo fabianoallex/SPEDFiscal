@@ -1,6 +1,6 @@
 
 # Gerador de arquivos do SPED
-Lib para geração de arquivos dentro da estrutura da ECF, ECD e EFD.
+Lib para geração de arquivos dentro da estrutura da ECF, ECD, EFD e LCDPR.
 
 A definição dos registros, nomes de campos, tipos de dados, formato, etc, devem ser feita previamente no arquivo definitions.xml.
 
@@ -77,3 +77,5 @@ definitions
 https://github.com/fabianoallex/SPEDFiscalLibExample
 
 https://github.com/fabianoallex/SPEDFiscalLibExampleFX
+
+https://github.com/fabianoallex/LCDPR-Exemplo
