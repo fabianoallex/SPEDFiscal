@@ -2,7 +2,9 @@ package sped.lcdpr.v0013;
 
 import sped.core.Factory;
 import sped.core.NamedRegister;
+import sped.core.Register;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class Register0040 extends NamedRegister {

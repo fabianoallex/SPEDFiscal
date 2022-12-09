@@ -1,6 +1,7 @@
 package sped.core;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 final public class Register implements Unit {
@@ -108,6 +109,38 @@ final public class Register implements Unit {
     public <T> T getFieldValue(String fieldName) throws FieldNotFoundException {
         Field<T> field = this.getField(fieldName);
         return field.getValue();
+    }
+
+    public Field<String> getStringField(String fieldName) {
+        try {
+            return this.getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field<Date> getDateField(String fieldName) {
+        try {
+            return this.getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field<Integer> getIntegerField(String fieldName) {
+        try {
+            return this.getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Field<Double> getDoubleField(String fieldName) {
+        try {
+            return this.getField(fieldName);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Factory getFactory() {

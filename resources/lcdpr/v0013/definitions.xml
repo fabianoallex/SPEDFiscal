@@ -3,6 +3,8 @@
         <scritps>
             <script name="validate_cpf" file="lcdpr/v0013/scripts/validate_cpf.js" />
             <script name="validate_cnpj" file="lcdpr/v0013/scripts/validate_cnpj.js" />
+            <script name="validate_cpf_ou_cnpj" file="lcdpr/v0013/scripts/validate_cpf_ou_cnpj.js" />
+            <script name="validate_dt_sit_esp" file="lcdpr/v0013/scripts/validate_dt_sit_esp.js" />
         </scritps>
         <regexs>
             <regex name="number" expression="[0-9]" fail_message="não é um número"/>
@@ -11,28 +13,32 @@
             <regex name="codigo_municipio" expression="[0-9]{7}" fail_message="Código do município deve ter 7 Dígitos"/>
             <regex name="cnpjcpf" expression="[0-9]{14}|[0-9]{11}" fail_message="CNPJ ou CPF inválido"/>
             <regex name="uf" expression="AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO"
-                   fail_message="UF inválida 123456"/>
+                   fail_message="UF inválida"/>
             <regex name="cep" expression="[0-9]{8}" fail_message="CEP inválido" />
+            <regex name="nome_esc" expression="LCDPR" fail_message="Texto fixo exigido para o campo: 'LCDPR'" />
+            <regex name="ind_sit_ini_per" expression="0|1|2" fail_message="Valores válidos: 0, 1 e 2" />
+            <regex name="sit_especial" expression="0|1|2|3" fail_message="Valores válidos: 0, 1, 2 e 3" />
+            <regex name="forma_apur" expression="0|1" fail_message="Valores válidos: 0 e 1" />
         </regexs>
     </validations>
     <registers>
         <register name="0000" parent="" parent_type="file">
             <fields>
-                <field name="NOME_ESC" pos="02" type="string" size="5" format="" description="" required="O"/>
+                <field name="NOME_ESC" pos="02" type="string" size="5" format="" description="" required="O" validations="nome_esc"/>
                 <field name="COD_VER" pos="03" type="string" size="4" format="" description="" required="O"/>
                 <field name="CPF" pos="04" type="string" size="11" dec="" format="onlynumbers" description="" required="OC"
-                       validations="cpf_rgx, validate_cpf, validate_cpf_cnpj_0000"/>
+                       validations="cpf_rgx, validate_cpf"/>
                 <field name="NOME" pos="05" type="string" size="100" dec="" format="" description="" required="O"/>
-                <field name="IND_SIT_INI_PER" pos="06" type="number" size="1" dec="" format="" description="" required="O"/>
-                <field name="SIT_ESPECIAL" pos="07" type="number" size="1" dec="" format="" description="" required="O"/>
-                <field name="DT_SIT_ESP" pos="08" type="date" size="" dec="" format="ddMMyyyy" description="" required="O"/>
+                <field name="IND_SIT_INI_PER" pos="06" type="number" size="1" dec="" format="" description="" required="O" validations="ind_sit_ini_per"/>
+                <field name="SIT_ESPECIAL" pos="07" type="number" size="1" dec="" format="" description="" required="O" validations="sit_especial"/>
+                <field name="DT_SIT_ESP" pos="08" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dt_sit_esp"/>
                 <field name="DT_INI" pos="09" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dates_0000"/>
                 <field name="DT_FIN" pos="10" type="date" size="" dec="" format="ddMMyyyy" description="" required="O" validations="validate_dates_0000"/>
             </fields>
         </register>
         <register name="0010" parent="0" parent_type="block">
             <fields>
-                <field name="FORMA_APUR" pos="02" type="number" size="1" dec="" format="" description="" required="O"/>
+                <field name="FORMA_APUR" pos="02" type="number" size="1" dec="" format="" description="" required="O" validations="forma_apur"/>
             </fields>
         </register>
         <register name="0030" parent="0" parent_type="block">
@@ -44,7 +50,7 @@
                 <field name="UF" pos="06" type="string" size="2" dec="" format="" description="" required="O" validations="uf"/>
                 <field name="COD_MUN" pos="07" type="number" size="" dec="" format="" description="" required="O"
                        validations="codigo_municipio, validate_codigo_municipio"/>
-                <field name="CEP" pos="08" type="string" size="8" dec="" format="onlynumbers" description="" required="O"/>
+                <field name="CEP" pos="08" type="string" size="8" dec="" format="onlynumbers" description="" required="O" validations="cep"/>
                 <field name="NUM_TEL" pos="09" type="string" size="15" dec="" format="onlynumbers" description="" required="O"/>
                 <field name="EMAIL" pos="10" type="string" size="115" dec="" format="" description="" required="O"/>
             </fields>
@@ -76,7 +82,7 @@
                 <field name="TIPO_CONTRAPARTE" pos="03" type="number" size="1" dec="" format="" description="" required="O"/>
                 <field name="ID_CONTRAPARTE" pos="04" type="string" size="14" dec="" format="onlynumbers" description="" required="O"/>
                 <field name="NOME_CONTRAPARTE" pos="05" type="string" size="50" dec="" format="" description="" required="O"/>
-                <field name="PERC_CONTRAPARTE" pos="06" type="number" size="5" dec="2" format="00000" description="" required="O"/>
+                <field name="PERC_CONTRAPARTE" pos="06" type="number" size="5" dec="2" format="lcdprdouble" description="" required="O"/>
             </fields>
         </register>
         <register name="0050" parent="0" parent_type="block">
@@ -117,10 +123,10 @@
         <register name="9999" parent="0" parent_type="file">
             <fields>
                 <field name="IDENT_NOME" pos="02" type="string" size="" dec="" format="" description="" required="OC"/>
-                <field name="IDENT_CPF_CNPJ" pos="03" type="string" size="" dec="" format="onlynumbers" description="" required="OC"/>
+                <field name="IDENT_CPF_CNPJ" pos="03" type="string" size="" dec="" format="onlynumbers" description="" required="OC" validations="cnpjcpf, validate_cpf_ou_cnpj"/>
                 <field name="IND_CRC" pos="04" type="string" size="" dec="" format="" description="" required="OC"/>
                 <field name="EMAIL" pos="05" type="string" size="115" dec="" format="" description="" required="OC"/>
-                <field name="FONE" pos="06" type="string" size="15" dec="" format="" description="" required="OC"/>
+                <field name="FONE" pos="06" type="string" size="15" dec="" format="onlynumbers" description="" required="OC"/>
                 <field name="QTD_LIN" pos="07" type="number" size="" dec="" format="" description="" required="O"/>
             </fields>
         </register>
