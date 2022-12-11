@@ -4,39 +4,39 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class GeneratorBase implements Unit {
-    public static class GeneratorBuilder {
+    public static class Builder {
         private final String xmlFile;
         private String fieldsSeparator = Definitions.REGISTER_FIELD_SEPARATOR_DEFAULT;
         private String beginEndSeparator = Definitions.REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
         private DefinitionsFileLoader definitionsFileLoader;
         private ValidationHelper validationHelper;
-        public GeneratorBuilder(String xmlFile) {
+        public Builder(String xmlFile) {
             this.xmlFile = xmlFile;
         }
 
-        public GeneratorBuilder setBeginEndSeparator(String registerBeginEndSeparator) {
+        public Builder setBeginEndSeparator(String registerBeginEndSeparator) {
             this.beginEndSeparator = registerBeginEndSeparator;
             return this;
         }
 
-        public GeneratorBuilder setFieldsSeparator(String fieldsSeparator) {
+        public Builder setFieldsSeparator(String fieldsSeparator) {
             this.fieldsSeparator = fieldsSeparator;
             return this;
         }
 
-        public GeneratorBuilder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
+        public Builder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
             this.definitionsFileLoader = definitionsFileLoader;
             return this;
         }
 
-        public GeneratorBuilder setValidationHelper(ValidationHelper validationHelper) {
+        public Builder setValidationHelper(ValidationHelper validationHelper) {
             this.validationHelper = validationHelper;
             return this;
         }
 
         public GeneratorBase build(Class<? extends GeneratorBase> clazz){
             try {
-                Factory factory = new Definitions.DefinitionsBuilder(this.xmlFile)
+                Factory factory = new Definitions.Builder(this.xmlFile)
                         .setBeginEndSeparator(this.beginEndSeparator)
                         .setFieldsSeparator(this.fieldsSeparator)
                         .setValidationHelper(this.validationHelper)

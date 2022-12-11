@@ -13,33 +13,33 @@ import java.io.IOException;
 
 public class Definitions {
 
-    public static class DefinitionsBuilder {
+    public static class Builder {
         private final String xmlFile;
         private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
         private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
         private DefinitionsFileLoader definitionsFileLoader;
         private ValidationHelper validationHelper;
 
-        public DefinitionsBuilder(String xmlFile) {
+        public Builder(String xmlFile) {
             this.xmlFile = xmlFile;
         }
 
-        public DefinitionsBuilder setBeginEndSeparator(String registerBeginEndSeparator) {
+        public Builder setBeginEndSeparator(String registerBeginEndSeparator) {
             this.beginEndSeparator = registerBeginEndSeparator;
             return this;
         }
 
-        public DefinitionsBuilder setFieldsSeparator(String fieldsSeparator) {
+        public Builder setFieldsSeparator(String fieldsSeparator) {
             this.fieldsSeparator = fieldsSeparator;
             return this;
         }
 
-        public DefinitionsBuilder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
+        public Builder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
             this.definitionsFileLoader = definitionsFileLoader;
             return this;
         }
 
-        public DefinitionsBuilder setValidationHelper(ValidationHelper validationHelper) {
+        public Builder setValidationHelper(ValidationHelper validationHelper) {
             this.validationHelper = validationHelper;
             return this;
         }

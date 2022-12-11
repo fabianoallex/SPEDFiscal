@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatorações e ajustes nas classes da package lcdpr\v0013">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação do padrão Builder nas classes Definitions e GeneratorBase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Factory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/OpeningRegister.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,13 +97,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00067" summary="ajustes e script de validação de cidades">
-      <created>1667412138718</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1667412138718</updated>
     </task>
     <task id="LOCAL-00068" summary="SPEDDefinitions.java renomeado para Definitions">
       <created>1667413273297</created>
@@ -443,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670777572454</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="Implementação do padrão Builder nas classes Definitions e GeneratorBase">
+      <created>1670781249013</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1670781249013</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Alteraçao da interface Writer para retornar além do texto, o objeto registro" />
     <MESSAGE value="Ajustes das mensagens nas classes de validação" />
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Incluídos Métodos AddNamedRegister nas Classes Block e Register." />
@@ -518,7 +515,19 @@
     <MESSAGE value="Ajustes Register0040 e Register0045" />
     <MESSAGE value="Implementação e ajustes das validações da LCDPR" />
     <MESSAGE value="Refatorações e ajustes nas classes da package lcdpr\v0013" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatorações e ajustes nas classes da package lcdpr\v0013" />
+    <MESSAGE value="Implementação do padrão Builder nas classes Definitions e GeneratorBase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementação do padrão Builder nas classes Definitions e GeneratorBase" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sped/core/Factory.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
