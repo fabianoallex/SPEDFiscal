@@ -3,7 +3,7 @@ package sped.lcdpr.v0013;
 import sped.core.Factory;
 import sped.core.NamedRegister;
 
-public class Registro0050 extends NamedRegister {
+public class Register0050 extends NamedRegister {
     public static String REGISTER_NAME = "0050";
     public static String FIELD_CODIGO_CONTA = "COD_CONTA";
     public static String FIELD_PAIS_CONTA = "PAIS_CONTA";
@@ -12,7 +12,7 @@ public class Registro0050 extends NamedRegister {
     public static String FIELD_AGENCIA = "AGENCIA";
     public static String FIELD_NUM_CONTA = "NUM_CONTA";
 
-    public Registro0050(Factory factory) {
+    public Register0050(Factory factory) {
         super(factory, REGISTER_NAME);
     }
 

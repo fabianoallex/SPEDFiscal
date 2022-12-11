@@ -1,58 +1,62 @@
 package sped.lcdpr.v0013;
 
 import sped.core.*;
-import sped.lcdpr.v0013.ClosureRegisterLCDPR;
-import sped.lcdpr.v0013.OpeningRegisterLCDPR;
-
-import java.util.List;
 
 public class LcdprGenerator extends GeneratorBase {
-    private final OpeningRegisterLCDPR openingRegisterLCDPR;
-    private final ClosureRegisterLCDPR closureRegisterLCDPR;
+    private final OpeningRegister openingRegister;
+    private final ClosureRegister closureRegister;
 
     public LcdprGenerator(Factory factory) {
         super(factory);
-        openingRegisterLCDPR = new OpeningRegisterLCDPR(factory.createRegister(OpeningRegisterLCDPR.REGISTER_NAME));
-        closureRegisterLCDPR = new ClosureRegisterLCDPR(factory.createRegister(ClosureRegisterLCDPR.REGISTER_NAME));
+        openingRegister = new OpeningRegister(factory.createRegister(OpeningRegister.REGISTER_NAME));
+        closureRegister = new ClosureRegister(factory.createRegister(ClosureRegister.REGISTER_NAME));
     }
 
-    public OpeningRegisterLCDPR getOpeningRegisterLCDPR() {
-        return openingRegisterLCDPR;
+    public OpeningRegister getOpeningRegister() {
+        return openingRegister;
     }
 
-    public ClosureRegisterLCDPR getClosureRegisterLCDPR() {
-        return closureRegisterLCDPR;
+    public ClosureRegister getClosureRegister() {
+        return closureRegister;
     }
 
     public void totalize() {
-        closureRegisterLCDPR.setQuantidadeLinhas(this.count());
+        closureRegister.setQuantidadeLinhas(this.count());
+    }
+
+    public BlockQ addBlockQ() {
+        return (BlockQ) addBlock(BlockQ.class);
+    }
+
+    public Block0 addBlock0() {
+        return (Block0) addBlock(Block0.class);
     }
 
     @Override
     public void count(Counter counter) {
-        openingRegisterLCDPR.count(counter);
-        closureRegisterLCDPR.count(counter);
+        openingRegister.count(counter);
+        closureRegister.count(counter);
         super.count(counter);
     }
 
     @Override
     public int count() {
         return super.count() +
-                openingRegisterLCDPR.count() +
-                closureRegisterLCDPR.count();
+                openingRegister.count() +
+                closureRegister.count();
     }
 
     @Override
     public void validate(ValidationListener validationListener) {
-        openingRegisterLCDPR.validate(validationListener);
+        openingRegister.validate(validationListener);
         super.validate(validationListener);
-        closureRegisterLCDPR.validate(validationListener);
+        closureRegister.validate(validationListener);
     }
 
     @Override
     public void write(Writer writer) {
-        openingRegisterLCDPR.write(writer);
+        openingRegister.write(writer);
         super.write(writer);
-        closureRegisterLCDPR.write(writer);
+        closureRegister.write(writer);
     }
 }

@@ -180,6 +180,10 @@ public class Register0040 extends NamedRegister {
     public Double getParticipacao() {
         return this.getDoubleField(FIELD_PARTICIPACAO).getValue();
     }
+
+    public Register0045 add0045() {
+        return (Register0045) this.addNamedRegister(Register0045.class);
+    }
 }
 
 

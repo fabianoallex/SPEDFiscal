@@ -3,7 +3,7 @@ package sped.lcdpr.v0013;
 import sped.core.NamedRegister;
 import sped.core.Register;
 
-public class ClosureRegisterLCDPR extends NamedRegister {
+public class ClosureRegister extends NamedRegister {
     public static String REGISTER_NAME = "9999";
     public static String FIELD_NOME_CONTADOR = "IDENT_NOME";
     public static String FIELD_CPF_CNPJ_CONTADOR = "IDENT_CPF_CNPJ";
@@ -12,7 +12,7 @@ public class ClosureRegisterLCDPR extends NamedRegister {
     public static String FIELD_FONE_CONTADOR = "FONE";
     public static String FIELD_QTD_LIN = "QTD_LIN";
 
-    public ClosureRegisterLCDPR(Register register) {
+    public ClosureRegister(Register register) {
         super(register);
     }
 

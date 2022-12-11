@@ -18,19 +18,19 @@ public class BlockQ extends Block {
         super(BLOCK_NAME, factory);
     }
 
-    public RegisterQ100 addRegisterQ100() {
+    public RegisterQ100 addQ100() {
         RegisterQ100 registerQ100 = (RegisterQ100) this.addNamedRegister(RegisterQ100.class);
         registersQ100.add(registerQ100);
         return registerQ100;
     }
 
-    private RegisterQ200 addRegisterQ200() {
+    private RegisterQ200 addQ200() {
         RegisterQ200 registerQ200 = (RegisterQ200) this.addNamedRegister(RegisterQ200.class);
         registersQ200.add(registerQ200);
         return registerQ200;
     }
 
-    public void calculateBalances() {
+    public void calcularSaldos() {
         AtomicReference<Double> saldo = new AtomicReference<>(0.0);
         registersQ100.forEach(registerQ100 -> {
             saldo.updateAndGet(value -> value + registerQ100.getValorEntrada() - registerQ100.getValorSaida());
@@ -50,12 +50,12 @@ public class BlockQ extends Block {
 
         var map = registersQ100.stream()
                 .collect(Collectors.groupingBy(
-                        registerQ100 -> new SimpleDateFormat("yyyyMM").format(registerQ100.getDate())
+                        registerQ100 -> new SimpleDateFormat("yyyyMM").format(registerQ100.getData())
                 ));
 
         new TreeMap<>(map)
                 .forEach((anoMes, registerQ100List) -> {
-                    final RegisterQ200 registerQ200 = addRegisterQ200();
+                    final RegisterQ200 registerQ200 = addQ200();
 
                     var mesAno = Integer.parseInt(anoMes.substring(4, 6) + anoMes.substring(0, 4)); //MMyyyy
                     registerQ200.setMesAno(mesAno);

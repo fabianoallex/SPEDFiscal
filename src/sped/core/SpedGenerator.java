@@ -1,7 +1,5 @@
 package sped.core;
 
-import sped.lcdpr.v0013.ClosureRegisterLCDPR;
-import sped.lcdpr.v0013.OpeningRegisterLCDPR;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 

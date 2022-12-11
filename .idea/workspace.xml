@@ -9,14 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Ajustes Register0040 e Register0045">
-      <change afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_cpf_ou_cnpj.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_dt_sit_esp.js" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação e ajustes das validações da LCDPR">
+      <change afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Block0.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lcdpr/v0013/definitions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lcdpr/v0013/scripts/validate_cpf_cnpj_0000.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/BlockQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/BlockQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/ClosureRegisterLCDPR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/ClosureRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/OpeningRegisterLCDPR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/OpeningRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ100.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ100.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Registro0050.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0050.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,13 +106,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Refatoração FieldFormatter">
-      <created>1667400661978</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1667400661978</updated>
     </task>
     <task id="LOCAL-00066" summary="Ajustes">
       <created>1667401168077</created>
@@ -445,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670384348254</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="Implementação e ajustes das validações da LCDPR">
+      <created>1670555425987</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1670555425987</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração NamedRegister. Construtor irá receber o factory ao invés de Register" />
     <MESSAGE value="Ajustes na Classe Field" />
     <MESSAGE value="Alteraçao da interface Writer para retornar além do texto, o objeto registro" />
     <MESSAGE value="Ajustes das mensagens nas classes de validação" />
@@ -520,7 +524,8 @@
     <MESSAGE value="Generator renomeada para SpedGenerator" />
     <MESSAGE value="Criada Classe LcdprGenerator" />
     <MESSAGE value="Ajustes Register0040 e Register0045" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes Register0040 e Register0045" />
+    <MESSAGE value="Implementação e ajustes das validações da LCDPR" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementação e ajustes das validações da LCDPR" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

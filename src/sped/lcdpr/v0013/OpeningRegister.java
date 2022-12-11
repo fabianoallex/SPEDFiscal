@@ -5,7 +5,7 @@ import sped.core.Register;
 
 import java.util.Date;
 
-public class OpeningRegisterLCDPR extends NamedRegister {
+public class OpeningRegister extends NamedRegister {
 
     public enum SituacaoEspecial {
         NORMAL(0),
@@ -18,8 +18,8 @@ public class OpeningRegisterLCDPR extends NamedRegister {
             this.value = value;
         }
 
-        public static OpeningRegisterLCDPR.SituacaoEspecial valueOf(int value) {
-            for (OpeningRegisterLCDPR.SituacaoEspecial situacaoEspecial : values())
+        public static OpeningRegister.SituacaoEspecial valueOf(int value) {
+            for (OpeningRegister.SituacaoEspecial situacaoEspecial : values())
                 if (situacaoEspecial.value.equals(value))
                     return situacaoEspecial;
 
@@ -37,8 +37,8 @@ public class OpeningRegisterLCDPR extends NamedRegister {
             this.value = value;
         }
 
-        public static OpeningRegisterLCDPR.SituacaoInicioPeriodo valueOf(int value) {
-            for (OpeningRegisterLCDPR.SituacaoInicioPeriodo situacaoInicioPeriodo : values())
+        public static OpeningRegister.SituacaoInicioPeriodo valueOf(int value) {
+            for (OpeningRegister.SituacaoInicioPeriodo situacaoInicioPeriodo : values())
                 if (situacaoInicioPeriodo.value.equals(value))
                     return situacaoInicioPeriodo;
 
@@ -59,7 +59,7 @@ public class OpeningRegisterLCDPR extends NamedRegister {
     public static String FIELD_DATA_INICIAL = "DT_INI";
     public static String FIELD_DATA_FINAL = "DT_FIN";
 
-    public OpeningRegisterLCDPR(Register register) {
+    public OpeningRegister(Register register) {
         super(register);
         this.getStringField(FIELD_NOME_ESCRITURACAO).setValue(FIELD_NOME_ESCRITURACAO_VALUE);
         this.getStringField(FIELD_CODIGO_VERSAO).setValue(FIELD_CODIGO_VERSAO_VALUE);

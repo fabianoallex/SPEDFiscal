@@ -79,14 +79,14 @@ final public class Register implements Unit {
         final String collect = fields.values()
                 .stream()
                 .map(field -> FieldFormatter.formatField(field, this))
-                .collect(Collectors.joining(this.factory.getDefinitions().getRegisterSeparator()));
+                .collect(Collectors.joining(this.factory.getDefinitions().getFieldsSeparator()));
 
         return "%s%s%s%s%s".formatted(
-                this.factory.getDefinitions().getRegisterBeginEndSeparator(),
+                this.factory.getDefinitions().getBeginEndSeparator(),
                 this.getName(),
-                this.factory.getDefinitions().getRegisterSeparator(),
+                this.factory.getDefinitions().getFieldsSeparator(),
                 collect,
-                this.factory.getDefinitions().getRegisterBeginEndSeparator()
+                this.factory.getDefinitions().getBeginEndSeparator()
         );
     }
 

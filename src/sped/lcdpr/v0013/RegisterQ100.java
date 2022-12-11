@@ -71,11 +71,11 @@ public class RegisterQ100 extends NamedRegister {
         super(factory, REGISTER_NAME);
     }
 
-    public void setDate(Date date) {
-        this.getDateField(FIELD_DATA).setValue(date);
+    public void setData(Date data) {
+        this.getDateField(FIELD_DATA).setValue(data);
     }
 
-    public Date getDate() {
+    public Date getData() {
         return this.getDateField(FIELD_DATA).getValue();
     }
 
@@ -127,13 +127,13 @@ public class RegisterQ100 extends NamedRegister {
         return this.getStringField(FIELD_ID_PARTICIPANTE).getValue();
     }
 
-    public void setValorLancamento(Double value, TipoLancamento tipo) {
+    public void setValor(Double value, TipoLancamento tipo) {
         this.getIntegerField(FIELD_TIPO_LANC).setValue(tipo.value);
         this.getDoubleField(FIELD_VAL_ENTRADA).setValue(!tipo.equals(TipoLancamento.DESPESA) ? value : 0.00);
         this.getDoubleField(FIELD_VAL_SAIDA).setValue(tipo.equals(TipoLancamento.DESPESA) ? value : 0.00);
     }
 
-    public Double getValorLancamento() {
+    public Double getValor() {
         return getValorEntrada() + getValorSaida();
     }
 

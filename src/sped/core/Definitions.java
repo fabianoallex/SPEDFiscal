@@ -30,24 +30,24 @@ public class Definitions {
     private volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
     private DefinitionsFileLoader definitionsFileLoader;
-    private final ValidationHelper validationHelper;
-    private String registerSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
-    private String registerBeginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
+    private ValidationHelper validationHelper;
+    private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
+    private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
 
-    public Definitions(String xmlFile, ValidationHelper validationHelper) {
+    public Definitions(String xmlFile) {
         this.xmlFile = xmlFile;
+    }
+
+    public void setValidationHelper(ValidationHelper validationHelper) {
         this.validationHelper = validationHelper;
     }
 
-    public Definitions(String xmlFile, ValidationHelper validationHelper, String registerSeparator, String registerBeginEndSeparator) {
-        this(xmlFile, validationHelper);
-        this.registerSeparator = registerSeparator;
-        this.registerBeginEndSeparator = registerBeginEndSeparator;
+    public void setBeginEndSeparator(String registerBeginEndSeparator) {
+        this.beginEndSeparator = registerBeginEndSeparator;
     }
 
-    public Definitions(String xmlFile, ValidationHelper validationHelper, String registerBeginEndSeparator) {
-        this(xmlFile, validationHelper);
-        this.registerBeginEndSeparator = registerBeginEndSeparator;
+    public void setFieldsSeparator(String fieldsSeparator) {
+        this.fieldsSeparator = fieldsSeparator;
     }
 
     public void setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
@@ -58,12 +58,12 @@ public class Definitions {
         return this.definitionsFileLoader;
     }
 
-    public String getRegisterSeparator() {
-        return registerSeparator;
+    public String getFieldsSeparator() {
+        return fieldsSeparator;
     }
 
-    public String getRegisterBeginEndSeparator() {
-        return registerBeginEndSeparator;
+    public String getBeginEndSeparator() {
+        return beginEndSeparator;
     }
 
     public ValidationHelper getValidationHelper() {
