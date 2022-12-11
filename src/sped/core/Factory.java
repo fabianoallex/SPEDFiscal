@@ -77,4 +77,12 @@ public class Factory {
             throw new RuntimeException(e);
         }
     }
+
+    public GeneratorBase createGenerator(Class<? extends GeneratorBase> clazz) {
+        try {
+            return clazz.getConstructor(Factory.class).newInstance(this);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

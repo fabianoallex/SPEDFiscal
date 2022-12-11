@@ -12,6 +12,50 @@ import java.io.CharArrayWriter;
 import java.io.IOException;
 
 public class Definitions {
+
+    public static class DefinitionsBuilder {
+        private final String xmlFile;
+        private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
+        private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
+        private DefinitionsFileLoader definitionsFileLoader;
+        private ValidationHelper validationHelper;
+
+        public DefinitionsBuilder(String xmlFile) {
+            this.xmlFile = xmlFile;
+        }
+
+        public DefinitionsBuilder setBeginEndSeparator(String registerBeginEndSeparator) {
+            this.beginEndSeparator = registerBeginEndSeparator;
+            return this;
+        }
+
+        public DefinitionsBuilder setFieldsSeparator(String fieldsSeparator) {
+            this.fieldsSeparator = fieldsSeparator;
+            return this;
+        }
+
+        public DefinitionsBuilder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
+            this.definitionsFileLoader = definitionsFileLoader;
+            return this;
+        }
+
+        public DefinitionsBuilder setValidationHelper(ValidationHelper validationHelper) {
+            this.validationHelper = validationHelper;
+            return this;
+        }
+
+        public Definitions build(){
+            var definitions = new Definitions(this.xmlFile);
+
+            definitions.setBeginEndSeparator(this.beginEndSeparator);
+            definitions.setFieldsSeparator(this.fieldsSeparator);
+            definitions.setFileLoader(this.definitionsFileLoader);
+            definitions.setValidationHelper(this.validationHelper);
+
+            return definitions;
+        }
+    }
+
     public static final String REGISTER_FIELD_SEPARATOR_DEFAULT = "|";
     public static final String REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT = REGISTER_FIELD_SEPARATOR_DEFAULT;
     public static final String DEF_TAG_DEFINITIONS = "definitions";
@@ -37,7 +81,6 @@ public class Definitions {
     public Definitions(String xmlFile) {
         this.xmlFile = xmlFile;
     }
-
     public void setValidationHelper(ValidationHelper validationHelper) {
         this.validationHelper = validationHelper;
     }
@@ -157,6 +200,10 @@ public class Definitions {
         }
 
         return registersDefinitions.get(registerName);
+    }
+
+    public Factory newFactory() {
+        return new Factory(this);
     }
 }
 

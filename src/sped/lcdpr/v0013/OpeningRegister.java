@@ -113,19 +113,19 @@ public class OpeningRegister extends NamedRegister {
         return this.getDateField(FIELD_DATA_SITUACAO_ESPECIAL).getValue();
     }
 
-    public void setInicialDate(Date date) {
-        this.getDateField(FIELD_DATA_INICIAL).setValue(date);
+    public void setDataInicial(Date data) {
+        this.getDateField(FIELD_DATA_INICIAL).setValue(data);
     }
 
-    public Date getInitialDate() {
+    public Date getDataInicial() {
         return this.getDateField(FIELD_DATA_INICIAL).getValue();
     }
 
-    public void setFinalDate(Date date) {
-        this.getDateField(FIELD_DATA_FINAL).setValue(date);
+    public void setDataFinal(Date data) {
+        this.getDateField(FIELD_DATA_FINAL).setValue(data);
     }
 
-    public Date getFinalDate() {
+    public Date getDataFinal() {
         return this.getDateField(FIELD_DATA_FINAL).getValue();
     }
 }
