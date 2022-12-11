@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação do padrão Builder nas classes Definitions e GeneratorBase">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Renomeada classes GeneratorBuilder e DefinitionsBuilder para o nome Builder apenas.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,13 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00068" summary="SPEDDefinitions.java renomeado para Definitions">
-      <created>1667413273297</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1667413273297</updated>
     </task>
     <task id="LOCAL-00069" summary="atributo definitionsXmlFile renomeado para xmlFile">
       <created>1667413407481</created>
@@ -441,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670781249013</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="Renomeada classes GeneratorBuilder e DefinitionsBuilder para o nome Builder apenas.">
+      <created>1670783263491</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1670783263491</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajustes das mensagens nas classes de validação" />
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Incluídos Métodos AddNamedRegister nas Classes Block e Register." />
     <MESSAGE value="redefinido método toString da classe NamedRegister" />
@@ -516,7 +516,8 @@
     <MESSAGE value="Implementação e ajustes das validações da LCDPR" />
     <MESSAGE value="Refatorações e ajustes nas classes da package lcdpr\v0013" />
     <MESSAGE value="Implementação do padrão Builder nas classes Definitions e GeneratorBase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementação do padrão Builder nas classes Definitions e GeneratorBase" />
+    <MESSAGE value="Renomeada classes GeneratorBuilder e DefinitionsBuilder para o nome Builder apenas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renomeada classes GeneratorBuilder e DefinitionsBuilder para o nome Builder apenas." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

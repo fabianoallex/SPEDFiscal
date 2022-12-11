@@ -12,50 +12,6 @@ import java.io.CharArrayWriter;
 import java.io.IOException;
 
 public class Definitions {
-
-    public static class Builder {
-        private final String xmlFile;
-        private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
-        private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
-        private DefinitionsFileLoader definitionsFileLoader;
-        private ValidationHelper validationHelper;
-
-        public Builder(String xmlFile) {
-            this.xmlFile = xmlFile;
-        }
-
-        public Builder setBeginEndSeparator(String registerBeginEndSeparator) {
-            this.beginEndSeparator = registerBeginEndSeparator;
-            return this;
-        }
-
-        public Builder setFieldsSeparator(String fieldsSeparator) {
-            this.fieldsSeparator = fieldsSeparator;
-            return this;
-        }
-
-        public Builder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
-            this.definitionsFileLoader = definitionsFileLoader;
-            return this;
-        }
-
-        public Builder setValidationHelper(ValidationHelper validationHelper) {
-            this.validationHelper = validationHelper;
-            return this;
-        }
-
-        public Definitions build(){
-            var definitions = new Definitions(this.xmlFile);
-
-            definitions.setBeginEndSeparator(this.beginEndSeparator);
-            definitions.setFieldsSeparator(this.fieldsSeparator);
-            definitions.setFileLoader(this.definitionsFileLoader);
-            definitions.setValidationHelper(this.validationHelper);
-
-            return definitions;
-        }
-    }
-
     public static final String REGISTER_FIELD_SEPARATOR_DEFAULT = "|";
     public static final String REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT = REGISTER_FIELD_SEPARATOR_DEFAULT;
     public static final String DEF_TAG_DEFINITIONS = "definitions";
@@ -204,6 +160,49 @@ public class Definitions {
 
     public Factory newFactory() {
         return new Factory(this);
+    }
+
+    public static class Builder {
+        private final String xmlFile;
+        private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
+        private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
+        private DefinitionsFileLoader definitionsFileLoader;
+        private ValidationHelper validationHelper;
+
+        public Builder(String xmlFile) {
+            this.xmlFile = xmlFile;
+        }
+
+        public Builder setBeginEndSeparator(String registerBeginEndSeparator) {
+            this.beginEndSeparator = registerBeginEndSeparator;
+            return this;
+        }
+
+        public Builder setFieldsSeparator(String fieldsSeparator) {
+            this.fieldsSeparator = fieldsSeparator;
+            return this;
+        }
+
+        public Builder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
+            this.definitionsFileLoader = definitionsFileLoader;
+            return this;
+        }
+
+        public Builder setValidationHelper(ValidationHelper validationHelper) {
+            this.validationHelper = validationHelper;
+            return this;
+        }
+
+        public Definitions build(){
+            var definitions = new Definitions(this.xmlFile);
+
+            definitions.setBeginEndSeparator(this.beginEndSeparator);
+            definitions.setFieldsSeparator(this.fieldsSeparator);
+            definitions.setFileLoader(this.definitionsFileLoader);
+            definitions.setValidationHelper(this.validationHelper);
+
+            return definitions;
+        }
     }
 }
 
