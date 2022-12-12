@@ -100,11 +100,15 @@ public class GeneratorBase implements Unit {
         }
 
         public T build() {
-            try {
-                ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
-                @SuppressWarnings("unchecked")
-                var clazz = (Class<T>) type.getActualTypeArguments()[0];
+            ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+            @SuppressWarnings("unchecked")
+            var clazz = (Class<T>) type.getActualTypeArguments()[0];
 
+            return this.build(clazz);
+        }
+
+        public T build(Class<T> clazz) {
+            try {
                 Factory factory = new Definitions.Builder(this.xmlFile)
                         .setBeginEndSeparator(this.beginEndSeparator)
                         .setFieldsSeparator(this.fieldsSeparator)
