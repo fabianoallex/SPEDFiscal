@@ -1,5 +1,7 @@
 package sped.core;
 
+import sped.lcdpr.v0013.LcdprGenerator;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class SpedGenerator extends GeneratorBase {
     private final Register9999 register9999;
     private Block9 block9 = null;
 
-    SpedGenerator(Factory factory) {
+    public SpedGenerator(Factory factory) {
         super(factory);
         register0000 = this.getFactory().createRegister0000();
         register9999 = this.getFactory().createRegister9999();
@@ -94,6 +96,17 @@ public class SpedGenerator extends GeneratorBase {
         register0000.write(writer);
         super.write(writer);
         register9999.write(writer);
+    }
+
+    public static class Builder extends GeneratorBase.Builder {
+        public Builder(String xmlFile) {
+            super(xmlFile);
+        }
+
+        @Override
+        public SpedGenerator build(){
+            return (SpedGenerator) super.build(SpedGenerator.class);
+        }
     }
 }
 

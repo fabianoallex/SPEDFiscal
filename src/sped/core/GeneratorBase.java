@@ -1,7 +1,5 @@
 package sped.core;
 
-import sped.lcdpr.v0013.LcdprGenerator;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
@@ -116,6 +114,6 @@ public class GeneratorBase implements Unit {
             }
         }
 
-        public abstract LcdprGenerator build();
+        public abstract GeneratorBase build();
     }
 }
