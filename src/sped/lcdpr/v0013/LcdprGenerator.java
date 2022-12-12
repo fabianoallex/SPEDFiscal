@@ -60,14 +60,9 @@ public class LcdprGenerator extends GeneratorBase {
         closureRegister.write(writer);
     }
 
-    public static class Builder extends GeneratorBase.Builder {
+    public static class Builder extends GeneratorBase.Builder<LcdprGenerator> {
         public Builder(String xmlFile) {
             super(xmlFile);
-        }
-
-        @Override
-        public LcdprGenerator build(){
-            return (LcdprGenerator) super.build(LcdprGenerator.class);
         }
     }
 }

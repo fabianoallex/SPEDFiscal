@@ -98,14 +98,9 @@ public class SpedGenerator extends GeneratorBase {
         register9999.write(writer);
     }
 
-    public static class Builder extends GeneratorBase.Builder {
+    public static class Builder extends GeneratorBase.Builder<SpedGenerator> {
         public Builder(String xmlFile) {
             super(xmlFile);
-        }
-
-        @Override
-        public SpedGenerator build(){
-            return (SpedGenerator) super.build(SpedGenerator.class);
         }
     }
 }

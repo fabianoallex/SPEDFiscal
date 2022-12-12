@@ -1,6 +1,7 @@
 package sped.core;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 public class GeneratorBase implements Unit {
@@ -68,7 +69,7 @@ public class GeneratorBase implements Unit {
         return factory;
     }
 
-    public static abstract class Builder {
+    public static class Builder<T extends GeneratorBase> {
         private final String xmlFile;
         private String fieldsSeparator = Definitions.REGISTER_FIELD_SEPARATOR_DEFAULT;
         private String beginEndSeparator = Definitions.REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
@@ -78,28 +79,32 @@ public class GeneratorBase implements Unit {
             this.xmlFile = xmlFile;
         }
 
-        public Builder setBeginEndSeparator(String registerBeginEndSeparator) {
+        public Builder<T> setBeginEndSeparator(String registerBeginEndSeparator) {
             this.beginEndSeparator = registerBeginEndSeparator;
             return this;
         }
 
-        public Builder setFieldsSeparator(String fieldsSeparator) {
+        public Builder<T> setFieldsSeparator(String fieldsSeparator) {
             this.fieldsSeparator = fieldsSeparator;
             return this;
         }
 
-        public Builder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
+        public Builder<T> setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
             this.definitionsFileLoader = definitionsFileLoader;
             return this;
         }
 
-        public Builder setValidationHelper(ValidationHelper validationHelper) {
+        public Builder<T> setValidationHelper(ValidationHelper validationHelper) {
             this.validationHelper = validationHelper;
             return this;
         }
 
-        public GeneratorBase build(Class<? extends GeneratorBase> clazz){
+        public T build() {
             try {
+                ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+                @SuppressWarnings("unchecked")
+                var clazz = (Class<T>) type.getActualTypeArguments()[0];
+
                 Factory factory = new Definitions.Builder(this.xmlFile)
                         .setBeginEndSeparator(this.beginEndSeparator)
                         .setFieldsSeparator(this.fieldsSeparator)
@@ -113,7 +118,5 @@ public class GeneratorBase implements Unit {
                 throw new RuntimeException(e);
             }
         }
-
-        public abstract GeneratorBase build();
     }
 }
