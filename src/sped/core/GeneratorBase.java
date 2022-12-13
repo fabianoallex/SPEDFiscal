@@ -73,7 +73,7 @@ public class GeneratorBase implements Unit {
         private final String xmlFile;
         private String fieldsSeparator = Definitions.REGISTER_FIELD_SEPARATOR_DEFAULT;
         private String beginEndSeparator = Definitions.REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
-        private DefinitionsFileLoader definitionsFileLoader;
+        private FileLoader fileLoader;
         private ValidationHelper validationHelper;
         public Builder(String xmlFile) {
             this.xmlFile = xmlFile;
@@ -89,8 +89,8 @@ public class GeneratorBase implements Unit {
             return this;
         }
 
-        public Builder<T> setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
-            this.definitionsFileLoader = definitionsFileLoader;
+        public Builder<T> setFileLoader(FileLoader fileLoader) {
+            this.fileLoader = fileLoader;
             return this;
         }
 
@@ -107,13 +107,13 @@ public class GeneratorBase implements Unit {
             return this.build(clazz);
         }
 
-        public T build(Class<T> clazz) {
+        private T build(Class<T> clazz) {
             try {
-                Factory factory = new Definitions.Builder(this.xmlFile)
+                Factory factory = Definitions.newBuilder(this.xmlFile)
                         .setBeginEndSeparator(this.beginEndSeparator)
                         .setFieldsSeparator(this.fieldsSeparator)
                         .setValidationHelper(this.validationHelper)
-                        .setFileLoader(this.definitionsFileLoader)
+                        .setFileLoader(this.fileLoader)
                         .build()
                         .newFactory();
 

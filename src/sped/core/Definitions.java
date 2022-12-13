@@ -1,15 +1,6 @@
 package sped.core;
 
 import java.util.*;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.CharArrayWriter;
-import java.io.IOException;
 
 public class Definitions {
     public static final String REGISTER_FIELD_SEPARATOR_DEFAULT = "|";
@@ -24,12 +15,13 @@ public class Definitions {
     public static final String FIELDS_REG_TYPE_STRING = "string";
     public static final String FIELDS_REG_TYPE_NUMBER = "number";
     public static final String FIELDS_REG_TYPE_DATE = "date";
+
     private final HashMap<String, FieldFormat> fieldsFormat = new HashMap<>();
     private final HashMap<String, Validation> validations = new HashMap<>();
     private volatile HashMap<String, FieldDefinitions[]> fieldsDefinitions = null;
     private volatile HashMap<String, RegisterDefinitions> registersDefinitions = null;
     private final String xmlFile;
-    private DefinitionsFileLoader definitionsFileLoader;
+    private FileLoader fileLoader;
     private ValidationHelper validationHelper;
     private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
     private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
@@ -49,12 +41,12 @@ public class Definitions {
         this.fieldsSeparator = fieldsSeparator;
     }
 
-    public void setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
-        this.definitionsFileLoader = definitionsFileLoader;
+    public void setFileLoader(FileLoader fileLoader) {
+        this.fileLoader = fileLoader;
     }
 
-    public DefinitionsFileLoader getDefinitionsFileLoader() {
-        return this.definitionsFileLoader;
+    public FileLoader getDefinitionsFileLoader() {
+        return this.fileLoader;
     }
 
     public String getFieldsSeparator() {
@@ -73,33 +65,35 @@ public class Definitions {
         validations.put(validation.getName(), validation);
     }
 
-    public Validation[] getValidations(String registerName, String fieldName) {
+    public List<Validation> getFieldValidations(String registerName, String fieldName) {
+        List<Validation> validationList = new ArrayList<>();
 
         String validationNames = Arrays.stream(fieldsDefinitions.get(registerName))
-                .filter(fd -> fd.name.equals(fieldName))
-                .map(d -> d.validationNames == null ? "" : d.validationNames)
+                .filter(fieldDefinitions -> fieldDefinitions.name.equals(fieldName))
+                .map(fieldDefinitions ->
+                        fieldDefinitions.validationNames == null ? "" : fieldDefinitions.validationNames)
                 .findAny()
-                .orElse(null);
+                .orElse("");
 
-        if (validationNames == null || validationNames.trim().equals(""))
-            return null;
+        if (validationNames.trim().equals(""))
+            return validationList;
 
         String[] validationNamesArray = validationNames.split(",");
-        Validation[] validationArray = new Validation[validationNamesArray.length];
 
-        for (int i = 0; i < validationNamesArray.length; i++) {
-            String validationName = validationNamesArray[i];
-            Validation validation = validations.get(validationName.trim());
+        Arrays.stream(validationNamesArray)
+                .map(String::trim)
+                .forEach(validationName -> {
+                    Validation validation = validations.get(validationName);
 
-            if (validation == null) {
-                validation = new ValidationReflection(getValidationHelper(), validationName.trim());
-                addValidation(validation);
-            }
+                    if (validation == null) {
+                        validation = new ValidationReflection(getValidationHelper(), validationName);
+                        addValidation(validation);
+                    }
 
-            validationArray[i] = validation;
-        }
+                    validationList.add(validation);
+                });
 
-        return validationArray;
+        return validationList;
     }
 
     public String getRequired(String registerName, String fieldName) {
@@ -166,10 +160,10 @@ public class Definitions {
         private final String xmlFile;
         private String fieldsSeparator = REGISTER_FIELD_SEPARATOR_DEFAULT;
         private String beginEndSeparator = REGISTER_FIELD_BEGIN_END_SEPARATOR_DEFAULT;
-        private DefinitionsFileLoader definitionsFileLoader;
+        private FileLoader fileLoader;
         private ValidationHelper validationHelper;
 
-        public Builder(String xmlFile) {
+        Builder(String xmlFile) {
             this.xmlFile = xmlFile;
         }
 
@@ -183,8 +177,8 @@ public class Definitions {
             return this;
         }
 
-        public Builder setFileLoader(DefinitionsFileLoader definitionsFileLoader) {
-            this.definitionsFileLoader = definitionsFileLoader;
+        public Builder setFileLoader(FileLoader fileLoader) {
+            this.fileLoader = fileLoader;
             return this;
         }
 
@@ -198,170 +192,14 @@ public class Definitions {
 
             definitions.setBeginEndSeparator(this.beginEndSeparator);
             definitions.setFieldsSeparator(this.fieldsSeparator);
-            definitions.setFileLoader(this.definitionsFileLoader);
+            definitions.setFileLoader(this.fileLoader);
             definitions.setValidationHelper(this.validationHelper);
 
             return definitions;
         }
     }
-}
 
-class DefinitionsLoader {
-    public static void load(Definitions definitions) {
-        try {
-            SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            InputSource input = new InputSource(
-                    definitions.getDefinitionsFileLoader().getInputStream(definitions.getXmlFile()));
-            parser.parse(input, new DefinitionsHandler(definitions));
-
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
-        }
+    public static Builder newBuilder(String xmlFile) {
+        return new Builder(xmlFile);
     }
-}
-
-class DefinitionsHandler extends DefaultHandler {
-    private final CharArrayWriter validationScriptContents = new CharArrayWriter();
-    private ValidationScript validationScript = null;
-
-    private final Definitions definitions;
-    private String registerName = "";
-    private List<FieldDefinitions> fieldsDefinitions = null;
-
-    DefinitionsHandler(Definitions definitions) {
-        this.definitions = definitions;
-    }
-
-    public Definitions getDefinitions() {
-        return this.definitions;
-    }
-
-    public void startDocument() {}
-
-    public void endDocument() {}
-
-    public void startElement(String uri, String localName, String tag, Attributes attributes) {
-        validationScriptContents.reset();
-
-        //start element register
-        if (tag.equals(Definitions.DEF_TAG_REGISTER)) {
-            registerName = attributes.getValue(RegisterDefinitions.REGISTER_DEF_NAME);
-
-            RegisterDefinitions registerDefinitions = new RegisterDefinitions();
-            registerDefinitions.name = attributes.getValue(RegisterDefinitions.REGISTER_DEF_NAME);
-            registerDefinitions.parent = attributes.getValue(RegisterDefinitions.REGISTER_DEF_PARENT);
-            registerDefinitions.parentType = attributes.getValue(RegisterDefinitions.REGISTER_DEF_PARENT_TYPE);
-            registerDefinitions.key = attributes.getValue(RegisterDefinitions.REGISTER_DEF_KEY);
-            definitions.addRegisterDefinitions(registerName, registerDefinitions);
-        }
-
-        //start element fields
-        if (tag.equals(Definitions.DEF_TAG_FIELDS)) {
-            fieldsDefinitions = new ArrayList<>();
-        }
-
-        //start element field
-        if (!registerName.isEmpty() && tag.equals(Definitions.DEF_TAG_FIELD)) {
-            FieldDefinitions fieldDefinitions = new FieldDefinitions();
-
-            fieldDefinitions.name = attributes.getValue(FieldDefinitions.FIELD_DEF_NAME);
-            fieldDefinitions.pos = attributes.getValue(FieldDefinitions.FIELD_DEF_POS);
-            fieldDefinitions.type = attributes.getValue(FieldDefinitions.FIELD_DEF_TYPE);
-            fieldDefinitions.size = attributes.getValue(FieldDefinitions.FIELD_DEF_SIZE);
-            fieldDefinitions.dec = attributes.getValue(FieldDefinitions.FIELD_DEF_DEC);
-            fieldDefinitions.format = attributes.getValue(FieldDefinitions.FIELD_DEF_FORMAT);
-            fieldDefinitions.description = attributes.getValue(FieldDefinitions.FIELD_DEF_DESCRIPTION);
-            fieldDefinitions.ref = attributes.getValue(FieldDefinitions.FIELD_DEF_REF);
-            fieldDefinitions.validationNames = attributes.getValue(FieldDefinitions.FIELD_DEF_VALIDATIONS);
-            fieldDefinitions.required = attributes.getValue(FieldDefinitions.FIELD_DEF_REQUIRED);
-            fieldsDefinitions.add(fieldDefinitions);
-
-            FieldFormat fieldFormat = new FieldFormat(fieldDefinitions.format, Integer.parseInt("0" + fieldDefinitions.size));
-            String fieldFormatName = registerName + "." + fieldDefinitions.name;
-
-            definitions.addFieldFormat(fieldFormatName, fieldFormat);
-        }
-
-        //start element regex
-        if (tag.equals(Definitions.DEF_TAG_REGEX)) {
-            definitions.addValidation(
-                    new ValidationRegex(
-                            attributes.getValue(ValidationRegex.REGEX_DEF_NAME),
-                            attributes.getValue(ValidationRegex.REGEX_DEF_EXPRESSION),
-                            attributes.getValue(ValidationRegex.REGEX_DEF_FAIL_MESSAGE)
-                    )
-            );
-        }
-
-        //start element script
-        if (tag.equals(Definitions.DEF_TAG_SCRIPT)) {
-            validationScriptContents.reset();
-
-            String scriptFileName = attributes.getValue(ValidationScript.SCRIPT_DEF_FILE);
-            //File xmlFile = scriptFileName != null ? new File(this.getDefinitions().getXmlFile()) : null;
-
-            validationScript = new ValidationScript(
-                    attributes.getValue(ValidationScript.SCRIPT_DEF_NAME),
-                    scriptFileName,
-                    this.definitions.getDefinitionsFileLoader()
-            );
-
-            definitions.addValidation(validationScript);
-        }
-    }
-
-    public void endElement(String uri, String localName, String tag) {
-        //end element fields
-        if (tag.equals(Definitions.DEF_TAG_FIELDS)) {
-            FieldDefinitions[] fd = new FieldDefinitions[fieldsDefinitions.size()];
-            fieldsDefinitions.toArray(fd);
-            definitions.addFieldDefinitions(registerName, fd);
-        }
-
-        //end element script
-        if (tag.equals(Definitions.DEF_TAG_SCRIPT)) {
-            validationScript.setScript(validationScriptContents.toString());
-        }
-    }
-
-    public void characters(char[] ch, int start, int length) {
-        validationScriptContents.write( ch, start, length );
-    }
-}
-
-class FieldDefinitions {
-    public static final String FIELD_EMPTY_STRING = "";
-    public static final String FIELD_DEF_NAME = "name";
-    public static final String FIELD_DEF_POS = "pos";
-    public static final String FIELD_DEF_TYPE = "type";
-    public static final String FIELD_DEF_SIZE = "size";
-    public static final String FIELD_DEF_DEC = "dec";
-    public static final String FIELD_DEF_FORMAT = "format";
-    public static final String FIELD_DEF_DESCRIPTION = "description";
-    public static final String FIELD_DEF_REF = "ref";
-    public static final String FIELD_DEF_VALIDATIONS = "validations";
-    public static final String FIELD_DEF_REQUIRED = "required";
-
-    String name;
-    String pos;
-    String type;
-    String size;
-    String dec;
-    String format;
-    String description;
-    String ref;
-    String validationNames;
-    String required;
-}
-
-class RegisterDefinitions {
-    public static final String REGISTER_DEF_NAME = "name";
-    public static final String REGISTER_DEF_PARENT_TYPE = "parent_type";
-    public static final String REGISTER_DEF_PARENT = "parent";
-    public static final String REGISTER_DEF_KEY = "key";
-
-    String name;
-    String parentType;
-    String parent;
-    String key;
 }

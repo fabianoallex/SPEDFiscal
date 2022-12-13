@@ -99,9 +99,13 @@ public class SpedGenerator extends GeneratorBase {
     }
 
     public static class Builder extends GeneratorBase.Builder<SpedGenerator> {
-        public Builder(String xmlFile) {
+        private Builder(String xmlFile) {
             super(xmlFile);
         }
+    }
+
+    public static Builder newBuilder(String xmlFile) {
+        return new Builder(xmlFile);
     }
 }
 

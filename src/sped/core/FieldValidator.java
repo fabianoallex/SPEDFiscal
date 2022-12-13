@@ -25,30 +25,23 @@ public class FieldValidator extends Validator {
         String formattedValue = FieldFormatter.formatField(this.field, this.register);
         String required = this.field.getRequired();
 
-        //quando o campo for obrigatorio e não for informado, nao faz as demais validações
         if (required.equals("O") && formattedValue.isEmpty()) {
             String message = "Campo ogrigatório não informado";
             this.getValidationListener().onErrorMessage(new FieldValidationEvent(register, field, message));
             return;
         }
 
-        Validation[] validations = register.getFactory().getDefinitions().getValidations(
-                register.getName(),
-                field.getName()
-        );
+        register.getFieldValidations(field.getName())
+                .forEach(validation -> {
+                    if (validation instanceof ValidationRegex validationRegex)
+                        regexValidate(validationRegex, formattedValue, required);
 
-        if (validations == null) return;
+                    if (validation instanceof ValidationScript validationScript)
+                        scriptValidate(validationScript, formattedValue);
 
-        for (Validation validation : validations) {
-            if (validation instanceof ValidationRegex validationRegex)
-                regexValidate(validationRegex, formattedValue, required);
-
-            if (validation instanceof ValidationScript validationScript)
-                scriptValidate(validationScript, formattedValue);
-
-            if (validation instanceof ValidationReflection validationReflection)
-                reflectionValidate(validationReflection, formattedValue);
-        }
+                    if (validation instanceof ValidationReflection validationReflection)
+                        reflectionValidate(validationReflection, formattedValue);
+                });
     }
 
     private void reflectionValidate(ValidationReflection validationReflection, String value) {
@@ -80,6 +73,7 @@ public class FieldValidator extends Validator {
     private void scriptValidate(ValidationScript validationScript, String value) {
         ScriptEngineManager mgr = new ScriptEngineManager();
         ScriptEngine scriptEngine = mgr.getEngineByName(ValidationScript.SCRIPT_ENGINE_NAME);
+
         try {
             scriptEngine.put("param", value);
             scriptEngine.put("register", register);
@@ -99,10 +93,10 @@ public class FieldValidator extends Validator {
             var isValidObject = scriptEngine.get("isValid");
             var message = scriptEngine.get("message");
 
-            if (isValidObject instanceof Boolean isValid && !isValid) {
-                message = "[" + value + "]: " + message;
-                this.getValidationListener().onErrorMessage(new FieldValidationEvent(register, field, (String) message));
-            }
+            if (isValidObject instanceof Boolean isValid && !isValid)
+                this.getValidationListener().onErrorMessage(
+                        new FieldValidationEvent(register, field, "[%s]: %s".formatted(value, message))
+                );
         } catch (ScriptException se) {
             throw new RuntimeException(se);
         }

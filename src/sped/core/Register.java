@@ -2,6 +2,7 @@ package sped.core;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 final public class Register implements Unit {
@@ -34,6 +35,10 @@ final public class Register implements Unit {
 
     public Fields getFields() {
         return fields;
+    }
+
+    public List<Validation> getFieldValidations(String fieldName) {
+        return this.factory.getDefinitions().getFieldValidations(this.name, fieldName);
     }
 
     public Register addRegister(String name){
