@@ -1,9 +1,9 @@
 package sped.core;
 
-public final class ValidationReflection extends Validation {
+public final class ReflectionValidation extends Validation {
     private final ValidationHelper validationHelper;
 
-    ValidationReflection(ValidationHelper validationHelper, String name) {
+    ReflectionValidation(ValidationHelper validationHelper, String name) {
         super(name);
         this.validationHelper = validationHelper;
     }

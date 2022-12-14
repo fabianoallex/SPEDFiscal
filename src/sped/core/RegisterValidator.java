@@ -14,7 +14,8 @@ public class RegisterValidator extends Validator {
 
     @Override
     public void validate() {
-        register.getFields().forEach((key, field) -> validateField(field));
+        register.getFields()
+                .forEach((key, field) -> validateField(field));
     }
 
     private void validateField(Field<?> field) {

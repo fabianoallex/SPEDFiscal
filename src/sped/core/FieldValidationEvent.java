@@ -4,6 +4,10 @@ public class FieldValidationEvent extends ValidationEvent {
     private final Field<?> field;
     private final Register register;
 
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
     private FieldValidationEvent(Register register, Field<?> field, String message) {
         super(
                 register.getName() + "." + field.getName() + ": \"" + message + "\".",
@@ -26,6 +30,8 @@ public class FieldValidationEvent extends ValidationEvent {
         private Register register;
         private String message;
 
+        private Builder() {}
+
         public Builder setField(Field<?> field) {
             this.field = field;
             return this;
@@ -44,9 +50,5 @@ public class FieldValidationEvent extends ValidationEvent {
         public FieldValidationEvent build() {
             return new FieldValidationEvent(register, field, message);
         }
-    }
-
-    public static Builder newBuilder() {
-        return new Builder();
     }
 }

@@ -33,7 +33,7 @@ public class DefinitionsLoader {
 
 class DefinitionsHandler extends DefaultHandler {
     private final CharArrayWriter validationScriptContents = new CharArrayWriter();
-    private ValidationScript validationScript = null;
+    private ScriptValidation scriptValidation = null;
 
     private final Definitions definitions;
     private String registerName = "";
@@ -96,10 +96,10 @@ class DefinitionsHandler extends DefaultHandler {
         //start element regex
         if (tag.equals(Definitions.DEF_TAG_REGEX)) {
             definitions.addValidation(
-                    new ValidationRegex(
-                            attributes.getValue(ValidationRegex.REGEX_DEF_NAME),
-                            attributes.getValue(ValidationRegex.REGEX_DEF_EXPRESSION),
-                            attributes.getValue(ValidationRegex.REGEX_DEF_FAIL_MESSAGE)
+                    new RegexValidation(
+                            attributes.getValue(RegexValidation.REGEX_DEF_NAME),
+                            attributes.getValue(RegexValidation.REGEX_DEF_EXPRESSION),
+                            attributes.getValue(RegexValidation.REGEX_DEF_FAIL_MESSAGE)
                     )
             );
         }
@@ -108,15 +108,15 @@ class DefinitionsHandler extends DefaultHandler {
         if (tag.equals(Definitions.DEF_TAG_SCRIPT)) {
             validationScriptContents.reset();
 
-            String scriptFileName = attributes.getValue(ValidationScript.SCRIPT_DEF_FILE);
+            String scriptFileName = attributes.getValue(ScriptValidation.SCRIPT_DEF_FILE);
 
-            validationScript = new ValidationScript(
-                    attributes.getValue(ValidationScript.SCRIPT_DEF_NAME),
+            scriptValidation = new ScriptValidation(
+                    attributes.getValue(ScriptValidation.SCRIPT_DEF_NAME),
                     scriptFileName,
                     this.definitions.getDefinitionsFileLoader()
             );
 
-            definitions.addValidation(validationScript);
+            definitions.addValidation(scriptValidation);
         }
     }
 
@@ -130,7 +130,7 @@ class DefinitionsHandler extends DefaultHandler {
 
         //end element script
         if (tag.equals(Definitions.DEF_TAG_SCRIPT)) {
-            validationScript.setScript(validationScriptContents.toString());
+            scriptValidation.setScript(validationScriptContents.toString());
         }
     }
 

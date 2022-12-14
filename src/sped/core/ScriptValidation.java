@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
-public final class ValidationScript extends Validation {
+public final class ScriptValidation extends Validation {
     public static final String SCRIPT_ENGINE_NAME = "js";
     public static final String SCRIPT_DEF_NAME = "name";
     public static final String SCRIPT_DEF_FILE = "file";
@@ -16,20 +16,20 @@ public final class ValidationScript extends Validation {
     private final FileLoader fileLoader;
     private String script;
 
-    ValidationScript(String name, String fileName, FileLoader fileLoader) {
+    ScriptValidation(String name, String fileName, FileLoader fileLoader) {
         super(name);
         this.fileLoader = fileLoader;
         this.fileName = fileName;
     }
 
-    ValidationScript(String name) {
+    ScriptValidation(String name) {
         this(name, "", null);
     }
 
     @Override
     public void validate(Register register, Field<?> field, String value, ValidationListener validationListener) {
         ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine scriptEngine = mgr.getEngineByName(ValidationScript.SCRIPT_ENGINE_NAME);
+        ScriptEngine scriptEngine = mgr.getEngineByName(ScriptValidation.SCRIPT_ENGINE_NAME);
 
         try {
             scriptEngine.put("param", value);

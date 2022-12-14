@@ -86,7 +86,7 @@ public class Definitions {
                     Validation validation = validations.get(validationName);
 
                     if (validation == null) {
-                        validation = new ValidationReflection(getValidationHelper(), validationName);
+                        validation = new ReflectionValidation(getValidationHelper(), validationName);
                         addValidation(validation);
                     }
 
