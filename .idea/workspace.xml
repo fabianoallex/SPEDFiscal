@@ -9,14 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatorações">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatorações nas classes de validação">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/FieldValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldValidationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/FieldValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/RegisterValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Validation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/ValidationReflection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationReflection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/ValidationRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationRegex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/ValidationScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ValidationScript.java" afterDir="false" />
@@ -104,13 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Ajustes">
-      <created>1667446907103</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1667446907103</updated>
     </task>
     <task id="LOCAL-00075" summary="Incluida interface ValidationHelper">
       <created>1667531155866</created>
@@ -448,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670924980807</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="Refatorações nas classes de validação">
+      <created>1670987369525</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1670987369525</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refatoração. Substituição de laços for por Stream." />
     <MESSAGE value="Refatoração da classe Block para considerar opcionais os Registros de abertura e encerramento dos blocos, visando atender leiaout do LCDPR - livro caixa de produtor rural" />
     <MESSAGE value="ajustes em NamedRegister" />
     <MESSAGE value="refatoração das packages" />
@@ -523,7 +517,8 @@
     <MESSAGE value="Criada Classe Builder para SpedGenerator, extendendo a classe interna Builder de GeneratorBase." />
     <MESSAGE value="Refatoração das classes Builder de GeneratorBase e suas subclasses." />
     <MESSAGE value="Refatorações" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatorações" />
+    <MESSAGE value="Refatorações nas classes de validação" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatorações nas classes de validação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -12,8 +12,9 @@ public final class ValidationReflection extends Validation {
         return this.validationHelper;
     }
 
-    public boolean validate(ValidationMessage validationMessage, String value, Register register) {
-        return this.getvalidationHelper().validate(validationMessage, this.getName(), value, register);
+    private boolean validate(ValidationMessage validationMessage, String value, Register register) {
+        return this.getvalidationHelper()
+                .validate(validationMessage, this.getName(), value, register);
     }
 
     @Override
@@ -21,12 +22,11 @@ public final class ValidationReflection extends Validation {
         ValidationMessage validationMessage = new ValidationMessage();
 
         if (!this.validate(validationMessage, value, register)) {
-            String message = "[" + value + "]: " + validationMessage.getMessage();
             validationListener.onErrorMessage(
                     FieldValidationEvent.newBuilder()
                             .setField(field)
                             .setRegister(register)
-                            .setMessage(message)
+                            .setMessage("[%s]: %s".formatted(value, validationMessage.getMessage()))
                             .build()
             );
         }

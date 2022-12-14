@@ -48,14 +48,12 @@ public final class ValidationScript extends Validation {
             scriptEngine.eval(script);
 
             var isValidObject = scriptEngine.get("isValid");
-            var message = scriptEngine.get("message");
-
             if (isValidObject instanceof Boolean isValid && !isValid)
                 validationListener.onErrorMessage(
                         FieldValidationEvent.newBuilder()
                                 .setField(field)
                                 .setRegister(register)
-                                .setMessage("[%s]: %s".formatted(value, message))
+                                .setMessage("[%s]: %s".formatted(value, scriptEngine.get("message")))
                                 .build()
                 );
         } catch (ScriptException se) {

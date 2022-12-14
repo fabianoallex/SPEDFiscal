@@ -17,6 +17,9 @@ public final class ValidationRegex extends Validation {
     }
 
     public String getExpression() {
+        if (expression == null)
+            return "";
+
         return expression;
     }
 
@@ -26,22 +29,19 @@ public final class ValidationRegex extends Validation {
 
     @Override
     public void validate(Register register, Field<?> field, String value, ValidationListener validationListener) {
-        String failMessage = this.getFailMessage();
-        String expression = this.getExpression();
+        if (this.getExpression().isEmpty())
+            return;
 
-        if (!expression.isEmpty()) {
-            Pattern pattern = Pattern.compile(expression);
-            Matcher matcher = pattern.matcher(value);
-            if (!matcher.matches()) {
-                String message = "[" + value + "]: " + failMessage;
-                validationListener.onErrorMessage(
-                        FieldValidationEvent.newBuilder()
-                                .setField(field)
-                                .setRegister(register)
-                                .setMessage(message)
-                                .build()
-                );
-            }
+        Pattern pattern = Pattern.compile(this.getExpression());
+        Matcher matcher = pattern.matcher(value);
+        if (!matcher.matches()) {
+            validationListener.onErrorMessage(
+                    FieldValidationEvent.newBuilder()
+                            .setField(field)
+                            .setRegister(register)
+                            .setMessage("[%s]: %s".formatted(value, this.getFailMessage()))
+                            .build()
+            );
         }
     }
 }

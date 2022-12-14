@@ -23,6 +23,14 @@ public class RegisterValidator extends Validator {
 
         String formattedValue = FieldFormatter.formatField(field, register);
 
+        if (!validateFieldRequired(field, formattedValue))
+            return;
+
+        register.getValidationsForField(field)
+                .forEach(validation -> validation.validate(register, field, formattedValue, getValidationListener()));
+    }
+
+    private boolean validateFieldRequired(Field<?> field, String formattedValue) {
         if (field.getRequired().equals("O") && formattedValue.isEmpty()) {
             this.getValidationListener().onErrorMessage(
                     FieldValidationEvent.newBuilder()
@@ -32,10 +40,9 @@ public class RegisterValidator extends Validator {
                             .build()
             );
 
-            return;
+            return false;
         }
 
-        register.getValidationsForField(field)
-                .forEach(validation -> validation.validate(register, field, formattedValue, getValidationListener()));
+        return true;
     }
 }
