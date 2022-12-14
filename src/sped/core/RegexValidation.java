@@ -10,7 +10,11 @@ public final class RegexValidation extends Validation {
     private final String expression;
     private final String failMessage;
 
-    RegexValidation(String name, String expression, String failMessage) {
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+    private RegexValidation(String name, String expression, String failMessage) {
         super(name);
         this.failMessage = failMessage;
         this.expression = expression;
@@ -42,6 +46,33 @@ public final class RegexValidation extends Validation {
                             .setMessage("[%s]: %s".formatted(value, this.getFailMessage()))
                             .build()
             );
+        }
+    }
+
+    public static class Builder {
+        private String name;
+        private String expression;
+        private String failMessage;
+
+        private Builder() {}
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setExpression(String expression) {
+            this.expression = expression;
+            return this;
+        }
+
+        public Builder setFailMessage(String failMessage) {
+            this.failMessage = failMessage;
+            return this;
+        }
+
+        public RegexValidation build() {
+            return new RegexValidation(this.name, this.expression, this.failMessage);
         }
     }
 }

@@ -16,14 +16,14 @@ public final class ScriptValidation extends Validation {
     private final FileLoader fileLoader;
     private String script;
 
-    ScriptValidation(String name, String fileName, FileLoader fileLoader) {
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+    private ScriptValidation(String name, String fileName, FileLoader fileLoader) {
         super(name);
         this.fileLoader = fileLoader;
         this.fileName = fileName;
-    }
-
-    ScriptValidation(String name) {
-        this(name, "", null);
     }
 
     @Override
@@ -97,5 +97,32 @@ public final class ScriptValidation extends Validation {
 
     public String getFileName() {
         return fileName;
+    }
+
+    public static class Builder {
+        private String name;
+        private String fileName;
+        private FileLoader fileLoader;
+
+        private Builder() {}
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setFileName(String fileName) {
+            this.fileName = fileName;
+            return this;
+        }
+
+        public Builder setFileLoader(FileLoader fileLoader) {
+            this.fileLoader = fileLoader;
+            return this;
+        }
+
+        public ScriptValidation build() {
+            return new ScriptValidation(this.name, this.fileName, this.fileLoader);
+        }
     }
 }
