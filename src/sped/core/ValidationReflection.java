@@ -17,7 +17,18 @@ public final class ValidationReflection extends Validation {
     }
 
     @Override
-    public void validate() {
+    public void validate(Register register, Field<?> field, String value, ValidationListener validationListener) {
+        ValidationMessage validationMessage = new ValidationMessage();
 
+        if (!this.validate(validationMessage, value, register)) {
+            String message = "[" + value + "]: " + validationMessage.getMessage();
+            validationListener.onErrorMessage(
+                    FieldValidationEvent.newBuilder()
+                            .setField(field)
+                            .setRegister(register)
+                            .setMessage(message)
+                            .build()
+            );
+        }
     }
 }

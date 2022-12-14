@@ -11,6 +11,6 @@ public abstract class Validation {
         return name;
     }
 
-    public abstract void validate();
+    public abstract void validate(Register register, Field<?> field, String value, ValidationListener validationListener);
 }
 

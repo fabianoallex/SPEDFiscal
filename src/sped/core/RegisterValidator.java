@@ -2,12 +2,10 @@ package sped.core;
 
 public class RegisterValidator extends Validator {
     private final Register register;
-    private final FieldValidator fieldValidator;
 
     RegisterValidator(Register register, ValidationListener validationListener) {
         super(validationListener);
         this.register = register;
-        this.fieldValidator = new FieldValidator(register, validationListener);
     }
 
     public Register getRegister() {
@@ -16,6 +14,28 @@ public class RegisterValidator extends Validator {
 
     @Override
     public void validate() {
-        register.getFields().forEach((key, field) -> fieldValidator.validate(field));
+        register.getFields().forEach((key, field) -> validateField(field));
+    }
+
+    private void validateField(Field<?> field) {
+        if (field == null)
+            return;
+
+        String formattedValue = FieldFormatter.formatField(field, register);
+
+        if (field.getRequired().equals("O") && formattedValue.isEmpty()) {
+            this.getValidationListener().onErrorMessage(
+                    FieldValidationEvent.newBuilder()
+                            .setField(field)
+                            .setRegister(register)
+                            .setMessage("Campo ogrigatório não informado")
+                            .build()
+            );
+
+            return;
+        }
+
+        register.getValidationsForField(field)
+                .forEach(validation -> validation.validate(register, field, formattedValue, getValidationListener()));
     }
 }

@@ -37,8 +37,8 @@ final public class Register implements Unit {
         return fields;
     }
 
-    public List<Validation> getFieldValidations(String fieldName) {
-        return this.factory.getDefinitions().getFieldValidations(this.name, fieldName);
+    public List<Validation> getValidationsForField(Field<?> field) {
+        return this.factory.getDefinitions().getValidationsForField(this.name, field.getName());
     }
 
     public Register addRegister(String name){

@@ -65,7 +65,7 @@ public class Definitions {
         validations.put(validation.getName(), validation);
     }
 
-    public List<Validation> getFieldValidations(String registerName, String fieldName) {
+    public List<Validation> getValidationsForField(String registerName, String fieldName) {
         List<Validation> validationList = new ArrayList<>();
 
         String validationNames = Arrays.stream(fieldsDefinitions.get(registerName))
