@@ -1,12 +1,12 @@
 package sped.lcdpr.v0013;
 
 import sped.core.Block;
-import sped.core.Factory;
+import sped.core.Context;
 
 public class Block0 extends Block {
     public static String BLOCK_NAME = "0";
-    public Block0(Factory factory) {
-        super(BLOCK_NAME, factory);
+    public Block0(Context context) {
+        super(BLOCK_NAME, context);
     }
 
     public Register0010 add0010() {

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class GeneratorBase implements Unit {
     private final ArrayList<Block> blocks = new ArrayList<>();
-    private final Factory factory;
+    private final Context context;
 
-    public GeneratorBase(Factory factory) {
-        this.factory = factory;
+    public GeneratorBase(Context context) {
+        this.context = context;
     }
 
     protected ArrayList<Block> getBlocks() {
@@ -37,19 +37,19 @@ public class GeneratorBase implements Unit {
     }
 
     public Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
-        Block block = new Block(blockName, openingRegisterName, closureRegisterName, factory);
+        Block block = new Block(blockName, openingRegisterName, closureRegisterName, context);
         this.blocks.add(block);
         return block;
     }
 
     public Block addBlock(Class<? extends Block> clazz) {
-        Block block = this.factory.createBlock(clazz);
+        Block block = Block.create(context, clazz);
         this.blocks.add(block);
         return block;
     }
 
     public Block addBlock(String blockName) {
-        Block block = new Block(blockName, factory);
+        Block block = new Block(blockName, context);
         this.blocks.add(block);
         return block;
     }
@@ -65,8 +65,8 @@ public class GeneratorBase implements Unit {
         return null;
     }
 
-    public Factory getFactory() {
-        return factory;
+    public Context getContext() {
+        return context;
     }
 
     public static class Builder<T extends GeneratorBase> {
@@ -109,18 +109,26 @@ public class GeneratorBase implements Unit {
 
         private T build(Class<T> clazz) {
             try {
-                Factory factory = Definitions.newBuilder(this.xmlFile)
+                Context context = Definitions.newBuilder(this.xmlFile)
                         .setBeginEndSeparator(this.beginEndSeparator)
                         .setFieldsSeparator(this.fieldsSeparator)
                         .setValidationHelper(this.validationHelper)
                         .setFileLoader(this.fileLoader)
                         .build()
-                        .newFactory();
+                        .newContext();
 
-                return clazz.getConstructor(Factory.class).newInstance(factory);
+                return clazz.getConstructor(Context.class).newInstance(context);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    public static GeneratorBase create(Context context, Class<? extends GeneratorBase> clazz){
+        try {
+            return clazz.getConstructor(Context.class).newInstance(context);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
     }
 }

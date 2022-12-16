@@ -156,8 +156,8 @@ public class Definitions {
         return registersDefinitions.get(registerName);
     }
 
-    public Factory newFactory() {
-        return new Factory(this);
+    public Context newContext() {
+        return new Context(this);
     }
 
     public static class Builder {

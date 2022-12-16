@@ -1,11 +1,7 @@
 package sped.lcdpr.v0013;
 
-import sped.core.Factory;
+import sped.core.Context;
 import sped.core.NamedRegister;
-import sped.core.Register;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 
 public class Register0040 extends NamedRegister {
     public enum TipoExploracao {
@@ -49,8 +45,8 @@ public class Register0040 extends NamedRegister {
     public final static String FIELD_TIPO_EXPLORACAO = "TIPO_EXPLORACAO";
     public final static String FIELD_PARTICIPACAO = "PARTICIPACAO";
 
-    public Register0040(Factory factory) {
-        super(factory, REGISTER_NAME);
+    public Register0040(Context context) {
+        super(context, REGISTER_NAME);
     }
 
     public void setCodigoImovel(Integer codigoImovel) {

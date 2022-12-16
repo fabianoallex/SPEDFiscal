@@ -10,13 +10,13 @@ final public class Register implements Unit {
     private final ArrayList<Register> registers = new ArrayList<>();
     private final Fields fields;
     private final String referenceKey;
-    private final Factory factory;
+    private final Context context;
 
-    Register(String name, Factory factory) {
+    Register(String name, Context context) {
         this.name = name;
-        this.factory = factory;
-        this.fields =  this.factory.createFields(name);
-        this.referenceKey = this.factory.getDefinitions().getRegisterDefinitions(this.name).key;
+        this.context = context;
+        this.fields =  Fields.create(context, name);
+        this.referenceKey = this.context.getDefinitions().getRegisterDefinitions(this.name).key;
     }
 
     public <T> T getID() {
@@ -38,17 +38,17 @@ final public class Register implements Unit {
     }
 
     public List<Validation> getValidationsForField(Field<?> field) {
-        return this.factory.getDefinitions().getValidationsForField(this.name, field.getName());
+        return this.context.getDefinitions().getValidationsForField(this.name, field.getName());
     }
 
     public Register addRegister(String name){
-        Register register = this.factory.createRegister(name);
+        Register register = Register.create(name, context);
         this.registers.add(register);
         return register;
     }
 
     public NamedRegister addNamedRegister(Class<? extends NamedRegister> clazz) {
-        NamedRegister namedRegister = this.factory.createNamedRegister(clazz);
+        NamedRegister namedRegister = NamedRegister.create(context, clazz);
         this.registers.add(namedRegister.getRegister());
         return namedRegister;
     }
@@ -84,14 +84,14 @@ final public class Register implements Unit {
         final String collect = fields.values()
                 .stream()
                 .map(field -> FieldFormatter.formatField(field, this))
-                .collect(Collectors.joining(this.factory.getDefinitions().getFieldsSeparator()));
+                .collect(Collectors.joining(this.context.getDefinitions().getFieldsSeparator()));
 
         return "%s%s%s%s%s".formatted(
-                this.factory.getDefinitions().getBeginEndSeparator(),
+                this.context.getDefinitions().getBeginEndSeparator(),
                 this.getName(),
-                this.factory.getDefinitions().getFieldsSeparator(),
+                this.context.getDefinitions().getFieldsSeparator(),
                 collect,
-                this.factory.getDefinitions().getBeginEndSeparator()
+                this.context.getDefinitions().getBeginEndSeparator()
         );
     }
 
@@ -148,8 +148,12 @@ final public class Register implements Unit {
         }
     }
 
-    public Factory getFactory() {
-        return this.factory;
+    public Context getContext() {
+        return this.context;
+    }
+
+    public static Register create(String name, Context context){
+        return new Register(name, context);
     }
 }
 

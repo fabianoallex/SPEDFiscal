@@ -1,6 +1,6 @@
 package sped.lcdpr.v0013;
 
-import sped.core.Factory;
+import sped.core.Context;
 import sped.core.NamedRegister;
 
 public class RegisterQ200 extends NamedRegister {
@@ -13,8 +13,8 @@ public class RegisterQ200 extends NamedRegister {
     public static String FIELD_NAT_SALDO_FINAL_POSITIVE = "P";
     public static String FIELD_NAT_SALDO_FINAL_NEGATIVE = "N";
 
-    public RegisterQ200(Factory factory) {
-        super(factory, REGISTER_NAME);
+    public RegisterQ200(Context context) {
+        super(context, REGISTER_NAME);
     }
 
     public void setMesAno(Integer codigoConta) {

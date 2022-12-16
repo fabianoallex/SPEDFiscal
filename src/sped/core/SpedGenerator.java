@@ -1,7 +1,5 @@
 package sped.core;
 
-import sped.lcdpr.v0013.LcdprGenerator;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -10,10 +8,10 @@ public class SpedGenerator extends GeneratorBase {
     private final Register9999 register9999;
     private Block9 block9 = null;
 
-    public SpedGenerator(Factory factory) {
-        super(factory);
-        register0000 = this.getFactory().createRegister0000();
-        register9999 = this.getFactory().createRegister9999();
+    public SpedGenerator(Context context) {
+        super(context);
+        register0000 = Register0000.create(context);
+        register9999 = Register9999.create(context);
     }
 
     public NamedRegister createNamedRegisterTo0000(Class<? extends NamedRegister> clazz) {
@@ -45,7 +43,7 @@ public class SpedGenerator extends GeneratorBase {
 
     public void generateBlock9(){
         this.getBlocks().remove(this.block9);  //se ja exister algum bloco9. remove
-        this.block9 = new Block9(this.getFactory());
+        this.block9 = new Block9(this.getContext());
         this.getBlocks().add(this.block9);
 
         Counter counter = new Counter();     //counting before generate 9900
@@ -106,6 +104,10 @@ public class SpedGenerator extends GeneratorBase {
 
     public static Builder newBuilder(String xmlFile) {
         return new Builder(xmlFile);
+    }
+
+    public static SpedGenerator create(Context context) {
+        return new SpedGenerator(context);
     }
 }
 

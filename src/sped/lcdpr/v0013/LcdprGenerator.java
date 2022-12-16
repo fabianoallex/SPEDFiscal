@@ -6,10 +6,10 @@ public class LcdprGenerator extends GeneratorBase {
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
 
-    public LcdprGenerator(Factory factory) {
-        super(factory);
-        openingRegister = new OpeningRegister(factory.createRegister(OpeningRegister.REGISTER_NAME));
-        closureRegister = new ClosureRegister(factory.createRegister(ClosureRegister.REGISTER_NAME));
+    public LcdprGenerator(Context context) {
+        super(context);
+        openingRegister = new OpeningRegister(Register.create(OpeningRegister.REGISTER_NAME, context));
+        closureRegister = new ClosureRegister(Register.create(ClosureRegister.REGISTER_NAME, context));
     }
 
     public OpeningRegister getOpeningRegister() {

@@ -1,6 +1,6 @@
 package sped.lcdpr.v0013;
 
-import sped.core.Factory;
+import sped.core.Context;
 import sped.core.NamedRegister;
 
 public class Register0045 extends NamedRegister {
@@ -33,8 +33,8 @@ public class Register0045 extends NamedRegister {
     public static String FIELD_NOME_CONTRAPARTE = "NOME_CONTRAPARTE";
     public static String FIELD_PERC_CONTRAPARTE = "PERC_CONTRAPARTE";
 
-    public Register0045(Factory factory) {
-        super(factory, REGISTER_NAME);
+    public Register0045(Context context) {
+        super(context, REGISTER_NAME);
     }
 
     public void setCodigoImovel(Integer codigoImovel) {

@@ -1,7 +1,7 @@
 package sped.lcdpr.v0013;
 
 import sped.core.Block;
-import sped.core.Factory;
+import sped.core.Context;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ public class BlockQ extends Block {
     private final List<RegisterQ100> registersQ100 = new ArrayList<>();
     private final List<RegisterQ200> registersQ200 = new ArrayList<>();
 
-    public BlockQ(Factory factory) {
-        super(BLOCK_NAME, factory);
+    public BlockQ(Context context) {
+        super(BLOCK_NAME, context);
     }
 
     public RegisterQ100 addQ100() {

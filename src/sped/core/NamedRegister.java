@@ -1,5 +1,6 @@
 package sped.core;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 
 abstract public class NamedRegister implements Unit {
@@ -9,8 +10,8 @@ abstract public class NamedRegister implements Unit {
         this.register = register;
     }
 
-    public NamedRegister(Factory factory, String name) {
-        this.register = factory.createRegister(name);
+    public NamedRegister(Context context, String name) {
+        this.register = Register.create(name, context);
     }
 
     public NamedRegister addNamedRegister(Class<? extends NamedRegister> clazz) {
@@ -80,5 +81,13 @@ abstract public class NamedRegister implements Unit {
     @Override
     public void write(Writer writer) {
         this.register.write(writer);
+    }
+
+    public static NamedRegister create(Context context, Class<? extends NamedRegister> clazz){
+        try {
+            return clazz.getConstructor(Context.class).newInstance(context);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

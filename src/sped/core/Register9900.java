@@ -7,8 +7,8 @@ public class Register9900 extends NamedRegister {
     private final Field<String> fieldRegisterName;
     private final Field<Integer> fieldRegisterCount;
 
-    Register9900(Factory factory) {
-        super(factory, REGISTER_NAME);
+    Register9900(Context context) {
+        super(context, REGISTER_NAME);
         try {
             fieldRegisterName = this.getRegister().getField(FIELD_REGISTER_NAME);
             fieldRegisterCount = this.getRegister().getField(FIELD_REGISTER_COUNT);
@@ -23,5 +23,9 @@ public class Register9900 extends NamedRegister {
 
     public Field<Integer> getFieldRegisterCount() {
         return fieldRegisterCount;
+    }
+
+    public static Register9900 create(Context context){
+        return new Register9900(context);
     }
 }

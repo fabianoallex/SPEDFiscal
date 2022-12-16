@@ -10,7 +10,7 @@ public class FieldFormatter {
 
     static public String formatField(Field<?> field, Register register) {
         String fieldFormatName = register.getName() + "." + field.getName();
-        FieldFormat fieldFormat = register.getFactory().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
+        FieldFormat fieldFormat = register.getContext().getDefinitions().getFieldFormatByFieldName(fieldFormatName);
         return formatField(field, fieldFormat);
     }
 

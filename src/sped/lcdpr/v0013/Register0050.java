@@ -1,6 +1,6 @@
 package sped.lcdpr.v0013;
 
-import sped.core.Factory;
+import sped.core.Context;
 import sped.core.NamedRegister;
 
 public class Register0050 extends NamedRegister {
@@ -12,8 +12,8 @@ public class Register0050 extends NamedRegister {
     public static String FIELD_AGENCIA = "AGENCIA";
     public static String FIELD_NUM_CONTA = "NUM_CONTA";
 
-    public Register0050(Factory factory) {
-        super(factory, REGISTER_NAME);
+    public Register0050(Context context) {
+        super(context, REGISTER_NAME);
     }
 
     public void setCodigoConta(Integer codigoConta) {

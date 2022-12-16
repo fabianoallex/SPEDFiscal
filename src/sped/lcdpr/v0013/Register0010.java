@@ -1,6 +1,6 @@
 package sped.lcdpr.v0013;
 
-import sped.core.Factory;
+import sped.core.Context;
 import sped.core.NamedRegister;
 
 public class Register0010 extends NamedRegister {
@@ -25,8 +25,8 @@ public class Register0010 extends NamedRegister {
     public static String REGISTER_NAME = "0010";
     public static String FIELD_FORMA_APURACAO = "FORMA_APUR";
 
-    public Register0010(Factory factory) {
-        super(factory, REGISTER_NAME);
+    public Register0010(Context context) {
+        super(context, REGISTER_NAME);
     }
 
     public void setFormaApuracao(FormaApuracao formaApuracao) {

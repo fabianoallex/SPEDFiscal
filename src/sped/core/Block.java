@@ -1,5 +1,6 @@
 package sped.core;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,31 +12,31 @@ public class Block implements Unit {
     private final String name;
     private final OpeningRegister openingRegister;
     private final ClosureRegister closureRegister;
-    private final Factory factory;
+    private final Context context;
 
-    protected Block(String blockName, String openingRegisterName, String closureRegisterName, Factory factory) {
-        this.factory = factory;
+    protected Block(String blockName, String openingRegisterName, String closureRegisterName, Context context) {
+        this.context = context;
         this.name = blockName;
 
         OpeningRegister tempOpeningRegister = null;
         ClosureRegister tempClosureRegister = null;
 
         if (!openingRegisterName.isEmpty())
-            tempOpeningRegister = factory.createOpeningRegister(openingRegisterName);
+            tempOpeningRegister = OpeningRegister.create(context, openingRegisterName);
 
         if (!closureRegisterName.isEmpty())
-            tempClosureRegister = factory.createClosureRegister(closureRegisterName);
+            tempClosureRegister = ClosureRegister.create(context, closureRegisterName);
 
         this.openingRegister = tempOpeningRegister;
         this.closureRegister = tempClosureRegister;
     }
 
-    protected Block(String blockName, Factory factory) {
-        this(blockName, "", "", factory);
+    protected Block(String blockName, Context context) {
+        this(blockName, "", "", context);
     }
 
-    public Factory getFactory() {
-        return factory;
+    public Context getContext() {
+        return context;
     }
 
     public ClosureRegister getClosureRegister() {
@@ -51,13 +52,13 @@ public class Block implements Unit {
     }
 
     public Register addRegister(String name){
-        Register register = this.factory.createRegister(name);
+        Register register = Register.create(name, context);
         this.registers.add(register);
         return register;
     }
 
     public NamedRegister addNamedRegister(Class<? extends NamedRegister> clazz) {
-        NamedRegister namedRegister = this.factory.createNamedRegister(clazz);
+        NamedRegister namedRegister = NamedRegister.create(context, clazz);
         this.registers.add(namedRegister.getRegister());
         return namedRegister;
     }
@@ -104,5 +105,12 @@ public class Block implements Unit {
         registers.forEach(register -> register.write(writer));
         Optional.ofNullable(closureRegister).ifPresent(register -> register.write(writer));
     }
-}
 
+    public static Block create(Context context, Class<? extends Block> clazz){
+        try {
+            return clazz.getConstructor(Context.class).newInstance(context);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

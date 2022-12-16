@@ -4,8 +4,8 @@ public class ClosureRegister extends NamedRegister {
     public static final String FIELD_REGISTER_COUNT = "QTD_LIN";
     private final Field<Integer> fieldRegisterCount;
 
-    ClosureRegister(Factory factory, String name) {
-        super(factory, name);
+    ClosureRegister(Context context, String name) {
+        super(context, name);
         try {
             fieldRegisterCount = this.getRegister().getField(FIELD_REGISTER_COUNT);
         } catch (FieldNotFoundException e) {
@@ -15,5 +15,9 @@ public class ClosureRegister extends NamedRegister {
 
     public Field<Integer> getFieldRegisterCount() {
         return fieldRegisterCount;
+    }
+
+    public static ClosureRegister create(Context context, String name){
+        return new ClosureRegister(context, name);
     }
 }

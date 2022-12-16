@@ -6,8 +6,8 @@ public class OpeningRegister extends NamedRegister {
     public static final int FIELD_REGISTER_IS_THERE_MOV_NO = 1;
     private final Field<Integer> fieldRegisterIsThereMov;
 
-    OpeningRegister(Factory factory, String name) {
-        super(factory, name);
+    OpeningRegister(Context context, String name) {
+        super(context, name);
         try {
             fieldRegisterIsThereMov = this.getRegister().getField(FIELD_REGISTER_THERE_IS_MOV);
         } catch (FieldNotFoundException e) {
@@ -17,5 +17,9 @@ public class OpeningRegister extends NamedRegister {
 
     public void setThereIsMov(boolean thereIs) {
         fieldRegisterIsThereMov.setValue((thereIs) ? FIELD_REGISTER_IS_THERE_MOV_YES : FIELD_REGISTER_IS_THERE_MOV_NO);
+    }
+
+    public static OpeningRegister create(Context context, String name){
+        return new OpeningRegister(context, name);
     }
 }

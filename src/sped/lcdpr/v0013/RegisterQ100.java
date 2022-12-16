@@ -1,6 +1,6 @@
 package sped.lcdpr.v0013;
 
-import sped.core.Factory;
+import sped.core.Context;
 import sped.core.NamedRegister;
 import java.util.Date;
 
@@ -67,8 +67,8 @@ public class RegisterQ100 extends NamedRegister {
     public static String FIELD_NAT_SALDO_FINAL_POSITIVE = "P";
     public static String FIELD_NAT_SALDO_FINAL_NEGATIVE = "N";
 
-    public RegisterQ100(Factory factory) {
-        super(factory, REGISTER_NAME);
+    public RegisterQ100(Context context) {
+        super(context, REGISTER_NAME);
     }
 
     public void setData(Date data) {
