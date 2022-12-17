@@ -1,6 +1,6 @@
 package sped.core;
 
 @FunctionalInterface
-public interface BuildListner {
-    void onBuild(Block block);
+public interface BuildListner<T> {
+    void onBuild(T build);
 }

@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory.">
-      <change afterPath="$PROJECT_DIR$/src/sped/core/BuildListner.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Criado Builder para classe Block e Criado interface BuildListner para que o Builder do Block seja notificado quando o build for executado.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/BuildListner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/BuildListner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,13 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses.">
-      <created>1667672065171</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1667672065172</updated>
     </task>
     <task id="LOCAL-00080" summary="Alteração do nome da package para SPEDFiscalLib">
       <created>1667674888475</created>
@@ -442,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671161282158</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="Criado Builder para classe Block e Criado interface BuildListner para que o Builder do Block seja notificado quando o build for executado.">
+      <created>1671247094625</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1671247094626</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementação RegisterQ100" />
     <MESSAGE value="Implementação RegisterQ200 e BlockQ" />
     <MESSAGE value="Implementação do método removeQ200 em BlockQ" />
     <MESSAGE value="Incluída classe DefinitionsFileLoader que irá resolver de onde buscar os arquivos utilizados pela classe Definitions e irá devolver um InputStream." />
@@ -517,7 +516,8 @@
     <MESSAGE value="Refatorações nas classes de validação #3" />
     <MESSAGE value="Implementação do padrão Builder nas classes derivadas de Validation" />
     <MESSAGE value="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory." />
-    <option name="LAST_COMMIT_MESSAGE" value="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory." />
+    <MESSAGE value="Criado Builder para classe Block e Criado interface BuildListner para que o Builder do Block seja notificado quando o build for executado." />
+    <option name="LAST_COMMIT_MESSAGE" value="Criado Builder para classe Block e Criado interface BuildListner para que o Builder do Block seja notificado quando o build for executado." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

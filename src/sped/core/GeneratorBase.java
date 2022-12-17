@@ -39,7 +39,8 @@ public class GeneratorBase implements Unit {
     }
 
     private Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
-        return Block.newBuilder(this.getContext(), this.blocks::add)
+        BuildListner<Block> listner = this.blocks::add;
+        return Block.newBuilder(this.getContext(), listner)
                 .setBlockName(blockName)
                 .setOpeningRegisterName(openingRegisterName)
                 .setClosureRegisterName(closureRegisterName)
@@ -53,10 +54,8 @@ public class GeneratorBase implements Unit {
     }
 
     public Block.Builder newBlockBuilder(){
-        return Block.newBuilder(
-                this.getContext(),
-                this.blocks::add
-        );
+        BuildListner<Block> listner = this.blocks::add;
+        return Block.newBuilder(this.getContext(), listner);
     }
 
     public Block addBlock(String blockName) {
