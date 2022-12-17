@@ -113,4 +113,47 @@ public class Block implements Unit {
             throw new RuntimeException(e);
         }
     }
+
+    public static Builder newBuilder(Context context, BuildListner buildListner) {
+        return new Builder(context, buildListner);
+    }
+
+    public static class Builder {
+        private String blockName = "";
+        private String openingRegisterName = "";
+        private String closureRegisterName = "";
+        private final Context context;
+        private final BuildListner buildListner;
+
+        public Builder setBlockName(String blockName) {
+            this.blockName = blockName;
+            return this;
+        }
+
+        public Builder setOpeningRegisterName(String openingRegisterName) {
+            this.openingRegisterName = openingRegisterName;
+            return this;
+        }
+
+        public Builder setClosureRegisterName(String closureRegisterName) {
+            this.closureRegisterName = closureRegisterName;
+            return this;
+        }
+
+        public Block build(){
+            Block block = new Block(blockName, openingRegisterName, closureRegisterName, context);
+            this.buildListner.onBuild(block);
+            return block;
+        }
+
+        protected Builder(Context context, BuildListner buildListner) {
+            this.context = context;
+            this.buildListner = buildListner;
+        }
+
+        protected Builder(Context context) {
+            this.context = context;
+            this.buildListner = b -> {};
+        }
+    }
 }

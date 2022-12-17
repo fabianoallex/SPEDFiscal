@@ -23,7 +23,9 @@ public class GeneratorBase implements Unit {
 
     @Override
     public int count() {
-        return blocks.stream().mapToInt(Block::count).sum();
+        return blocks.stream()
+                .mapToInt(Block::count)
+                .sum();
     }
 
     @Override
@@ -36,16 +38,25 @@ public class GeneratorBase implements Unit {
         blocks.forEach(block -> block.write(writer));
     }
 
-    public Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
-        Block block = new Block(blockName, openingRegisterName, closureRegisterName, context);
-        this.blocks.add(block);
-        return block;
+    private Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
+        return Block.newBuilder(this.getContext(), this.blocks::add)
+                .setBlockName(blockName)
+                .setOpeningRegisterName(openingRegisterName)
+                .setClosureRegisterName(closureRegisterName)
+                .build();
     }
 
     public Block addBlock(Class<? extends Block> clazz) {
         Block block = Block.create(context, clazz);
         this.blocks.add(block);
         return block;
+    }
+
+    public Block.Builder newBlockBuilder(){
+        return Block.newBuilder(
+                this.getContext(),
+                this.blocks::add
+        );
     }
 
     public Block addBlock(String blockName) {
@@ -55,14 +66,10 @@ public class GeneratorBase implements Unit {
     }
 
     public Block getBlock(String blockName) {
-        for (int i = 0; i < blocks.size() - 1; i++) {
-            Block block = blocks.get(i);
-
-            if (block.getName().equals(blockName))
-                return block;
-        }
-
-        return null;
+        return blocks.stream()
+                .filter(block -> block.getName().equals(blockName))
+                .findFirst()
+                .orElse(null);
     }
 
     public Context getContext() {

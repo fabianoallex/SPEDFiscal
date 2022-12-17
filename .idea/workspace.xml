@@ -9,33 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Implementação do padrão Builder nas classes derivadas de Validation">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory.">
+      <change afterPath="$PROJECT_DIR$/src/sped/core/BuildListner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Block9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Block9.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/ClosureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ClosureRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Context.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/FieldFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Fields.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/NamedRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/NamedRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/OpeningRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/OpeningRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Register0000.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register0000.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Register9900.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register9900.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Register9999.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register9999.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/SpedGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Block0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Block0.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/BlockQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/BlockQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/LcdprGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0010.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0010.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0030.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0030.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0040.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0045.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0045.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0050.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/Register0050.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ100.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ100.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ200.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/lcdpr/v0013/RegisterQ200.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +29,8 @@
       <list>
         <option value="UML Class" />
         <option value="module-info" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -120,13 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Projeto configurado como Lib, removido Main. movido definitions.xml e scripts para exemplo de uso da lib.">
-      <created>1667620216042</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1667620216042</updated>
     </task>
     <task id="LOCAL-00079" summary="Refatoração da classe ValidationHelper para suportar Reflection nas subclasses.">
       <created>1667672065171</created>
@@ -464,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670990455509</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory.">
+      <created>1671161282158</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1671161282158</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementações de classes específicas para atender o LCDPR - Livro Caixa Digital de Produtor Rural" />
     <MESSAGE value="Implementação RegisterQ100" />
     <MESSAGE value="Implementação RegisterQ200 e BlockQ" />
     <MESSAGE value="Implementação do método removeQ200 em BlockQ" />
@@ -539,7 +516,8 @@
     <MESSAGE value="Refatorações nas classes de validação #2" />
     <MESSAGE value="Refatorações nas classes de validação #3" />
     <MESSAGE value="Implementação do padrão Builder nas classes derivadas de Validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementação do padrão Builder nas classes derivadas de Validation" />
+    <MESSAGE value="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory." />
+    <option name="LAST_COMMIT_MESSAGE" value="Classe Factory renomeada para Context e movido métodos de criação para as classes dos usando padrão factory." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
