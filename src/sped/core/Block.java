@@ -114,9 +114,7 @@ public class Block implements Unit {
         }
     }
 
-
-
-    public static Builder newBuilder(Context context, BuildListner buildListner) {
+    public static Builder newBuilder(Context context, BuildListner<Block> buildListner) {
         return new Builder(context, buildListner);
     }
 
@@ -125,7 +123,7 @@ public class Block implements Unit {
         private String openingRegisterName = "";
         private String closureRegisterName = "";
         private final Context context;
-        private final BuildListner buildListner;
+        private final BuildListner<Block> buildListner;
 
         public Builder setBlockName(String blockName) {
             this.blockName = blockName;
@@ -148,7 +146,7 @@ public class Block implements Unit {
             return block;
         }
 
-        protected Builder(Context context, BuildListner buildListner) {
+        protected Builder(Context context, BuildListner<Block> buildListner) {
             this.context = context;
             this.buildListner = buildListner;
         }
