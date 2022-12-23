@@ -1,16 +1,20 @@
 package sped.core;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
-public class Fields extends LinkedHashMap<String, Field<?>> {
+public class Fields {
+    private final Map<String, Field<?>> linkedHashMap = new LinkedHashMap<>();
+
     public void addField(Field<?> field) {
-        this.put(field.getName(), field);
+        linkedHashMap.put(field.getName(), field);
     }
 
     public Field<?> getField(String name){
-        for (Map.Entry<String, Field<?>> e : this.entrySet()) {
+        for (Map.Entry<String, Field<?>> e : linkedHashMap.entrySet()) {
             Field<?> field = e.getValue();
             if (field.getName().equals(name)) return field;
         }
@@ -36,6 +40,18 @@ public class Fields extends LinkedHashMap<String, Field<?>> {
         }
 
         return fields;
+    }
+
+    public void forEach(BiConsumer<String, Field<?>> action){
+        linkedHashMap.forEach(action);
+    }
+
+    public Collection<Field<?>> values(){
+        return linkedHashMap.values();
+    }
+
+    public int size() {
+        return linkedHashMap.size();
     }
 }
 

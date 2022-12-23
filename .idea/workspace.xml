@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="gerado testes para método generateBlock9() da classe SpedGenerator">
-      <change afterPath="$PROJECT_DIR$/test/java/RegisterTest.java" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Criada classe RegisterTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Fields.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister">
-      <created>1667790484726</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1667790484726</updated>
     </task>
     <task id="LOCAL-00085" summary="Refatorações">
       <created>1667868065716</created>
@@ -501,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671760575154</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="Criada classe RegisterTest">
+      <created>1671762518021</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1671762518021</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -551,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ajustes" />
     <MESSAGE value="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr" />
     <MESSAGE value="refatoração da classe SPEDGenerator.java. Renomeada para Generator e criada classe GeneratorBase." />
     <MESSAGE value="separação em arquivos .java distintos para classes GeneratorBase e Generator." />
@@ -576,7 +574,8 @@
     <MESSAGE value="ajustes em Block e GeneratorBase" />
     <MESSAGE value="início da implementação de testes com JUnit" />
     <MESSAGE value="gerado testes para método generateBlock9() da classe SpedGenerator" />
-    <option name="LAST_COMMIT_MESSAGE" value="gerado testes para método generateBlock9() da classe SpedGenerator" />
+    <MESSAGE value="Criada classe RegisterTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criada classe RegisterTest" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
