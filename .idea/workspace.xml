@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Criada classe RegisterTest">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="Refatorada classe Fields para compor um LinkedHashMap ao invés de extender">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sped/core/Fields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Fields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/java/RegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/RegisterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegisterTest.getFieldsTest">
+  <component name="RunManager" selected="JUnit.All in SPEDFiscalLib">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SPEDFiscalLib" />
@@ -95,6 +96,15 @@
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SPEDFiscalLib" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RegisterTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,23 +138,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpedGeneratorTest.totalizeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SPEDFiscalLib" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SpedGeneratorTest" />
-      <option name="METHOD_NAME" value="totalizeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RegisterTest.getFieldsTest" />
         <item itemvalue="JUnit.All in SPEDFiscalLib" />
+        <item itemvalue="JUnit.RegisterTest.getFieldsTest" />
+        <item itemvalue="JUnit.RegisterTest" />
         <item itemvalue="JUnit.SpedGeneratorTest.generateBlock9Test" />
         <item itemvalue="JUnit.SpedGeneratorTest" />
-        <item itemvalue="JUnit.SpedGeneratorTest.totalizeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -156,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00085" summary="Refatorações">
-      <created>1667868065716</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1667868065716</updated>
     </task>
     <task id="LOCAL-00086" summary="Refatoração NamedRegister. Construtor irá receber o factory ao invés de Register">
       <created>1667957573379</created>
@@ -500,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671762518021</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Refatorada classe Fields para compor um LinkedHashMap ao invés de extender">
+      <created>1671763625337</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1671763625337</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -550,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr" />
     <MESSAGE value="refatoração da classe SPEDGenerator.java. Renomeada para Generator e criada classe GeneratorBase." />
     <MESSAGE value="separação em arquivos .java distintos para classes GeneratorBase e Generator." />
     <MESSAGE value="Generator renomeada para SpedGenerator" />
@@ -575,7 +574,8 @@
     <MESSAGE value="início da implementação de testes com JUnit" />
     <MESSAGE value="gerado testes para método generateBlock9() da classe SpedGenerator" />
     <MESSAGE value="Criada classe RegisterTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criada classe RegisterTest" />
+    <MESSAGE value="Refatorada classe Fields para compor um LinkedHashMap ao invés de extender" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatorada classe Fields para compor um LinkedHashMap ao invés de extender" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

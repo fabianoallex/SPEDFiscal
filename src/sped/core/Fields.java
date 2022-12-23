@@ -1,15 +1,12 @@
 package sped.core;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public class Fields {
     private final Map<String, Field<?>> linkedHashMap = new LinkedHashMap<>();
 
-    public void addField(Field<?> field) {
+    private void addField(Field<?> field) {
         linkedHashMap.put(field.getName(), field);
     }
 
@@ -47,7 +44,7 @@ public class Fields {
     }
 
     public Collection<Field<?>> values(){
-        return linkedHashMap.values();
+        return Collections.unmodifiableCollection(linkedHashMap.values());
     }
 
     public int size() {
