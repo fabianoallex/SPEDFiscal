@@ -125,7 +125,7 @@ public class SpedGeneratorTest {
         |9900|9900|5|   //totalizacao de registros 9900
         |9990||         //encerramento do bloco 9
         * */
-        assertEquals(7, block9.count(), "#3 - o bloco 9 deveria retornar 7 ao chamar count()");
+        assertEquals(7, block9.count(), "#3 - count() deveria retornar 7");
 
         //#4 - adiciona um novo bloco e checa se a contagem estará correta
         /*
@@ -140,7 +140,7 @@ public class SpedGeneratorTest {
         spedGenerator.generateBlock9();                 //ao gerar o bloco 9 novamente, deve-se chamar
         block9 = spedGenerator.getBlock("9"); //getBlock9 novamente para retornar a instancia atual
 
-        assertEquals(9, block9.count(), "#4 - o bloco 9 deveria retornar 9 ao chamar count()");
+        assertEquals(9, block9.count(), "#4 - count() deveria retornar 9");
 
         //#5 — adicionar um registro ao bloco 9 e testar a contagem do bloco 9
         var rC100 = blockC.addRegister("C100");

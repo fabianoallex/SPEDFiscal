@@ -9,7 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="início da implementação de testes com JUnit">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="gerado testes para método generateBlock9() da classe SpedGenerator">
+      <change afterPath="$PROJECT_DIR$/test/java/RegisterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" afterDir="false" />
     </list>
@@ -83,7 +84,7 @@
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in SPEDFiscalLib">
+  <component name="RunManager" selected="JUnit.RegisterTest.getFieldsTest">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SPEDFiscalLib" />
@@ -95,6 +96,16 @@
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterTest.getFieldsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SPEDFiscalLib" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RegisterTest" />
+      <option name="METHOD_NAME" value="getFieldsTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,6 +141,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RegisterTest.getFieldsTest" />
         <item itemvalue="JUnit.All in SPEDFiscalLib" />
         <item itemvalue="JUnit.SpedGeneratorTest.generateBlock9Test" />
         <item itemvalue="JUnit.SpedGeneratorTest" />
@@ -145,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999.">
-      <created>1667790026392</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1667790026392</updated>
     </task>
     <task id="LOCAL-00084" summary="Refatoracao: OpeningRegister e ClosureRegister herdam de NamedRegister">
       <created>1667790484726</created>
@@ -489,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671674972318</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="gerado testes para método generateBlock9() da classe SpedGenerator">
+      <created>1671760575153</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1671760575154</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajustes para geração da LCDPR" />
     <MESSAGE value="ajustes" />
     <MESSAGE value="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr" />
     <MESSAGE value="refatoração da classe SPEDGenerator.java. Renomeada para Generator e criada classe GeneratorBase." />
@@ -564,7 +575,8 @@
     <MESSAGE value="Interface BuildListner corrigida para aceitar qualquer tipo de objeto na notificação do build, através do uso de generics" />
     <MESSAGE value="ajustes em Block e GeneratorBase" />
     <MESSAGE value="início da implementação de testes com JUnit" />
-    <option name="LAST_COMMIT_MESSAGE" value="início da implementação de testes com JUnit" />
+    <MESSAGE value="gerado testes para método generateBlock9() da classe SpedGenerator" />
+    <option name="LAST_COMMIT_MESSAGE" value="gerado testes para método generateBlock9() da classe SpedGenerator" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
