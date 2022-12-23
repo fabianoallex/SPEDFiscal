@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes em Block e GeneratorBase">
-      <change afterPath="$PROJECT_DIR$/test/java/FisrtTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/resources/definitions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="início da implementação de testes com JUnit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPEDFiscalLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPEDFiscalLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +83,7 @@
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SpedGeneratorTest">
+  <component name="RunManager" selected="JUnit.All in SPEDFiscalLib">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SPEDFiscalLib" />
@@ -112,6 +108,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpedGeneratorTest.generateBlock9Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SPEDFiscalLib" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SpedGeneratorTest" />
+      <option name="METHOD_NAME" value="generateBlock9Test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpedGeneratorTest.totalizeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
@@ -124,9 +130,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in SPEDFiscalLib" />
+        <item itemvalue="JUnit.SpedGeneratorTest.generateBlock9Test" />
         <item itemvalue="JUnit.SpedGeneratorTest" />
         <item itemvalue="JUnit.SpedGeneratorTest.totalizeTest" />
-        <item itemvalue="JUnit.All in SPEDFiscalLib" />
       </list>
     </recent_temporary>
   </component>
@@ -138,13 +145,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Ajustes">
-      <created>1667788335470</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1667788335470</updated>
     </task>
     <task id="LOCAL-00083" summary="Refatoracao: Incluída classe abastrata NamedRegister, extendem essa classe, Register0000, Register9900 e Register9999.">
       <created>1667790026392</created>
@@ -482,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671248448254</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="início da implementação de testes com JUnit">
+      <created>1671674972318</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1671674972318</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -532,7 +539,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Incluída classe DefinitionsFileLoader que irá resolver de onde buscar os arquivos utilizados pela classe Definitions e irá devolver um InputStream." />
     <MESSAGE value="Ajustes para geração da LCDPR" />
     <MESSAGE value="ajustes" />
     <MESSAGE value="package sped.lib renomeada para sped.core e incluído v0013 na package sped.lcdpr" />
@@ -557,7 +563,8 @@
     <MESSAGE value="Criado Builder para classe Block e Criado interface BuildListner para que o Builder do Block seja notificado quando o build for executado." />
     <MESSAGE value="Interface BuildListner corrigida para aceitar qualquer tipo de objeto na notificação do build, através do uso de generics" />
     <MESSAGE value="ajustes em Block e GeneratorBase" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes em Block e GeneratorBase" />
+    <MESSAGE value="início da implementação de testes com JUnit" />
+    <option name="LAST_COMMIT_MESSAGE" value="início da implementação de testes com JUnit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
