@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="incluido o teste getFieldsTest na classe RegisterTest">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="incluido o teste writeTest para teste do método write() da classe Register.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/java/RegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/RegisterTest.java" afterDir="false" />
     </list>
@@ -83,7 +83,7 @@
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegisterTest.writeTest">
+  <component name="RunManager" selected="JUnit.All in SPEDFiscalLib">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SPEDFiscalLib" />
@@ -99,7 +99,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
@@ -108,31 +108,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest.getFieldsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
-      <option name="METHOD_NAME" value="getFieldsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterTest.addNamedRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SPEDFiscalLib" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RegisterTest" />
+      <option name="METHOD_NAME" value="addNamedRegisterTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest.writeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest.addRegisterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
-      <option name="METHOD_NAME" value="writeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpedGeneratorTest.generateBlock9Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SPEDFiscalLib" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SpedGeneratorTest" />
-      <option name="METHOD_NAME" value="generateBlock9Test" />
+      <option name="METHOD_NAME" value="addRegisterTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RegisterTest.writeTest" />
         <item itemvalue="JUnit.All in SPEDFiscalLib" />
-        <item itemvalue="JUnit.RegisterTest" />
-        <item itemvalue="JUnit.RegisterTest.getFieldsTest" />
-        <item itemvalue="JUnit.SpedGeneratorTest.generateBlock9Test" />
+        <item itemvalue="JUnit.RegisterTest.addRegisterTest" />
+        <item itemvalue="JUnit.RegisterTest.addNamedRegisterTest" />
+        <item itemvalue="JUnit.RegisterTest (2)" />
+        <item itemvalue="JUnit.RegisterTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -156,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Ajustes na Classe Field">
-      <created>1668522601887</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1668522601888</updated>
     </task>
     <task id="LOCAL-00088" summary="Ajustes das mensagens nas classes de validação">
       <created>1668592996606</created>
@@ -500,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671766185498</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="incluido o teste writeTest para teste do método write() da classe Register.">
+      <created>1671820322757</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1671820322758</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -550,7 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="separação em arquivos .java distintos para classes GeneratorBase e Generator." />
     <MESSAGE value="Generator renomeada para SpedGenerator" />
     <MESSAGE value="Criada Classe LcdprGenerator" />
     <MESSAGE value="Ajustes Register0040 e Register0045" />
@@ -575,7 +573,8 @@
     <MESSAGE value="Criada classe RegisterTest" />
     <MESSAGE value="Refatorada classe Fields para compor um LinkedHashMap ao invés de extender" />
     <MESSAGE value="incluido o teste getFieldsTest na classe RegisterTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="incluido o teste getFieldsTest na classe RegisterTest" />
+    <MESSAGE value="incluido o teste writeTest para teste do método write() da classe Register." />
+    <option name="LAST_COMMIT_MESSAGE" value="incluido o teste writeTest para teste do método write() da classe Register." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

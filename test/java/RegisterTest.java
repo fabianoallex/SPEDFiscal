@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import sped.core.FieldNotFoundException;
-import sped.core.Register;
-import sped.core.SpedGenerator;
+import sped.core.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -11,10 +9,68 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RegisterTest {
+    //classe usada para o teste addNamedRegisterTest
+    public static class NamedRegisterTest extends NamedRegister {
+        public NamedRegisterTest(Context context) {
+            super(context, "C101");
+        }
+    }
+
+    @Test
+    @DisplayName("Testa a inclusão de Registro filho através do métodos addRegister")
+    void addRegisterTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        //#1 — verifica se um registro adicionado via addRegister de fato está inserido nos registros filhos
+        var rC100 = blockC.addRegister("C100");
+        rC100.addRegister("C101");
+        Counter counter = new Counter();
+        rC100.count(counter);
+        assertEquals(
+                1,
+                counter.count("C101"),
+                "#1 Era esperado que o registro adicionado via método addRegister fosse considerado na contagem dos registros"
+        );
+    }
+
+    @Test
+    @DisplayName("Testa a inclusão de Registro filho através do métodos addNamedRegister")
+    void addNamedRegisterTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        //#1 - verifica se um registro adicionado via addNamedRegister de fato está inserido nos registros filhos
+        var rC100 = blockC.addRegister("C100");
+
+        rC100.addNamedRegister(NamedRegisterTest.class);
+        Counter counter = new Counter();
+        rC100.count(counter);
+
+        assertEquals(
+                1,
+                counter.count("C101"),
+                "#1 Era esperado que o registro adicionado via método addNamedRegister fosse considerado na contagem dos registros"
+        );
+    }
+
     @Test
     @DisplayName("teste do método getFields()")
     void getFieldsTest() {
@@ -53,6 +109,136 @@ public class RegisterTest {
                     "#2 Field '%s' deveria ser encontrado mas não foi".formatted(fieldName)
             );
         });
+    }
+
+    @Test
+    @DisplayName("teste do método toString()")
+    void toStringTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        //#1 - verifica se o toString retorna todos os fields como esperado
+        var rC100 = blockC.addRegister("C100");
+        var toStringResult = rC100.toString();
+
+        assertEquals(
+                "|C100|||||||||||||||||||||||||||||",
+                toStringResult,
+                "#1 a saída de toString está diferente da esperada"
+        );
+
+        //#2 - certifica que os registros filhos não sejam retornados no toString
+        rC100.addRegister("C101");
+        var toStringResultAfterAddSonRegister = rC100.toString();
+
+        assertEquals(
+                toStringResult,
+                toStringResultAfterAddSonRegister,
+                "#2 após adicionar um registro filho, toString deve continuar com a mesma saída de antes"
+        );
+    }
+
+    @Test
+    @DisplayName("teste do método count(Counter counter)")
+    void countWithCounterParameterTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1 - Contagem de Registro sem registros filhos
+        var counter1 = new Counter();
+        rC100.count(counter1);
+        assertEquals(
+                1,
+                counter1.count(),
+                "#1 É esperado que um Registro sem Filhos retorne 1 ao contar"
+        );
+
+        //#2 - Contagem de Registro com 1 Registro filho
+        var counter2 = new Counter();
+        rC100.addRegister("C101");
+        rC100.count(counter2);
+        assertEquals(
+                2,
+                counter2.count(),
+                "#2 É esperado que um Registro Com 1 Registro Filho retorne 2 ao contar"
+        );
+
+        //#3 - Contagem de Registro específico
+        var counter3 = new Counter();
+        rC100.addRegister("C101");
+        rC100.count(counter3);
+        assertEquals(
+                2,
+                counter3.count("C101"),
+                "#2 É esperado que o contador retornasse 2 ao contar pelo registro específico"
+        );
+    }
+
+    @Test
+    @DisplayName("teste do método count()")
+    void countTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1 - Contagem de Registro sem registros filhos
+        assertEquals(
+                1,
+                rC100.count(),
+                "#1 É esperado que um Registro sem Filhos retorne 1 ao contar"
+        );
+
+        //#2 - Contagem de Registro com 1 Registro filho
+        rC100.addRegister("C101");
+
+        assertEquals(
+                2,
+                rC100.count(),
+                "#2 É esperado que um Registro Com 1 Registro Filho retorne 2 ao contar"
+        );
+
+        //#3 - Contagem de Registro com 2 Registros Filhos
+        rC100.addRegister("C101");
+
+        assertEquals(
+                3,
+                rC100.count(),
+                "#3 É esperado que um Registro Com 2 Registros Filhos retorne 3 ao contar"
+        );
+
+        //#4 - Contagem de Registro com Registros Filhos que também contém Registros Filhos
+        var rC110 = rC100.addRegister("C110");
+        rC110.addRegister("C111");
+
+        assertEquals(
+                5, //c100 + 2xC101 + C110 + C111
+                rC100.count(),
+                "#4 Falha ao contar registro com registros filhos que também tem registros filhos"
+        );
     }
 
     @Test @DisplayName("teste do método write()")
@@ -145,6 +331,7 @@ public class RegisterTest {
         //#3 — checa se o write está retornado o registro
         AtomicReference<Register> registerRetornedFromWrite = new AtomicReference<>();
         rC100.write((string, register) -> registerRetornedFromWrite.set(register));
+
 
         assertEquals(
                 rC100,
