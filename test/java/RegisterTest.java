@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sped.core.*;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
@@ -201,36 +200,29 @@ public class RegisterTest {
 
             @Override
             public void onError(ValidationEvent event) {
-                //System.out.println(event.getMessage());
+                System.out.println(event.getMessage());
                 eventsErrors.add(event.getMessage());
             }
         });
-        /*
-        * são esperados as seguintes mensagens de validação
-        00) 0000.COD_VER: "Campo ogrigatório não informado".
-        01) 0000.COD_FIN: "Campo ogrigatório não informado".
-        02) 0000.DT_INI: "Campo ogrigatório não informado".
-        03) 0000.DT_FIN: "Campo ogrigatório não informado".
-        04) 0000.NOME: "Campo ogrigatório não informado".
-        05) 0000.CNPJ: "[]: CNPJ inválido".
+        /* são esperados as seguintes mensagens de validação
+        01) 0000.COD_VER: "Campo ogrigatório não informado".
+        02) 0000.COD_FIN: "Campo ogrigatório não informado".
+        03) 0000.DT_INI: "Campo ogrigatório não informado".
+        04) 0000.DT_FIN: "Campo ogrigatório não informado".
+        05) 0000.NOME: "Campo ogrigatório não informado".
         06) 0000.CNPJ: "[]: Tamanho inválido".
         07) 0000.CNPJ: "[]: Obrigatório informar CNPJ ou CPF para o Registro 0000".
-        08) 0000.CPF: "[]: CPF inválido".
-        09) 0000.CPF: "[]: Obrigatório informar CNPJ ou CPF para o Registro 0000".
-        10) 0000.UF: "Campo ogrigatório não informado".
-        11) 0000.IE: "Campo ogrigatório não informado".
-        12) 0000.COD_MUN: "Campo ogrigatório não informado".
-        13) 0000.IND_PERFIL: "Campo ogrigatório não informado".
-        14) 0000.IND_ATIV: "Campo ogrigatório não informado".
-        *
-        * TOTAL DE ERROS ESPERADOS - 15
-        *
-        * SIZE ESPERADO PARA Map eventsErrors: 12
+        08) 0000.CPF: "[]: Obrigatório informar CNPJ ou CPF para o Registro 0000".
+        09) 0000.UF: "Campo ogrigatório não informado".
+        10) 0000.IE: "Campo ogrigatório não informado".
+        11) 0000.COD_MUN: "Campo ogrigatório não informado".
+        12) 0000.IND_PERFIL: "Campo ogrigatório não informado".
+        13) 0000.IND_ATIV: "Campo ogrigatório não informado".
         * */
 
         //#1 - verifica se a quantidade de mensagens de erros é a esperada - esperado 15
         assertEquals(
-                15,
+                13,
                 eventsErrors.size(),
                 "#1 A quantidade de erros retornada é diferente da esperada"
         );
@@ -248,20 +240,9 @@ public class RegisterTest {
                 .count();
 
         assertEquals(
-                3,
-                countErrosCNPJ,
-                "#3 São esperadas 3 mensagens de erro na validação de CNPJ"
-        );
-
-        //#4 - verifica se CPF retornou as mensagens esperadas
-        var countErrosCPF = eventsErrors.stream()
-                .filter(s -> s.contains("0000.CPF"))
-                .count();
-
-        assertEquals(
                 2,
-                countErrosCPF,
-                "#4 São esperadas 2 mensagens de erro na validação de CPF"
+                countErrosCNPJ,
+                "#3 São esperadas 2 mensagens de erro na validação de CNPJ"
         );
     }
 
