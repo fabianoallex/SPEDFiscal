@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="inclusão de testes para o método validate() da classe Register." />
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes nos testes do método validate() da classe Register">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/java/RegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/RegisterTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +84,7 @@
       <recent name="C:\Users\User\IdeaProjects\SPEDFiscalLib\resources\lcdpr" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegisterTest.validateWithErrorsTest (2)">
+  <component name="RunManager" selected="JUnit.All in SPEDFiscalLib">
     <configuration name="Maind" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SPEDFiscalLib" />
@@ -96,41 +100,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest.validateWithErrorsTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest.getDateFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
-      <option name="METHOD_NAME" value="validateWithErrorsTest" />
+      <option name="METHOD_NAME" value="getDateFieldTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest.validateWithErrorsTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest.getDoubleFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
-      <option name="METHOD_NAME" value="validateWithErrorsTest" />
+      <option name="METHOD_NAME" value="getDoubleFieldTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest.validateWithErrorsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest.getStringFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
-      <option name="METHOD_NAME" value="validateWithErrorsTest" />
+      <option name="METHOD_NAME" value="getStringFieldTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterTest.validateWithoutErrorsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterTest.setFieldValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SPEDFiscalLib" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="RegisterTest" />
-      <option name="METHOD_NAME" value="validateWithoutErrorsTest" />
+      <option name="METHOD_NAME" value="setFieldValue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -138,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RegisterTest.validateWithErrorsTest (2)" />
-        <item itemvalue="JUnit.RegisterTest.validateWithErrorsTest" />
-        <item itemvalue="JUnit.RegisterTest.validateWithoutErrorsTest" />
         <item itemvalue="JUnit.All in SPEDFiscalLib" />
-        <item itemvalue="JUnit.RegisterTest.validateWithErrorsTest (1)" />
+        <item itemvalue="JUnit.RegisterTest.getDoubleFieldTest" />
+        <item itemvalue="JUnit.RegisterTest.getDateFieldTest" />
+        <item itemvalue="JUnit.RegisterTest.getStringFieldTest" />
+        <item itemvalue="JUnit.RegisterTest.setFieldValue" />
       </list>
     </recent_temporary>
   </component>
@@ -154,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00091" summary="redefinido método toString da classe NamedRegister">
-      <created>1668741971750</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1668741971750</updated>
     </task>
     <task id="LOCAL-00092" summary="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField">
       <created>1668867965695</created>
@@ -498,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672106721382</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="ajustes nos testes do método validate() da classe Register">
+      <created>1672107947618</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1672107947618</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -548,7 +552,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajustes Register0040 e Register0045" />
     <MESSAGE value="Implementação e ajustes das validações da LCDPR" />
     <MESSAGE value="Refatorações e ajustes nas classes da package lcdpr\v0013" />
     <MESSAGE value="Implementação do padrão Builder nas classes Definitions e GeneratorBase" />
@@ -573,7 +576,8 @@
     <MESSAGE value="incluido o teste writeTest para teste do método write() da classe Register." />
     <MESSAGE value="inclusão de novos testes para classe Register." />
     <MESSAGE value="inclusão de testes para o método validate() da classe Register." />
-    <option name="LAST_COMMIT_MESSAGE" value="inclusão de testes para o método validate() da classe Register." />
+    <MESSAGE value="ajustes nos testes do método validate() da classe Register" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes nos testes do método validate() da classe Register" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

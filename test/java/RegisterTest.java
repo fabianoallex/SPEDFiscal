@@ -110,6 +110,226 @@ public class RegisterTest {
     }
 
     @Test
+    @DisplayName("teste do método getDoubleField")
+    void getDoubleFieldTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1
+        var doubleField = rC100.getDoubleField("VL_MERC");
+        Double doubleValue = 42.56;
+
+        doubleField.setValue(doubleValue);
+
+        assertEquals(
+                doubleValue,
+                doubleField.getValue(),
+                "#1 É esperado que o Field '%s' seja do tipo Double".formatted("VL_MERC")
+        );
+    }
+
+    @Test
+    @DisplayName("teste do método getDateField")
+    void getDateFieldTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1
+        var dateField = rC100.getDateField("DT_DOC");
+        Date dateValue = null;
+        try {
+            dateValue = new SimpleDateFormat("dd/MM/yyyy").parse("10/06/2020");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        dateField.setValue(dateValue);
+
+        assertEquals(
+                dateValue,
+                dateField.getValue(),
+                "#1 É esperado que o Field '%s' seja do tipo Date".formatted("DT_DOC")
+        );
+    }
+
+    @Test
+    @DisplayName("teste do método getIntegerField")
+    void getIntegerFieldTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1
+        var integerField = rC100.getIntegerField("NUM_DOC");
+        var integerValue = 1788;
+        integerField.setValue(integerValue);
+
+        assertEquals(
+                integerValue,
+                integerField.getValue(),
+                "#1 É esperado que o Field '%s' seja do tipo Integer".formatted("NUM_DOC")
+        );
+    }
+
+    @Test
+    @DisplayName("teste do método getStringField")
+    void getStringFieldTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1
+        var stringField = rC100.getStringField("IND_OPER");
+        var stringValue = "teste";
+        stringField.setValue(stringValue);
+
+        assertEquals(
+                stringValue,
+                stringField.getValue(),
+                "#1 É esperado que o Field '%s' seja do tipo String".formatted("IND_OPER")
+        );
+    }
+
+    @Test
+    @DisplayName("teste do método setFieldValue()")
+    void setAndGetFieldValueTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        try {
+            //#1 - testa setFieldValue para string
+            String stringValue = "teste";
+            rC100.setFieldValue("IND_OPER", stringValue);
+
+            assertEquals(
+                    stringValue,
+                    rC100.getFieldValue("IND_OPER"),
+                    "#1 valor retornado diferente do esperado para o Field 'IND_OPER'"
+            );
+
+            //#2 - testa setFieldValue para Integer
+            Integer integerValue = 9665;
+            rC100.setFieldValue("NUM_DOC", integerValue);
+
+            assertEquals(
+                    integerValue,
+                    rC100.getFieldValue("NUM_DOC"),
+                    "#2 valor retornado diferente do esperado para o Field 'NUM_DOC'"
+            );
+
+            //#3 - testa setFieldValue para Date
+            try {
+                Date dateValue = new SimpleDateFormat("dd/MM/yyyy").parse("26/11/2022");
+                rC100.setFieldValue("DT_DOC", dateValue);
+
+                assertEquals(
+                        dateValue,
+                        rC100.getFieldValue("DT_DOC"),
+                        "#3 valor retornado diferente do esperado para o Field 'DT_DOC'"
+                );
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+            //#4 - testa setFieldValue para Double
+            Double doubleValue = 266.77;
+            rC100.setFieldValue("VL_MERC", doubleValue);
+
+            assertEquals(
+                    doubleValue,
+                    rC100.getFieldValue("VL_MERC"),
+                    "#4 valor retornado diferente do esperado para o Field 'VL_MERC'"
+            );
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    @DisplayName("teste do método getField(String name)")
+    void getFieldTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var blockC = spedGenerator.newBlockBuilder()
+                .setBlockName("C")
+                .setOpeningRegisterName("C001")
+                .setClosureRegisterName("C990")
+                .build();
+
+        var rC100 = blockC.addRegister("C100");
+
+        //#1 - verifica nome a nome se todos os fields definidos em definitions.xml podem ser encontrados
+        List<String> fieldNames = Arrays.asList(
+                "IND_OPER", "IND_EMIT", "COD_PART", "COD_MOD", "COD_SIT",
+                "SER", "NUM_DOC", "CHV_NFE", "DT_DOC", "DT_E_S", "VL_DOC",
+                "IND_PGTO", "VL_DESC", "VL_ABAT_NT", "VL_MERC", "IND_FRT",
+                "VL_FRT", "VL_SEG", "VL_OUT_DA", "VL_BC_ICMS", "VL_ICMS",
+                "VL_BC_ICMS_ST", "VL_ICMS_ST", "VL_IPI", "VL_PIS", "VL_COFINS",
+                "VL_PIS_ST", "VL_COFINS_ST");
+
+        fieldNames.forEach(fieldName -> {
+            assertDoesNotThrow(
+                    () -> rC100.getField(fieldName),
+                    "#1 Field '%s' deveria ser encontrado mas não foi".formatted(fieldName)
+            );
+        });
+
+        //#2 - verifica se irá retornar erro ao tentar recuperar um field não definido no arquivo xml
+        fieldNames.forEach(fieldName -> {
+            assertThrows(
+                    FieldNotFoundException.class,
+                    () -> rC100.getField("INVALID_FIELD_NAME"),
+                    "#1 Tentativa de acessar Field '%s' deveria retornar exceção '%s' "
+                            .formatted("INVALID_FIELD_NAME", "FieldNotFoundException")
+            );
+        });
+    }
+
+    @Test
     @DisplayName("Teste do método validate() sem erros")
     void validateWithoutErrorsTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
@@ -200,7 +420,7 @@ public class RegisterTest {
 
             @Override
             public void onError(ValidationEvent event) {
-                System.out.println(event.getMessage());
+                //System.out.println(event.getMessage());
                 eventsErrors.add(event.getMessage());
             }
         });
@@ -419,22 +639,6 @@ public class RegisterTest {
                 rC100.getFields().size(),
                 "#1 Deveria retornar 28 registros, conforme definitions.xml"
         );
-
-        //#2 - verifica nome a nome se todos os fields definidos em definitions.xml podem ser encontrados
-        List<String> fieldNames = Arrays.asList(
-            "IND_OPER", "IND_EMIT", "COD_PART", "COD_MOD", "COD_SIT",
-            "SER", "NUM_DOC", "CHV_NFE", "DT_DOC", "DT_E_S", "VL_DOC",
-            "IND_PGTO", "VL_DESC", "VL_ABAT_NT", "VL_MERC", "IND_FRT",
-            "VL_FRT", "VL_SEG", "VL_OUT_DA", "VL_BC_ICMS", "VL_ICMS",
-            "VL_BC_ICMS_ST", "VL_ICMS_ST", "VL_IPI", "VL_PIS", "VL_COFINS",
-            "VL_PIS_ST", "VL_COFINS_ST");
-
-        fieldNames.forEach(fieldName -> {
-            assertDoesNotThrow(
-                    () -> rC100.getField(fieldName),
-                    "#2 Field '%s' deveria ser encontrado mas não foi".formatted(fieldName)
-            );
-        });
     }
 
     @Test

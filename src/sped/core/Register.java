@@ -101,7 +101,9 @@ final public class Register implements Unit {
 
     public <T extends Field<?>> T getField(String fieldName) throws FieldNotFoundException {
         Field<?> field = this.getFields().getField(fieldName);
-        if (field == null) throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
+
+        if (field == null)
+            throw new FieldNotFoundException(Field.class.getSimpleName(), fieldName, this.getName());
 
         return (T) field;
     }
