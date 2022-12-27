@@ -39,7 +39,7 @@ public final class RegexValidation extends Validation {
         Pattern pattern = Pattern.compile(this.getExpression());
         Matcher matcher = pattern.matcher(value);
         if (!matcher.matches()) {
-            validationListener.onErrorMessage(
+            validationListener.onError(
                     FieldValidationEvent.newBuilder()
                             .setField(field)
                             .setRegister(register)

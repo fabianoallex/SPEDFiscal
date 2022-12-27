@@ -43,6 +43,10 @@ public class Block implements Unit {
         return closureRegister;
     }
 
+    public OpeningRegister getOpeningRegister() {
+        return openingRegister;
+    }
+
     public List<Register> getRegisters() {
         return registers;
     }

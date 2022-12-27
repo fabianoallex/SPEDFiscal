@@ -1,12 +1,12 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sped.core.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,8 +19,353 @@ public class RegisterTest {
         }
     }
 
+    public static class ValidationTest implements ValidationHelper {
+        private boolean validate_cpf(String cpf) {
+            return false;
+        }
+
+        @Override
+        public boolean validate(ValidationMessage validationMessage, String methodName, String value, Register register) {
+            try {
+                Method method = this.getClass().getDeclaredMethod(methodName, ValidationMessage.class, String.class, Register.class);
+                return (boolean) method.invoke(this, validationMessage, value, register);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public boolean validate_cpf(ValidationMessage validationMessage, String value, Register register) {
+            validationMessage.setMessage("Validação de CPF não implementada");
+            return false;
+        }
+
+        public boolean validate_dates_0000(ValidationMessage validationMessage, String value, Register register) {
+            Calendar cal = Calendar.getInstance();
+
+            try {
+                Date dt_ini = register.<Date>getFieldValue("DT_INI");
+                Date dt_fin = register.<Date>getFieldValue("DT_FIN");
+
+                cal.setTime(dt_ini);
+                int m_dt_ini = cal.get(Calendar.MONTH);
+                int y_dt_ini = cal.get(Calendar.YEAR);
+
+                cal.setTime(dt_fin);
+                int m_dt_fin = cal.get(Calendar.MONTH);
+                int y_dt_fin = cal.get(Calendar.YEAR);
+
+                if (y_dt_ini != y_dt_fin) {
+                    validationMessage.setMessage("Data de início e fim devem ser no mesmo ano");
+                    return false;
+                }
+            } catch (FieldNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            return true;
+        }
+
+        public boolean validate_codigo_municipio(ValidationMessage validationMessage, String value, Register register) {
+            //checa 7 digitos
+            if (value.length() != 7) {
+                validationMessage.setMessage("Código do município deve ter 7 dígitos");
+                return false;
+            }
+
+            //checa se só tem numeros
+            if (!value.matches("[0-9]*")) {
+                validationMessage.setMessage("Código do município inválido");
+                return false;
+            }
+
+            //checa se é um estado válido
+            if (!value.substring(0,2).matches("12|27|13|16|29|23|53|32|52|21|31|50|51|15|25|26|22|41|33|24|11|14|43|42|28|35|17")) {
+                validationMessage.setMessage("Código do município inválido. Código de Estado inexistente: %s".formatted(value.substring(0,2)));
+                return false;
+            }
+
+            //checa digito verificador
+            int sum = 0;
+            Integer[] doublePositions = new Integer[]{1, 3, 5};
+            List<Integer> list = Arrays.asList(doublePositions);
+            for (int i=0; i<value.length(); i++) {
+                int dig = Integer.parseInt(String.valueOf(value.charAt(i)));
+
+                if (i==6) {
+                    int dv = (10 - (sum % 10)) % 10;
+                    if (dig != dv) {
+                        validationMessage.setMessage("Dígito verificador do Código do Município inválido");
+                        return false;
+                    }
+                }
+
+                if (list.contains(i)) {
+                    int doubleDig = dig * 2;
+                    sum += doubleDig > 9 ? doubleDig-9 : doubleDig; //-9 --> -10 +1  ex. 9*9 = 18 --> 1+8 = 9
+                } else {
+                    sum += dig;
+                }
+            }
+            return true;
+        }
+    }
+
     @Test
-    @DisplayName("Testa a inclusão de Registro filho através do métodos addRegister")
+    @DisplayName("Teste do método validate() sem erros")
+    void validateWithoutErrorsTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setValidationHelper(new ValidationTest())
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var block0 = spedGenerator.newBlockBuilder()
+                .setBlockName("0")
+                .setOpeningRegisterName("0001")
+                .setClosureRegisterName("0990")
+                .build();
+
+        var r0000 = spedGenerator.getRegister0000().getRegister();
+
+        try {
+            r0000.setFieldValue("COD_VER", "10");
+            r0000.setFieldValue("COD_FIN", "1");
+            r0000.setFieldValue("DT_INI", new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2022"));
+            r0000.setFieldValue("DT_FIN", new SimpleDateFormat("dd/MM/yyyy").parse("31/12/2022"));
+            r0000.setFieldValue("NOME", "JUCA");
+            r0000.setFieldValue("CNPJ", "15.024.630/0001-73");
+            r0000.setFieldValue("UF", "MT");
+            r0000.setFieldValue("IE", "123456789");
+            r0000.setFieldValue("COD_MUN", "5103403");
+            r0000.setFieldValue("IND_PERFIL", "A");
+            r0000.setFieldValue("IND_ATIV", "1");
+        } catch (FieldNotFoundException | ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        List<String> eventsErrors = new ArrayList<>();
+
+        r0000.validate(new ValidationListener() {
+            @Override
+            public void onSuccess(ValidationEvent event) {
+                //todo não implementado
+            }
+
+            @Override
+            public void onWarning(ValidationEvent event) {
+                //todo não implementado
+            }
+
+            @Override
+            public void onError(ValidationEvent event) {
+                System.out.println(event.getMessage());
+                eventsErrors.add(event.getMessage());
+            }
+        });
+
+        //#1 - verifica se a quantidade de mensagens de erros é a esperada - esperado 0
+        assertEquals(
+                0,
+                eventsErrors.size(),
+                "#1 A quantidade de erros retornada é diferente da esperada"
+        );
+    }
+
+    @Test
+    @DisplayName("Teste do método validate() com erros")
+    void validateWithErrorsTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var block0 = spedGenerator.newBlockBuilder()
+                .setBlockName("0")
+                .setOpeningRegisterName("0001")
+                .setClosureRegisterName("0990")
+                .build();
+
+        var r0000 = spedGenerator.getRegister0000().getRegister();
+
+        List<String> eventsErrors = new ArrayList<>();
+
+        r0000.validate(new ValidationListener() {
+            @Override
+            public void onSuccess(ValidationEvent event) {
+                //todo não implementado
+            }
+
+            @Override
+            public void onWarning(ValidationEvent event) {
+                //todo não implementado
+            }
+
+            @Override
+            public void onError(ValidationEvent event) {
+                //System.out.println(event.getMessage());
+                eventsErrors.add(event.getMessage());
+            }
+        });
+        /*
+        * são esperados as seguintes mensagens de validação
+        00) 0000.COD_VER: "Campo ogrigatório não informado".
+        01) 0000.COD_FIN: "Campo ogrigatório não informado".
+        02) 0000.DT_INI: "Campo ogrigatório não informado".
+        03) 0000.DT_FIN: "Campo ogrigatório não informado".
+        04) 0000.NOME: "Campo ogrigatório não informado".
+        05) 0000.CNPJ: "[]: CNPJ inválido".
+        06) 0000.CNPJ: "[]: Tamanho inválido".
+        07) 0000.CNPJ: "[]: Obrigatório informar CNPJ ou CPF para o Registro 0000".
+        08) 0000.CPF: "[]: CPF inválido".
+        09) 0000.CPF: "[]: Obrigatório informar CNPJ ou CPF para o Registro 0000".
+        10) 0000.UF: "Campo ogrigatório não informado".
+        11) 0000.IE: "Campo ogrigatório não informado".
+        12) 0000.COD_MUN: "Campo ogrigatório não informado".
+        13) 0000.IND_PERFIL: "Campo ogrigatório não informado".
+        14) 0000.IND_ATIV: "Campo ogrigatório não informado".
+        *
+        * TOTAL DE ERROS ESPERADOS - 15
+        *
+        * SIZE ESPERADO PARA Map eventsErrors: 12
+        * */
+
+        //#1 - verifica se a quantidade de mensagens de erros é a esperada - esperado 15
+        assertEquals(
+                15,
+                eventsErrors.size(),
+                "#1 A quantidade de erros retornada é diferente da esperada"
+        );
+
+        //#2 - verifica se COD_VER retornou a mensagem esperada
+        assertEquals(
+                "0000.COD_VER: \"Campo ogrigatório não informado\".",
+                eventsErrors.get(0),
+                "#2 É esperado uma mensagem de erro na validação de COD_VER"
+        );
+
+        //#3 - verifica se CNPJ retornou as mensagens esperadas
+        var countErrosCNPJ = eventsErrors.stream()
+                .filter(s -> s.contains("0000.CNPJ"))
+                .count();
+
+        assertEquals(
+                3,
+                countErrosCNPJ,
+                "#3 São esperadas 3 mensagens de erro na validação de CNPJ"
+        );
+
+        //#4 - verifica se CPF retornou as mensagens esperadas
+        var countErrosCPF = eventsErrors.stream()
+                .filter(s -> s.contains("0000.CPF"))
+                .count();
+
+        assertEquals(
+                2,
+                countErrosCPF,
+                "#4 São esperadas 2 mensagens de erro na validação de CPF"
+        );
+    }
+
+    @Test
+    @DisplayName("Teste do método getID()")
+    void getIDTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var block0 = spedGenerator.newBlockBuilder()
+                .setBlockName("0")
+                .setOpeningRegisterName("0001")
+                .setClosureRegisterName("0990")
+                .build();
+
+        var r0150 = block0.addRegister("0150");
+
+        //#1 - Testa se o campo definido como key no arquivo definitions.xml está sendo retornado no getID()
+        var codParticipante = "id-1234";
+
+        try {
+            //field COD_PART foi definido como key na tag register do arquivo definitions.xml
+            r0150.setFieldValue("COD_PART", codParticipante);
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        var id1 = r0150.<String>getID();
+        assertEquals(
+                codParticipante,
+                id1,
+                "#1 Era esperado que o ID fosse o mesmo valor atribuido ao field 'COD_PART'"
+        );
+
+        //#2 - testa o retorno de getID de um registro sem key definido no arquivo definitions.xml
+        var r0100 = block0.addRegister("0100");
+
+        var id2 = r0100.<String>getID();
+        assertEquals(
+                null,
+                id2,
+                "#2 Era esperado que o ID retornado fosse null, pois não há valor definido para key no arquivo definitions.xml"
+        );
+
+    }
+
+    @Test
+    @DisplayName("Teste do método getValidationsForField")
+    void getValidationsForFieldTest() {
+        var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
+                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .build();
+
+        var r0000 = spedGenerator.getRegister0000().getRegister();
+        try {
+            //#1 - testa quantas validações tem o campo COD_VER - esperado 0
+            assertEquals(
+                    0,
+                    r0000.getValidationsForField(r0000.getField("COD_VER")).size(),
+                    "#1 É esperado que 'COD_VER' não tenha nenhuma validação"
+            );
+
+            //#2 - testa quantas validações tem o campo COD_VER - esperado 1
+            assertEquals(
+                    1,
+                    r0000.getValidationsForField(r0000.getField("COD_FIN")).size(),
+                    "#2 É esperado que 'COD_FIN' tenha uma validação"
+            );
+
+            //#3 - testa o nome da validação aplicada ao field COD_VER
+            assertEquals(
+                    "finalidade_arquivo",
+                    r0000.getValidationsForField(r0000.getField("COD_FIN")).get(0).getName(),
+                    "#3 É esperado que a validação do field 'COD_FIN' tenha o nome 'finalidade_arquivo'"
+            );
+
+            //#4 - testa quantas validações tem o campo COD_MUN - esperado 2
+            assertEquals(
+                    2,
+                    r0000.getValidationsForField(r0000.getField("COD_MUN")).size(),
+                    "#4 É esperado que 'COD_MUN' tenha duas validação"
+            );
+
+            //#5 - testa os nomes das validações aplicadas ao field COD_MUN
+            assertEquals(
+                    "codigo_municipio",
+                    r0000.getValidationsForField(r0000.getField("COD_MUN")).get(0).getName(),
+                    "#5 É esperado que a primeira validação do field 'COD_MUN' tenha o nome 'codigo_municipio'"
+            );
+
+            //#6 - testa os nomes das validações aplicadas ao field COD_MUN
+            assertEquals(
+                    "validate_codigo_municipio",
+                    r0000.getValidationsForField(r0000.getField("COD_MUN")).get(1).getName(),
+                    "#6 É esperado que a segunda validação do field 'COD_MUN' tenha o nome 'validate_codigo_municipio'"
+            );
+        } catch (FieldNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    @DisplayName("Testa a inclusão de Registro filho através do método addRegister")
     void addRegisterTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
                 .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
@@ -45,7 +390,7 @@ public class RegisterTest {
     }
 
     @Test
-    @DisplayName("Testa a inclusão de Registro filho através do métodos addNamedRegister")
+    @DisplayName("Testa a inclusão de Registro filho através do método addNamedRegister")
     void addNamedRegisterTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
                 .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))

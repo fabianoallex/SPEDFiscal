@@ -49,7 +49,7 @@ public final class ScriptValidation extends Validation {
 
             var isValidObject = scriptEngine.get("isValid");
             if (isValidObject instanceof Boolean isValid && !isValid)
-                validationListener.onErrorMessage(
+                validationListener.onError(
                         FieldValidationEvent.newBuilder()
                                 .setField(field)
                                 .setRegister(register)

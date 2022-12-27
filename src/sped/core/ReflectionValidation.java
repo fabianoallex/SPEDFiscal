@@ -26,7 +26,7 @@ public final class ReflectionValidation extends Validation {
         ValidationMessage validationMessage = new ValidationMessage();
 
         if (!this.validate(validationMessage, value, register)) {
-            validationListener.onErrorMessage(
+            validationListener.onError(
                     FieldValidationEvent.newBuilder()
                             .setField(field)
                             .setRegister(register)

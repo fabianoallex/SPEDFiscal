@@ -33,7 +33,7 @@ public class RegisterValidator extends Validator {
 
     private boolean validateFieldRequired(Field<?> field, String formattedValue) {
         if (field.getRequired().equals("O") && formattedValue.isEmpty()) {
-            this.getValidationListener().onErrorMessage(
+            this.getValidationListener().onError(
                     FieldValidationEvent.newBuilder()
                             .setField(field)
                             .setRegister(register)
