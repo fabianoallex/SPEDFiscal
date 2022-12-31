@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sped.core.SpedGenerator;
@@ -10,7 +9,7 @@ public class SpedGeneratorTest {
     @Test @DisplayName("Instanciação do spendGenerator")
     void instantiationTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         //verifica se há dois registros (0000 e 9999)
@@ -35,7 +34,7 @@ public class SpedGeneratorTest {
     @Test @DisplayName("Teste da totalizacao de registros do sped")
     void totalizeTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         //#1
@@ -58,9 +57,9 @@ public class SpedGeneratorTest {
 
         //#3
         spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         spedGenerator.totalize();
@@ -102,7 +101,7 @@ public class SpedGeneratorTest {
     @Test @DisplayName("Geração do bloco 9")
     void generateBlock9Test() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         //#1 - antes de gerar o bloco 9, uma tentantiva de acesso ao bloco 9 deve retornar null
@@ -132,9 +131,9 @@ public class SpedGeneratorTest {
         *
         * */
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         spedGenerator.generateBlock9();                 //ao gerar o bloco 9 novamente, deve-se chamar

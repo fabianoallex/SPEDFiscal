@@ -113,13 +113,13 @@ public class RegisterTest {
     @DisplayName("teste do método getDoubleField")
     void getDoubleFieldTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -141,13 +141,13 @@ public class RegisterTest {
     @DisplayName("teste do método getDateField")
     void getDateFieldTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -173,13 +173,13 @@ public class RegisterTest {
     @DisplayName("teste do método getIntegerField")
     void getIntegerFieldTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -200,13 +200,13 @@ public class RegisterTest {
     @DisplayName("teste do método getStringField")
     void getStringFieldTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -227,13 +227,13 @@ public class RegisterTest {
     @DisplayName("teste do método setFieldValue()")
     void setAndGetFieldValueTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -291,13 +291,13 @@ public class RegisterTest {
     @DisplayName("teste do método getField(String name)")
     void getFieldTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -333,14 +333,14 @@ public class RegisterTest {
     @DisplayName("Teste do método validate() sem erros")
     void validateWithoutErrorsTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setValidationHelper(new ValidationTest())
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withValidationHelper(new ValidationTest())
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var block0 = spedGenerator.newBlockBuilder()
-                .setBlockName("0")
-                .setOpeningRegisterName("0001")
-                .setClosureRegisterName("0990")
+                .withBlockName("0")
+                .withOpeningRegisterName("0001")
+                .withClosureRegisterName("0990")
                 .build();
 
         var r0000 = spedGenerator.getRegister0000().getRegister();
@@ -394,13 +394,13 @@ public class RegisterTest {
     @DisplayName("Teste do método validate() com erros")
     void validateWithErrorsTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var block0 = spedGenerator.newBlockBuilder()
-                .setBlockName("0")
-                .setOpeningRegisterName("0001")
-                .setClosureRegisterName("0990")
+                .withBlockName("0")
+                .withOpeningRegisterName("0001")
+                .withClosureRegisterName("0990")
                 .build();
 
         var r0000 = spedGenerator.getRegister0000().getRegister();
@@ -470,13 +470,13 @@ public class RegisterTest {
     @DisplayName("Teste do método getID()")
     void getIDTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var block0 = spedGenerator.newBlockBuilder()
-                .setBlockName("0")
-                .setOpeningRegisterName("0001")
-                .setClosureRegisterName("0990")
+                .withBlockName("0")
+                .withOpeningRegisterName("0001")
+                .withClosureRegisterName("0990")
                 .build();
 
         var r0150 = block0.addRegister("0150");
@@ -514,7 +514,7 @@ public class RegisterTest {
     @DisplayName("Teste do método getValidationsForField")
     void getValidationsForFieldTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var r0000 = spedGenerator.getRegister0000().getRegister();
@@ -569,13 +569,13 @@ public class RegisterTest {
     @DisplayName("Testa a inclusão de Registro filho através do método addRegister")
     void addRegisterTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         //#1 — verifica se um registro adicionado via addRegister de fato está inserido nos registros filhos
@@ -594,13 +594,13 @@ public class RegisterTest {
     @DisplayName("Testa a inclusão de Registro filho através do método addNamedRegister")
     void addNamedRegisterTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         //#1 - verifica se um registro adicionado via addNamedRegister de fato está inserido nos registros filhos
@@ -621,13 +621,13 @@ public class RegisterTest {
     @DisplayName("teste do método getFields()")
     void getFieldsTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
 
@@ -645,13 +645,13 @@ public class RegisterTest {
     @DisplayName("teste do método toString()")
     void toStringTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         //#1 - verifica se o toString retorna todos os fields como esperado
@@ -679,13 +679,13 @@ public class RegisterTest {
     @DisplayName("teste do método count(Counter counter)")
     void countWithCounterParameterTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -724,13 +724,13 @@ public class RegisterTest {
     @DisplayName("teste do método count()")
     void countTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
         var rC100 = blockC.addRegister("C100");
@@ -774,13 +774,13 @@ public class RegisterTest {
     @Test @DisplayName("teste do método write()")
     void writeTest() {
         var spedGenerator = SpedGenerator.newBuilder("definitions.xml")
-                .setFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
+                .withFileLoader(fileName -> Objects.requireNonNull(SpedGeneratorTest.class.getResourceAsStream(fileName)))
                 .build();
 
         var blockC = spedGenerator.newBlockBuilder()
-                .setBlockName("C")
-                .setOpeningRegisterName("C001")
-                .setClosureRegisterName("C990")
+                .withBlockName("C")
+                .withOpeningRegisterName("C001")
+                .withClosureRegisterName("C990")
                 .build();
 
 

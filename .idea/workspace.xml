@@ -9,10 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="ajustes nos testes do método validate() da classe Register">
+    <list default="true" id="c41e2062-45f8-479f-85a8-24515ec35733" name="Changes" comment="implementação de testes dos demais métodos da classe Register.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sped/core/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/Definitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/Definitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/DefinitionsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/DefinitionsLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/FieldValidationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/FieldValidationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/GeneratorBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/ReflectionValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ReflectionValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/RegexValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/RegexValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/RegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/RegisterValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sped/core/ScriptValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sped/core/ScriptValidation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/java/RegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/RegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/SpedGeneratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +167,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664114329848</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Inclúidos métodos utilitarios na classe NamedRegister que retornam diferentes tipos de objetos Field. Exemplo getStringField">
-      <created>1668867965695</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1668867965696</updated>
     </task>
     <task id="LOCAL-00093" summary="Refatoração. Substituição de laços for por Stream.">
       <created>1669000662440</created>
@@ -502,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672107947618</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="implementação de testes dos demais métodos da classe Register.">
+      <created>1672110715749</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1672110715749</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -552,7 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementação e ajustes das validações da LCDPR" />
     <MESSAGE value="Refatorações e ajustes nas classes da package lcdpr\v0013" />
     <MESSAGE value="Implementação do padrão Builder nas classes Definitions e GeneratorBase" />
     <MESSAGE value="Renomeada classes GeneratorBuilder e DefinitionsBuilder para o nome Builder apenas." />
@@ -577,7 +585,8 @@
     <MESSAGE value="inclusão de novos testes para classe Register." />
     <MESSAGE value="inclusão de testes para o método validate() da classe Register." />
     <MESSAGE value="ajustes nos testes do método validate() da classe Register" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes nos testes do método validate() da classe Register" />
+    <MESSAGE value="implementação de testes dos demais métodos da classe Register." />
+    <option name="LAST_COMMIT_MESSAGE" value="implementação de testes dos demais métodos da classe Register." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

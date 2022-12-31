@@ -35,9 +35,9 @@ public class RegisterValidator extends Validator {
         if (field.getRequired().equals("O") && formattedValue.isEmpty()) {
             this.getValidationListener().onError(
                     FieldValidationEvent.newBuilder()
-                            .setField(field)
-                            .setRegister(register)
-                            .setMessage("Campo ogrigatório não informado")
+                            .withField(field)
+                            .withRegister(register)
+                            .withMessage("Campo ogrigatório não informado")
                             .build()
             );
 

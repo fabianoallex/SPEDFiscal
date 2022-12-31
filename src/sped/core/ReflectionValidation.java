@@ -28,9 +28,9 @@ public final class ReflectionValidation extends Validation {
         if (!this.validate(validationMessage, value, register)) {
             validationListener.onError(
                     FieldValidationEvent.newBuilder()
-                            .setField(field)
-                            .setRegister(register)
-                            .setMessage("[%s]: %s".formatted(value, validationMessage.getMessage()))
+                            .withField(field)
+                            .withRegister(register)
+                            .withMessage("[%s]: %s".formatted(value, validationMessage.getMessage()))
                             .build()
             );
         }
@@ -41,12 +41,12 @@ public final class ReflectionValidation extends Validation {
         private String name;
 
         private Builder() {}
-        public Builder setValidationHelper(ValidationHelper validationHelper) {
+        public Builder withValidationHelper(ValidationHelper validationHelper) {
             this.validationHelper = validationHelper;
             return this;
         }
 
-        public Builder setName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }

@@ -32,17 +32,17 @@ public class FieldValidationEvent extends ValidationEvent {
 
         private Builder() {}
 
-        public Builder setField(Field<?> field) {
+        public Builder withField(Field<?> field) {
             this.field = field;
             return this;
         }
 
-        public Builder setRegister(Register register) {
+        public Builder withRegister(Register register) {
             this.register = register;
             return this;
         }
 
-        public Builder setMessage(String message) {
+        public Builder withMessage(String message) {
             this.message = message;
             return this;
         }

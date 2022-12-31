@@ -40,9 +40,9 @@ public class GeneratorBase implements Unit {
 
     private Block addBlock(String blockName, String openingRegisterName, String closureRegisterName) {
         return Block.newBuilder(this.getContext(), this.blocks::add)
-                .setBlockName(blockName)
-                .setOpeningRegisterName(openingRegisterName)
-                .setClosureRegisterName(closureRegisterName)
+                .withBlockName(blockName)
+                .withOpeningRegisterName(openingRegisterName)
+                .withClosureRegisterName(closureRegisterName)
                 .build();
     }
 
@@ -83,22 +83,22 @@ public class GeneratorBase implements Unit {
             this.xmlFile = xmlFile;
         }
 
-        public Builder<T> setBeginEndSeparator(String registerBeginEndSeparator) {
+        public Builder<T> withBeginEndSeparator(String registerBeginEndSeparator) {
             this.beginEndSeparator = registerBeginEndSeparator;
             return this;
         }
 
-        public Builder<T> setFieldsSeparator(String fieldsSeparator) {
+        public Builder<T> withFieldsSeparator(String fieldsSeparator) {
             this.fieldsSeparator = fieldsSeparator;
             return this;
         }
 
-        public Builder<T> setFileLoader(FileLoader fileLoader) {
+        public Builder<T> withFileLoader(FileLoader fileLoader) {
             this.fileLoader = fileLoader;
             return this;
         }
 
-        public Builder<T> setValidationHelper(ValidationHelper validationHelper) {
+        public Builder<T> withValidationHelper(ValidationHelper validationHelper) {
             this.validationHelper = validationHelper;
             return this;
         }
@@ -114,10 +114,10 @@ public class GeneratorBase implements Unit {
         private T build(Class<T> clazz) {
             try {
                 Context context = Definitions.newBuilder(this.xmlFile)
-                        .setBeginEndSeparator(this.beginEndSeparator)
-                        .setFieldsSeparator(this.fieldsSeparator)
-                        .setValidationHelper(this.validationHelper)
-                        .setFileLoader(this.fileLoader)
+                        .withBeginEndSeparator(this.beginEndSeparator)
+                        .withFieldsSeparator(this.fieldsSeparator)
+                        .withValidationHelper(this.validationHelper)
+                        .withFileLoader(this.fileLoader)
                         .build()
                         .newContext();
 

@@ -87,8 +87,8 @@ public class Definitions {
 
                     if (validation == null) {
                         validation = ReflectionValidation.newBuilder()
-                                .setName(validationName)
-                                .setValidationHelper(getValidationHelper())
+                                .withName(validationName)
+                                .withValidationHelper(getValidationHelper())
                                 .build();
 
                         addValidation(validation);
@@ -171,22 +171,22 @@ public class Definitions {
             this.xmlFile = xmlFile;
         }
 
-        public Builder setBeginEndSeparator(String registerBeginEndSeparator) {
+        public Builder withBeginEndSeparator(String registerBeginEndSeparator) {
             this.beginEndSeparator = registerBeginEndSeparator;
             return this;
         }
 
-        public Builder setFieldsSeparator(String fieldsSeparator) {
+        public Builder withFieldsSeparator(String fieldsSeparator) {
             this.fieldsSeparator = fieldsSeparator;
             return this;
         }
 
-        public Builder setFileLoader(FileLoader fileLoader) {
+        public Builder withFileLoader(FileLoader fileLoader) {
             this.fileLoader = fileLoader;
             return this;
         }
 
-        public Builder setValidationHelper(ValidationHelper validationHelper) {
+        public Builder withValidationHelper(ValidationHelper validationHelper) {
             this.validationHelper = validationHelper;
             return this;
         }

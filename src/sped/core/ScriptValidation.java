@@ -51,9 +51,9 @@ public final class ScriptValidation extends Validation {
             if (isValidObject instanceof Boolean isValid && !isValid)
                 validationListener.onError(
                         FieldValidationEvent.newBuilder()
-                                .setField(field)
-                                .setRegister(register)
-                                .setMessage("[%s]: %s".formatted(value, scriptEngine.get("message")))
+                                .withField(field)
+                                .withRegister(register)
+                                .withMessage("[%s]: %s".formatted(value, scriptEngine.get("message")))
                                 .build()
                 );
         } catch (ScriptException se) {
@@ -106,17 +106,17 @@ public final class ScriptValidation extends Validation {
 
         private Builder() {}
 
-        public Builder setName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder setFileName(String fileName) {
+        public Builder withFileName(String fileName) {
             this.fileName = fileName;
             return this;
         }
 
-        public Builder setFileLoader(FileLoader fileLoader) {
+        public Builder withFileLoader(FileLoader fileLoader) {
             this.fileLoader = fileLoader;
             return this;
         }

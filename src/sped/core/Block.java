@@ -129,17 +129,17 @@ public class Block implements Unit {
         private final Context context;
         private final BuildListner<Block> buildListner;
 
-        public Builder setBlockName(String blockName) {
+        public Builder withBlockName(String blockName) {
             this.blockName = blockName;
             return this;
         }
 
-        public Builder setOpeningRegisterName(String openingRegisterName) {
+        public Builder withOpeningRegisterName(String openingRegisterName) {
             this.openingRegisterName = openingRegisterName;
             return this;
         }
 
-        public Builder setClosureRegisterName(String closureRegisterName) {
+        public Builder withClosureRegisterName(String closureRegisterName) {
             this.closureRegisterName = closureRegisterName;
             return this;
         }

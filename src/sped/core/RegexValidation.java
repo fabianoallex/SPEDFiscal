@@ -41,9 +41,9 @@ public final class RegexValidation extends Validation {
         if (!matcher.matches()) {
             validationListener.onError(
                     FieldValidationEvent.newBuilder()
-                            .setField(field)
-                            .setRegister(register)
-                            .setMessage("[%s]: %s".formatted(value, this.getFailMessage()))
+                            .withField(field)
+                            .withRegister(register)
+                            .withMessage("[%s]: %s".formatted(value, this.getFailMessage()))
                             .build()
             );
         }
@@ -56,17 +56,17 @@ public final class RegexValidation extends Validation {
 
         private Builder() {}
 
-        public Builder setName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder setExpression(String expression) {
+        public Builder withExpression(String expression) {
             this.expression = expression;
             return this;
         }
 
-        public Builder setFailMessage(String failMessage) {
+        public Builder withFailMessage(String failMessage) {
             this.failMessage = failMessage;
             return this;
         }

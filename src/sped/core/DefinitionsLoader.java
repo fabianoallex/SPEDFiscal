@@ -97,9 +97,9 @@ class DefinitionsHandler extends DefaultHandler {
         if (tag.equals(Definitions.DEF_TAG_REGEX)) {
             definitions.addValidation(
                     RegexValidation.newBuilder()
-                            .setName(attributes.getValue(RegexValidation.REGEX_DEF_NAME))
-                            .setExpression(attributes.getValue(RegexValidation.REGEX_DEF_EXPRESSION))
-                            .setFailMessage(attributes.getValue(RegexValidation.REGEX_DEF_FAIL_MESSAGE))
+                            .withName(attributes.getValue(RegexValidation.REGEX_DEF_NAME))
+                            .withExpression(attributes.getValue(RegexValidation.REGEX_DEF_EXPRESSION))
+                            .withFailMessage(attributes.getValue(RegexValidation.REGEX_DEF_FAIL_MESSAGE))
                             .build()
             );
         }
@@ -109,9 +109,9 @@ class DefinitionsHandler extends DefaultHandler {
             validationScriptContents.reset();
 
             scriptValidation = ScriptValidation.newBuilder()
-                    .setName(attributes.getValue(ScriptValidation.SCRIPT_DEF_NAME))
-                    .setFileName(attributes.getValue(ScriptValidation.SCRIPT_DEF_FILE))
-                    .setFileLoader(this.definitions.getDefinitionsFileLoader())
+                    .withName(attributes.getValue(ScriptValidation.SCRIPT_DEF_NAME))
+                    .withFileName(attributes.getValue(ScriptValidation.SCRIPT_DEF_FILE))
+                    .withFileLoader(this.definitions.getDefinitionsFileLoader())
                     .build();
 
             definitions.addValidation(scriptValidation);
